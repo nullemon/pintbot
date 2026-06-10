@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pinterest Bot — Admin</title>
+<style>
+  :root { --bg:#0f1115; --card:#181b22; --line:#262b36; --fg:#e7e9ee; --muted:#9aa3b2;
+          --accent:#e60023; --ok:#36b37e; --warn:#f5a623; --bad:#ff5c5c; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.5 'Segoe UI', system-ui, sans-serif; background:var(--bg); color:var(--fg); }
+  header { display:flex; align-items:center; gap:16px; padding:16px 24px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  h1 { font-size:18px; margin:0; }
+  .pill { padding:2px 10px; border-radius:999px; font-size:12px; border:1px solid var(--line); }
+  .pill.ok { color:var(--ok); border-color:var(--ok); }
+  .pill.bad { color:var(--bad); border-color:var(--bad); }
+  .spacer { flex:1; }
+  button { background:var(--card); color:var(--fg); border:1px solid var(--line); border-radius:8px;
+           padding:7px 12px; cursor:pointer; font-size:13px; }
+  button:hover { border-color:var(--accent); }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  main { padding:24px; max-width:1100px; margin:0 auto; }
+  .counts { display:flex; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+  .count { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 18px; min-width:90px; }
+  .count .n { font-size:22px; font-weight:700; }
+  .count .l { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  .tabs { display:flex; gap:8px; margin-bottom:14px; }
+  .tabs button.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+  table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; font-size:12px; text-transform:uppercase; }
+  tr:last-child td { border-bottom:none; }
+  .status { font-size:12px; padding:2px 8px; border-radius:6px; border:1px solid var(--line); }
+  .status.pending { color:var(--warn); border-color:var(--warn); }
+  .status.posted { color:var(--ok); border-color:var(--ok); }
+  .status.failed, .status.dead { color:var(--bad); border-color:var(--bad); }
+  .title { font-weight:600; }
+  .muted { color:var(--muted); font-size:12px; }
+  .err { color:var(--bad); font-size:12px; max-width:280px; }
+  .row-actions { display:flex; gap:6px; flex-wrap:wrap; }
+  a { color:#6ea8ff; }
+  .empty { padding:30px; text-align:center; color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>📌 Pinterest Bot</h1>
+  <span id="authPill" class="pill">…</span>
+  <span id="pausePill" class="pill">…</span>
+  <div class="spacer"></div>
+  <button onclick="ingest()">Run ingest</button>
+  <button onclick="postNow()">Post next now</button>
+  <button id="pauseBtn" class="primary" onclick="togglePause()">…</button>
+</header>
+<main>
+  <div class="counts" id="counts"></div>
+  <div class="tabs" id="tabs"></div>
+  <div id="table"></div>
+</main>
+
+<script>
+let current = "pending";
+const TABS = ["pending", "posted", "failed", "dead"];
+
+function authHeaderOk() { return true; } // browser handles Basic auth prompt
+
+async function api(path, opts = {}) {
+  const res = await fetch(path, { headers: { "Content-Type": "application/json" }, ...opts });
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  return res.json();
+}
+
+function esc(s) { return (s ?? "").toString()
+  .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+async function refresh() {
+  const status = await api("/api/status");
+  const authPill = document.getElementById("authPill");
+  authPill.textContent = status.authorized ? "Authorized" : "Not authorized";
+  authPill.className = "pill " + (status.authorized ? "ok" : "bad");
+  if (!status.authorized) authPill.innerHTML = '<a href="/oauth/login">Authorize now</a>';
+
+  const pausePill = document.getElementById("pausePill");
+  pausePill.textContent = status.paused ? "Paused" : "Running";
+  pausePill.className = "pill " + (status.paused ? "bad" : "ok");
+  document.getElementById("pauseBtn").textContent = status.paused ? "Resume" : "Pause";
+
+  const c = status.counts;
+  document.getElementById("counts").innerHTML = TABS.map(t =>
+    `<div class="count"><div class="n">${c[t] ?? 0}</div><div class="l">${t}</div></div>`
+  ).join("");
+
+  document.getElementById("tabs").innerHTML = TABS.map(t =>
+    `<button class="${t===current?'active':''}" onclick="select('${t}')">${t}</button>`
+  ).join("");
+
+  await loadTable();
+}
+
+function select(t) { current = t; refresh(); }
+
+async function loadTable() {
+  const pins = await api("/api/pins?status=" + encodeURIComponent(current));
+  const el = document.getElementById("table");
+  if (!pins.length) { el.innerHTML = '<div class="empty">No ' + current + ' pins.</div>'; return; }
+
+  const rows = pins.map(p => `
+    <tr>
+      <td class="muted">#${p.id}</td>
+      <td>
+        <div class="title">${esc(p.title)}</div>
+        <div class="muted">${esc(p.site)} · <a href="${esc(p.link)}" target="_blank">link</a></div>
+        ${p.error ? `<div class="err">${esc(p.error)}</div>` : ""}
+      </td>
+      <td><span class="muted">${esc((p.scheduled_at||"").replace("T"," ").slice(0,16))}</span></td>
+      <td><span class="status ${p.status}">${p.status}</span>${p.attempts?`<div class="muted">${p.attempts} attempt(s)</div>`:""}</td>
+      <td><div class="row-actions">
+        ${p.status==="pending" ? `<button onclick="editPin(${p.id})">Edit</button>` : ""}
+        ${(p.status==="failed"||p.status==="dead") ? `<button onclick="requeue(${p.id})">Re-queue</button>` : ""}
+        <button onclick="del(${p.id})">Delete</button>
+      </div></td>
+    </tr>`).join("");
+
+  el.innerHTML = `<table>
+    <thead><tr><th>ID</th><th>Article</th><th>Scheduled</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>${rows}</tbody></table>`;
+}
+
+async function togglePause() {
+  const status = await api("/api/status");
+  await api(status.paused ? "/api/resume" : "/api/pause", { method: "POST" });
+  refresh();
+}
+async function ingest() {
+  const r = await api("/api/ingest", { method: "POST" });
+  alert("Ingest done:\n" + JSON.stringify(r.results, null, 2));
+  refresh();
+}
+async function postNow() {
+  const r = await api("/api/tick", { method: "POST" });
+  alert("Tick: " + JSON.stringify(r.result));
+  refresh();
+}
+async function requeue(id) { await api(`/api/pins/${id}/requeue`, { method: "POST" }); refresh(); }
+async function del(id) { if (confirm("Delete pin #" + id + "?")) { await api(`/api/pins/${id}`, { method: "DELETE" }); refresh(); } }
+async function editPin(id) {
+  const title = prompt("New title (blank = keep):");
+  const description = prompt("New description (blank = keep):");
+  const body = {};
+  if (title) body.title = title;
+  if (description) body.description = description;
+  if (Object.keys(body).length) { await api(`/api/pins/${id}`, { method: "POST", body: JSON.stringify(body) }); }
+  refresh();
+}
+
+refresh();
+setInterval(refresh, 30000);
+</script>
+</body>
+</html>
