@@ -26,6 +26,7 @@ import { registerOAuthRoutes } from "../oauth.js";
 import { isAuthorized, listBoards } from "../pinterest.js";
 import { ingestAll } from "../ingest.js";
 import { tick, computeNextSlot } from "../scheduler.js";
+import { getImageSettings, setImagePreset, IMAGE_PRESETS } from "../image.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -142,8 +143,22 @@ export function buildAdminApp() {
         sandbox: p.sandbox,
       },
       drip: getDrip(),
+      image: getImageSettings(),
+      imagePresets: Object.entries(IMAGE_PRESETS).map(([key, v]) => ({
+        key,
+        label: v.label,
+      })),
       authorized: isAuthorized(),
     });
+  });
+
+  app.post("/api/settings/image", (req, res) => {
+    try {
+      setImagePreset(req.body.preset);
+      res.json({ ok: true, image: getImageSettings() });
+    } catch (e) {
+      res.status(400).json({ ok: false, error: e.message });
+    }
   });
 
   app.post("/api/settings/pinterest", (req, res) => {

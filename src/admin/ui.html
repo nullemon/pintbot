@@ -180,7 +180,20 @@ async function renderSettings() {
     </div>
 
     <div class="card">
-      <h2>2 · Drip pacing</h2>
+      <h2>2 · Pin image size</h2>
+      <div class="grid">
+        <label>Output format</label>
+        <select id="imagePreset">
+          ${s.imagePresets.map(p => `<option value="${p.key}" ${p.key===s.image.preset?"selected":""}>${esc(p.label)}</option>`).join("")}
+        </select>
+      </div>
+      <div class="hint">Photos from your feed are smart-cropped (subject-aware) to this vertical size.
+        <b>Phone wallpaper 9:16</b> is the trend; <b>Pinterest 2:3</b> shows fully in the feed without truncation. Current: ${s.image.width}×${s.image.height}.</div>
+      <div class="actions"><button class="primary" onclick="saveImage()">Save image size</button><span id="imgMsg" class="saved"></span></div>
+    </div>
+
+    <div class="card">
+      <h2>3 · Drip pacing</h2>
       <div class="row-inline">
         <div><label>Pins per day</label><input id="pinsPerDay" type="number" value="${s.drip.pinsPerDay}" /></div>
         <div><label>Minutes between pins</label><input id="intervalMinutes" type="number" value="${s.drip.intervalMinutes}" /></div>
@@ -191,7 +204,7 @@ async function renderSettings() {
     </div>
 
     <div class="card">
-      <h2>3 · Admin password</h2>
+      <h2>4 · Admin password</h2>
       <div class="grid">
         <label>New password</label>
         <input id="newPass" type="password" placeholder="new dashboard password" />
@@ -210,6 +223,10 @@ async function saveKeys() {
   await api("/api/settings/pinterest", { method: "POST", body: JSON.stringify(body) });
   document.getElementById("keysMsg").textContent = "Saved ✓";
   setTimeout(refresh, 700);
+}
+async function saveImage() {
+  await api("/api/settings/image", { method: "POST", body: JSON.stringify({ preset: document.getElementById("imagePreset").value }) });
+  document.getElementById("imgMsg").textContent = "Saved ✓ — applies to newly ingested pins";
 }
 async function saveDrip() {
   const body = {};
