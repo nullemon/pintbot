@@ -44,7 +44,7 @@ export const config = {
 
   drip: {
     pinsPerDay: int(process.env.PINS_PER_DAY, 10),
-    intervalMinutes: int(process.env.POST_INTERVAL_MINUTES, 90),
+    intervalMinutes: int(process.env.POST_INTERVAL_MINUTES, 20),
     windowStart: int(process.env.POST_WINDOW_START, 8),
     windowEnd: int(process.env.POST_WINDOW_END, 23),
   },
