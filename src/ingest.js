@@ -1,12 +1,12 @@
 // Fetch RSS, enrich featured image via WP REST, dedupe, queue new pins.
 import Parser from "rss-parser";
 import { fetch } from "undici";
-import { SITES } from "./sites.js";
 import {
   articleExists,
   insertArticle,
   pinExists,
   insertPin,
+  getSites,
 } from "./db.js";
 import { buildDescription } from "./description.js";
 import { prepareImage } from "./image.js";
@@ -148,10 +148,10 @@ async function ingestSite(site) {
   return summary;
 }
 
-// Ingest every configured site.
+// Ingest every configured (enabled) site.
 export async function ingestAll() {
   const results = [];
-  for (const site of SITES) {
+  for (const site of getSites()) {
     results.push(await ingestSite(site));
   }
   return results;

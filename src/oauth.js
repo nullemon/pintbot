@@ -5,17 +5,19 @@ import {
   exchangeCodeForTokens,
   listBoards as fetchBoards,
 } from "./pinterest.js";
-import { config } from "./config.js";
+import { pinterestConfigured } from "./db.js";
 
 // In-memory CSRF state for the OAuth handshake (single-user local bot).
 let pendingState = null;
 
 export function registerOAuthRoutes(app) {
   app.get("/oauth/login", (req, res) => {
-    if (!config.pinterest.clientId || !config.pinterest.clientSecret) {
+    if (!pinterestConfigured()) {
       return res
-        .status(500)
-        .send("Set PINTEREST_CLIENT_ID and PINTEREST_CLIENT_SECRET in .env first.");
+        .status(400)
+        .send(
+          "Pinterest App ID and secret aren't set yet. Open the Settings tab in the dashboard and save them first."
+        );
     }
     pendingState = crypto.randomBytes(16).toString("hex");
     res.redirect(buildAuthorizeUrl(pendingState));

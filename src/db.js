@@ -61,6 +61,18 @@ db.exec(`
     value TEXT
   );
 
+  -- Editable site list (managed from the admin Settings tab).
+  CREATE TABLE IF NOT EXISTS site_configs (
+    name TEXT PRIMARY KEY,
+    rss TEXT,
+    rest_base TEXT,
+    niche TEXT,
+    board_id TEXT,
+    hashtags TEXT,               -- JSON array of strings
+    overlay_title INTEGER DEFAULT 1,
+    enabled INTEGER DEFAULT 1
+  );
+
   CREATE INDEX IF NOT EXISTS idx_pins_status_due ON pins(status, scheduled_at);
 `);
 
@@ -207,4 +219,146 @@ export function upsertBoards(rows) {
 
 export function listBoards() {
   return db.prepare("SELECT * FROM boards").all();
+}
+
+/* --------------------------- site configs --------------------------- */
+
+// Map a DB row to the runtime shape ingest.js expects.
+function rowToSite(row) {
+  let hashtags = [];
+  try {
+    hashtags = row.hashtags ? JSON.parse(row.hashtags) : [];
+  } catch {
+    hashtags = [];
+  }
+  return {
+    name: row.name,
+    rss: row.rss,
+    restBase: row.rest_base,
+    niche: row.niche,
+    defaultBoardId: row.board_id,
+    hashtags,
+    overlayTitle: row.overlay_title !== 0,
+    enabled: row.enabled !== 0,
+  };
+}
+
+// All enabled sites, in runtime shape (used by ingest).
+export function getSites() {
+  return db
+    .prepare("SELECT * FROM site_configs WHERE enabled = 1 ORDER BY name")
+    .all()
+    .map(rowToSite);
+}
+
+// All sites (including disabled) for the admin UI.
+export function getAllSites() {
+  return db
+    .prepare("SELECT * FROM site_configs ORDER BY name")
+    .all()
+    .map(rowToSite);
+}
+
+export function upsertSite(s) {
+  db.prepare(
+    `INSERT INTO site_configs (name, rss, rest_base, niche, board_id, hashtags, overlay_title, enabled)
+     VALUES (@name, @rss, @rest_base, @niche, @board_id, @hashtags, @overlay_title, @enabled)
+     ON CONFLICT(name) DO UPDATE SET
+       rss = excluded.rss,
+       rest_base = excluded.rest_base,
+       niche = excluded.niche,
+       board_id = excluded.board_id,
+       hashtags = excluded.hashtags,
+       overlay_title = excluded.overlay_title,
+       enabled = excluded.enabled`
+  ).run({
+    name: s.name,
+    rss: s.rss || "",
+    rest_base: s.restBase || s.rest_base || "",
+    niche: s.niche || "",
+    board_id: s.defaultBoardId || s.board_id || "",
+    hashtags: JSON.stringify(Array.isArray(s.hashtags) ? s.hashtags : []),
+    overlay_title: s.overlayTitle === false || s.overlay_title === 0 ? 0 : 1,
+    enabled: s.enabled === false || s.enabled === 0 ? 0 : 1,
+  });
+}
+
+export function deleteSite(name) {
+  db.prepare("DELETE FROM site_configs WHERE name = ?").run(name);
+}
+
+// Seed the site_configs table from the static SITES defaults on first run.
+export function seedSites(defaults) {
+  const count = db.prepare("SELECT COUNT(*) AS n FROM site_configs").get().n;
+  if (count > 0) return false;
+  for (const s of defaults) upsertSite(s);
+  return true;
+}
+
+/* ------------------------ live drip settings ------------------------ */
+
+// Drip config with per-key overrides stored in the settings table,
+// falling back to the .env defaults from config.js.
+export function getDrip() {
+  const num = (key, fallback) => {
+    const v = getSetting(`drip.${key}`, null);
+    const n = v === null ? NaN : Number(v);
+    return Number.isFinite(n) ? n : fallback;
+  };
+  return {
+    pinsPerDay: num("pinsPerDay", config.drip.pinsPerDay),
+    intervalMinutes: num("intervalMinutes", config.drip.intervalMinutes),
+    windowStart: num("windowStart", config.drip.windowStart),
+    windowEnd: num("windowEnd", config.drip.windowEnd),
+  };
+}
+
+export function setDrip(partial) {
+  for (const key of ["pinsPerDay", "intervalMinutes", "windowStart", "windowEnd"]) {
+    if (partial[key] !== undefined && partial[key] !== "" && partial[key] !== null) {
+      setSetting(`drip.${key}`, Number(partial[key]));
+    }
+  }
+}
+
+/* ---------------- credentials (DB-first, .env fallback) ------------- */
+
+// Pinterest app config: DB settings win, .env is the fallback default.
+export function getPinterestConfig() {
+  const sandboxSetting = getSetting("pinterest.sandbox", null);
+  return {
+    clientId: getSetting("pinterest.clientId", "") || config.pinterest.clientId,
+    clientSecret:
+      getSetting("pinterest.clientSecret", "") || config.pinterest.clientSecret,
+    redirectUri:
+      getSetting("pinterest.redirectUri", "") || config.pinterest.redirectUri,
+    sandbox:
+      sandboxSetting === null ? config.pinterest.sandbox : sandboxSetting === "true",
+    scopes: config.pinterest.scopes,
+  };
+}
+
+export function setPinterestConfig(partial) {
+  if (partial.clientId !== undefined)
+    setSetting("pinterest.clientId", String(partial.clientId).trim());
+  if (partial.clientSecret !== undefined && partial.clientSecret !== "")
+    setSetting("pinterest.clientSecret", String(partial.clientSecret).trim());
+  if (partial.redirectUri !== undefined && partial.redirectUri !== "")
+    setSetting("pinterest.redirectUri", String(partial.redirectUri).trim());
+  if (partial.sandbox !== undefined)
+    setSetting("pinterest.sandbox", partial.sandbox ? "true" : "false");
+}
+
+export function pinterestConfigured() {
+  const c = getPinterestConfig();
+  return !!(c.clientId && c.clientSecret);
+}
+
+// Admin password: DB setting wins, else .env, else the default.
+export function getAdminPassword() {
+  return getSetting("admin.password", "") || config.admin.password;
+}
+
+export function setAdminPassword(pw) {
+  if (pw && String(pw).trim()) setSetting("admin.password", String(pw).trim());
 }

@@ -27,16 +27,27 @@ restart-on-boot.
    authorize → the bot stores the refresh token in SQLite and auto-refreshes the
    short-lived access token from then on.
 
-## 2. Configure
+## 2. Configure — all from the dashboard menu
 
 ```bash
 npm install
-cp .env.example .env      # fill in your Pinterest creds + admin password
+cp .env.example .env      # just set ADMIN_PORT + a first-login ADMIN_PASSWORD
+node src/index.js
 ```
 
-Edit `src/sites.js` to add your WordPress sites. After OAuth, run
-`npm run boards` to list your Pinterest boards and paste the right board id into
-each site's `defaultBoardId`.
+Then open **http://localhost:8787**, log in, and use the **⚙ Settings** tab to:
+
+- enter your Pinterest **App ID + App secret** (stored in the DB, not `.env`),
+- click **Authorize with Pinterest**,
+- set the **drip pacing** (pins/day, interval, posting window),
+- change the **admin password**.
+
+Use the **Sites** tab to add/edit/delete WordPress sites and pick each site's
+Pinterest board from a dropdown (populated live from your account after you
+authorize). No file editing required.
+
+> `src/sites.js` only provides the initial example sites, which are copied into
+> the editable database on first run.
 
 ### Environment variables (`.env`)
 

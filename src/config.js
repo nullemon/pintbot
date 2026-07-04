@@ -55,9 +55,3 @@ export const config = {
     backoffMinutes: [15, 60, 240],
   },
 };
-
-export function apiBase() {
-  return config.pinterest.sandbox
-    ? "https://api-sandbox.pinterest.com/v5"
-    : "https://api.pinterest.com/v5";
-}

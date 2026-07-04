@@ -1,6 +1,7 @@
-// Site list: RSS url, REST base, board map, niche, hashtags.
-// Fill in defaultBoardId with a real Pinterest board id (run `npm run boards`
-// after OAuth to list them, then paste the id here).
+// DEFAULT/seed site list. On first run these are copied into the editable
+// `site_configs` table in the database; after that you manage sites entirely
+// from the admin dashboard (Sites tab) — you don't need to edit this file.
+// This just provides the initial examples.
 export const SITES = [
   {
     name: "otakukart",

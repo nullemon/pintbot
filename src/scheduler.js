@@ -5,6 +5,7 @@ import {
   lastScheduledAt,
   updatePin,
   isPaused,
+  getDrip,
 } from "./db.js";
 import { createPin, isAuthorized } from "./pinterest.js";
 
@@ -12,7 +13,7 @@ const MINUTE = 60 * 1000;
 
 // Move a Date into the allowed posting window [start, end).
 function clampToWindow(date) {
-  const { windowStart, windowEnd } = config.drip;
+  const { windowStart, windowEnd } = getDrip();
   const d = new Date(date);
   const hour = d.getHours();
   if (hour < windowStart) {
@@ -28,7 +29,7 @@ function clampToWindow(date) {
 // Compute the next scheduled_at slot, chaining off the last queued pin so the
 // drip stays spaced by POST_INTERVAL_MINUTES and never bursts.
 export function computeNextSlot() {
-  const interval = config.drip.intervalMinutes * MINUTE;
+  const interval = getDrip().intervalMinutes * MINUTE;
   const now = Date.now();
   const last = lastScheduledAt();
   const lastMs = last ? new Date(last).getTime() : 0;

@@ -1,24 +1,31 @@
 // Pinterest v5 API client: OAuth token exchange/refresh, boards, createPin.
 import { fetch } from "undici";
 import fs from "node:fs";
-import { config, apiBase } from "./config.js";
-import { getTokens, saveTokens } from "./db.js";
+import { getTokens, saveTokens, getPinterestConfig } from "./db.js";
 
 const AUTH_URL = "https://www.pinterest.com/oauth/";
 
+// API base derived from the live sandbox setting.
+function apiBase() {
+  return getPinterestConfig().sandbox
+    ? "https://api-sandbox.pinterest.com/v5"
+    : "https://api.pinterest.com/v5";
+}
+
 function basicAuthHeader() {
-  const { clientId, clientSecret } = config.pinterest;
+  const { clientId, clientSecret } = getPinterestConfig();
   const raw = `${clientId}:${clientSecret}`;
   return "Basic " + Buffer.from(raw).toString("base64");
 }
 
 // Build the URL the user visits to authorize the app.
 export function buildAuthorizeUrl(state) {
+  const cfg = getPinterestConfig();
   const params = new URLSearchParams({
-    client_id: config.pinterest.clientId,
-    redirect_uri: config.pinterest.redirectUri,
+    client_id: cfg.clientId,
+    redirect_uri: cfg.redirectUri,
     response_type: "code",
-    scope: config.pinterest.scopes.join(","),
+    scope: cfg.scopes.join(","),
     state: state || "pinbot",
   });
   return `${AUTH_URL}?${params.toString()}`;
@@ -35,7 +42,7 @@ export async function exchangeCodeForTokens(code) {
   const body = new URLSearchParams({
     grant_type: "authorization_code",
     code,
-    redirect_uri: config.pinterest.redirectUri,
+    redirect_uri: getPinterestConfig().redirectUri,
   });
 
   const res = await fetch(`${apiBase()}/oauth/token`, {

@@ -5,9 +5,16 @@ import { startAdminServer } from "./admin/server.js";
 import { ingestAll } from "./ingest.js";
 import { tick } from "./scheduler.js";
 import { isAuthorized } from "./pinterest.js";
+import { seedSites, getDrip, pinterestConfigured } from "./db.js";
+import { SITES } from "./sites.js";
 
 function log(...args) {
   console.log(`[${new Date().toISOString()}]`, ...args);
+}
+
+// First run: copy the static defaults from sites.js into the editable DB table.
+if (seedSites(SITES)) {
+  log(`Seeded ${SITES.length} default site(s) into the database.`);
 }
 
 startAdminServer();
@@ -33,11 +40,16 @@ cron.schedule("*/5 * * * *", async () => {
   }
 });
 
+const drip = getDrip();
 log(
-  `Pinterest bot running. Drip: ${config.drip.pinsPerDay}/day, every ` +
-    `${config.drip.intervalMinutes}min, window ${config.drip.windowStart}:00–${config.drip.windowEnd}:00.`
+  `Pinterest bot running. Drip: ${drip.pinsPerDay}/day, every ` +
+    `${drip.intervalMinutes}min, window ${drip.windowStart}:00–${drip.windowEnd}:00.`
 );
-if (!isAuthorized()) {
+if (!pinterestConfigured()) {
+  log(
+    `Not configured yet — open http://localhost:${config.admin.port} → Settings tab to enter your Pinterest keys.`
+  );
+} else if (!isAuthorized()) {
   log(
     `Not authorized yet — open http://localhost:${config.admin.port}/oauth/login`
   );

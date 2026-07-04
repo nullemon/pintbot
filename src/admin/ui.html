@@ -11,6 +11,7 @@
   body { margin:0; font:14px/1.5 'Segoe UI', system-ui, sans-serif; background:var(--bg); color:var(--fg); }
   header { display:flex; align-items:center; gap:16px; padding:16px 24px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
   h1 { font-size:18px; margin:0; }
+  h2 { font-size:15px; margin:0 0 12px; }
   .pill { padding:2px 10px; border-radius:999px; font-size:12px; border:1px solid var(--line); }
   .pill.ok { color:var(--ok); border-color:var(--ok); }
   .pill.bad { color:var(--bad); border-color:var(--bad); }
@@ -24,7 +25,7 @@
   .count { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 18px; min-width:90px; }
   .count .n { font-size:22px; font-weight:700; }
   .count .l { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
-  .tabs { display:flex; gap:8px; margin-bottom:14px; }
+  .tabs { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
   .tabs button.active { background:var(--accent); border-color:var(--accent); color:#fff; }
   table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
   th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
@@ -40,6 +41,20 @@
   .row-actions { display:flex; gap:6px; flex-wrap:wrap; }
   a { color:#6ea8ff; }
   .empty { padding:30px; text-align:center; color:var(--muted); }
+  /* settings */
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin-bottom:18px; }
+  .grid { display:grid; grid-template-columns:180px 1fr; gap:10px 14px; align-items:center; }
+  label { color:var(--muted); font-size:13px; }
+  input, select, textarea { width:100%; background:#0f1115; color:var(--fg); border:1px solid var(--line);
+    border-radius:8px; padding:8px 10px; font:inherit; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--accent); }
+  .hint { color:var(--muted); font-size:12px; margin-top:4px; }
+  .actions { margin-top:16px; display:flex; gap:10px; align-items:center; }
+  .saved { color:var(--ok); font-size:13px; }
+  fieldset { border:1px solid var(--line); border-radius:10px; padding:14px; margin:0 0 14px; }
+  legend { color:var(--muted); font-size:12px; padding:0 6px; }
+  .row-inline { display:flex; gap:10px; flex-wrap:wrap; }
+  .row-inline > div { flex:1; min-width:140px; }
 </style>
 </head>
 <body>
@@ -53,32 +68,29 @@
   <button id="pauseBtn" class="primary" onclick="togglePause()">…</button>
 </header>
 <main>
-  <div class="counts" id="counts"></div>
   <div class="tabs" id="tabs"></div>
-  <div id="table"></div>
+  <div id="counts" class="counts"></div>
+  <div id="view"></div>
 </main>
 
 <script>
 let current = "pending";
-const TABS = ["pending", "posted", "failed", "dead"];
-
-function authHeaderOk() { return true; } // browser handles Basic auth prompt
+const PIN_TABS = ["pending", "posted", "failed", "dead"];
+const TABS = [...PIN_TABS, "settings", "sites"];
 
 async function api(path, opts = {}) {
   const res = await fetch(path, { headers: { "Content-Type": "application/json" }, ...opts });
-  if (!res.ok) throw new Error("HTTP " + res.status);
+  if (!res.ok) { let t; try { t = (await res.json()).error; } catch { t = "HTTP " + res.status; } throw new Error(t || "HTTP " + res.status); }
   return res.json();
 }
-
-function esc(s) { return (s ?? "").toString()
-  .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function esc(s) { return (s ?? "").toString().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 
 async function refresh() {
   const status = await api("/api/status");
   const authPill = document.getElementById("authPill");
-  authPill.textContent = status.authorized ? "Authorized" : "Not authorized";
-  authPill.className = "pill " + (status.authorized ? "ok" : "bad");
-  if (!status.authorized) authPill.innerHTML = '<a href="/oauth/login">Authorize now</a>';
+  if (!status.configured) { authPill.innerHTML = 'No keys — <a href="#" onclick="select(\'settings\');return false;">set up</a>'; authPill.className = "pill bad"; }
+  else if (!status.authorized) { authPill.innerHTML = '<a href="/oauth/login">Authorize now</a>'; authPill.className = "pill bad"; }
+  else { authPill.textContent = "Authorized"; authPill.className = "pill ok"; }
 
   const pausePill = document.getElementById("pausePill");
   pausePill.textContent = status.paused ? "Paused" : "Running";
@@ -86,60 +98,46 @@ async function refresh() {
   document.getElementById("pauseBtn").textContent = status.paused ? "Resume" : "Pause";
 
   const c = status.counts;
-  document.getElementById("counts").innerHTML = TABS.map(t =>
+  document.getElementById("counts").innerHTML = PIN_TABS.map(t =>
     `<div class="count"><div class="n">${c[t] ?? 0}</div><div class="l">${t}</div></div>`
   ).join("");
+  document.getElementById("counts").style.display = PIN_TABS.includes(current) ? "flex" : "none";
 
   document.getElementById("tabs").innerHTML = TABS.map(t =>
-    `<button class="${t===current?'active':''}" onclick="select('${t}')">${t}</button>`
+    `<button class="${t===current?'active':''}" onclick="select('${t}')">${t==='sites'?'Sites':t==='settings'?'⚙ Settings':t}</button>`
   ).join("");
 
-  await loadTable();
+  await renderView();
 }
-
 function select(t) { current = t; refresh(); }
 
-async function loadTable() {
+async function renderView() {
+  if (current === "settings") return renderSettings();
+  if (current === "sites") return renderSites();
+  return renderPins();
+}
+
+/* ------------------------------ pins ------------------------------ */
+async function renderPins() {
   const pins = await api("/api/pins?status=" + encodeURIComponent(current));
-  const el = document.getElementById("table");
+  const el = document.getElementById("view");
   if (!pins.length) { el.innerHTML = '<div class="empty">No ' + current + ' pins.</div>'; return; }
-
-  const rows = pins.map(p => `
-    <tr>
-      <td class="muted">#${p.id}</td>
-      <td>
-        <div class="title">${esc(p.title)}</div>
-        <div class="muted">${esc(p.site)} · <a href="${esc(p.link)}" target="_blank">link</a></div>
-        ${p.error ? `<div class="err">${esc(p.error)}</div>` : ""}
-      </td>
-      <td><span class="muted">${esc((p.scheduled_at||"").replace("T"," ").slice(0,16))}</span></td>
-      <td><span class="status ${p.status}">${p.status}</span>${p.attempts?`<div class="muted">${p.attempts} attempt(s)</div>`:""}</td>
-      <td><div class="row-actions">
-        ${p.status==="pending" ? `<button onclick="editPin(${p.id})">Edit</button>` : ""}
-        ${(p.status==="failed"||p.status==="dead") ? `<button onclick="requeue(${p.id})">Re-queue</button>` : ""}
-        <button onclick="del(${p.id})">Delete</button>
-      </div></td>
-    </tr>`).join("");
-
   el.innerHTML = `<table>
     <thead><tr><th>ID</th><th>Article</th><th>Scheduled</th><th>Status</th><th>Actions</th></tr></thead>
-    <tbody>${rows}</tbody></table>`;
-}
-
-async function togglePause() {
-  const status = await api("/api/status");
-  await api(status.paused ? "/api/resume" : "/api/pause", { method: "POST" });
-  refresh();
-}
-async function ingest() {
-  const r = await api("/api/ingest", { method: "POST" });
-  alert("Ingest done:\n" + JSON.stringify(r.results, null, 2));
-  refresh();
-}
-async function postNow() {
-  const r = await api("/api/tick", { method: "POST" });
-  alert("Tick: " + JSON.stringify(r.result));
-  refresh();
+    <tbody>${pins.map(p => `
+      <tr>
+        <td class="muted">#${p.id}</td>
+        <td><div class="title">${esc(p.title)}</div>
+          <div class="muted">${esc(p.site)} · <a href="${esc(p.link)}" target="_blank">link</a></div>
+          ${p.error ? `<div class="err">${esc(p.error)}</div>` : ""}</td>
+        <td><span class="muted">${esc((p.scheduled_at||"").replace("T"," ").slice(0,16))}</span></td>
+        <td><span class="status ${p.status}">${p.status}</span>${p.attempts?`<div class="muted">${p.attempts} attempt(s)</div>`:""}</td>
+        <td><div class="row-actions">
+          ${p.status==="pending" ? `<button onclick="editPin(${p.id})">Edit</button>` : ""}
+          ${(p.status==="failed"||p.status==="dead") ? `<button onclick="requeue(${p.id})">Re-queue</button>` : ""}
+          <button onclick="del(${p.id})">Delete</button>
+        </div></td>
+      </tr>`).join("")}</tbody></table>`;
 }
 async function requeue(id) { await api(`/api/pins/${id}/requeue`, { method: "POST" }); refresh(); }
 async function del(id) { if (confirm("Delete pin #" + id + "?")) { await api(`/api/pins/${id}`, { method: "DELETE" }); refresh(); } }
@@ -149,12 +147,184 @@ async function editPin(id) {
   const body = {};
   if (title) body.title = title;
   if (description) body.description = description;
-  if (Object.keys(body).length) { await api(`/api/pins/${id}`, { method: "POST", body: JSON.stringify(body) }); }
+  if (Object.keys(body).length) await api(`/api/pins/${id}`, { method: "POST", body: JSON.stringify(body) });
   refresh();
 }
 
+/* ---------------------------- settings ---------------------------- */
+async function renderSettings() {
+  const s = await api("/api/settings");
+  const el = document.getElementById("view");
+  el.innerHTML = `
+    <div class="card">
+      <h2>1 · Pinterest app keys</h2>
+      <div class="grid">
+        <label>App ID (client_id)</label>
+        <input id="clientId" value="${esc(s.pinterest.clientId)}" placeholder="e.g. 1579680" />
+        <label>App secret</label>
+        <input id="clientSecret" type="password" placeholder="${s.pinterest.clientSecretSet ? '•••••• (saved — leave blank to keep)' : 'paste your app secret'}" />
+        <label>Redirect URI</label>
+        <input id="redirectUri" value="${esc(s.pinterest.redirectUri)}" />
+        <label>Use sandbox API</label>
+        <div><input type="checkbox" id="sandbox" ${s.pinterest.sandbox ? "checked":""} style="width:auto" /> <span class="muted">leave off for live posting</span></div>
+      </div>
+      <div class="hint">The redirect URI must match exactly what you saved in the Pinterest developer portal.</div>
+      <div class="actions">
+        <button class="primary" onclick="saveKeys()">Save keys</button>
+        <span id="keysMsg" class="saved"></span>
+      </div>
+      <div class="actions">
+        ${s.authorized ? '<span class="pill ok">Authorized ✓</span> <a href="/oauth/login">Re-authorize</a>'
+          : '<a href="/oauth/login"><button class="primary">Authorize with Pinterest →</button></a> <span class="muted">(save keys first)</span>'}
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2 · Drip pacing</h2>
+      <div class="row-inline">
+        <div><label>Pins per day</label><input id="pinsPerDay" type="number" value="${s.drip.pinsPerDay}" /></div>
+        <div><label>Minutes between pins</label><input id="intervalMinutes" type="number" value="${s.drip.intervalMinutes}" /></div>
+        <div><label>Window start (hour)</label><input id="windowStart" type="number" min="0" max="23" value="${s.drip.windowStart}" /></div>
+        <div><label>Window end (hour)</label><input id="windowEnd" type="number" min="0" max="24" value="${s.drip.windowEnd}" /></div>
+      </div>
+      <div class="actions"><button class="primary" onclick="saveDrip()">Save pacing</button><span id="dripMsg" class="saved"></span></div>
+    </div>
+
+    <div class="card">
+      <h2>3 · Admin password</h2>
+      <div class="grid">
+        <label>New password</label>
+        <input id="newPass" type="password" placeholder="new dashboard password" />
+      </div>
+      <div class="hint">You'll need to log in again with the new password after saving.</div>
+      <div class="actions"><button class="primary" onclick="savePass()">Change password</button><span id="passMsg" class="saved"></span></div>
+    </div>`;
+}
+async function saveKeys() {
+  const body = {
+    clientId: document.getElementById("clientId").value.trim(),
+    clientSecret: document.getElementById("clientSecret").value.trim(),
+    redirectUri: document.getElementById("redirectUri").value.trim(),
+    sandbox: document.getElementById("sandbox").checked,
+  };
+  await api("/api/settings/pinterest", { method: "POST", body: JSON.stringify(body) });
+  document.getElementById("keysMsg").textContent = "Saved ✓";
+  setTimeout(refresh, 700);
+}
+async function saveDrip() {
+  const body = {};
+  for (const k of ["pinsPerDay","intervalMinutes","windowStart","windowEnd"]) body[k] = document.getElementById(k).value;
+  await api("/api/settings/drip", { method: "POST", body: JSON.stringify(body) });
+  document.getElementById("dripMsg").textContent = "Saved ✓";
+}
+async function savePass() {
+  const password = document.getElementById("newPass").value;
+  if (!password.trim()) return alert("Enter a password.");
+  await api("/api/settings/password", { method: "POST", body: JSON.stringify({ password }) });
+  alert("Password changed. The page will now ask you to log in again.");
+  location.reload();
+}
+
+/* ------------------------------ sites ----------------------------- */
+async function renderSites() {
+  const [sites, boardsRes] = await Promise.all([api("/api/sites"), api("/api/boards")]);
+  window.__boards = boardsRes;
+  const el = document.getElementById("view");
+
+  const boardNote = boardsRes.authorized
+    ? (boardsRes.boards.length ? "" : '<div class="hint">No boards found on your Pinterest account yet — create one on Pinterest first.</div>')
+    : '<div class="hint">Authorize with Pinterest (Settings tab) to load your boards into the dropdown.</div>';
+
+  const rows = sites.length ? sites.map(s => `
+    <tr>
+      <td><div class="title">${esc(s.name)}</div><div class="muted">${esc(s.niche||"")}</div></td>
+      <td class="muted"><a href="${esc(s.rss)}" target="_blank">RSS</a></td>
+      <td class="muted">${boardName(s.defaultBoardId)}</td>
+      <td class="muted">${(s.hashtags||[]).join(" ")}</td>
+      <td>${s.enabled ? '<span class="status posted">on</span>' : '<span class="status dead">off</span>'}</td>
+      <td><div class="row-actions">
+        <button onclick='fillSite(${JSON.stringify(s)})'>Edit</button>
+        <button onclick="delSite('${esc(s.name)}')">Delete</button>
+      </div></td>
+    </tr>`).join("") : `<tr><td colspan="6" class="empty">No sites yet — add one below.</td></tr>`;
+
+  el.innerHTML = `
+    <div class="card">
+      <h2>Your sites</h2>
+      <table><thead><tr><th>Name / niche</th><th>Feed</th><th>Board</th><th>Hashtags</th><th>On</th><th>Actions</th></tr></thead>
+      <tbody>${rows}</tbody></table>
+    </div>
+    <div class="card">
+      <h2 id="siteFormTitle">Add a site</h2>
+      <div class="grid">
+        <label>Name (unique id)</label><input id="s_name" placeholder="otakukart" />
+        <label>RSS feed URL</label><input id="s_rss" placeholder="https://otakukart.com/feed/" />
+        <label>WP REST base</label><input id="s_rest" placeholder="https://otakukart.com/wp-json/wp/v2" />
+        <label>Niche</label><input id="s_niche" placeholder="anime" />
+        <label>Pinterest board</label>${boardSelect("")}
+        <label>Hashtags</label><input id="s_tags" placeholder="#anime #manga #onepiece" />
+        <label>Title overlay</label><div><input type="checkbox" id="s_overlay" checked style="width:auto" /> <span class="muted">draw the title on the image</span></div>
+        <label>Enabled</label><div><input type="checkbox" id="s_enabled" checked style="width:auto" /> <span class="muted">include in ingest</span></div>
+      </div>
+      ${boardNote}
+      <div class="actions"><button class="primary" onclick="saveSite()">Save site</button>
+        <button onclick="clearSiteForm()">Clear</button><span id="siteMsg" class="saved"></span></div>
+    </div>`;
+}
+function boardName(id) {
+  if (!id || id === "PUT_BOARD_ID") return '<span class="err">not set</span>';
+  const b = (window.__boards?.boards || []).find(x => x.id === id);
+  return b ? esc(b.name) : esc(id);
+}
+function boardSelect(selected) {
+  const boards = window.__boards?.boards || [];
+  if (!boards.length) return `<input id="s_board" value="${esc(selected)}" placeholder="board id (authorize to get a dropdown)" />`;
+  const opts = ['<option value="">— pick a board —</option>']
+    .concat(boards.map(b => `<option value="${esc(b.id)}" ${b.id===selected?"selected":""}>${esc(b.name)}</option>`));
+  return `<select id="s_board">${opts.join("")}</select>`;
+}
+function fillSite(s) {
+  document.getElementById("siteFormTitle").textContent = "Edit site: " + s.name;
+  document.getElementById("s_name").value = s.name;
+  document.getElementById("s_rss").value = s.rss || "";
+  document.getElementById("s_rest").value = s.restBase || "";
+  document.getElementById("s_niche").value = s.niche || "";
+  document.getElementById("s_tags").value = (s.hashtags||[]).join(" ");
+  document.getElementById("s_overlay").checked = s.overlayTitle !== false;
+  document.getElementById("s_enabled").checked = s.enabled !== false;
+  const board = document.getElementById("s_board");
+  if (board) board.value = s.defaultBoardId || "";
+  window.scrollTo(0, document.body.scrollHeight);
+}
+function clearSiteForm() { renderSites(); }
+async function saveSite() {
+  const body = {
+    name: document.getElementById("s_name").value.trim(),
+    rss: document.getElementById("s_rss").value.trim(),
+    restBase: document.getElementById("s_rest").value.trim(),
+    niche: document.getElementById("s_niche").value.trim(),
+    defaultBoardId: document.getElementById("s_board").value.trim(),
+    hashtags: document.getElementById("s_tags").value.trim(),
+    overlayTitle: document.getElementById("s_overlay").checked,
+    enabled: document.getElementById("s_enabled").checked,
+  };
+  if (!body.name || !body.rss) return alert("Name and RSS feed URL are required.");
+  try { await api("/api/sites", { method: "POST", body: JSON.stringify(body) }); renderSites(); }
+  catch (e) { alert("Save failed: " + e.message); }
+}
+async function delSite(name) { if (confirm("Delete site '" + name + "'?")) { await api(`/api/sites/${encodeURIComponent(name)}`, { method: "DELETE" }); renderSites(); } }
+
+/* ---------------------------- controls ---------------------------- */
+async function togglePause() {
+  const status = await api("/api/status");
+  await api(status.paused ? "/api/resume" : "/api/pause", { method: "POST" });
+  refresh();
+}
+async function ingest() { const r = await api("/api/ingest", { method: "POST" }); alert("Ingest done:\n" + JSON.stringify(r.results, null, 2)); refresh(); }
+async function postNow() { const r = await api("/api/tick", { method: "POST" }); alert("Tick: " + JSON.stringify(r.result)); refresh(); }
+
 refresh();
-setInterval(refresh, 30000);
+setInterval(() => { if (PIN_TABS.includes(current)) refresh(); }, 30000);
 </script>
 </body>
 </html>

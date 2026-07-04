@@ -1,4 +1,4 @@
-// Tiny Express admin app: dashboard + queue controls. Password-protected.
+// Tiny Express admin app: dashboard, setup menu + queue controls.
 import express from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -11,9 +11,19 @@ import {
   countByStatus,
   isPaused,
   setPaused,
+  getAllSites,
+  upsertSite,
+  deleteSite,
+  getDrip,
+  setDrip,
+  getPinterestConfig,
+  setPinterestConfig,
+  pinterestConfigured,
+  getAdminPassword,
+  setAdminPassword,
 } from "../db.js";
 import { registerOAuthRoutes } from "../oauth.js";
-import { isAuthorized } from "../pinterest.js";
+import { isAuthorized, listBoards } from "../pinterest.js";
 import { ingestAll } from "../ingest.js";
 import { tick, computeNextSlot } from "../scheduler.js";
 
@@ -26,7 +36,7 @@ function requireAuth(req, res, next) {
   if (scheme === "Basic" && encoded) {
     const decoded = Buffer.from(encoded, "base64").toString("utf8");
     const pass = decoded.slice(decoded.indexOf(":") + 1);
-    if (pass === config.admin.password) return next();
+    if (pass === getAdminPassword()) return next();
   }
   res.set("WWW-Authenticate", 'Basic realm="pinterest-bot"');
   return res.status(401).send("Authentication required.");
@@ -51,9 +61,12 @@ export function buildAdminApp() {
     res.json({
       paused: isPaused(),
       authorized: isAuthorized(),
+      configured: pinterestConfigured(),
       counts: countByStatus(),
     });
   });
+
+  /* ----------------------------- pins ----------------------------- */
 
   app.get("/api/pins", (req, res) => {
     const status = req.query.status || null;
@@ -72,8 +85,7 @@ export function buildAdminApp() {
 
   app.post("/api/ingest", async (req, res) => {
     try {
-      const results = await ingestAll();
-      res.json({ ok: true, results });
+      res.json({ ok: true, results: await ingestAll() });
     } catch (e) {
       res.status(500).json({ ok: false, error: e.message });
     }
@@ -81,14 +93,12 @@ export function buildAdminApp() {
 
   app.post("/api/tick", async (req, res) => {
     try {
-      const result = await tick();
-      res.json({ ok: true, result });
+      res.json({ ok: true, result: await tick() });
     } catch (e) {
       res.status(500).json({ ok: false, error: e.message });
     }
   });
 
-  // Edit a pin's title/description/board before it posts.
   app.post("/api/pins/:id", (req, res) => {
     const id = Number(req.params.id);
     const pin = getPin(id);
@@ -101,7 +111,6 @@ export function buildAdminApp() {
     res.json({ ok: true, pin: getPin(id) });
   });
 
-  // Re-queue a failed/dead pin.
   app.post("/api/pins/:id/requeue", (req, res) => {
     const id = Number(req.params.id);
     const pin = getPin(id);
@@ -120,18 +129,116 @@ export function buildAdminApp() {
     res.json({ ok: true });
   });
 
+  /* --------------------------- settings --------------------------- */
+
+  // Return current setup (secret masked — never sent back in full).
+  app.get("/api/settings", (req, res) => {
+    const p = getPinterestConfig();
+    res.json({
+      pinterest: {
+        clientId: p.clientId,
+        clientSecretSet: !!p.clientSecret,
+        redirectUri: p.redirectUri,
+        sandbox: p.sandbox,
+      },
+      drip: getDrip(),
+      authorized: isAuthorized(),
+    });
+  });
+
+  app.post("/api/settings/pinterest", (req, res) => {
+    setPinterestConfig({
+      clientId: req.body.clientId,
+      clientSecret: req.body.clientSecret, // ignored if blank
+      redirectUri: req.body.redirectUri,
+      sandbox:
+        req.body.sandbox === true ||
+        req.body.sandbox === "true" ||
+        req.body.sandbox === "on",
+    });
+    res.json({ ok: true, configured: pinterestConfigured() });
+  });
+
+  app.post("/api/settings/password", (req, res) => {
+    if (!req.body.password || !String(req.body.password).trim()) {
+      return res.status(400).json({ ok: false, error: "Password cannot be empty." });
+    }
+    setAdminPassword(req.body.password);
+    res.json({ ok: true });
+  });
+
+  app.post("/api/settings/drip", (req, res) => {
+    setDrip(req.body);
+    res.json({ ok: true, drip: getDrip() });
+  });
+
+  /* ----------------------------- sites ---------------------------- */
+
+  app.get("/api/sites", (req, res) => {
+    res.json(getAllSites());
+  });
+
+  app.post("/api/sites", (req, res) => {
+    const b = req.body;
+    if (!b.name || !b.rss) {
+      return res.status(400).json({ ok: false, error: "name and rss are required." });
+    }
+    let hashtags = b.hashtags;
+    if (typeof hashtags === "string") {
+      hashtags = hashtags
+        .split(/[\s,]+/)
+        .map((t) => t.trim())
+        .filter(Boolean)
+        .map((t) => (t.startsWith("#") ? t : "#" + t));
+    }
+    upsertSite({
+      name: String(b.name).trim(),
+      rss: b.rss,
+      restBase: b.restBase || "",
+      niche: b.niche || "",
+      defaultBoardId: b.defaultBoardId || "",
+      hashtags: hashtags || [],
+      overlayTitle: b.overlayTitle !== false && b.overlayTitle !== "false",
+      enabled: b.enabled !== false && b.enabled !== "false",
+    });
+    res.json({ ok: true, sites: getAllSites() });
+  });
+
+  app.delete("/api/sites/:name", (req, res) => {
+    deleteSite(req.params.name);
+    res.json({ ok: true });
+  });
+
+  // Live board list from Pinterest for the site board dropdown.
+  app.get("/api/boards", async (req, res) => {
+    if (!isAuthorized()) {
+      return res.json({ authorized: false, boards: [] });
+    }
+    try {
+      const boards = await listBoards();
+      res.json({
+        authorized: true,
+        boards: boards.map((b) => ({ id: b.id, name: b.name })),
+      });
+    } catch (e) {
+      res.status(500).json({ authorized: true, boards: [], error: e.message });
+    }
+  });
+
   return app;
 }
 
 export function startAdminServer() {
   const app = buildAdminApp();
   return app.listen(config.admin.port, () => {
-    console.log(
-      `[admin] http://localhost:${config.admin.port}  (login: any user / ADMIN_PASSWORD)`
-    );
-    if (!isAuthorized()) {
+    console.log(`[admin] http://localhost:${config.admin.port}`);
+    if (!pinterestConfigured()) {
       console.log(
-        `[admin] Not yet authorized — visit http://localhost:${config.admin.port}/oauth/login`
+        `[admin] Open the dashboard → Settings tab to enter your Pinterest App ID + secret.`
+      );
+    } else if (!isAuthorized()) {
+      console.log(
+        `[admin] Not authorized — visit http://localhost:${config.admin.port}/oauth/login`
       );
     }
   });
