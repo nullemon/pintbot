@@ -31,7 +31,13 @@ export const config = {
       process.env.PINTEREST_REDIRECT_URI ||
       "http://localhost:8787/oauth/callback",
     sandbox: bool(process.env.PINTEREST_SANDBOX, false),
-    scopes: ["boards:read", "pins:read", "pins:write", "user_accounts:read"],
+    scopes: [
+      "boards:read",
+      "boards:write",
+      "pins:read",
+      "pins:write",
+      "user_accounts:read",
+    ],
   },
 
   admin: {
