@@ -36,7 +36,7 @@ export const config = {
 
   admin: {
     port: int(process.env.ADMIN_PORT, 8787),
-    password: process.env.ADMIN_PASSWORD || "change-me",
+    password: process.env.ADMIN_PASSWORD || "admin",
   },
 
   dbPath: resolveFromRoot(process.env.DB_PATH, "./data/bot.db"),
