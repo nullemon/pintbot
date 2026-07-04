@@ -5,6 +5,7 @@
 import { ingestAll } from "./ingest.js";
 import { tick } from "./scheduler.js";
 import { listBoards } from "./pinterest.js";
+import { resetQueue } from "./db.js";
 
 const cmd = process.argv[2];
 
@@ -26,8 +27,15 @@ async function main() {
       console.log(JSON.stringify(result, null, 2));
       break;
     }
+    case "reset": {
+      const cleared = resetQueue();
+      console.log(`Cleared ${cleared.articles} articles and ${cleared.pins} pins.`);
+      const results = await ingestAll();
+      console.log(JSON.stringify(results, null, 2));
+      break;
+    }
     default:
-      console.log("Usage: node src/cli.js [ingest|boards|tick]");
+      console.log("Usage: node src/cli.js [ingest|boards|tick|reset]");
       process.exit(1);
   }
 }

@@ -64,6 +64,7 @@
   <span id="pausePill" class="pill">…</span>
   <div class="spacer"></div>
   <button onclick="ingest()">Run ingest</button>
+  <button onclick="resetReingest()">Reset &amp; re-ingest</button>
   <button onclick="postNow()">Post next now</button>
   <button id="pauseBtn" class="primary" onclick="togglePause()">…</button>
 </header>
@@ -338,6 +339,13 @@ async function togglePause() {
   refresh();
 }
 async function ingest() { const r = await api("/api/ingest", { method: "POST" }); alert("Ingest done:\n" + JSON.stringify(r.results, null, 2)); refresh(); }
+async function resetReingest() {
+  if (!confirm("Wipe the local queue and re-pull all articles fresh?\n\nThis clears the bot's memory of seen articles and rebuilds every pin in the current image size. Your keys, boards and settings are kept. (It does NOT delete anything already on Pinterest.)")) return;
+  const r = await api("/api/reset", { method: "POST", body: JSON.stringify({ reingest: true }) });
+  const added = (r.results||[]).reduce((n,x)=>n+(x.added||0),0);
+  alert(`Reset done — cleared ${r.cleared.articles} articles, ${r.cleared.pins} pins.\nRe-ingested ${added} pin(s).\n\n` + JSON.stringify(r.results, null, 2));
+  current = "pending"; refresh();
+}
 async function postNow() { const r = await api("/api/tick", { method: "POST" }); alert("Tick: " + JSON.stringify(r.result)); refresh(); }
 
 refresh();

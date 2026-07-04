@@ -177,6 +177,15 @@ export function deletePin(id) {
   db.prepare("DELETE FROM pins WHERE id = ?").run(id);
 }
 
+// Wipe the local dedupe memory (articles + pins) so everything can be
+// re-ingested fresh (e.g. to regenerate images in a new size). Keeps tokens,
+// settings, sites and board mappings intact.
+export function resetQueue() {
+  const a = db.prepare("DELETE FROM articles").run().changes;
+  const p = db.prepare("DELETE FROM pins").run().changes;
+  return { articles: a, pins: p };
+}
+
 export function countByStatus() {
   const rows = db
     .prepare("SELECT status, COUNT(*) AS n FROM pins GROUP BY status")

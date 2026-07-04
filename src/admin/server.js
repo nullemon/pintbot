@@ -9,6 +9,7 @@ import {
   updatePin,
   deletePin,
   countByStatus,
+  resetQueue,
   isPaused,
   setPaused,
   getAllSites,
@@ -95,6 +96,17 @@ export function buildAdminApp() {
   app.post("/api/tick", async (req, res) => {
     try {
       res.json({ ok: true, result: await tick() });
+    } catch (e) {
+      res.status(500).json({ ok: false, error: e.message });
+    }
+  });
+
+  // Wipe local memory then optionally re-ingest fresh (regenerates images).
+  app.post("/api/reset", async (req, res) => {
+    try {
+      const cleared = resetQueue();
+      const results = req.body && req.body.reingest === false ? null : await ingestAll();
+      res.json({ ok: true, cleared, results });
     } catch (e) {
       res.status(500).json({ ok: false, error: e.message });
     }
