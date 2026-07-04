@@ -144,6 +144,15 @@ export function listPins(status, limit = 200) {
     .all(limit);
 }
 
+// Earliest pending pin regardless of schedule (for manual "post now").
+export function nextPendingPin() {
+  return db
+    .prepare(
+      "SELECT * FROM pins WHERE status = 'pending' ORDER BY scheduled_at ASC LIMIT 1"
+    )
+    .get();
+}
+
 // Next pending pin that is due now.
 export function nextDuePin(nowIso) {
   return db

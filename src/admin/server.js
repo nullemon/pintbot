@@ -95,7 +95,8 @@ export function buildAdminApp() {
 
   app.post("/api/tick", async (req, res) => {
     try {
-      res.json({ ok: true, result: await tick() });
+      const force = !!(req.body && req.body.force);
+      res.json({ ok: true, result: await tick({ force }) });
     } catch (e) {
       res.status(500).json({ ok: false, error: e.message });
     }

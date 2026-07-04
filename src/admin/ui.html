@@ -346,7 +346,15 @@ async function resetReingest() {
   alert(`Reset done — cleared ${r.cleared.articles} articles, ${r.cleared.pins} pins.\nRe-ingested ${added} pin(s).\n\n` + JSON.stringify(r.results, null, 2));
   current = "pending"; refresh();
 }
-async function postNow() { const r = await api("/api/tick", { method: "POST" }); alert("Tick: " + JSON.stringify(r.result)); refresh(); }
+async function postNow() {
+  const r = await api("/api/tick", { method: "POST", body: JSON.stringify({ force: true }) });
+  const res = r.result || {};
+  if (res.ok) alert("✅ Posted! Pinterest pin id: " + res.pinId);
+  else if (res.idle) alert("No pending pins to post.");
+  else if (res.skipped) alert("Skipped: " + res.skipped);
+  else alert("Post failed: " + (res.reason || JSON.stringify(res)));
+  refresh();
+}
 
 refresh();
 setInterval(() => { if (PIN_TABS.includes(current)) refresh(); }, 30000);

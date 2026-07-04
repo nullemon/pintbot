@@ -2,6 +2,7 @@
 import { config } from "./config.js";
 import {
   nextDuePin,
+  nextPendingPin,
   lastScheduledAt,
   updatePin,
   isPaused,
@@ -84,13 +85,14 @@ async function postPin(pin) {
   }
 }
 
-// One scheduler tick: post the next due pin if any. Returns a short summary.
-export async function tick() {
-  if (isPaused()) return { skipped: "paused" };
+// One scheduler tick. Normally posts the next *due* pin (respects schedule +
+// pause). With { force: true } (the "Post next now" button) it posts the
+// earliest pending pin immediately, ignoring the schedule and pause.
+export async function tick({ force = false } = {}) {
+  if (!force && isPaused()) return { skipped: "paused" };
   if (!isAuthorized()) return { skipped: "not authorized" };
 
-  const now = new Date().toISOString();
-  const pin = nextDuePin(now);
+  const pin = force ? nextPendingPin() : nextDuePin(new Date().toISOString());
   if (!pin) return { idle: true };
 
   const result = await postPin(pin);
