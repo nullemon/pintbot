@@ -104,10 +104,20 @@ grep -rl "legal@tokyocopyright.com" site/
 
 ## Local preview
 
+All internal paths are document-relative, so you can simply **double-click
+`index.html`** and browse the whole site in your browser — no server needed.
+
+For a closer match to production:
+
 ```bash
 python3 -m http.server 8000 --directory site
 # http://localhost:8000
 ```
 
-The form will fall back to `mailto:` there, since no PHP or Worker is running.
+Either way the form falls back to `mailto:`, since no PHP or Worker is running.
 For a full local test of the Workers path: `npx wrangler@latest dev`.
+
+Relative paths assume the site sits at the **root** of the domain
+(`tokyocopyright.com/`). That is true for both deployment options above. If you
+ever put it in a subfolder, it still works — that is the advantage of relative
+paths over absolute ones.
