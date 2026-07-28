@@ -1,0 +1,41 @@
+# Cloudflare Workers deployment for the Tokyo Copyright website.
+#
+#   npx wrangler@latest deploy
+#
+# Static files come from ./site (served by the ASSETS binding, free of request
+# charges); the Worker in site-worker/src/worker.js only runs for the contact
+# endpoint and to attach security headers.
+#
+# This config is unrelated to the Pinterest bot in ./src — deploying it does not
+# touch the bot.
+
+name = "tokyocopyright-site"
+main = "site-worker/src/worker.js"
+compatibility_date = "2025-06-01"
+workers_dev = true
+
+[assets]
+directory = "./site"
+binding = "ASSETS"
+# Serve /about for /about.html, and use 404.html for unknown paths.
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"
+
+[vars]
+MAIL_TO = "legal@tokyocopyright.com"
+MAIL_FROM = "Tokyo Copyright Website <website@tokyocopyright.com>"
+
+# Contact-form delivery — pick ONE and configure it, otherwise the form falls
+# back to a pre-filled mailto: link in the visitor's mail client.
+#
+#   Resend (verify the sending domain in Resend first):
+#     npx wrangler secret put RESEND_API_KEY
+#
+#   Or forward the enquiry JSON to a webhook (Slack, CRM, Zapier, ...):
+#     npx wrangler secret put FORWARD_WEBHOOK_URL
+
+# Custom domain — uncomment once the zone is on Cloudflare:
+# routes = [
+#   { pattern = "tokyocopyright.com", custom_domain = true },
+#   { pattern = "www.tokyocopyright.com", custom_domain = true }
+# ]

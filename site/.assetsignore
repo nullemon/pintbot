@@ -1,0 +1,5 @@
+# Files that must never be uploaded as Cloudflare static assets.
+# (On cPanel/WHM these are used normally; on Workers the Worker handles the
+#  contact endpoint itself, and Apache config is meaningless.)
+contact.php
+.htaccess
