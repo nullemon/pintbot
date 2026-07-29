@@ -581,7 +581,6 @@ PAGES['members.html'] = dict(
   <section class="section">
     <div class="wrap">
 
-
       <div class="section-title mt-3">
         <span class="kicker">会員構成</span>
         <h2>協議会が代理する企業</h2>
@@ -1297,7 +1296,6 @@ PAGES['privacy.html'] = dict(
                    '本サイトおよび当協議会の業務における個人情報の取扱いについてご説明します。') + '''
   <section class="section">
     <div class="wrap prose">
-
 
       <h2>1. 事業者</h2>
       <p>
