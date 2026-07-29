@@ -559,12 +559,6 @@ PAGES['about.html'] = dict(
         </div>
       </div>
 
-      <div class="notice notice-info mt-3">
-        <p class="mb-0">
-          <strong>追記予定：</strong>協議会の法人格（一般社団法人その他）、設立年月日、
-          役員構成、定款へのリンク。代表者は<a href="imprint.html">運営者情報</a>に記載しています。
-        </p>
-      </div>
     </div>
   </section>
 
@@ -587,14 +581,6 @@ PAGES['members.html'] = dict(
   <section class="section">
     <div class="wrap">
 
-      <div class="notice">
-        <p class="mb-0">
-          <strong>会員社一覧は未掲載です。</strong>下記のリストに一社ずつ
-          <code>&lt;li&gt;</code> として追加し、見出しの社数を更新してください。
-          掲載は、各社から書面による同意を得たうえで行ってください。
-          公開時にはこの注意書きを削除してください。
-        </p>
-      </div>
 
       <div class="section-title mt-3">
         <span class="kicker">会員構成</span>
@@ -1243,24 +1229,15 @@ PAGES['imprint.html'] = dict(
         <dt>電話</dt>
         <dd><a href="tel:+81332306016">03-3230-6016</a></dd>
         <dt>代表取締役</dt>
-        <dd>Akihito Fukuhara<br>
-          <span class="small muted">漢字表記は追記予定</span></dd>
+        <dd>Akihito Fukuhara</dd>
         <dt>代表者</dt>
-        <dd>Ken Ishikawa<br>
-          <span class="small muted">漢字表記は追記予定</span></dd>
+        <dd>Ken Ishikawa</dd>
         <dt>事業内容</dt>
         <dd>会員社を代理する著作権保護および海賊版対策業務</dd>
         <dt>本サイトの管理責任者</dt>
         <dd>Ken Ishikawa（上記所在地）</dd>
       </dl>
 
-      <div class="notice mt-2">
-        <p class="mb-0">
-          <strong>追記予定：</strong>法人格（一般社団法人その他）、法人番号、
-          該当する場合は適格請求書発行事業者登録番号、および役員の漢字表記。
-          特定商取引法の適用がある場合、これらの記載が必要となります。
-        </p>
-      </div>
 
       <h2>免責事項</h2>
 
@@ -1321,13 +1298,6 @@ PAGES['privacy.html'] = dict(
   <section class="section">
     <div class="wrap prose">
 
-      <div class="notice">
-        <p class="mb-0">
-          <strong>公開前に：</strong>本ポリシーは、個人情報保護法（APPI）および、
-          EU・英国の関係者を扱う場合はGDPRに照らし、顧問弁護士の確認を受けてください。
-          利用しているホスティング事業者、実際に導入する解析ツール、保存期間を記載してください。
-        </p>
-      </div>
 
       <h2>1. 事業者</h2>
       <p>
