@@ -366,6 +366,16 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 }
 .card-flat { box-shadow: none; background: transparent; }
 
+/* Cards sitting on the dark band. */
+.section-ink .card { background: var(--ink-2); border-color: #263a54; }
+
+/* A honeypot field: off-screen for people, still filled in by bots.
+   Kept as a class rather than an inline style so the CSP can stay style-src 'self'. */
+.field-trap { position: absolute; left: -9999px; }
+
+.split-top { align-items: start; }
+.footer-bottom-bare { margin-top: 0; border-top: 0; }
+
 /* Numbered process ------------------------------------------------------- */
 .steps { counter-reset: step; display: grid; gap: 22px; grid-template-columns: repeat(4, 1fr); }
 .step {
