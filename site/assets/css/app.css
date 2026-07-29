@@ -438,6 +438,12 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
   color: var(--muted);
 }
 
+/* Unfilled slot — greyed so an unedited roster is obviously a placeholder.
+   Remove the is-empty class (or delete the row) as each real member is added. */
+.roster li.is-empty { background: var(--paper-2); }
+.roster li.is-empty .name { color: #a9b6c6; font-weight: 600; }
+.roster li.is-empty .meta { color: #b8c3d0; }
+
 @media (max-width: 1000px) { .roster { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 640px)  { .roster { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 380px)  { .roster { grid-template-columns: 1fr; } }
