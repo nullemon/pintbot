@@ -60,8 +60,51 @@ for (const file of walk(SITE)) {
   total += Buffer.byteLength(body);
 }
 
+/* Emit each file as its own banner-delimited block holding raw, readable HTML
+   inside a template literal — so the bundle can be edited in place rather than
+   only regenerated. Verified above that no asset contains a backtick or ${,
+   but escape defensively anyway in case one is added later. */
+const escape = (s) => s
+  .replace(/\\/g, '\\\\')
+  .replace(/`/g, '\\`')
+  .replace(/\$\{/g, '\\${');
+
+const BAR = '='.repeat(76);
+const paths = Object.keys(assets);
+
+const toc = [
+  `/* ${BAR}`,
+  '   EMBEDDED FILES — each one below is wrapped in a banner like:',
+  '',
+  `       // ${'='.repeat(20)}`,
+  '       //  /members.html',
+  `       // ${'='.repeat(20)}`,
+  '',
+  '   Search for the path to jump straight to a file. The HTML inside each',
+  '   block is raw and editable — change it here and redeploy, or edit',
+  '   site/<file> and re-run this build.',
+  '',
+  ...paths.map((p) => `     - ${p}`),
+  `   ${BAR} */`,
+].join('\n');
+
+const blocks = paths.map((p) => {
+  const a = assets[p];
+  return [
+    `// ${BAR}`,
+    `//  ${p}`,
+    `// ${BAR}`,
+    `ASSETS[${JSON.stringify(p)}] = {`,
+    `  type: ${JSON.stringify(a.type)},`,
+    '  body: `' + escape(a.body) + '`',
+    '};',
+  ].join('\n');
+}).join('\n\n');
+
+const assetsCode = `${toc}\n\nconst ASSETS = {};\n\n${blocks}`;
+
 const template = readFileSync(join(here, 'single-file-template.js'), 'utf8');
-const output = template.replace('__ASSETS__', JSON.stringify(assets, null, 0));
+const output = template.replace('const ASSETS = __ASSETS__;', assetsCode);
 
 mkdirSync(OUT_DIR, { recursive: true });
 writeFileSync(OUT, output);

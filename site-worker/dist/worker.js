@@ -20,7 +20,6019 @@
  * ---------------------------------------------------------------------------
  */
 
-const ASSETS = {"/404.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Page not found — AMRC</title>\n<meta name=\"robots\" content=\"noindex, follow\">\n<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">Skip to content</a>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">Anime &amp; Manga Rights Council</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"Primary\">\n      <a href=\"index.html\">Home</a>\n      <a href=\"about.html\">About</a>\n      <a href=\"members.html\">Members</a>\n      <a href=\"services.html\">Services</a>\n      <a href=\"public.html\">Public</a>\n      <a href=\"contact.html\">Contact</a>\n      <a href=\"contact.html\" class=\"nav-cta\">Report piracy</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n  <section class=\"section text-center\">\n    <div class=\"wrap\">\n      <span class=\"kicker\">Error 404</span>\n      <h1>This page could not be found</h1>\n      <p class=\"lead\">\n        The address may have changed, or the link that brought you here may be out of date.\n      </p>\n      <p class=\"mt-2\">\n        <a class=\"btn btn-primary\" href=\"index.html\">Back to the home page</a>\n        <a class=\"btn btn-dark\" href=\"contact.html\">Contact us</a>\n      </p>\n      <p class=\"muted mt-3 mb-0\">\n        Looking to dispute a takedown notice? See the\n        <a href=\"public.html#counter-notice\">counter-notice procedure</a>.\n      </p>\n    </div>\n  </section>\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-bottom footer-bottom-bare\">\n      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>\n      <ul>\n        <li><a href=\"imprint.html\">Imprint</a></li>\n        <li><a href=\"privacy.html\">Privacy</a></li>\n        <li><a href=\"contact.html\">Contact</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/about.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>About — AMRC</title>\n<meta name=\"description\" content=\"The Anime &amp; Manga Rights Council is a Chiyoda-ku based member body: how it is governed, how companies join, and the principles that constrain its enforcement.\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/about.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/about.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/about.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/about.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"About — AMRC\">\n<meta property=\"og:description\" content=\"Who we are, how we work, and the principles that shape our enforcement.\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/about.html\">\n<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">Skip to content</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">+81 3-3230-6016</a></span>\n      <span class=\"muted nowrap\">Chiyoda-ku, Tokyo — JST (UTC+9)</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <span class=\"lang-pill is-active\">EN</span>\n      <a class=\"lang-pill\" href=\"ja/about.html\" title=\"日本語版\">日本語</a>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">Anime &amp; Manga Rights Council</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"Primary\">\n      <a href=\"index.html\">Home</a>\n      <a href=\"about.html\" class=\"is-active\">About</a>\n      <a href=\"members.html\">Members</a>\n      <a href=\"services.html\">Services</a>\n      <a href=\"public.html\">Public</a>\n      <a href=\"contact.html\">Contact</a>\n      <a href=\"contact.html\" class=\"nav-cta\">Report piracy</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">Home</a> &nbsp;/&nbsp; About</div>\n      <h1>About the Council</h1>\n      <p>\n        A member body of Japanese anime and manga companies, operating the shared\n        technical infrastructure its members use to find and remove illegal copies of\n        their works — anywhere in the world.\n      </p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n      <div class=\"split\">\n        <div>\n          <span class=\"kicker\">Who we are</span>\n          <h2>A shared enforcement body, not a law firm</h2>\n          <p>\n            The Council was founded on a simple observation: the bottleneck in\n            anti-piracy is not the law, it is throughput. A single popular series can be\n            re-uploaded thousands of times a week across dozens of platforms. No studio\n            or publisher can keep up with that alone, and every one of them was paying\n            separately to lose the same fight.\n          </p>\n          <p>\n            So the members built one pipeline and share it. Crawlers, fingerprint matching\n            and notice dispatch run continuously across the combined catalogue, and our\n            people concentrate on the cases that genuinely need human judgement — ambiguous\n            matches, repeat offenders, hostile hosts and pre-publication leaks.\n          </p>\n          <p class=\"mb-0\">\n            We work alongside our members' legal counsel; we do not replace them and we\n            do not provide legal advice.\n          </p>\n        </div>\n        <div class=\"split-figure\">\n          <h3>At a glance</h3>\n          <ul class=\"checklist\">\n            <li>Secretariat in Chiyoda-ku, Tokyo</li>\n            <li>Enforcement operating 24 hours a day, all year</li>\n            <li>Notices issued in 30+ languages</li>\n            <li>Members across animation studios, manga publishers and licensors</li>\n            <li>Support in English and Japanese</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">Principles</span>\n        <h2>How we choose to work</h2>\n        <p>These are binding on the Council, not marketing lines. They constrain what we will act on, even at a member’s request.</p>\n      </div>\n      <div class=\"grid grid-3\">\n        <div class=\"card\">\n          <h3>Never against fans</h3>\n          <p>\n            We do not sue, invoice, threaten or send demand letters to viewers, readers or\n            listeners. Our work targets the distribution of infringing copies, not the\n            audience.\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>Accuracy before volume</h3>\n          <p>\n            A wrong takedown removes lawful speech and damages the member company. Confidence\n            thresholds, allow-lists for licensees, and human review on borderline cases\n            are built into the pipeline.\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>Proportionate response</h3>\n          <p>\n            We start with the host or platform that can resolve the issue directly, and\n            escalate to registrars, payment providers or search engines only when that\n            fails.\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>Verified rights only</h3>\n          <p>\n            Before a single notice is sent we confirm that the member actually holds the\n            rights it claims, for the territories it claims — including which overseas\n            licensee holds the simulcast.\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>Transparent to the other side</h3>\n          <p>\n            Every notice identifies us, states the legal basis, and explains how to file a\n            counter-notice if the recipient disagrees.\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>Data minimisation</h3>\n          <p>\n            We collect the evidence needed to prove an infringement and no more. We do not\n            build profiles of individual internet users.\n          </p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap prose\">\n      <span class=\"kicker\">Membership</span>\n      <h2>How a company joins</h2>\n      <p>\n        Most memberships begin with a piracy assessment: a prospective member gives us a\n        handful of titles, and we report back on where they are currently being distributed\n        illegally and at what scale. That report is yours whether or not you join.\n      </p>\n      <p>\n        If you proceed, accession takes a few days. We ingest your catalogue and proof of\n        rights, generate reference fingerprints, register your simulcast and serialisation\n        calendar so that new episodes and chapters are protected from the minute they go\n        live, and set up your dashboard and API credentials.\n      </p>\n      <p>\n        From there the system runs by itself. Members receive scheduled reporting, a live\n        view of detections and removals, a seat in the members’ meeting where enforcement\n        policy is set, and a named contact in Tokyo for anything that needs a person.\n      </p>\n\n      <div class=\"notice mt-2\">\n        <p>\n          <strong>Please note:</strong> the Council provides technical enforcement\n          services to its members. We are not a law firm and nothing on this website\n          constitutes legal advice. Where litigation is appropriate, we support a\n          member's counsel with evidence and reporting.\n        </p>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">Governance</span>\n        <h2>How the Council is run</h2>\n        <p>\n          The Council acts only on the authority its members give it, and that authority\n          is written down rather than assumed.\n        </p>\n      </div>\n\n      <div class=\"grid grid-3\">\n        <div class=\"card\">\n          <h3>Members' meeting</h3>\n          <p>\n            Every full member holds one seat and one vote, regardless of catalogue size.\n            The meeting sets enforcement policy, admits new members and approves the\n            budget.\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>Secretariat</h3>\n          <p>\n            A standing team in Chiyoda-ku runs day-to-day enforcement within the policy\n            the members have set. It cannot broaden the scope of enforcement on its own\n            initiative.\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>Rules of enforcement</h3>\n          <p>\n            The commitments above are written into the Council's rules. A member cannot\n            instruct the secretariat to act against a fan, or to file a notice over a work\n            it does not hold rights in.\n          </p>\n        </div>\n      </div>\n\n\n    </div>\n  </section>\n\n  <section class=\"cta\">\n    <div class=\"wrap\">\n      <h2>Want to see the scale of the problem for your catalogue?</h2>\n      <p>Send us a few titles and we will come back with a written assessment.</p>\n      <a class=\"btn\" href=\"contact.html\">Request an assessment</a>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          The Anime &amp; Manga Rights Council is a member body of Japanese anime and\n          manga companies, acting together against the illegal distribution of their\n          works worldwide.\n        </p>\n      </div>\n      <div>\n        <h4>Company</h4>\n        <ul>\n          <li><a href=\"about.html\">About us</a></li>\n          <li><a href=\"members.html\">Our members</a></li>\n          <li><a href=\"services.html\">Services</a></li>\n          <li><a href=\"public.html\">Public information</a></li>\n          <li><a href=\"contact.html\">Contact</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Legal</h4>\n        <ul>\n          <li><a href=\"imprint.html\">Imprint</a></li>\n          <li><a href=\"privacy.html\">Privacy policy</a></li>\n          <li><a href=\"public.html#counter-notice\">Counter-notice</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Contact</h4>\n        <ul>\n          <li>4-6-10 Hitotsubashi</li>\n          <li>Chiyoda-ku, Tokyo 101-8050</li>\n          <li>Japan</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">+81 3-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>\n      <ul>\n        <li><a href=\"imprint.html\">Imprint</a></li>\n        <li><a href=\"privacy.html\">Privacy</a></li>\n        <li><a href=\"contact.html\">Report piracy</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/assets/css/app.css":{"type":"text/css; charset=utf-8","body":"/* ==========================================================================\n   AMRC — global stylesheet\n   Self-contained: no CDNs, no webfonts, no external assets.\n   ========================================================================== */\n\n:root {\n  --ink: #0b1524;\n  --ink-2: #12213a;\n  --ink-3: #1b2f4d;\n  --paper: #ffffff;\n  --paper-2: #f4f6f9;\n  --paper-3: #e7ecf2;\n  --line: #d8e0ea;\n  --body: #364559;\n  --muted: #6b7c90;\n  --brand: #b4152c;\n  --brand-dark: #8d0f21;\n  --brand-soft: #fdeef0;\n  --accent: #1f6feb;\n  --ok: #1a7f4b;\n  --radius: 6px;\n  --shadow: 0 1px 2px rgba(11, 21, 36, .06), 0 8px 24px rgba(11, 21, 36, .06);\n  --wrap: 1140px;\n  --sans: \"Helvetica Neue\", Helvetica, Arial, \"Hiragino Kaku Gothic ProN\",\n          \"Yu Gothic\", Meiryo, sans-serif;\n}\n\n*, *::before, *::after { box-sizing: border-box; }\n\nhtml { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }\n\nbody {\n  margin: 0;\n  font-family: var(--sans);\n  font-size: 16px;\n  line-height: 1.7;\n  color: var(--body);\n  background: var(--paper);\n}\n\nimg { max-width: 100%; height: auto; display: block; }\n\na { color: var(--brand); text-decoration: none; }\na:hover, a:focus { color: var(--brand-dark); text-decoration: underline; }\n\nh1, h2, h3, h4 {\n  margin: 0 0 .6em;\n  color: var(--ink);\n  font-weight: 700;\n  line-height: 1.25;\n  letter-spacing: -.01em;\n}\n\nh1 { font-size: 2.35rem; }\nh2 { font-size: 1.75rem; }\nh3 { font-size: 1.2rem; }\nh4 { font-size: 1rem; }\np  { margin: 0 0 1.1em; }\n\nul, ol { margin: 0 0 1.1em; padding-left: 1.25em; }\nli { margin-bottom: .45em; }\n\nhr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }\n\n.wrap {\n  width: 100%;\n  max-width: var(--wrap);\n  margin: 0 auto;\n  padding: 0 20px;\n}\n\n.text-center { text-align: center; }\n.lead { font-size: 1.15rem; color: var(--body); }\n.muted { color: var(--muted); }\n.small { font-size: .875rem; }\n.nowrap { white-space: nowrap; }\n\n.sr-only {\n  position: absolute;\n  width: 1px; height: 1px;\n  padding: 0; margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n\n/* Skip link ------------------------------------------------------------- */\n.skip-link {\n  position: absolute;\n  left: -9999px;\n  top: 0;\n  background: var(--brand);\n  color: #fff;\n  padding: 10px 16px;\n  z-index: 200;\n}\n.skip-link:focus { left: 0; color: #fff; }\n\n/* Top bar --------------------------------------------------------------- */\n.topbar {\n  background: var(--paper);\n  border-bottom: 1px solid var(--line);\n  font-size: .82rem;\n}\n.topbar .wrap {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  min-height: 40px;\n}\n.topbar a { color: var(--muted); }\n.topbar a:hover { color: var(--brand); }\n.topbar-contact { display: flex; flex-wrap: wrap; gap: 18px; }\n.topbar-langs { display: flex; gap: 10px; align-items: center; }\n.lang-pill {\n  display: inline-block;\n  padding: 1px 8px;\n  border: 1px solid var(--line);\n  border-radius: 999px;\n  color: var(--muted);\n  letter-spacing: .06em;\n  font-size: .72rem;\n  text-transform: uppercase;\n}\n.lang-pill.is-active {\n  background: var(--ink);\n  border-color: var(--ink);\n  color: #fff;\n}\n.lang-pill:hover { text-decoration: none; }\n\n/* Masthead / navigation -------------------------------------------------- */\n.masthead {\n  background: var(--ink);\n  position: sticky;\n  top: 0;\n  z-index: 100;\n}\n.masthead .wrap {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  min-height: 72px;\n  gap: 16px;\n}\n.brand { display: flex; align-items: center; gap: 12px; }\n.brand:hover { text-decoration: none; }\n.brand-mark { width: 38px; height: 38px; flex: 0 0 38px; }\n.brand-name {\n  color: #fff;\n  font-size: 1.18rem;\n  font-weight: 700;\n  letter-spacing: .01em;\n  line-height: 1.1;\n}\n.brand-tag {\n  display: block;\n  color: #8fa3bd;\n  font-size: .66rem;\n  font-weight: 400;\n  letter-spacing: .16em;\n  text-transform: uppercase;\n}\n\n.nav-toggle {\n  display: none;\n  background: none;\n  border: 1px solid #33465f;\n  border-radius: var(--radius);\n  padding: 8px 10px;\n  cursor: pointer;\n}\n.nav-toggle span {\n  display: block;\n  width: 20px;\n  height: 2px;\n  background: #fff;\n  margin: 4px 0;\n}\n\n.nav { display: flex; align-items: center; gap: 4px; }\n.nav a {\n  display: block;\n  padding: 10px 14px;\n  color: #cdd8e6;\n  font-size: .82rem;\n  font-weight: 600;\n  letter-spacing: .1em;\n  text-transform: uppercase;\n  border-radius: var(--radius);\n}\n.nav a:hover { background: var(--ink-3); color: #fff; text-decoration: none; }\n.nav a.is-active { color: #fff; background: var(--brand); }\n.nav .nav-cta {\n  margin-left: 8px;\n  background: #fff;\n  color: var(--ink);\n}\n.nav .nav-cta:hover { background: var(--paper-3); color: var(--ink); }\n\n/* Hero ------------------------------------------------------------------- */\n.hero {\n  position: relative;\n  background: linear-gradient(150deg, #0b1524 0%, #14283f 55%, #1d3a5c 100%);\n  color: #e8eef6;\n  padding: 84px 0 76px;\n  overflow: hidden;\n}\n.hero::after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  background-image:\n    linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),\n    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);\n  background-size: 46px 46px;\n  pointer-events: none;\n}\n.hero .wrap { position: relative; z-index: 1; max-width: 900px; }\n.hero .eyebrow {\n  display: inline-block;\n  margin-bottom: 18px;\n  padding: 5px 14px;\n  border: 1px solid rgba(255, 255, 255, .28);\n  border-radius: 999px;\n  font-size: .72rem;\n  font-weight: 600;\n  letter-spacing: .18em;\n  text-transform: uppercase;\n  color: #c9d8ea;\n}\n.hero h1 { color: #fff; font-size: 3rem; margin-bottom: .35em; }\n.hero .rule {\n  width: 68px;\n  height: 4px;\n  background: var(--brand);\n  margin: 0 auto 26px;\n  border-radius: 2px;\n}\n.hero p { font-size: 1.2rem; color: #c3d1e2; max-width: 720px; margin-inline: auto; }\n.hero-actions { margin-top: 30px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }\n\n/* Page banner (inner pages) ---------------------------------------------- */\n.page-head {\n  background: linear-gradient(150deg, #0b1524 0%, #162b45 100%);\n  color: #d6e1ee;\n  padding: 54px 0 48px;\n}\n.page-head h1 { color: #fff; margin-bottom: .3em; }\n.page-head p { margin: 0; color: #b6c6da; max-width: 760px; }\n.crumbs {\n  font-size: .78rem;\n  letter-spacing: .08em;\n  text-transform: uppercase;\n  color: #7e93ad;\n  margin-bottom: 14px;\n}\n.crumbs a { color: #9fb3cb; }\n\n/* Buttons ---------------------------------------------------------------- */\n.btn {\n  display: inline-block;\n  padding: 13px 26px;\n  border: 1px solid transparent;\n  border-radius: var(--radius);\n  font-size: .84rem;\n  font-weight: 700;\n  letter-spacing: .08em;\n  text-transform: uppercase;\n  cursor: pointer;\n  transition: background .15s ease, color .15s ease, border-color .15s ease;\n}\n.btn:hover, .btn:focus { text-decoration: none; }\n.btn-primary { background: var(--brand); color: #fff; }\n.btn-primary:hover { background: var(--brand-dark); color: #fff; }\n.btn-ghost { border-color: rgba(255, 255, 255, .45); color: #fff; background: transparent; }\n.btn-ghost:hover { background: rgba(255, 255, 255, .12); color: #fff; }\n.btn-dark { background: var(--ink); color: #fff; }\n.btn-dark:hover { background: var(--ink-3); color: #fff; }\n\n/* Sections --------------------------------------------------------------- */\n.section { padding: 72px 0; }\n.section-tight { padding: 52px 0; }\n.section-grey { background: var(--paper-2); border-block: 1px solid var(--line); }\n.section-ink { background: var(--ink); color: #c6d3e3; }\n.section-ink h2, .section-ink h3 { color: #fff; }\n\n.section-title { max-width: 760px; margin: 0 auto 46px; text-align: center; }\n.kicker,\n.section-title .kicker {\n  display: block;\n  margin-bottom: 10px;\n  font-size: .74rem;\n  font-weight: 700;\n  letter-spacing: .2em;\n  text-transform: uppercase;\n  color: var(--brand);\n}\n.section-title p { margin: 0; color: var(--muted); font-size: 1.05rem; }\n\n/* Statement band --------------------------------------------------------- */\n.statement { padding: 62px 0; }\n.statement h2 {\n  max-width: 940px;\n  margin: 0 auto;\n  font-size: 1.6rem;\n  font-weight: 400;\n  line-height: 1.55;\n  text-align: center;\n  color: var(--ink-2);\n}\n.statement strong { font-weight: 700; color: var(--ink); }\n\n/* Stats ------------------------------------------------------------------ */\n.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }\n.stat { text-align: center; padding: 8px 6px; }\n.stat small {\n  display: block;\n  min-height: 20px;\n  font-size: .74rem;\n  letter-spacing: .12em;\n  text-transform: uppercase;\n  color: var(--muted);\n}\n.stat .figure {\n  font-size: 2.3rem;\n  font-weight: 700;\n  color: var(--ink);\n  line-height: 1.2;\n  margin: 2px 0 4px;\n}\n.stat .label { font-size: .92rem; color: var(--body); }\n.section-ink .stat .figure { color: #fff; }\n.section-ink .stat .label { color: #b8c7da; }\n.section-ink .stat small { color: #8296ae; }\n\n/* Card grid -------------------------------------------------------------- */\n.grid { display: grid; gap: 24px; }\n.grid-2 { grid-template-columns: repeat(2, 1fr); }\n.grid-3 { grid-template-columns: repeat(3, 1fr); }\n.grid-4 { grid-template-columns: repeat(4, 1fr); }\n\n.card {\n  background: var(--paper);\n  border: 1px solid var(--line);\n  border-radius: var(--radius);\n  padding: 28px 26px;\n  box-shadow: var(--shadow);\n}\n.card h3 { margin-bottom: .5em; }\n.card p:last-child, .card ul:last-child { margin-bottom: 0; }\n.card .icon {\n  width: 44px;\n  height: 44px;\n  margin-bottom: 16px;\n  display: grid;\n  place-items: center;\n  border-radius: var(--radius);\n  background: var(--brand-soft);\n  color: var(--brand);\n  font-size: 1.15rem;\n  font-weight: 700;\n}\n.card-flat { box-shadow: none; background: transparent; }\n\n/* Cards sitting on the dark band. */\n.section-ink .card { background: var(--ink-2); border-color: #263a54; }\n\n/* A honeypot field: off-screen for people, still filled in by bots.\n   Kept as a class rather than an inline style so the CSP can stay style-src 'self'. */\n.field-trap { position: absolute; left: -9999px; }\n\n.split-top { align-items: start; }\n.footer-bottom-bare { margin-top: 0; border-top: 0; }\n\n/* Member roster — typographic, no logos ---------------------------------- */\n.roster-group + .roster-group { margin-top: 46px; }\n.roster-head {\n  display: flex;\n  align-items: baseline;\n  gap: 14px;\n  margin-bottom: 18px;\n  padding-bottom: 12px;\n  border-bottom: 2px solid var(--ink);\n}\n.roster-head h3 {\n  margin: 0;\n  font-size: 1.05rem;\n  letter-spacing: .04em;\n  text-transform: uppercase;\n}\n.roster-head .count {\n  font-size: .78rem;\n  letter-spacing: .14em;\n  text-transform: uppercase;\n  color: var(--muted);\n}\n\n.roster {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  gap: 1px;\n  background: var(--line);\n  border: 1px solid var(--line);\n  border-radius: var(--radius);\n  overflow: hidden;\n}\n.roster li {\n  margin: 0;\n  padding: 24px 14px;\n  min-height: 104px;\n  background: var(--paper);\n  display: grid;\n  place-content: center;\n  text-align: center;\n}\n.roster .name {\n  display: block;\n  font-size: 1.02rem;\n  font-weight: 700;\n  line-height: 1.3;\n  color: var(--ink);\n  letter-spacing: -.005em;\n}\n.roster .meta {\n  display: block;\n  margin-top: 7px;\n  font-size: .7rem;\n  font-weight: 600;\n  letter-spacing: .12em;\n  text-transform: uppercase;\n  color: var(--muted);\n}\n\n/* Unfilled slot — greyed so an unedited roster is obviously a placeholder.\n   Remove the is-empty class (or delete the row) as each real member is added. */\n.roster li.is-empty { background: var(--paper-2); }\n.roster li.is-empty .name { color: #a9b6c6; font-weight: 600; }\n.roster li.is-empty .meta { color: #b8c3d0; }\n\n@media (max-width: 1000px) { .roster { grid-template-columns: repeat(3, 1fr); } }\n@media (max-width: 640px)  { .roster { grid-template-columns: repeat(2, 1fr); } }\n@media (max-width: 380px)  { .roster { grid-template-columns: 1fr; } }\n\n/* Member roster (card variant, retained) --------------------------------- */\n.member-card { text-align: center; }\n.member-card h3 { font-size: 1rem; margin-bottom: .35em; }\n.member-logo {\n  display: grid;\n  place-items: center;\n  height: 68px;\n  margin-bottom: 16px;\n  border: 1px dashed var(--line);\n  border-radius: var(--radius);\n  background: var(--paper-2);\n  color: var(--muted);\n  font-size: 1rem;\n  letter-spacing: .08em;\n}\n/* Swap .member-logo for an <img class=\"member-logo-img\"> once real logos exist. */\n.member-logo-img {\n  height: 68px;\n  width: 100%;\n  margin-bottom: 16px;\n  object-fit: contain;\n}\n\n/* Numbered process ------------------------------------------------------- */\n.steps { counter-reset: step; display: grid; gap: 22px; grid-template-columns: repeat(4, 1fr); }\n.step {\n  position: relative;\n  padding: 26px 22px;\n  background: var(--paper);\n  border: 1px solid var(--line);\n  border-top: 3px solid var(--brand);\n  border-radius: var(--radius);\n}\n.step::before {\n  counter-increment: step;\n  content: \"0\" counter(step);\n  display: block;\n  margin-bottom: 10px;\n  font-size: .8rem;\n  font-weight: 700;\n  letter-spacing: .16em;\n  color: var(--brand);\n}\n.step h3 { font-size: 1.05rem; }\n.step p { margin: 0; font-size: .95rem; }\n\n/* Feature list ----------------------------------------------------------- */\n.checklist { list-style: none; padding: 0; margin: 0; }\n.checklist li {\n  position: relative;\n  padding-left: 30px;\n  margin-bottom: .8em;\n}\n.checklist li::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  top: .5em;\n  width: 16px;\n  height: 8px;\n  border-left: 2px solid var(--brand);\n  border-bottom: 2px solid var(--brand);\n  transform: rotate(-45deg);\n}\n\n/* Split media ------------------------------------------------------------ */\n.split {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 48px;\n  align-items: center;\n}\n.split-figure {\n  background: linear-gradient(150deg, #14283f, #24445f);\n  border-radius: var(--radius);\n  padding: 34px;\n  color: #dbe6f2;\n  box-shadow: var(--shadow);\n}\n.split-figure h3 { color: #fff; }\n.split-figure .checklist li::before { border-color: #7fb2ff; }\n\n/* Table ------------------------------------------------------------------ */\n.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }\ntable.data {\n  width: 100%;\n  min-width: 560px;\n  border-collapse: collapse;\n  background: var(--paper);\n  font-size: .95rem;\n}\ntable.data th, table.data td {\n  padding: 13px 16px;\n  border-bottom: 1px solid var(--line);\n  text-align: left;\n  vertical-align: top;\n}\ntable.data thead th {\n  background: var(--ink);\n  color: #fff;\n  font-size: .76rem;\n  letter-spacing: .1em;\n  text-transform: uppercase;\n}\ntable.data tbody tr:nth-child(even) { background: var(--paper-2); }\n\n/* Definition rows (imprint / contact details) ---------------------------- */\n.deflist { display: grid; grid-template-columns: 200px 1fr; gap: 0; margin: 0; }\n.deflist dt {\n  padding: 12px 0;\n  border-bottom: 1px solid var(--line);\n  font-weight: 700;\n  color: var(--ink);\n  font-size: .9rem;\n}\n.deflist dd {\n  margin: 0;\n  padding: 12px 0;\n  border-bottom: 1px solid var(--line);\n}\n\n/* Notice / callout ------------------------------------------------------- */\n.notice {\n  border-left: 4px solid var(--brand);\n  background: var(--brand-soft);\n  padding: 18px 22px;\n  border-radius: 0 var(--radius) var(--radius) 0;\n}\n.notice p:last-child { margin-bottom: 0; }\n.notice-info { border-left-color: var(--accent); background: #eef4ff; }\n\n/* Forms ------------------------------------------------------------------ */\n.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }\n.field { display: flex; flex-direction: column; }\n.field-full { grid-column: 1 / -1; }\n.field label {\n  margin-bottom: 6px;\n  font-size: .84rem;\n  font-weight: 700;\n  color: var(--ink);\n}\n.field .req { color: var(--brand); }\n.field .hint { margin-top: 6px; font-size: .8rem; color: var(--muted); }\n.field input, .field select, .field textarea {\n  font: inherit;\n  font-size: .95rem;\n  color: var(--ink);\n  padding: 11px 13px;\n  border: 1px solid var(--line);\n  border-radius: var(--radius);\n  background: #fff;\n  width: 100%;\n}\n.field textarea { min-height: 150px; resize: vertical; }\n.field input:focus, .field select:focus, .field textarea:focus {\n  outline: none;\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(31, 111, 235, .15);\n}\n.field-check {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n  gap: 10px;\n  grid-column: 1 / -1;\n}\n.field-check input { width: auto; margin-top: 5px; }\n.field-check label { font-weight: 400; font-size: .9rem; color: var(--body); }\n\n.form-status {\n  display: none;\n  margin-top: 18px;\n  padding: 14px 18px;\n  border-radius: var(--radius);\n  font-size: .95rem;\n}\n.form-status.is-visible { display: block; }\n.form-status.is-ok { background: #e9f6ee; border: 1px solid #b6dfc6; color: var(--ok); }\n.form-status.is-error { background: var(--brand-soft); border: 1px solid #f0c2ca; color: var(--brand-dark); }\n\n/* FAQ -------------------------------------------------------------------- */\n.faq details {\n  border: 1px solid var(--line);\n  border-radius: var(--radius);\n  background: #fff;\n  margin-bottom: 12px;\n  padding: 0 20px;\n}\n.faq summary {\n  cursor: pointer;\n  padding: 16px 0;\n  font-weight: 700;\n  color: var(--ink);\n  list-style: none;\n}\n.faq summary::-webkit-details-marker { display: none; }\n.faq summary::after { content: \"+\"; float: right; color: var(--brand); font-size: 1.2rem; line-height: 1; }\n.faq details[open] summary::after { content: \"\\2013\"; }\n.faq details > p { margin: 0 0 16px; }\n\n/* CTA strip -------------------------------------------------------------- */\n.cta {\n  background: var(--brand);\n  color: #fff;\n  padding: 54px 0;\n  text-align: center;\n}\n.cta h2 { color: #fff; }\n.cta p { color: #ffe2e6; max-width: 640px; margin: 0 auto 24px; }\n.cta .btn { background: #fff; color: var(--brand); }\n.cta .btn:hover { background: var(--ink); color: #fff; }\n\n/* Footer ----------------------------------------------------------------- */\n.footer {\n  background: var(--ink);\n  color: #9db0c7;\n  padding: 54px 0 0;\n  font-size: .92rem;\n}\n.footer h4 {\n  color: #fff;\n  font-size: .78rem;\n  letter-spacing: .16em;\n  text-transform: uppercase;\n  margin-bottom: 16px;\n}\n.footer a { color: #b9c8db; }\n.footer a:hover { color: #fff; }\n.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 32px; }\n.footer ul { list-style: none; padding: 0; margin: 0; }\n.footer li { margin-bottom: .5em; }\n.footer .brand-name { font-size: 1.05rem; }\n.footer-bottom {\n  margin-top: 40px;\n  border-top: 1px solid #22344c;\n  padding: 20px 0;\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px 24px;\n  justify-content: space-between;\n  font-size: .84rem;\n  color: #7f93ac;\n}\n.footer-bottom ul { display: flex; flex-wrap: wrap; gap: 18px; }\n\n/* Utilities -------------------------------------------------------------- */\n.mt-0 { margin-top: 0; }\n.mb-0 { margin-bottom: 0; }\n.mt-2 { margin-top: 1.5rem; }\n.mt-3 { margin-top: 2.25rem; }\n.prose { max-width: 820px; }\n.prose h2 { margin-top: 2.2rem; }\n.prose h3 { margin-top: 1.6rem; }\n\n/* Responsive ------------------------------------------------------------- */\n@media (max-width: 960px) {\n  .grid-4 { grid-template-columns: repeat(2, 1fr); }\n  .steps { grid-template-columns: repeat(2, 1fr); }\n  .footer-grid { grid-template-columns: repeat(2, 1fr); }\n  .split { grid-template-columns: 1fr; gap: 30px; }\n}\n\n@media (max-width: 800px) {\n  .nav-toggle { display: block; }\n  .masthead .wrap { flex-wrap: wrap; }\n  .nav {\n    display: none;\n    order: 3;\n    width: 100%;\n    flex-direction: column;\n    align-items: stretch;\n    gap: 0;\n    padding-bottom: 12px;\n  }\n  .nav.is-open { display: flex; }\n  .nav a { padding: 12px 4px; border-bottom: 1px solid #1e3149; border-radius: 0; }\n  .nav .nav-cta { margin: 12px 0 0; text-align: center; border-radius: var(--radius); }\n  .topbar .wrap { justify-content: center; }\n}\n\n@media (max-width: 720px) {\n  h1 { font-size: 1.9rem; }\n  .hero { padding: 60px 0 54px; }\n  .hero h1 { font-size: 2.1rem; }\n  .hero p { font-size: 1.05rem; }\n  .section { padding: 52px 0; }\n  .stats { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }\n  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }\n  .form-grid { grid-template-columns: 1fr; }\n  .deflist { grid-template-columns: 1fr; }\n  .deflist dt { border-bottom: 0; padding-bottom: 0; }\n  .statement h2 { font-size: 1.25rem; text-align: left; }\n}\n\n@media (max-width: 480px) {\n  .steps { grid-template-columns: 1fr; }\n  .footer-grid { grid-template-columns: 1fr; }\n  .stat .figure { font-size: 1.8rem; }\n}\n\n@media print {\n  .masthead, .topbar, .cta, .nav-toggle, .footer { display: none; }\n  body { color: #000; }\n}\n"},"/assets/img/logo.svg":{"type":"image/svg+xml","body":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\" role=\"img\" aria-label=\"Anime &amp; Manga Rights Council\">\n  <defs>\n    <linearGradient id=\"amrcBg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#16294170\"/>\n      <stop offset=\"0\" stop-color=\"#162941\"/>\n      <stop offset=\"1\" stop-color=\"#0b1524\"/>\n    </linearGradient>\n  </defs>\n\n  <!-- Plate -->\n  <rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#amrcBg)\"/>\n\n  <!-- Monogram A, drawn as paths so it never depends on a font being present.\n       The counter is cut with evenodd rather than overpainted, so the mark\n       stays correct on any background. -->\n  <path fill=\"#ffffff\" fill-rule=\"evenodd\"\n        d=\"M32 11 L49 47 L40.2 47 L36.7 39.4 L27.3 39.4 L23.8 47 L15 47 Z\n           M32 24.2 L28.6 32.4 L35.4 32.4 Z\"/>\n\n  <!-- Rule: the council's line under the mark -->\n  <rect x=\"19\" y=\"51\" width=\"26\" height=\"4\" rx=\"2\" fill=\"#d51e38\"/>\n</svg>\n"},"/assets/js/app.js":{"type":"text/javascript; charset=utf-8","body":"/* AMRC — small progressive-enhancement layer. No dependencies. */\n(function () {\n  'use strict';\n\n  /* --- Mobile navigation ------------------------------------------------ */\n  var toggle = document.querySelector('.nav-toggle');\n  var nav = document.getElementById('primary-nav');\n\n  if (toggle && nav) {\n    toggle.addEventListener('click', function () {\n      var open = nav.classList.toggle('is-open');\n      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');\n    });\n  }\n\n  /* --- Current year in the footer --------------------------------------- */\n  Array.prototype.forEach.call(document.querySelectorAll('[data-year]'), function (el) {\n    el.textContent = String(new Date().getFullYear());\n  });\n\n  /* --- Contact form ------------------------------------------------------\n     Posts JSON to the endpoint in data-endpoint (contact.php on cPanel/WHM,\n     /api/contact on Cloudflare Workers). If no backend is reachable we fall\n     back to a pre-filled mailto: so the enquiry is never lost.            */\n  var form = document.getElementById('contact-form');\n  if (!form) return;\n\n  var statusBox = document.getElementById('form-status');\n  var submitBtn = form.querySelector('button[type=\"submit\"]');\n  var mailbox = form.getAttribute('data-mailbox') || 'legal@tokyocopyright.com';\n\n  function setStatus(message, kind) {\n    if (!statusBox) return;\n    statusBox.innerHTML = message;\n    statusBox.className = 'form-status is-visible ' + (kind === 'ok' ? 'is-ok' : 'is-error');\n    statusBox.setAttribute('role', kind === 'ok' ? 'status' : 'alert');\n  }\n\n  function mailtoFallback(data) {\n    var subject = '[' + (data.subject || 'Enquiry') + '] ' + (data.company || data.name || '');\n    var body = [\n      'Name: ' + (data.name || ''),\n      'Company: ' + (data.company || ''),\n      'Email: ' + (data.email || ''),\n      'Phone: ' + (data.phone || ''),\n      'Rights type: ' + (data.rights || ''),\n      '',\n      data.message || ''\n    ].join('\\n');\n    return 'mailto:' + mailbox +\n      '?subject=' + encodeURIComponent(subject) +\n      '&body=' + encodeURIComponent(body);\n  }\n\n  form.addEventListener('submit', function (event) {\n    event.preventDefault();\n\n    /* Honeypot: silently accept and drop obvious bots. */\n    if (form.elements.website && form.elements.website.value) {\n      setStatus('Thank you — your enquiry has been received.', 'ok');\n      form.reset();\n      return;\n    }\n\n    var data = {};\n    Array.from(new FormData(form)).forEach(function (pair) {\n      data[pair[0]] = typeof pair[1] === 'string' ? pair[1].trim() : pair[1];\n    });\n\n    if (!data.name || !data.email || !data.message) {\n      setStatus('Please complete the name, email and message fields.', 'error');\n      return;\n    }\n    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$/.test(data.email)) {\n      setStatus('That email address does not look valid.', 'error');\n      return;\n    }\n    if (form.elements.consent && !form.elements.consent.checked) {\n      setStatus('Please confirm the privacy consent checkbox before sending.', 'error');\n      return;\n    }\n\n    var endpoint = form.getAttribute('data-endpoint');\n    if (submitBtn) {\n      submitBtn.disabled = true;\n      submitBtn.dataset.label = submitBtn.textContent;\n      submitBtn.textContent = 'Sending…';\n    }\n\n    function restore() {\n      if (!submitBtn) return;\n      submitBtn.disabled = false;\n      submitBtn.textContent = submitBtn.dataset.label || 'Send enquiry';\n    }\n\n    fetch(endpoint, {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(data)\n    })\n      .then(function (res) {\n        if (!res.ok) throw new Error('HTTP ' + res.status);\n        return res.json().catch(function () { return { ok: true }; });\n      })\n      .then(function (res) {\n        if (res && res.ok === false) throw new Error(res.error || 'rejected');\n        setStatus(\n          'Thank you — your enquiry has been received. The secretariat replies to ' +\n          'enquiries within one business day (JST).',\n          'ok'\n        );\n        form.reset();\n      })\n      .catch(function () {\n        setStatus(\n          'The contact service is unavailable right now. ' +\n          '<a href=\"' + mailtoFallback(data) + '\">Click here to send the same message by email</a> ' +\n          'or write to <a href=\"mailto:' + mailbox + '\">' + mailbox + '</a>.',\n          'error'\n        );\n      })\n      .then(restore, restore);\n  });\n})();\n"},"/contact.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Contact — AMRC</title>\n<meta name=\"description\" content=\"Contact the Anime &amp; Manga Rights Council in Chiyoda-ku, Tokyo. Membership enquiries, takedown notices, counter-notices and press: legal@tokyocopyright.com, +81 3-3230-6016.\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/contact.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/contact.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/contact.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/contact.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"Contact — AMRC\">\n<meta property=\"og:description\" content=\"Membership enquiries, notices, counter-notices and press contacts.\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/contact.html\">\n<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">Skip to content</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">+81 3-3230-6016</a></span>\n      <span class=\"muted nowrap\">Chiyoda-ku, Tokyo — JST (UTC+9)</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <span class=\"lang-pill is-active\">EN</span>\n      <a class=\"lang-pill\" href=\"ja/contact.html\" title=\"日本語版\">日本語</a>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">Anime &amp; Manga Rights Council</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"Primary\">\n      <a href=\"index.html\">Home</a>\n      <a href=\"about.html\">About</a>\n      <a href=\"members.html\">Members</a>\n      <a href=\"services.html\">Services</a>\n      <a href=\"public.html\">Public</a>\n      <a href=\"contact.html\" class=\"is-active\">Contact</a>\n      <a href=\"imprint.html\">Imprint</a>\n      <a href=\"contact.html\" class=\"nav-cta\">Report piracy</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">Home</a> &nbsp;/&nbsp; Contact</div>\n      <h1>Contact us</h1>\n      <p>\n        Membership enquiries, piracy reports, notice disputes and press — all reach us at\n        the address below. Enquiries in English or Japanese are equally welcome.\n      </p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n      <div class=\"split split-top\">\n\n        <div>\n          <span class=\"kicker\">Send a message</span>\n          <h2>Enquiry form</h2>\n          <p>\n            Tell us what you need protected, or what you need resolved. We reply to\n            membership enquiries within one business day (JST).\n          </p>\n\n          <form id=\"contact-form\"\n                method=\"post\"\n                action=\"contact.php\"\n                data-endpoint=\"contact.php\"\n                data-mailbox=\"legal@tokyocopyright.com\"\n                novalidate>\n            <div class=\"form-grid\">\n              <div class=\"field\">\n                <label for=\"f-name\">Name <span class=\"req\">*</span></label>\n                <input id=\"f-name\" name=\"name\" type=\"text\" autocomplete=\"name\" required>\n              </div>\n              <div class=\"field\">\n                <label for=\"f-company\">Company / organisation</label>\n                <input id=\"f-company\" name=\"company\" type=\"text\" autocomplete=\"organization\">\n              </div>\n              <div class=\"field\">\n                <label for=\"f-email\">Email <span class=\"req\">*</span></label>\n                <input id=\"f-email\" name=\"email\" type=\"email\" autocomplete=\"email\" required>\n              </div>\n              <div class=\"field\">\n                <label for=\"f-phone\">Phone</label>\n                <input id=\"f-phone\" name=\"phone\" type=\"tel\" autocomplete=\"tel\">\n              </div>\n              <div class=\"field\">\n                <label for=\"f-subject\">Reason for contact</label>\n                <select id=\"f-subject\" name=\"subject\">\n                  <option>Membership enquiry</option>\n                  <option>Piracy assessment request</option>\n                  <option>Report piracy of our work</option>\n                  <option>Counter-notice / dispute a removal</option>\n                  <option>Platform or hosting provider</option>\n                  <option>Press or research</option>\n                  <option>Other</option>\n                </select>\n              </div>\n              <div class=\"field\">\n                <label for=\"f-rights\">Type of content</label>\n                <select id=\"f-rights\" name=\"rights\">\n                  <option>Anime — broadcast or simulcast</option>\n                  <option>Anime — film or OVA</option>\n                  <option>Manga or serialised comics</option>\n                  <option>Light novels or publishing</option>\n                  <option>Music, soundtracks or drama CDs</option>\n                  <option>Merchandise or official art</option>\n                  <option>Not applicable</option>\n                </select>\n              </div>\n              <div class=\"field field-full\">\n                <label for=\"f-message\">Message <span class=\"req\">*</span></label>\n                <textarea id=\"f-message\" name=\"message\" required\n                  placeholder=\"Titles concerned, URLs you have already found, and what you would like us to do.\"></textarea>\n                <span class=\"hint\">Please do not include passwords, screener credentials or other secrets in this form.</span>\n              </div>\n\n              <!-- Honeypot: hidden from people, tempting to bots. -->\n              <div class=\"field field-trap\" aria-hidden=\"true\">\n                <label for=\"f-website\">Leave this field empty</label>\n                <input id=\"f-website\" name=\"website\" type=\"text\" tabindex=\"-1\" autocomplete=\"off\">\n              </div>\n\n              <div class=\"field-check\">\n                <input id=\"f-consent\" name=\"consent\" type=\"checkbox\" value=\"yes\" required>\n                <label for=\"f-consent\">\n                  I agree that the Council may store and use the details above in order\n                  to respond to this enquiry, as described in the\n                  <a href=\"privacy.html\">privacy policy</a>. <span class=\"req\">*</span>\n                </label>\n              </div>\n            </div>\n\n            <p class=\"mt-2\">\n              <button class=\"btn btn-primary\" type=\"submit\">Send enquiry</button>\n            </p>\n            <div id=\"form-status\" class=\"form-status\"></div>\n            <noscript>\n              <div class=\"notice mt-2\">\n                <p>\n                  This form needs JavaScript to submit. Please email\n                  <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a>\n                  instead — we read that mailbox continuously.\n                </p>\n              </div>\n            </noscript>\n          </form>\n        </div>\n\n        <div>\n          <div class=\"card\">\n            <span class=\"kicker\">Secretariat</span>\n            <h3>Anime &amp; Manga Rights Council</h3>\n            <dl class=\"deflist\">\n              <dt>Address</dt>\n              <dd>\n                4-6-10 Hitotsubashi<br>\n                Chiyoda-ku, Tokyo 101-8050<br>\n                Japan\n              </dd>\n              <dt>Email</dt>\n              <dd><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></dd>\n              <dt>Telephone</dt>\n              <dd><a href=\"tel:+81332306016\">+81 3-3230-6016</a><br>\n                  <span class=\"small muted\">Domestic: 03-3230-6016</span></dd>\n              <dt>Hours</dt>\n              <dd>Mon–Fri, 09:00–18:00 JST<br>\n                  <span class=\"small muted\">Enforcement systems operate 24/7</span></dd>\n              <dt>Languages</dt>\n              <dd>English, 日本語</dd>\n            </dl>\n          </div>\n\n          <div class=\"card mt-2\">\n            <h3>Which address to use</h3>\n            <ul class=\"checklist mb-0\">\n              <li><strong>Membership &amp; assessments</strong> — the form, or the address above.</li>\n              <li><strong>Disputing a removal</strong> — email with the subject <em>\"Counter-notice\"</em>; see <a href=\"public.html#counter-notice\">the procedure</a>.</li>\n              <li><strong>Platforms &amp; hosts</strong> — email with the subject <em>\"Platform channel\"</em> to set up direct reporting.</li>\n              <li><strong>Press &amp; research</strong> — email with the subject <em>\"Press\"</em>.</li>\n            </ul>\n          </div>\n\n          <div class=\"notice notice-info mt-2\">\n            <p class=\"mb-0\">\n              <strong>Reporting piracy of a member work?</strong> Include the title, the\n              member company if you know it, and any URLs you have already found — it lets\n              us act on the first reply rather than the third.\n            </p>\n          </div>\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">Getting here</span>\n        <h2>Chiyoda-ku, Tokyo</h2>\n        <p>\n          Our office is in the Hitotsubashi district of Chiyoda-ku, central Tokyo.\n          Visits are by appointment only — please arrange one in advance by email.\n        </p>\n      </div>\n      <p class=\"text-center mb-0\">\n        <a class=\"btn btn-dark\"\n           href=\"https://www.google.com/maps/search/?api=1&amp;query=4-6-10+Hitotsubashi+Chiyoda-ku+Tokyo+101-8050\"\n           target=\"_blank\" rel=\"noopener noreferrer\">Open in maps</a>\n      </p>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          The Anime &amp; Manga Rights Council is a member body of Japanese anime and\n          manga companies, acting together against the illegal distribution of their\n          works worldwide.\n        </p>\n      </div>\n      <div>\n        <h4>Company</h4>\n        <ul>\n          <li><a href=\"about.html\">About us</a></li>\n          <li><a href=\"members.html\">Our members</a></li>\n          <li><a href=\"services.html\">Services</a></li>\n          <li><a href=\"public.html\">Public information</a></li>\n          <li><a href=\"contact.html\">Contact</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Legal</h4>\n        <ul>\n          <li><a href=\"imprint.html\">Imprint</a></li>\n          <li><a href=\"privacy.html\">Privacy policy</a></li>\n          <li><a href=\"public.html#counter-notice\">Counter-notice</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Contact</h4>\n        <ul>\n          <li>4-6-10 Hitotsubashi</li>\n          <li>Chiyoda-ku, Tokyo 101-8050</li>\n          <li>Japan</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">+81 3-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>\n      <ul>\n        <li><a href=\"imprint.html\">Imprint</a></li>\n        <li><a href=\"privacy.html\">Privacy</a></li>\n        <li><a href=\"contact.html\">Report piracy</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"assets/js/app.js\" defer></script>\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"ContactPage\",\n  \"url\": \"https://tokyocopyright.com/contact.html\",\n  \"mainEntity\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Anime & Manga Rights Council\",\n    \"email\": \"legal@tokyocopyright.com\",\n    \"telephone\": \"+81-3-3230-6016\",\n    \"address\": {\n      \"@type\": \"PostalAddress\",\n      \"streetAddress\": \"4-6-10 Hitotsubashi\",\n      \"addressLocality\": \"Chiyoda-ku\",\n      \"addressRegion\": \"Tokyo\",\n      \"postalCode\": \"101-8050\",\n      \"addressCountry\": \"JP\"\n    }\n  }\n}\n</script>\n</body>\n</html>\n"},"/favicon.svg":{"type":"image/svg+xml","body":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\" role=\"img\" aria-label=\"Anime &amp; Manga Rights Council\">\n  <defs>\n    <linearGradient id=\"amrcBg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#16294170\"/>\n      <stop offset=\"0\" stop-color=\"#162941\"/>\n      <stop offset=\"1\" stop-color=\"#0b1524\"/>\n    </linearGradient>\n  </defs>\n\n  <!-- Plate -->\n  <rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#amrcBg)\"/>\n\n  <!-- Monogram A, drawn as paths so it never depends on a font being present.\n       The counter is cut with evenodd rather than overpainted, so the mark\n       stays correct on any background. -->\n  <path fill=\"#ffffff\" fill-rule=\"evenodd\"\n        d=\"M32 11 L49 47 L40.2 47 L36.7 39.4 L27.3 39.4 L23.8 47 L15 47 Z\n           M32 24.2 L28.6 32.4 L35.4 32.4 Z\"/>\n\n  <!-- Rule: the council's line under the mark -->\n  <rect x=\"19\" y=\"51\" width=\"26\" height=\"4\" rx=\"2\" fill=\"#d51e38\"/>\n</svg>\n"},"/imprint.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Imprint — AMRC</title>\n<meta name=\"description\" content=\"Legal notice and site information for the Anime &amp; Manga Rights Council, 4-6-10 Hitotsubashi, Chiyoda-ku, Tokyo 101-8050, Japan.\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/imprint.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/imprint.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/imprint.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/imprint.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"Imprint — AMRC\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/imprint.html\">\n<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">Skip to content</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">+81 3-3230-6016</a></span>\n      <span class=\"muted nowrap\">Chiyoda-ku, Tokyo — JST (UTC+9)</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <span class=\"lang-pill is-active\">EN</span>\n      <a class=\"lang-pill\" href=\"ja/imprint.html\" title=\"日本語版\">日本語</a>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">Anime &amp; Manga Rights Council</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"Primary\">\n      <a href=\"index.html\">Home</a>\n      <a href=\"about.html\">About</a>\n      <a href=\"members.html\">Members</a>\n      <a href=\"services.html\">Services</a>\n      <a href=\"public.html\">Public</a>\n      <a href=\"contact.html\">Contact</a>\n      <a href=\"contact.html\" class=\"nav-cta\">Report piracy</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">Home</a> &nbsp;/&nbsp; Imprint</div>\n      <h1>Imprint</h1>\n      <p>Legal notice and information about the operator of this website.</p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap prose\">\n\n      <h2 class=\"mt-0\">Site operator</h2>\n      <dl class=\"deflist\">\n        <dt>Company</dt>\n        <dd>Anime &amp; Manga Rights Council (AMRC)<br>\n          <span class=\"small muted\">アニメ・マンガ権利協議会</span></dd>\n        <dt>Registered address</dt>\n        <dd>\n          4-6-10 Hitotsubashi<br>\n          Chiyoda-ku, Tokyo 101-8050<br>\n          Japan\n        </dd>\n        <dt>Email</dt>\n        <dd><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></dd>\n        <dt>Telephone</dt>\n        <dd><a href=\"tel:+81332306016\">+81 3-3230-6016</a> (domestic 03-3230-6016)</dd>\n        <dt>Business</dt>\n        <dd>Collective anti-piracy and content protection on behalf of member companies</dd>\n        <dt>Representative director</dt>\n        <dd>Akihito Fukuhara</dd>\n        <dt>Representative</dt>\n        <dd>Ken Ishikawa</dd>\n        <dt>Responsible for content</dt>\n        <dd>Ken Ishikawa, at the address above</dd>\n      </dl>\n\n\n      <h2>Disclaimer</h2>\n\n      <h3>Content of this site</h3>\n      <p>\n        The content of this website is provided for general information about our services.\n        We take care to keep it accurate and current, but we give no guarantee that it is\n        complete, accurate or up to date at any given moment. Nothing on this site is legal\n        advice, and nothing on it forms a contract or a binding offer of services.\n      </p>\n\n      <h3>External links</h3>\n      <p>\n        Where this site links to external websites, those sites are outside our control. We\n        check links at the time they are added, but we are not responsible for the content\n        of any external site. If you believe a link from this site leads to unlawful\n        content, please tell us and we will remove it.\n      </p>\n\n      <h3>Copyright in this site</h3>\n      <p>\n        The text, layout, graphics and code of this website are protected by copyright and\n        belong to the Anime &amp; Manga Rights Council unless stated otherwise. Reproduction, adaptation or\n        distribution beyond what copyright law permits requires our prior written consent.\n        Personal, non-commercial use is permitted.\n      </p>\n\n      <h3>Trade marks</h3>\n      <p>\n        Product names, company names and marks referred to on this site belong to their\n        respective owners and are used for identification purposes only. Their use does not\n        imply any endorsement or affiliation.\n      </p>\n\n      <h2>Notices to us</h2>\n      <p>\n        Formal notices, including notices about content on this website, should be sent to\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a> or by post to\n        the registered address above. If you wish to dispute a takedown notice we have sent,\n        follow the procedure set out on our\n        <a href=\"public.html#counter-notice\">public information page</a>.\n      </p>\n\n      <h2>Privacy</h2>\n      <p>\n        How we handle personal data is described in our\n        <a href=\"privacy.html\">privacy policy</a>.\n      </p>\n\n      <p class=\"small muted mt-3\">Last updated: <span data-year>2026</span></p>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          The Anime &amp; Manga Rights Council is a member body of Japanese anime and\n          manga companies, acting together against the illegal distribution of their\n          works worldwide.\n        </p>\n      </div>\n      <div>\n        <h4>Company</h4>\n        <ul>\n          <li><a href=\"about.html\">About us</a></li>\n          <li><a href=\"members.html\">Our members</a></li>\n          <li><a href=\"services.html\">Services</a></li>\n          <li><a href=\"public.html\">Public information</a></li>\n          <li><a href=\"contact.html\">Contact</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Legal</h4>\n        <ul>\n          <li><a href=\"imprint.html\">Imprint</a></li>\n          <li><a href=\"privacy.html\">Privacy policy</a></li>\n          <li><a href=\"public.html#counter-notice\">Counter-notice</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Contact</h4>\n        <ul>\n          <li>4-6-10 Hitotsubashi</li>\n          <li>Chiyoda-ku, Tokyo 101-8050</li>\n          <li>Japan</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">+81 3-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>\n      <ul>\n        <li><a href=\"imprint.html\">Imprint</a></li>\n        <li><a href=\"privacy.html\">Privacy</a></li>\n        <li><a href=\"contact.html\">Report piracy</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/index.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>AMRC — Anime &amp; Manga Rights Council</title>\n<meta name=\"description\" content=\"The Anime &amp; Manga Rights Council is a member body of Japanese anime and manga companies acting together against the illegal distribution of their works worldwide.\">\n<meta name=\"keywords\" content=\"anime anti piracy, manga anti piracy, scanlation, aggregator sites, content protection, takedown, DMCA, copyright enforcement, Japan, Tokyo\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/index.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"AMRC — Anime &amp; Manga Rights Council\">\n<meta property=\"og:description\" content=\"Japanese anime and manga companies acting together against illegal distribution of their works, worldwide.\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/\">\n<meta property=\"og:image\" content=\"https://tokyocopyright.com/assets/img/logo.svg\">\n<meta name=\"twitter:card\" content=\"summary\">\n<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">Skip to content</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">+81 3-3230-6016</a></span>\n      <span class=\"muted nowrap\">Chiyoda-ku, Tokyo — JST (UTC+9)</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <span class=\"lang-pill is-active\">EN</span>\n      <a class=\"lang-pill\" href=\"ja/index.html\" title=\"日本語版\">日本語</a>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">Anime &amp; Manga Rights Council</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"Primary\">\n      <a href=\"index.html\" class=\"is-active\">Home</a>\n      <a href=\"about.html\">About</a>\n      <a href=\"members.html\">Members</a>\n      <a href=\"services.html\">Services</a>\n      <a href=\"public.html\">Public</a>\n      <a href=\"contact.html\">Contact</a>\n      <a href=\"contact.html\" class=\"nav-cta\">Report piracy</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n\n  <section class=\"hero\">\n    <div class=\"wrap text-center\">\n      <span class=\"eyebrow\">Established in Tokyo · Operating worldwide</span>\n      <h1>Piracy ends where we begin.</h1>\n      <div class=\"rule\"></div>\n      <p>\n        The Anime &amp; Manga Rights Council is a member body of Japanese anime and manga\n        companies. We locate illegal copies of our members' works across the open web,\n        streaming portals, aggregator sites, file hosts, social platforms and messaging\n        networks — and we get them removed, at scale, around the clock.\n      </p>\n      <div class=\"hero-actions\">\n        <a class=\"btn btn-primary\" href=\"members.html\">Our members</a>\n        <a class=\"btn btn-ghost\" href=\"services.html\">See how it works</a>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"statement\">\n    <div class=\"wrap\">\n      <h2>\n        Anime and manga are among the most pirated content in the world, and no single\n        studio or publisher can meet that scale alone. Our members meet it\n        <strong>together</strong> — pooling detection, evidence and enforcement across\n        one shared platform, without ever suing a single fan.\n      </h2>\n    </div>\n  </section>\n\n  <section class=\"section-tight section-grey\">\n    <div class=\"wrap\">\n      <div class=\"stats\">\n        <div class=\"stat\">\n          <small>we never file</small>\n          <div class=\"figure\">None</div>\n          <div class=\"label\">Lawsuits against fans</div>\n        </div>\n        <div class=\"stat\">\n          <small>enforcement runs</small>\n          <div class=\"figure\">24/7</div>\n          <div class=\"label\">Every day of the year</div>\n        </div>\n        <div class=\"stat\">\n          <small>reviewed by a person</small>\n          <div class=\"figure\">Every</div>\n          <div class=\"label\">Borderline match</div>\n        </div>\n        <div class=\"stat\">\n          <small>we answer within</small>\n          <div class=\"figure\">1 day</div>\n          <div class=\"label\">Counter-notices, JST</div>\n        </div>\n      </div>\n      <!-- These four are policies the Council sets for itself, so they are true by\n           definition rather than by measurement. Swap in performance figures\n           (titles protected, copies removed, removal rate) once you have data you\n           can evidence — an unverifiable performance claim is the first thing an\n           opposing lawyer or journalist will test. -->\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">What we do</span>\n        <h2>One platform, every distribution channel</h2>\n        <p>\n          Pirated material does not stay in one place. Our crawlers and fingerprint\n          matching follow it wherever it travels, and our notice pipeline reaches the\n          parties who can actually take it down.\n        </p>\n      </div>\n\n      <div class=\"grid grid-3\">\n        <div class=\"card\">\n          <div class=\"icon\">01</div>\n          <h3>Continuous monitoring</h3>\n          <p>\n            Search engines, streaming and cyberlocker sites, torrent indexes, IPTV\n            portals, social video, cloud drives and closed messaging channels are swept\n            continuously — new releases from the moment of publication.\n          </p>\n        </div>\n        <div class=\"card\">\n          <div class=\"icon\">02</div>\n          <h3>Content fingerprinting</h3>\n          <p>\n            Video, audio and page-image fingerprints identify a member's work even when it\n            has been re-encoded, cropped, mirrored, hardsubbed over, slowed down or\n            re-uploaded under an unrelated title.\n          </p>\n        </div>\n        <div class=\"card\">\n          <div class=\"icon\">03</div>\n          <h3>Automated takedown</h3>\n          <p>\n            Verified matches trigger properly formed notices to hosts, platforms, CDNs,\n            registrars and search engines under the applicable law of each jurisdiction —\n            in the correct language, day and night.\n          </p>\n        </div>\n        <div class=\"card\">\n          <div class=\"icon\">04</div>\n          <h3>Search de-indexing</h3>\n          <p>\n            Infringing URLs are removed from search results so that pirated copies stop\n            outranking the official release on the first page.\n          </p>\n        </div>\n        <div class=\"card\">\n          <div class=\"icon\">05</div>\n          <h3>Simulcast protection</h3>\n          <p>\n            New episodes and theatrical premieres are monitored in real time from the\n            moment they air, with a rapid-response window measured in minutes, not days.\n          </p>\n        </div>\n        <div class=\"card\">\n          <div class=\"icon\">06</div>\n          <h3>Evidence &amp; reporting</h3>\n          <p>\n            Every notice, response and re-upload is logged with timestamps and preserved\n            evidence — usable for reporting, negotiation, or escalation to counsel.\n          </p>\n        </div>\n      </div>\n\n      <p class=\"text-center mt-3 mb-0\">\n        <a class=\"btn btn-dark\" href=\"services.html\">Full service overview</a>\n      </p>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">The process</span>\n        <h2>From upload to removal</h2>\n      </div>\n      <div class=\"steps\">\n        <div class=\"step\">\n          <h3>Accession</h3>\n          <p>A joining member lodges its catalogue and proof of rights. We build reference fingerprints and register the simulcast calendar.</p>\n        </div>\n        <div class=\"step\">\n          <h3>Detection</h3>\n          <p>Crawlers and matching engines locate copies and near-copies across every monitored channel.</p>\n        </div>\n        <div class=\"step\">\n          <h3>Verification</h3>\n          <p>Matches are scored and checked so that legitimate, licensed and fair-use material is never targeted.</p>\n        </div>\n        <div class=\"step\">\n          <h3>Removal</h3>\n          <p>Notices go out automatically, re-uploads are caught, and results land in the member's dashboard.</p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n      <div class=\"split\">\n        <div>\n          <span class=\"kicker\">Why companies join</span>\n          <h2>Enforcement that protects the fandom, not just the catalogue</h2>\n          <p>\n            Anime and manga are carried by their fans. Enforcement aimed at viewers and\n            readers damages the very works it is meant to defend, so our members have bound\n            the Council to a different model: we act against the infrastructure that\n            distributes illegal copies, never against the audience.\n          </p>\n          <ul class=\"checklist\">\n            <li>No lawsuits, no cease-and-desist letters and no damages claims against fans — ever.</li>\n            <li>No mass surveillance of private users; we index public and semi-public distribution only.</li>\n            <li>Human review before any borderline notice leaves our system.</li>\n            <li>A documented counter-notice route for anyone who believes a removal was wrong.</li>\n          </ul>\n          <p class=\"mb-0\"><a href=\"public.html\">Read our public commitments →</a></p>\n        </div>\n        <div class=\"split-figure\">\n          <h3>What membership gives you</h3>\n          <p>\n            Companies join when in-house teams can no longer keep pace with the volume of\n            re-uploads — and because acting collectively carries weight that a single\n            studio's notices do not.\n          </p>\n          <ul class=\"checklist\">\n            <li>Millions of notices processed per year</li>\n            <li>Coverage in 30+ languages and scripts</li>\n            <li>24/7 automated operation, JST-based support</li>\n            <li>Direct trusted-flagger channels with major platforms</li>\n            <li>API and dashboard access for your own team</li>\n            <li>Shared intelligence on repeat-infringing networks</li>\n            <li>One voice in dealings with the major platforms</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-ink\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">Coverage</span>\n        <h2>What we protect</h2>\n      </div>\n      <div class=\"grid grid-4\">\n        <div class=\"card card-flat\">\n          <h3>Broadcast &amp; simulcast anime</h3>\n          <p class=\"small mb-0\">Weekly episodes, unauthorised subs and dubs, embed portals and IPTV restreams.</p>\n        </div>\n        <div class=\"card card-flat\">\n          <h3>Manga &amp; serialisation</h3>\n          <p class=\"small mb-0\">Raw scans, scanlation mirrors, aggregator sites and pre-publication leaks.</p>\n        </div>\n        <div class=\"card card-flat\">\n          <h3>Features &amp; OVAs</h3>\n          <p class=\"small mb-0\">Theatrical releases, home video rips, box sets and screener leaks.</p>\n        </div>\n        <div class=\"card card-flat\">\n          <h3>Music &amp; audio works</h3>\n          <p class=\"small mb-0\">Opening and ending themes, soundtracks, drama CDs and unreleased material.</p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"cta\">\n    <div class=\"wrap\">\n      <h2>Considering membership?</h2>\n      <p>\n        Send us a title and we will report back on where it is currently being\n        distributed illegally, and what joining the Council would cover — with no\n        obligation.\n      </p>\n      <a class=\"btn\" href=\"contact.html\">Request a piracy assessment</a>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          The Anime &amp; Manga Rights Council is a member body of Japanese anime and\n          manga companies, acting together against the illegal distribution of their\n          works worldwide.\n        </p>\n      </div>\n      <div>\n        <h4>Company</h4>\n        <ul>\n          <li><a href=\"about.html\">About us</a></li>\n          <li><a href=\"members.html\">Our members</a></li>\n          <li><a href=\"services.html\">Services</a></li>\n          <li><a href=\"public.html\">Public information</a></li>\n          <li><a href=\"contact.html\">Contact</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Legal</h4>\n        <ul>\n          <li><a href=\"imprint.html\">Imprint</a></li>\n          <li><a href=\"privacy.html\">Privacy policy</a></li>\n          <li><a href=\"public.html#counter-notice\">Counter-notice</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Contact</h4>\n        <ul>\n          <li>4-6-10 Hitotsubashi</li>\n          <li>Chiyoda-ku, Tokyo 101-8050</li>\n          <li>Japan</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">+81 3-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>\n      <ul>\n        <li><a href=\"imprint.html\">Imprint</a></li>\n        <li><a href=\"privacy.html\">Privacy</a></li>\n        <li><a href=\"contact.html\">Report piracy</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"assets/js/app.js\" defer></script>\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Anime & Manga Rights Council\",\n  \"url\": \"https://tokyocopyright.com\",\n  \"logo\": \"https://tokyocopyright.com/assets/img/logo.svg\",\n  \"email\": \"legal@tokyocopyright.com\",\n  \"telephone\": \"+81-3-3230-6016\",\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"4-6-10 Hitotsubashi\",\n    \"addressLocality\": \"Chiyoda-ku\",\n    \"addressRegion\": \"Tokyo\",\n    \"postalCode\": \"101-8050\",\n    \"addressCountry\": \"JP\"\n  },\n  \"contactPoint\": {\n    \"@type\": \"ContactPoint\",\n    \"contactType\": \"customer support\",\n    \"email\": \"legal@tokyocopyright.com\",\n    \"telephone\": \"+81-3-3230-6016\",\n    \"availableLanguage\": [\"en\", \"ja\"]\n  }\n}\n</script>\n</body>\n</html>\n"},"/ja/404.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>ページが見つかりません — AMRC</title>\n<meta name=\"description\" content=\"お探しのページは見つかりませんでした。\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/ja/404.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/404.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/404.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/404.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"ページが見つかりません — AMRC\">\n<meta property=\"og:description\" content=\"お探しのページは見つかりませんでした。\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/ja/404.html\">\n<meta property=\"og:locale\" content=\"ja_JP\">\n<link rel=\"icon\" href=\"../favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"../assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">本文へスキップ</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">03-3230-6016</a></span>\n      <span class=\"muted nowrap\">東京都千代田区 — 平日 9:00–18:00</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <a class=\"lang-pill\" href=\"../404.html\" title=\"English\">EN</a>\n      <span class=\"lang-pill is-active\">日本語</span>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">アニメ・マンガ権利協議会</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"メニューを開閉\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"メインナビゲーション\">\n      <a href=\"index.html\">ホーム</a>\n      <a href=\"about.html\">協議会について</a>\n      <a href=\"members.html\">会員社</a>\n      <a href=\"services.html\">活動内容</a>\n      <a href=\"public.html\">一般の皆様へ</a>\n      <a href=\"contact.html\">お問い合わせ</a>\n      <a href=\"contact.html\" class=\"nav-cta\">侵害の報告</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n\n  <section class=\"section text-center\">\n    <div class=\"wrap\">\n      <span class=\"kicker\">エラー 404</span>\n      <h1>ページが見つかりませんでした</h1>\n      <p class=\"lead\">\n        アドレスが変更されたか、リンクが古くなっている可能性があります。\n      </p>\n      <p class=\"mt-2\">\n        <a class=\"btn btn-primary\" href=\"index.html\">ホームに戻る</a>\n        <a class=\"btn btn-dark\" href=\"contact.html\">お問い合わせ</a>\n      </p>\n      <p class=\"muted mt-3 mb-0\">\n        削除要請に異議をお持ちの方は、\n        <a href=\"public.html#counter-notice\">異議申立ての手順</a>をご覧ください。\n      </p>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。\n          会員社の作品の違法流通に、共同で対処しています。\n        </p>\n      </div>\n      <div>\n        <h4>協議会</h4>\n        <ul>\n          <li><a href=\"about.html\">協議会について</a></li>\n          <li><a href=\"members.html\">会員社</a></li>\n          <li><a href=\"services.html\">活動内容</a></li>\n          <li><a href=\"public.html\">一般の皆様へ</a></li>\n          <li><a href=\"contact.html\">お問い合わせ</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>規約・法務</h4>\n        <ul>\n          <li><a href=\"imprint.html\">運営者情報</a></li>\n          <li><a href=\"privacy.html\">プライバシーポリシー</a></li>\n          <li><a href=\"public.html#counter-notice\">異議申立て</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>連絡先</h4>\n        <ul>\n          <li>〒101-8050</li>\n          <li>東京都千代田区一ツ橋4-6-10</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">03-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>\n      <ul>\n        <li><a href=\"imprint.html\">運営者情報</a></li>\n        <li><a href=\"privacy.html\">プライバシー</a></li>\n        <li><a href=\"contact.html\">侵害の報告</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"../assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/ja/about.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>協議会について — AMRC</title>\n<meta name=\"description\" content=\"アニメ・マンガ権利協議会の成り立ち、活動の原則、運営体制、および加入の手続きについてご説明します。\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/ja/about.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/about.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/about.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/about.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"協議会について — AMRC\">\n<meta property=\"og:description\" content=\"アニメ・マンガ権利協議会の成り立ち、活動の原則、運営体制、および加入の手続きについてご説明します。\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/ja/about.html\">\n<meta property=\"og:locale\" content=\"ja_JP\">\n<link rel=\"icon\" href=\"../favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"../assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">本文へスキップ</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">03-3230-6016</a></span>\n      <span class=\"muted nowrap\">東京都千代田区 — 平日 9:00–18:00</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <a class=\"lang-pill\" href=\"../about.html\" title=\"English\">EN</a>\n      <span class=\"lang-pill is-active\">日本語</span>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">アニメ・マンガ権利協議会</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"メニューを開閉\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"メインナビゲーション\">\n      <a href=\"index.html\">ホーム</a>\n      <a href=\"about.html\" class=\"is-active\">協議会について</a>\n      <a href=\"members.html\">会員社</a>\n      <a href=\"services.html\">活動内容</a>\n      <a href=\"public.html\">一般の皆様へ</a>\n      <a href=\"contact.html\">お問い合わせ</a>\n      <a href=\"contact.html\" class=\"nav-cta\">侵害の報告</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">ホーム</a> &nbsp;/&nbsp; 協議会について</div>\n      <h1>協議会について</h1>\n      <p>日本のアニメ・マンガ関連企業による会員制団体として、会員社が共同で利用する技術基盤を運営しています。</p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n      <div class=\"split\">\n        <div>\n          <span class=\"kicker\">私たちについて</span>\n          <h2>法律事務所ではなく、共同の権利行使機関です</h2>\n          <p>\n            協議会は、ひとつの認識から生まれました。海賊版対策における制約は法制度ではなく、\n            処理能力にあるということです。人気作品は一週間のうちに、数十のプラットフォームで\n            数千回も再投稿されます。この量に単独で対応できる企業はなく、\n            各社が個別に費用を負担しながら、同じ戦いに敗れ続けていました。\n          </p>\n          <p>\n            そこで会員社は、ひとつの処理基盤を構築し、共同で利用することにしました。\n            クローラー、フィンガープリント照合、通知送信は全作品を横断して稼働し続け、\n            担当者は人の判断を要する案件——判定が分かれるもの、常習的な侵害者、\n            要請に応じない事業者、掲載前の流出——に専念します。\n          </p>\n          <p class=\"mb-0\">\n            協議会は会員社の顧問弁護士と連携して活動します。これに代わるものではなく、\n            法的助言を行うものでもありません。\n          </p>\n        </div>\n        <div class=\"split-figure\">\n          <h3>概要</h3>\n          <ul class=\"checklist\">\n            <li>事務局：東京都千代田区</li>\n            <li>年中無休・24時間体制での権利行使</li>\n            <li>30以上の言語で通知を送信</li>\n            <li>会員社：アニメ制作会社、マンガ出版社、ライセンサー</li>\n            <li>対応言語：日本語・英語</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">活動の原則</span>\n        <h2>私たちが定めている制約</h2>\n        <p>以下は宣伝文句ではなく、協議会を拘束する規則です。会員社の要請であっても、これを超えて行動することはありません。</p>\n      </div>\n      <div class=\"grid grid-3\">\n        <div class=\"card\">\n          <h3>ファンを対象としない</h3>\n          <p>\n            視聴者・読者・聴取者に対する提訴、請求、警告、督促は行いません。\n            対象とするのは違法な複製の流通であり、受け手ではありません。\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>量より正確性</h3>\n          <p>\n            誤った削除は正当な表現を奪い、会員社の信用を損ないます。\n            照合の確度基準、ライセンシーの除外リスト、判断が分かれる案件の人による確認を、\n            処理過程に組み込んでいます。\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>段階的な対応</h3>\n          <p>\n            まず直接対処できるホスティング事業者・プラットフォームに要請し、\n            応じられない場合に限り、レジストラ、決済事業者、検索エンジンへ段階を上げます。\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>権利の確認を前提に</h3>\n          <p>\n            通知を一件でも送る前に、会員社が主張する権利を、主張する地域について実際に\n            保有しているかを確認します。海外ライセンシーによる同時配信の権利関係も含みます。\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>相手方への透明性</h3>\n          <p>\n            すべての通知に、送信者、依頼元、対象作品、法的根拠を明記し、\n            異議がある場合の申立方法を案内しています。\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>データの最小化</h3>\n          <p>\n            侵害の立証に必要な証拠のみを記録し、それ以上は収集しません。\n            個人の利用者のプロファイルを作成することはありません。\n          </p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap prose\">\n      <span class=\"kicker\">加入について</span>\n      <h2>加入までの流れ</h2>\n      <p>\n        多くの場合、まず侵害状況の調査から始まります。加入をご検討の企業から数作品をお預かりし、\n        現在どこで、どの程度の規模で違法に流通しているかをご報告します。\n        この報告書は、加入されるかどうかにかかわらずお渡しします。\n      </p>\n      <p>\n        お進みいただく場合、加入手続きは数日で完了します。作品リストと権利の証明をお預かりし、\n        照合用フィンガープリントを生成し、同時配信・連載のスケジュールを登録します。\n        これにより、最新話や新章は公開の瞬間から保護対象となります。あわせて、\n        ダッシュボードとAPIの認証情報を発行します。\n      </p>\n      <p>\n        以後、システムは自動で稼働します。会員社には定期報告、検出・削除状況のリアルタイム表示、\n        権利行使方針を決定する会員総会での議決権、そして人の対応が必要な場合の\n        東京の専任担当者が提供されます。\n      </p>\n\n      <div class=\"notice mt-2\">\n        <p>\n          <strong>ご留意ください：</strong>協議会は会員社に対し技術的な権利行使業務を提供します。\n          法律事務所ではなく、本サイトの記載は法的助言を構成するものではありません。\n          訴訟が適切な場合には、会員社の代理人に対し証拠と報告を提供して支援します。\n        </p>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">運営体制</span>\n        <h2>協議会の運営</h2>\n        <p>協議会は会員社から与えられた権限の範囲でのみ活動します。その権限は、明文化されています。</p>\n      </div>\n\n      <div class=\"grid grid-3\">\n        <div class=\"card\">\n          <h3>会員総会</h3>\n          <p>\n            正会員は保有作品の規模にかかわらず、一社一議決権を有します。\n            総会は権利行使方針を定め、新規会員を承認し、予算を議決します。\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>事務局</h3>\n          <p>\n            千代田区の常設チームが、総会の定めた方針の範囲内で日々の権利行使を担います。\n            事務局の判断で対象範囲を広げることはできません。\n          </p>\n        </div>\n        <div class=\"card\">\n          <h3>権利行使規程</h3>\n          <p>\n            前掲の原則は協議会の規程に明記されています。会員社が事務局に対し、\n            ファンへの措置や、権利を有しない作品についての通知を指示することはできません。\n          </p>\n        </div>\n      </div>\n\n    </div>\n  </section>\n\n  <section class=\"cta\">\n    <div class=\"wrap\">\n      <h2>作品の被害状況をご確認になりますか</h2>\n      <p>数作品をお知らせいただければ、調査のうえ書面でご報告します。</p>\n      <a class=\"btn\" href=\"contact.html\">調査を依頼する</a>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。\n          会員社の作品の違法流通に、共同で対処しています。\n        </p>\n      </div>\n      <div>\n        <h4>協議会</h4>\n        <ul>\n          <li><a href=\"about.html\">協議会について</a></li>\n          <li><a href=\"members.html\">会員社</a></li>\n          <li><a href=\"services.html\">活動内容</a></li>\n          <li><a href=\"public.html\">一般の皆様へ</a></li>\n          <li><a href=\"contact.html\">お問い合わせ</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>規約・法務</h4>\n        <ul>\n          <li><a href=\"imprint.html\">運営者情報</a></li>\n          <li><a href=\"privacy.html\">プライバシーポリシー</a></li>\n          <li><a href=\"public.html#counter-notice\">異議申立て</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>連絡先</h4>\n        <ul>\n          <li>〒101-8050</li>\n          <li>東京都千代田区一ツ橋4-6-10</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">03-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>\n      <ul>\n        <li><a href=\"imprint.html\">運営者情報</a></li>\n        <li><a href=\"privacy.html\">プライバシー</a></li>\n        <li><a href=\"contact.html\">侵害の報告</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"../assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/ja/contact.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>お問い合わせ — AMRC</title>\n<meta name=\"description\" content=\"アニメ・マンガ権利協議会へのお問い合わせ。加入のご相談、侵害の報告、異議申立て、取材：legal@tokyocopyright.com / 03-3230-6016\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/ja/contact.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/contact.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/contact.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/contact.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"お問い合わせ — AMRC\">\n<meta property=\"og:description\" content=\"アニメ・マンガ権利協議会へのお問い合わせ。加入のご相談、侵害の報告、異議申立て、取材：legal@tokyocopyright.com / 03-3230-6016\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/ja/contact.html\">\n<meta property=\"og:locale\" content=\"ja_JP\">\n<link rel=\"icon\" href=\"../favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"../assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">本文へスキップ</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">03-3230-6016</a></span>\n      <span class=\"muted nowrap\">東京都千代田区 — 平日 9:00–18:00</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <a class=\"lang-pill\" href=\"../contact.html\" title=\"English\">EN</a>\n      <span class=\"lang-pill is-active\">日本語</span>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">アニメ・マンガ権利協議会</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"メニューを開閉\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"メインナビゲーション\">\n      <a href=\"index.html\">ホーム</a>\n      <a href=\"about.html\">協議会について</a>\n      <a href=\"members.html\">会員社</a>\n      <a href=\"services.html\">活動内容</a>\n      <a href=\"public.html\">一般の皆様へ</a>\n      <a href=\"contact.html\" class=\"is-active\">お問い合わせ</a>\n      <a href=\"contact.html\" class=\"nav-cta\">侵害の報告</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">ホーム</a> &nbsp;/&nbsp; お問い合わせ</div>\n      <h1>お問い合わせ</h1>\n      <p>加入のご相談、侵害の報告、通知に関する異議申立て、取材のいずれも、以下の窓口で承ります。日本語・英語のどちらでもお受けしています。</p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n      <div class=\"split split-top\">\n\n        <div>\n          <span class=\"kicker\">お問い合わせフォーム</span>\n          <h2>ご用件をお聞かせください</h2>\n          <p>\n            保護をご希望の内容、または解決をご希望の事項をお知らせください。\n            加入に関するお問い合わせには、1営業日以内（日本時間）にご返信します。\n          </p>\n\n          <form id=\"contact-form\"\n                method=\"post\"\n                action=\"../contact.php\"\n                data-endpoint=\"../contact.php\"\n                data-mailbox=\"legal@tokyocopyright.com\"\n                novalidate>\n            <div class=\"form-grid\">\n              <div class=\"field\">\n                <label for=\"f-name\">お名前 <span class=\"req\">*</span></label>\n                <input id=\"f-name\" name=\"name\" type=\"text\" autocomplete=\"name\" required>\n              </div>\n              <div class=\"field\">\n                <label for=\"f-company\">会社・団体名</label>\n                <input id=\"f-company\" name=\"company\" type=\"text\" autocomplete=\"organization\">\n              </div>\n              <div class=\"field\">\n                <label for=\"f-email\">メールアドレス <span class=\"req\">*</span></label>\n                <input id=\"f-email\" name=\"email\" type=\"email\" autocomplete=\"email\" required>\n              </div>\n              <div class=\"field\">\n                <label for=\"f-phone\">電話番号</label>\n                <input id=\"f-phone\" name=\"phone\" type=\"tel\" autocomplete=\"tel\">\n              </div>\n              <div class=\"field\">\n                <label for=\"f-subject\">お問い合わせ区分</label>\n                <select id=\"f-subject\" name=\"subject\">\n                  <option>加入について</option>\n                  <option>侵害状況の調査依頼</option>\n                  <option>自社作品の侵害報告</option>\n                  <option>異議申立て・削除への不服</option>\n                  <option>プラットフォーム／ホスティング事業者</option>\n                  <option>取材・研究</option>\n                  <option>その他</option>\n                </select>\n              </div>\n              <div class=\"field\">\n                <label for=\"f-rights\">作品の種別</label>\n                <select id=\"f-rights\" name=\"rights\">\n                  <option>アニメ — 放送・同時配信</option>\n                  <option>アニメ — 劇場作品・OVA</option>\n                  <option>マンガ・連載作品</option>\n                  <option>ライトノベル・出版物</option>\n                  <option>音楽・サウンドトラック・ドラマCD</option>\n                  <option>商品・公式イラスト</option>\n                  <option>該当なし</option>\n                </select>\n              </div>\n              <div class=\"field field-full\">\n                <label for=\"f-message\">お問い合わせ内容 <span class=\"req\">*</span></label>\n                <textarea id=\"f-message\" name=\"message\" required\n                  placeholder=\"対象作品、すでに把握されているURL、ご希望の対応内容をご記入ください。\"></textarea>\n                <span class=\"hint\">パスワードや試写用の認証情報など、秘匿すべき情報は記入しないでください。</span>\n              </div>\n\n              <div class=\"field field-trap\" aria-hidden=\"true\">\n                <label for=\"f-website\">この欄は空欄のままにしてください</label>\n                <input id=\"f-website\" name=\"website\" type=\"text\" tabindex=\"-1\" autocomplete=\"off\">\n              </div>\n\n              <div class=\"field-check\">\n                <input id=\"f-consent\" name=\"consent\" type=\"checkbox\" value=\"yes\" required>\n                <label for=\"f-consent\">\n                  本お問い合わせへの回答のため、当協議会が上記の情報を保管・利用することに同意します\n                  （<a href=\"privacy.html\">プライバシーポリシー</a>）。<span class=\"req\">*</span>\n                </label>\n              </div>\n            </div>\n\n            <p class=\"mt-2\">\n              <button class=\"btn btn-primary\" type=\"submit\">送信する</button>\n            </p>\n            <div id=\"form-status\" class=\"form-status\"></div>\n            <noscript>\n              <div class=\"notice mt-2\">\n                <p>\n                  このフォームの送信にはJavaScriptが必要です。\n                  <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a>\n                  まで直接メールでご連絡ください。\n                </p>\n              </div>\n            </noscript>\n          </form>\n        </div>\n\n        <div>\n          <div class=\"card\">\n            <span class=\"kicker\">事務局</span>\n            <h3>アニメ・マンガ権利協議会</h3>\n            <dl class=\"deflist\">\n              <dt>所在地</dt>\n              <dd>\n                〒101-8050<br>\n                東京都千代田区一ツ橋4-6-10\n              </dd>\n              <dt>メール</dt>\n              <dd><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></dd>\n              <dt>電話</dt>\n              <dd><a href=\"tel:+81332306016\">03-3230-6016</a><br>\n                  <span class=\"small muted\">海外から：+81 3-3230-6016</span></dd>\n              <dt>受付時間</dt>\n              <dd>平日 9:00–18:00（日本時間）<br>\n                  <span class=\"small muted\">監視システムは24時間稼働しています</span></dd>\n              <dt>対応言語</dt>\n              <dd>日本語・English</dd>\n            </dl>\n          </div>\n\n          <div class=\"card mt-2\">\n            <h3>ご用件別の窓口</h3>\n            <ul class=\"checklist mb-0\">\n              <li><strong>加入・調査依頼</strong> — 本フォーム、または上記アドレスへ。</li>\n              <li><strong>削除への不服</strong> — 件名を<em>「異議申立て」</em>としてメールを。手順は<a href=\"public.html#counter-notice\">こちら</a>。</li>\n              <li><strong>プラットフォーム事業者</strong> — 件名を<em>「プラットフォーム連携」</em>として、直接報告の設定をご相談ください。</li>\n              <li><strong>取材・研究</strong> — 件名を<em>「取材」</em>としてご連絡ください。</li>\n            </ul>\n          </div>\n\n          <div class=\"notice notice-info mt-2\">\n            <p class=\"mb-0\">\n              <strong>会員社作品の侵害を報告される場合</strong>は、作品名、分かる範囲での権利者、\n              すでに把握されているURLをお知らせください。初回のご返信で対応に着手できます。\n            </p>\n          </div>\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">所在地</span>\n        <h2>東京都千代田区</h2>\n        <p>\n          事務局は千代田区一ツ橋にあります。ご来訪は事前予約制です。\n          あらかじめメールにてご連絡ください。\n        </p>\n      </div>\n      <p class=\"text-center mb-0\">\n        <a class=\"btn btn-dark\"\n           href=\"https://www.google.com/maps/search/?api=1&amp;query=東京都千代田区一ツ橋4-6-10\"\n           target=\"_blank\" rel=\"noopener noreferrer\">地図で見る</a>\n      </p>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。\n          会員社の作品の違法流通に、共同で対処しています。\n        </p>\n      </div>\n      <div>\n        <h4>協議会</h4>\n        <ul>\n          <li><a href=\"about.html\">協議会について</a></li>\n          <li><a href=\"members.html\">会員社</a></li>\n          <li><a href=\"services.html\">活動内容</a></li>\n          <li><a href=\"public.html\">一般の皆様へ</a></li>\n          <li><a href=\"contact.html\">お問い合わせ</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>規約・法務</h4>\n        <ul>\n          <li><a href=\"imprint.html\">運営者情報</a></li>\n          <li><a href=\"privacy.html\">プライバシーポリシー</a></li>\n          <li><a href=\"public.html#counter-notice\">異議申立て</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>連絡先</h4>\n        <ul>\n          <li>〒101-8050</li>\n          <li>東京都千代田区一ツ橋4-6-10</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">03-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>\n      <ul>\n        <li><a href=\"imprint.html\">運営者情報</a></li>\n        <li><a href=\"privacy.html\">プライバシー</a></li>\n        <li><a href=\"contact.html\">侵害の報告</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"../assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/ja/imprint.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>運営者情報 — AMRC</title>\n<meta name=\"description\" content=\"アニメ・マンガ権利協議会の運営者情報、免責事項、著作権表示。\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/ja/imprint.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/imprint.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/imprint.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/imprint.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"運営者情報 — AMRC\">\n<meta property=\"og:description\" content=\"アニメ・マンガ権利協議会の運営者情報、免責事項、著作権表示。\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/ja/imprint.html\">\n<meta property=\"og:locale\" content=\"ja_JP\">\n<link rel=\"icon\" href=\"../favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"../assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">本文へスキップ</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">03-3230-6016</a></span>\n      <span class=\"muted nowrap\">東京都千代田区 — 平日 9:00–18:00</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <a class=\"lang-pill\" href=\"../imprint.html\" title=\"English\">EN</a>\n      <span class=\"lang-pill is-active\">日本語</span>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">アニメ・マンガ権利協議会</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"メニューを開閉\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"メインナビゲーション\">\n      <a href=\"index.html\">ホーム</a>\n      <a href=\"about.html\">協議会について</a>\n      <a href=\"members.html\">会員社</a>\n      <a href=\"services.html\">活動内容</a>\n      <a href=\"public.html\">一般の皆様へ</a>\n      <a href=\"contact.html\">お問い合わせ</a>\n      <a href=\"contact.html\" class=\"nav-cta\">侵害の報告</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">ホーム</a> &nbsp;/&nbsp; 運営者情報</div>\n      <h1>運営者情報</h1>\n      <p>本サイトの運営者に関する情報および法的表示です。</p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap prose\">\n\n      <h2 class=\"mt-0\">運営者</h2>\n      <dl class=\"deflist\">\n        <dt>名称</dt>\n        <dd>アニメ・マンガ権利協議会（AMRC）<br>\n          <span class=\"small muted\">Anime &amp; Manga Rights Council</span></dd>\n        <dt>所在地</dt>\n        <dd>\n          〒101-8050<br>\n          東京都千代田区一ツ橋4-6-10\n        </dd>\n        <dt>メール</dt>\n        <dd><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></dd>\n        <dt>電話</dt>\n        <dd><a href=\"tel:+81332306016\">03-3230-6016</a></dd>\n        <dt>代表取締役</dt>\n        <dd>Akihito Fukuhara</dd>\n        <dt>代表者</dt>\n        <dd>Ken Ishikawa</dd>\n        <dt>事業内容</dt>\n        <dd>会員社を代理する著作権保護および海賊版対策業務</dd>\n        <dt>本サイトの管理責任者</dt>\n        <dd>Ken Ishikawa（上記所在地）</dd>\n      </dl>\n\n\n      <h2>免責事項</h2>\n\n      <h3>掲載内容について</h3>\n      <p>\n        本サイトの内容は、当協議会の活動に関する一般的な情報提供を目的としています。\n        正確かつ最新の状態を保つよう努めていますが、内容の完全性、正確性、\n        最新性を保証するものではありません。本サイトの記載は法的助言を構成せず、\n        契約の申込みまたは業務提供の確定的な申出を構成するものでもありません。\n      </p>\n\n      <h3>外部リンクについて</h3>\n      <p>\n        本サイトから外部サイトへリンクしている場合、当該サイトは当協議会の管理下にありません。\n        掲載時に確認は行っていますが、外部サイトの内容について責任を負いかねます。\n        本サイトからのリンク先に違法な内容があるとお気づきの場合は、ご連絡いただければ削除します。\n      </p>\n\n      <h3>本サイトの著作権</h3>\n      <p>\n        本サイトの文章、レイアウト、図版、コードは著作権により保護されており、\n        特段の記載がない限りアニメ・マンガ権利協議会に帰属します。\n        著作権法上認められる範囲を超える複製、翻案、頒布には、事前の書面による許諾が必要です。\n        私的かつ非商業的な利用は認められます。\n      </p>\n\n      <h3>商標について</h3>\n      <p>\n        本サイトに記載の製品名、会社名、標章は各権利者に帰属し、識別のためにのみ使用しています。\n        使用は、推奨または提携関係を意味するものではありません。\n      </p>\n\n      <h2>当協議会への通知</h2>\n      <p>\n        本サイトの掲載内容に関するものを含む正式なご通知は、\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a>\n        または上記所在地宛にご送付ください。当協議会が送信した削除要請に異議がある場合は、\n        <a href=\"public.html#counter-notice\">一般の皆様へ</a>のページに記載の手順に従ってください。\n      </p>\n\n      <h2>個人情報の取扱い</h2>\n      <p>\n        個人情報の取扱いについては<a href=\"privacy.html\">プライバシーポリシー</a>をご覧ください。\n      </p>\n\n      <p class=\"small muted mt-3\">最終更新：<span data-year>2026</span>年</p>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。\n          会員社の作品の違法流通に、共同で対処しています。\n        </p>\n      </div>\n      <div>\n        <h4>協議会</h4>\n        <ul>\n          <li><a href=\"about.html\">協議会について</a></li>\n          <li><a href=\"members.html\">会員社</a></li>\n          <li><a href=\"services.html\">活動内容</a></li>\n          <li><a href=\"public.html\">一般の皆様へ</a></li>\n          <li><a href=\"contact.html\">お問い合わせ</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>規約・法務</h4>\n        <ul>\n          <li><a href=\"imprint.html\">運営者情報</a></li>\n          <li><a href=\"privacy.html\">プライバシーポリシー</a></li>\n          <li><a href=\"public.html#counter-notice\">異議申立て</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>連絡先</h4>\n        <ul>\n          <li>〒101-8050</li>\n          <li>東京都千代田区一ツ橋4-6-10</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">03-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>\n      <ul>\n        <li><a href=\"imprint.html\">運営者情報</a></li>\n        <li><a href=\"privacy.html\">プライバシー</a></li>\n        <li><a href=\"contact.html\">侵害の報告</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"../assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/ja/index.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>AMRC — アニメ・マンガ権利協議会</title>\n<meta name=\"description\" content=\"アニメ・マンガ権利協議会（AMRC）は、日本のアニメ・マンガ関連企業による会員制団体です。会員社の作品の違法流通に対し、世界規模で共同対処しています。\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/ja/index.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/index.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/index.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/index.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"AMRC — アニメ・マンガ権利協議会\">\n<meta property=\"og:description\" content=\"アニメ・マンガ権利協議会（AMRC）は、日本のアニメ・マンガ関連企業による会員制団体です。会員社の作品の違法流通に対し、世界規模で共同対処しています。\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/ja/index.html\">\n<meta property=\"og:locale\" content=\"ja_JP\">\n<link rel=\"icon\" href=\"../favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"../assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">本文へスキップ</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">03-3230-6016</a></span>\n      <span class=\"muted nowrap\">東京都千代田区 — 平日 9:00–18:00</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <a class=\"lang-pill\" href=\"../index.html\" title=\"English\">EN</a>\n      <span class=\"lang-pill is-active\">日本語</span>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">アニメ・マンガ権利協議会</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"メニューを開閉\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"メインナビゲーション\">\n      <a href=\"index.html\" class=\"is-active\">ホーム</a>\n      <a href=\"about.html\">協議会について</a>\n      <a href=\"members.html\">会員社</a>\n      <a href=\"services.html\">活動内容</a>\n      <a href=\"public.html\">一般の皆様へ</a>\n      <a href=\"contact.html\">お問い合わせ</a>\n      <a href=\"contact.html\" class=\"nav-cta\">侵害の報告</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n\n  <section class=\"hero\">\n    <div class=\"wrap text-center\">\n      <span class=\"eyebrow\">東京発・世界規模で活動</span>\n      <h1>海賊版は、ここで終わる。</h1>\n      <div class=\"rule\"></div>\n      <p>\n        アニメ・マンガ権利協議会（AMRC）は、日本のアニメ・マンガ関連企業による会員制団体です。\n        会員社の作品の違法な複製を、一般のウェブサイト、配信ポータル、まとめサイト、ファイルホスト、\n        SNS、メッセージングサービスに至るまで検出し、24時間体制で削除しています。\n      </p>\n      <div class=\"hero-actions\">\n        <a class=\"btn btn-primary\" href=\"members.html\">会員社一覧</a>\n        <a class=\"btn btn-ghost\" href=\"services.html\">活動内容を見る</a>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"statement\">\n    <div class=\"wrap\">\n      <h2>\n        アニメとマンガは、世界で最も海賊版の被害を受けているコンテンツのひとつです。\n        その規模は、一社単独で対応できるものではありません。会員社は\n        <strong>共同で</strong>これに向き合い、検出・証拠保全・権利行使を一つの基盤に集約しています。\n        ファン個人を提訴することは、一切ありません。\n      </h2>\n    </div>\n  </section>\n\n  <section class=\"section-tight section-grey\">\n    <div class=\"wrap\">\n      <div class=\"stats\">\n        <div class=\"stat\">\n          <small>一切行いません</small>\n          <div class=\"figure\">なし</div>\n          <div class=\"label\">ファンへの法的措置</div>\n        </div>\n        <div class=\"stat\">\n          <small>稼働体制</small>\n          <div class=\"figure\">24/7</div>\n          <div class=\"label\">年中無休で監視</div>\n        </div>\n        <div class=\"stat\">\n          <small>担当者が確認</small>\n          <div class=\"figure\">全件</div>\n          <div class=\"label\">判断の分かれる案件</div>\n        </div>\n        <div class=\"stat\">\n          <small>回答の目安</small>\n          <div class=\"figure\">1営業日</div>\n          <div class=\"label\">異議申立てへの回答</div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">活動内容</span>\n        <h2>あらゆる流通経路を、一つの基盤で</h2>\n        <p>\n          違法な複製は一箇所に留まりません。クローラーとフィンガープリント照合が拡散を追跡し、\n          実際に削除を実行できる事業者へ通知を届けます。\n        </p>\n      </div>\n\n      <div class=\"grid grid-3\">\n        <div class=\"card\">\n          <div class=\"icon\">01</div>\n          <h3>継続的なモニタリング</h3>\n          <p>\n            検索エンジン、配信・アップローダーサイト、トレントインデックス、IPTVポータル、\n            SNS動画、クラウドストレージ、非公開のメッセージチャンネルまでを継続的に巡回します。\n            新作は公開直後から対象となります。\n          </p>\n        </div>\n        <div class=\"card\">\n          <div class=\"icon\">02</div>\n          <h3>コンテンツ・フィンガープリント</h3>\n          <p>\n            映像・音声・誌面画像の特徴量照合により、再エンコード、トリミング、左右反転、\n            字幕の焼き込み、再生速度の変更、無関係なタイトルでの再投稿を経ても、\n            会員社の作品を特定します。\n          </p>\n        </div>\n        <div class=\"card\">\n          <div class=\"icon\">03</div>\n          <h3>削除要請の送信</h3>\n          <p>\n            照合・検証を経た案件について、ホスティング事業者、プラットフォーム、CDN、\n            レジストラ、検索エンジンに対し、各国の適用法令に基づく削除要請を、\n            相手方の言語で昼夜を問わず送信します。\n          </p>\n        </div>\n        <div class=\"card\">\n          <div class=\"icon\">04</div>\n          <h3>検索結果からの削除</h3>\n          <p>\n            侵害URLを検索結果から削除し、海賊版が正規配信より上位に表示される状態を解消します。\n          </p>\n        </div>\n        <div class=\"card\">\n          <div class=\"icon\">05</div>\n          <h3>同時配信の保護</h3>\n          <p>\n            最新話の配信や劇場公開については、放映開始の瞬間からリアルタイムで監視し、\n            数日ではなく数分単位での対応を目標としています。\n          </p>\n        </div>\n        <div class=\"card\">\n          <div class=\"icon\">06</div>\n          <h3>証拠保全と報告</h3>\n          <p>\n            すべての通知・回答・再投稿を、日時とともに記録・保全します。\n            報告、交渉、代理人への引き継ぎのいずれにも利用できる形式で保管します。\n          </p>\n        </div>\n      </div>\n\n      <p class=\"text-center mt-3 mb-0\">\n        <a class=\"btn btn-dark\" href=\"services.html\">活動内容の詳細</a>\n      </p>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">対応の流れ</span>\n        <h2>投稿の検出から削除まで</h2>\n      </div>\n      <div class=\"steps\">\n        <div class=\"step\">\n          <h3>加入</h3>\n          <p>加入時に作品リストと権利の証明をご提出いただき、照合用フィンガープリントと配信スケジュールを登録します。</p>\n        </div>\n        <div class=\"step\">\n          <h3>検出</h3>\n          <p>クローラーと照合エンジンが、監視対象のあらゆる経路から複製・類似コンテンツを検出します。</p>\n        </div>\n        <div class=\"step\">\n          <h3>検証</h3>\n          <p>検出結果を評価・確認し、正規配信、ライセンス許諾済みの利用、法令上認められる利用を対象外とします。</p>\n        </div>\n        <div class=\"step\">\n          <h3>削除</h3>\n          <p>通知を自動送信し、再投稿を捕捉します。結果は会員社のダッシュボードに反映されます。</p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n      <div class=\"split\">\n        <div>\n          <span class=\"kicker\">加入の理由</span>\n          <h2>作品だけでなく、ファンも守る権利行使</h2>\n          <p>\n            アニメとマンガは、ファンによって支えられています。視聴者や読者に向けた権利行使は、\n            守るべき作品そのものを傷つけます。そのため会員社は、協議会に対し明確な制約を課しています。\n            私たちが対処するのは違法な複製を流通させる仕組みであり、ファンではありません。\n          </p>\n          <ul class=\"checklist\">\n            <li>ファンに対する提訴、警告書の送付、損害賠償請求は一切行いません。</li>\n            <li>個人利用者の監視は行いません。公開・半公開の流通のみを対象とします。</li>\n            <li>判断の分かれる案件は、送信前に必ず担当者が確認します。</li>\n            <li>削除が誤りと思われる場合のため、異議申立ての窓口を明示しています。</li>\n          </ul>\n          <p class=\"mb-0\"><a href=\"public.html\">私たちの約束を読む →</a></p>\n        </div>\n        <div class=\"split-figure\">\n          <h3>会員社が得られるもの</h3>\n          <p>\n            社内体制では再投稿の量に対応しきれなくなったとき、そして単独の通知にはない重みを\n            共同での行動が持つために、各社は協議会に加入します。\n          </p>\n          <ul class=\"checklist\">\n            <li>年間を通じた大量の通知処理</li>\n            <li>30以上の言語・文字体系に対応</li>\n            <li>24時間365日の自動運用と、日本時間でのサポート</li>\n            <li>主要プラットフォームとの信頼済み報告経路の利用</li>\n            <li>自社システムと連携できるAPI・ダッシュボード</li>\n            <li>常習的な侵害ネットワークに関する情報の共有</li>\n            <li>プラットフォームとの交渉における統一した窓口</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-ink\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">対象範囲</span>\n        <h2>保護の対象</h2>\n      </div>\n      <div class=\"grid grid-4\">\n        <div class=\"card card-flat\">\n          <h3>放送・同時配信アニメ</h3>\n          <p class=\"small mb-0\">毎話の配信、無許諾の字幕・吹替、埋め込みポータル、IPTVによる再配信。</p>\n        </div>\n        <div class=\"card card-flat\">\n          <h3>マンガ・連載作品</h3>\n          <p class=\"small mb-0\">生スキャン、無断翻訳版のミラー、まとめサイト、掲載前の流出。</p>\n        </div>\n        <div class=\"card card-flat\">\n          <h3>劇場作品・OVA</h3>\n          <p class=\"small mb-0\">劇場公開作品、パッケージのリッピング、BOX商品、試写用素材の流出。</p>\n        </div>\n        <div class=\"card card-flat\">\n          <h3>音楽・音声作品</h3>\n          <p class=\"small mb-0\">主題歌、サウンドトラック、ドラマCD、未発表音源。</p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"cta\">\n    <div class=\"wrap\">\n      <h2>加入をご検討中ですか</h2>\n      <p>\n        作品名をお知らせいただければ、現在どこで違法に流通しているかを調査し、\n        加入によって何が対象となるかをご報告します。費用や義務は発生しません。\n      </p>\n      <a class=\"btn\" href=\"contact.html\">侵害状況の調査を依頼する</a>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。\n          会員社の作品の違法流通に、共同で対処しています。\n        </p>\n      </div>\n      <div>\n        <h4>協議会</h4>\n        <ul>\n          <li><a href=\"about.html\">協議会について</a></li>\n          <li><a href=\"members.html\">会員社</a></li>\n          <li><a href=\"services.html\">活動内容</a></li>\n          <li><a href=\"public.html\">一般の皆様へ</a></li>\n          <li><a href=\"contact.html\">お問い合わせ</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>規約・法務</h4>\n        <ul>\n          <li><a href=\"imprint.html\">運営者情報</a></li>\n          <li><a href=\"privacy.html\">プライバシーポリシー</a></li>\n          <li><a href=\"public.html#counter-notice\">異議申立て</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>連絡先</h4>\n        <ul>\n          <li>〒101-8050</li>\n          <li>東京都千代田区一ツ橋4-6-10</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">03-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>\n      <ul>\n        <li><a href=\"imprint.html\">運営者情報</a></li>\n        <li><a href=\"privacy.html\">プライバシー</a></li>\n        <li><a href=\"contact.html\">侵害の報告</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"../assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/ja/members.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>会員社 — AMRC</title>\n<meta name=\"description\" content=\"アニメ・マンガ権利協議会を構成するアニメ制作会社、マンガ出版社、ライセンサーの一覧です。\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/ja/members.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/members.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/members.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/members.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"会員社 — AMRC\">\n<meta property=\"og:description\" content=\"アニメ・マンガ権利協議会を構成するアニメ制作会社、マンガ出版社、ライセンサーの一覧です。\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/ja/members.html\">\n<meta property=\"og:locale\" content=\"ja_JP\">\n<link rel=\"icon\" href=\"../favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"../assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">本文へスキップ</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">03-3230-6016</a></span>\n      <span class=\"muted nowrap\">東京都千代田区 — 平日 9:00–18:00</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <a class=\"lang-pill\" href=\"../members.html\" title=\"English\">EN</a>\n      <span class=\"lang-pill is-active\">日本語</span>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">アニメ・マンガ権利協議会</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"メニューを開閉\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"メインナビゲーション\">\n      <a href=\"index.html\">ホーム</a>\n      <a href=\"about.html\">協議会について</a>\n      <a href=\"members.html\" class=\"is-active\">会員社</a>\n      <a href=\"services.html\">活動内容</a>\n      <a href=\"public.html\">一般の皆様へ</a>\n      <a href=\"contact.html\">お問い合わせ</a>\n      <a href=\"contact.html\" class=\"nav-cta\">侵害の報告</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">ホーム</a> &nbsp;/&nbsp; 会員社</div>\n      <h1>会員社</h1>\n      <p>協議会は、以下のアニメ制作会社・マンガ出版社・ライセンサーを代理して活動します。各社は特定の作品について権利行使を委任しています。</p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n\n      <div class=\"section-title mt-3\">\n        <span class=\"kicker\">会員構成</span>\n        <h2>協議会が代理する企業</h2>\n        <p>\n          正会員は保有作品を協議会に委任し、会員総会に議席を有し、権利行使規程に拘束されます。\n        </p>\n      </div>\n\n      <div class=\"roster-group\">\n        <div class=\"roster-head\">\n          <h3>マンガ出版社</h3>\n          <span class=\"count\">&mdash; 社</span>\n        </div>\n        <ul class=\"roster\">\n          <!-- 出版社をここに追加してください（一社一行）:\n               <li><span class=\"name\">株式会社◯◯</span><span class=\"meta\">2024年より</span></li>\n               .meta は省略可能です。 -->\n          <li class=\"is-empty\"><span class=\"name\">会員社名</span><span class=\"meta\">20XX年より</span></li>\n          <li class=\"is-empty\"><span class=\"name\">会員社名</span><span class=\"meta\">20XX年より</span></li>\n          <li class=\"is-empty\"><span class=\"name\">会員社名</span><span class=\"meta\">20XX年より</span></li>\n          <li class=\"is-empty\"><span class=\"name\">会員社名</span><span class=\"meta\">20XX年より</span></li>\n          <li class=\"is-empty\"><span class=\"name\">会員社名</span><span class=\"meta\">20XX年より</span></li>\n        </ul>\n      </div>\n\n      <div class=\"roster-group\">\n        <div class=\"roster-head\">\n          <h3>アニメ制作会社</h3>\n          <span class=\"count\">&mdash; 社</span>\n        </div>\n        <ul class=\"roster\">\n          <!-- 制作会社をここに追加してください。形式は上記と同じです。 -->\n          <li class=\"is-empty\"><span class=\"name\">会員社名</span><span class=\"meta\">20XX年より</span></li>\n          <li class=\"is-empty\"><span class=\"name\">会員社名</span><span class=\"meta\">20XX年より</span></li>\n          <li class=\"is-empty\"><span class=\"name\">会員社名</span><span class=\"meta\">20XX年より</span></li>\n          <li class=\"is-empty\"><span class=\"name\">会員社名</span><span class=\"meta\">20XX年より</span></li>\n          <li class=\"is-empty\"><span class=\"name\">会員社名</span><span class=\"meta\">20XX年より</span></li>\n        </ul>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap prose\">\n      <span class=\"kicker\">掲載の意味</span>\n      <h2>会員であることが示す範囲</h2>\n      <p>\n        この一覧は、プラットフォームやホスティング事業者が、当協議会からの通知が正当な権限に\n        基づくものかを確認するための情報です。そのため、何を示すものかを明確にしておきます。\n      </p>\n      <ul class=\"checklist\">\n        <li>掲載各社は、委任した作品について協議会を代理人として指名しています。それ以上の権限はありません。</li>\n        <li>会員となることで著作権が移転することはありません。各作品の権利は権利者に帰属したままです。</li>\n        <li>会員社のライセンシーおよび正規配信経路は除外リストに登録され、対象となることはありません。</li>\n        <li>協議会は会員社以外を代理せず、業界全体を代表するものでもありません。</li>\n        <li>掲載の社名および標章は各社に帰属し、許諾を得て表示しています。</li>\n      </ul>\n\n      <div class=\"notice notice-info\">\n        <p class=\"mb-0\">\n          通知の正当性を確認されるプラットフォームの担当者様は、通知に記載の参照番号を添えて\n          <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a>\n          までご連絡ください。当該作品についての委任状況をご回答します。\n        </p>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"cta\">\n    <div class=\"wrap\">\n      <h2>加入をご検討の企業様へ</h2>\n      <p>\n        貴社作品の現在の違法流通状況を調査し、加入によって何が対象となるかをご説明します。\n        費用や義務は発生しません。\n      </p>\n      <a class=\"btn\" href=\"contact.html\">加入について問い合わせる</a>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。\n          会員社の作品の違法流通に、共同で対処しています。\n        </p>\n      </div>\n      <div>\n        <h4>協議会</h4>\n        <ul>\n          <li><a href=\"about.html\">協議会について</a></li>\n          <li><a href=\"members.html\">会員社</a></li>\n          <li><a href=\"services.html\">活動内容</a></li>\n          <li><a href=\"public.html\">一般の皆様へ</a></li>\n          <li><a href=\"contact.html\">お問い合わせ</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>規約・法務</h4>\n        <ul>\n          <li><a href=\"imprint.html\">運営者情報</a></li>\n          <li><a href=\"privacy.html\">プライバシーポリシー</a></li>\n          <li><a href=\"public.html#counter-notice\">異議申立て</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>連絡先</h4>\n        <ul>\n          <li>〒101-8050</li>\n          <li>東京都千代田区一ツ橋4-6-10</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">03-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>\n      <ul>\n        <li><a href=\"imprint.html\">運営者情報</a></li>\n        <li><a href=\"privacy.html\">プライバシー</a></li>\n        <li><a href=\"contact.html\">侵害の報告</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"../assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/ja/privacy.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>プライバシーポリシー — AMRC</title>\n<meta name=\"description\" content=\"アニメ・マンガ権利協議会における個人情報の取得、利用、保管、保護の方針。\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/ja/privacy.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/privacy.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/privacy.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/privacy.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"プライバシーポリシー — AMRC\">\n<meta property=\"og:description\" content=\"アニメ・マンガ権利協議会における個人情報の取得、利用、保管、保護の方針。\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/ja/privacy.html\">\n<meta property=\"og:locale\" content=\"ja_JP\">\n<link rel=\"icon\" href=\"../favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"../assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">本文へスキップ</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">03-3230-6016</a></span>\n      <span class=\"muted nowrap\">東京都千代田区 — 平日 9:00–18:00</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <a class=\"lang-pill\" href=\"../privacy.html\" title=\"English\">EN</a>\n      <span class=\"lang-pill is-active\">日本語</span>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">アニメ・マンガ権利協議会</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"メニューを開閉\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"メインナビゲーション\">\n      <a href=\"index.html\">ホーム</a>\n      <a href=\"about.html\">協議会について</a>\n      <a href=\"members.html\">会員社</a>\n      <a href=\"services.html\">活動内容</a>\n      <a href=\"public.html\">一般の皆様へ</a>\n      <a href=\"contact.html\">お問い合わせ</a>\n      <a href=\"contact.html\" class=\"nav-cta\">侵害の報告</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">ホーム</a> &nbsp;/&nbsp; プライバシーポリシー</div>\n      <h1>プライバシーポリシー</h1>\n      <p>本サイトおよび当協議会の業務における個人情報の取扱いについてご説明します。</p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap prose\">\n\n      <h2>1. 事業者</h2>\n      <p>\n        アニメ・マンガ権利協議会（〒101-8050 東京都千代田区一ツ橋4-6-10）が、\n        本サイトを通じて取得する個人情報について責任を負います。本ポリシーまたは\n        個人情報に関するお問い合わせは、\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a>\n        または <a href=\"tel:+81332306016\">03-3230-6016</a> までご連絡ください。\n      </p>\n\n      <h2>2. 取得する情報</h2>\n\n      <h3>2.1 本サイトのご利用時</h3>\n      <p>\n        ページの要求時に、ホスティング事業者が標準的なサーバーログを記録します。\n        要求元のIPアドレス、日時、要求されたページ、参照元ページ、\n        ブラウザおよびOSの情報が含まれます。これはサイトの提供と、\n        不正利用・技術的障害の検知に必要なものです。ログは短期間の保存後に削除されます。\n      </p>\n\n      <h3>2.2 お問い合わせフォームのご利用時</h3>\n      <p>\n        ご入力いただいたお名前、会社・団体名、メールアドレス、電話番号（ご記入の場合）、\n        お問い合わせ区分、内容を取得します。これらはご回答および、\n        その後の取引関係の管理のためにのみ利用します。取引に至らなかった場合、\n        必要がなくなった時点で削除します。\n      </p>\n\n      <h3>2.3 権利行使業務において</h3>\n      <p>\n        侵害コンテンツの検出および対応にあたり、公開されている掲載情報について証拠を記録します。\n        URL、ファイル識別情報、ページの内容、日時、および表示されている投稿者名が含まれ、\n        これらは個人情報に該当し得ます。当協議会は、個々の視聴者を特定しようとせず、\n        通信事業者から契約者情報を取得せず、利用者の行動プロファイルを作成しません。\n      </p>\n\n      <h3>2.4 クッキーおよびアクセス解析</h3>\n      <p>\n        本サイトは広告クッキーおよび第三者によるトラッキングクッキーを使用していません。\n        アクセス解析を利用する場合は、プライバシーに配慮した方式とし、\n        サイトを跨いだ追跡は行いません。同意が必要な場合は、\n        必須でないクッキーの設定前に同意を取得します。\n      </p>\n\n      <h2>3. 利用目的</h2>\n      <ul>\n        <li>お問い合わせへの回答のため。</li>\n        <li>契約の履行、または契約締結に向けた準備のため。</li>\n        <li>サイトの安全な運営および著作権の保護という、当協議会および会員社の正当な利益のため。</li>\n        <li>記録保存および適法な請求への対応を含む、法令上の義務の履行のため。</li>\n        <li>ご同意をいただいた場合、その際にお示しした目的のため。</li>\n      </ul>\n\n      <h2>4. 第三者提供</h2>\n      <p>個人情報を販売することはありません。必要な範囲でのみ提供します。</p>\n      <ul>\n        <li>サイトのホスティング、メール送信、データ保管を行う委託先（契約に基づき、当協議会の指示の範囲で）</li>\n        <li>個別の権利行使を依頼した会員社</li>\n        <li>削除要請の性質上、対象物および通知者を特定する必要がある範囲で、プラットフォームおよびホスティング事業者</li>\n        <li>必要な場合、当協議会の専門家（弁護士等）</li>\n        <li>法令に基づき求められる場合、行政機関または裁判所</li>\n      </ul>\n\n      <h2>5. 国外移転</h2>\n      <p>\n        当協議会の業務は世界を対象とするため、他国のプラットフォームやホスティング事業者へ\n        通知を送信する際などに、情報が日本国外へ移転されることがあります。\n        個人情報を含む移転については、適用法令が認める適切な保護措置に基づいて行います。\n      </p>\n\n      <h2>6. 保存期間</h2>\n      <p>\n        お問い合わせの記録は、回答に必要な期間および合理的な期間経過後まで保存します。\n        会員社に関する記録は、関係の継続期間および日本の商法・税法上必要とされる期間保存します。\n        権利行使の証拠は、通知を裏付け、または防御するために必要となり得る期間保存します。\n        サーバーログは短期間で削除します。\n      </p>\n\n      <h2>7. ご本人の権利</h2>\n      <p>\n        適用される法令に従い、保有する個人情報の有無の確認、開示、訂正、削除、\n        利用停止・利用への異議、および同意の撤回を求めることができます。\n        同意の撤回は、それ以前に行われた取扱いの適法性に影響しません。\n      </p>\n      <p>\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a>\n        までご連絡ください。1か月以内に回答します。ご本人であることの確認を\n        させていただく場合があります。回答にご納得いただけない場合は、\n        個人情報保護委員会またはお住まいの国の監督機関に申し立てることができます。\n      </p>\n\n      <h2>8. 安全管理</h2>\n      <p>\n        リスクに応じた技術的・組織的な安全管理措置を講じています。通信の暗号化、\n        必要最小限のアクセス権限、重要システムへのアクセス記録、定期的な見直しを含みます。\n        完全に安全なシステムは存在しませんが、保有する情報を必要な範囲に留めるよう努めています。\n      </p>\n\n      <h2>9. お子様について</h2>\n      <p>\n        本サイトは事業者および権利者の方を対象としています。\n        お子様から意図的に個人情報を取得することはありません。\n      </p>\n\n      <h2>10. 本ポリシーの変更</h2>\n      <p>\n        業務内容または法令の変更に応じて、本ポリシーを改定することがあります。\n        最新版は常に本ページに掲載します。重要な変更については本ページでお知らせします。\n      </p>\n\n      <h2>11. お問い合わせ先</h2>\n      <p>\n        アニメ・マンガ権利協議会<br>\n        〒101-8050 東京都千代田区一ツ橋4-6-10<br>\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a> ·\n        <a href=\"tel:+81332306016\">03-3230-6016</a>\n      </p>\n\n      <p class=\"small muted mt-3\">最終更新：<span data-year>2026</span>年</p>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。\n          会員社の作品の違法流通に、共同で対処しています。\n        </p>\n      </div>\n      <div>\n        <h4>協議会</h4>\n        <ul>\n          <li><a href=\"about.html\">協議会について</a></li>\n          <li><a href=\"members.html\">会員社</a></li>\n          <li><a href=\"services.html\">活動内容</a></li>\n          <li><a href=\"public.html\">一般の皆様へ</a></li>\n          <li><a href=\"contact.html\">お問い合わせ</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>規約・法務</h4>\n        <ul>\n          <li><a href=\"imprint.html\">運営者情報</a></li>\n          <li><a href=\"privacy.html\">プライバシーポリシー</a></li>\n          <li><a href=\"public.html#counter-notice\">異議申立て</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>連絡先</h4>\n        <ul>\n          <li>〒101-8050</li>\n          <li>東京都千代田区一ツ橋4-6-10</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">03-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>\n      <ul>\n        <li><a href=\"imprint.html\">運営者情報</a></li>\n        <li><a href=\"privacy.html\">プライバシー</a></li>\n        <li><a href=\"contact.html\">侵害の報告</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"../assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/ja/public.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>一般の皆様へ — AMRC</title>\n<meta name=\"description\" content=\"プラットフォーム事業者、ホスティング事業者、投稿者の皆様へ。当協議会の通知の内容、対応方法、異議申立ての手順をご案内します。\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/ja/public.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/public.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/public.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/public.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"一般の皆様へ — AMRC\">\n<meta property=\"og:description\" content=\"プラットフォーム事業者、ホスティング事業者、投稿者の皆様へ。当協議会の通知の内容、対応方法、異議申立ての手順をご案内します。\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/ja/public.html\">\n<meta property=\"og:locale\" content=\"ja_JP\">\n<link rel=\"icon\" href=\"../favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"../assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">本文へスキップ</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">03-3230-6016</a></span>\n      <span class=\"muted nowrap\">東京都千代田区 — 平日 9:00–18:00</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <a class=\"lang-pill\" href=\"../public.html\" title=\"English\">EN</a>\n      <span class=\"lang-pill is-active\">日本語</span>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">アニメ・マンガ権利協議会</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"メニューを開閉\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"メインナビゲーション\">\n      <a href=\"index.html\">ホーム</a>\n      <a href=\"about.html\">協議会について</a>\n      <a href=\"members.html\">会員社</a>\n      <a href=\"services.html\">活動内容</a>\n      <a href=\"public.html\" class=\"is-active\">一般の皆様へ</a>\n      <a href=\"contact.html\">お問い合わせ</a>\n      <a href=\"contact.html\" class=\"nav-cta\">侵害の報告</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">ホーム</a> &nbsp;/&nbsp; 一般の皆様へ</div>\n      <h1>一般の皆様へ</h1>\n      <p>プラットフォーム運営者、ホスティング事業者、サイト管理者、投稿者の皆様、および当協議会の通知を受け取られた方、活動内容をお知りになりたい方に向けたご案内です。</p>\n    </div>\n  </section>\n\n  <section class=\"section-tight section-grey\">\n    <div class=\"wrap\">\n      <div class=\"stats\">\n        <div class=\"stat\">\n          <small>一切ありません</small>\n          <div class=\"figure\">0件</div>\n          <div class=\"label\">ファンへの法的請求</div>\n        </div>\n        <div class=\"stat\">\n          <small>担当者が確認</small>\n          <div class=\"figure\">全件</div>\n          <div class=\"label\">判断の分かれる案件</div>\n        </div>\n        <div class=\"stat\">\n          <small>誤りが判明した場合</small>\n          <div class=\"figure\">撤回</div>\n          <div class=\"label\">直ちに取り下げます</div>\n        </div>\n        <div class=\"stat\">\n          <small>回答の目安</small>\n          <div class=\"figure\">1営業日</div>\n          <div class=\"label\">異議申立てへの回答</div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap prose\">\n\n      <span class=\"kicker\">私たちの約束</span>\n      <h2>行うこと、行わないこと</h2>\n      <p>\n        海賊版対策は、何も悪いことをしていない方を含め、現実の人々に影響します。\n        そのため、私たちが自らに課している制約を公開しています。\n      </p>\n      <ul class=\"checklist\">\n        <li><strong>ファンを対象としません。</strong>視聴者・読者・聴取者に対する提訴、和解金の請求、督促、警告書の送付は行いません。</li>\n        <li><strong>正当な利用を対象としません。</strong>批評、論評、パロディ、報道、教育目的その他法令上認められる利用は、権利行使の対象外です。</li>\n        <li><strong>権利を確認してから行動します。</strong>会員社が主張する権利を保有していることを確認するまで、通知は送信しません。</li>\n        <li><strong>差出人を明示します。</strong>すべての通知に、送信者、依頼元、対象作品、法的根拠を記載しています。</li>\n        <li><strong>誤りを認めます。</strong>削除が誤りであったと示された場合、速やかに、争わずに是正します。</li>\n        <li><strong>データを最小限にします。</strong>侵害の立証に必要な記録のみを保持し、個人のプロファイルは作成しません。</li>\n      </ul>\n\n      <hr>\n\n      <span class=\"kicker\">事業者の皆様へ</span>\n      <h2>当協議会から通知を受け取られた場合</h2>\n      <p>\n        当協議会の通知は自動生成されますが、一件ごとに検証されています。通知には、\n        対象作品の特定情報、侵害しているURLまたはファイル、依頼元の会員社、法的根拠、\n        連絡先、および固有の参照番号が記載されています。\n      </p>\n      <p>\n        最も早い解決方法は、記載のURLに対処し、参照番号を添えて通知記載のアドレスへご返信いただくことです。\n        通知の内容に誤りがあるとお考えの場合は、その旨をお知らせください。\n        誤った通知が実行されるより、撤回する方を望みます。\n      </p>\n      <p>\n        利用者投稿の多いサービスを運営されている場合、メールに代えて直接または自動での報告経路を\n        設定することも可能です。件名を「プラットフォーム連携」として\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a> までご連絡ください。\n      </p>\n\n      <hr>\n\n      <h2 id=\"counter-notice\">異議申立ての手順</h2>\n      <p>\n        当協議会の通知によりコンテンツが削除され、その削除が誤りであるとお考えの場合——\n        権利を保有している、許諾を得ている、または法令上認められる利用である場合——\n        異議を申し立てることができます。削除を行ったプラットフォームを通じてでも、\n        当協議会へ直接でも構いません。\n      </p>\n      <p>\n        当協議会へ申し立てる場合は、件名を<strong>「異議申立て」</strong>として\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a> 宛に、\n        以下をご記載のうえご連絡ください。\n      </p>\n      <ol>\n        <li>通知に記載された参照番号（お分かりになる場合）</li>\n        <li>削除された対象の正確なURLまたは識別情報</li>\n        <li>お名前、およびご連絡可能な住所・メールアドレス</li>\n        <li>削除が誤りであるとお考えの理由（権利の保有、許諾の有無、認められる利用である旨など）</li>\n        <li>これを裏付ける資料（許諾契約、契約書、リリース等）</li>\n      </ol>\n      <p>\n        1営業日以内（日本時間）の回答、および5営業日以内の解決を目標としています。\n        通知が誤りであったと判断した場合は、これを撤回し、プラットフォームに復旧を要請します。\n        見解が異なる場合は、その理由を書面でお伝えします。プラットフォームまたは\n        ご自身の法律顧問を通じて、さらに手続を進めていただくことができます。\n      </p>\n\n      <div class=\"notice notice-info\">\n        <p>\n          異議申立てには法的な効果が生じる場合があり、プラットフォームによっては\n          連絡先が権利者に開示されることがあります。本記載は法的助言ではありません。\n          ご不明な点は、お住まいの地域の弁護士にご相談ください。\n        </p>\n      </div>\n\n      <hr>\n\n      <span class=\"kicker\">権利者の皆様へ</span>\n      <h2>ご自身の作品の被害を報告する</h2>\n      <p>\n        権利者の方で、ご自身の作品が違法に流通しているのを見つけられた場合は、\n        <a href=\"contact.html\">お問い合わせフォーム</a>または\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a> までご連絡ください。\n        作品名、権利を保有していることの証明、すでに把握されているURLをお知らせいただけると助かります。\n      </p>\n      <p>\n        当協議会が代理できるのは会員社に限られますが、取り得る選択肢をお伝えし、\n        当協議会の対象外の事案については適切な窓口をご案内します。\n        加入により対応可能となるかどうかも、あわせてお答えします。\n      </p>\n\n      <hr>\n\n      <span class=\"kicker\">報道・研究の皆様へ</span>\n      <h2>取材・研究のお問い合わせ</h2>\n      <p>\n        オンライン海賊版、プラットフォームの責任、通知実務について取材・研究をされている\n        記者・研究者の方は、<a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a>\n        までご連絡ください。手法および集計値については通常お話しできますが、\n        会員社の個別情報および案件の詳細は非公開です。\n      </p>\n    </div>\n  </section>\n\n  <section class=\"cta\">\n    <div class=\"wrap\">\n      <h2>その他のお問い合わせ</h2>\n      <p>通知、異議申立て、プラットフォーム連携、取材——いずれも同じ窓口で承ります。</p>\n      <a class=\"btn\" href=\"contact.html\">お問い合わせ</a>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。\n          会員社の作品の違法流通に、共同で対処しています。\n        </p>\n      </div>\n      <div>\n        <h4>協議会</h4>\n        <ul>\n          <li><a href=\"about.html\">協議会について</a></li>\n          <li><a href=\"members.html\">会員社</a></li>\n          <li><a href=\"services.html\">活動内容</a></li>\n          <li><a href=\"public.html\">一般の皆様へ</a></li>\n          <li><a href=\"contact.html\">お問い合わせ</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>規約・法務</h4>\n        <ul>\n          <li><a href=\"imprint.html\">運営者情報</a></li>\n          <li><a href=\"privacy.html\">プライバシーポリシー</a></li>\n          <li><a href=\"public.html#counter-notice\">異議申立て</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>連絡先</h4>\n        <ul>\n          <li>〒101-8050</li>\n          <li>東京都千代田区一ツ橋4-6-10</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">03-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>\n      <ul>\n        <li><a href=\"imprint.html\">運営者情報</a></li>\n        <li><a href=\"privacy.html\">プライバシー</a></li>\n        <li><a href=\"contact.html\">侵害の報告</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"../assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/ja/services.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>活動内容 — AMRC</title>\n<meta name=\"description\" content=\"モニタリング、フィンガープリント照合、削除要請、検索結果からの削除、同時配信の保護、証拠保全と報告。会員社のために協議会が行う業務です。\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/ja/services.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/services.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/services.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/services.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"活動内容 — AMRC\">\n<meta property=\"og:description\" content=\"モニタリング、フィンガープリント照合、削除要請、検索結果からの削除、同時配信の保護、証拠保全と報告。会員社のために協議会が行う業務です。\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/ja/services.html\">\n<meta property=\"og:locale\" content=\"ja_JP\">\n<link rel=\"icon\" href=\"../favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"../assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">本文へスキップ</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">03-3230-6016</a></span>\n      <span class=\"muted nowrap\">東京都千代田区 — 平日 9:00–18:00</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <a class=\"lang-pill\" href=\"../services.html\" title=\"English\">EN</a>\n      <span class=\"lang-pill is-active\">日本語</span>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">アニメ・マンガ権利協議会</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"メニューを開閉\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"メインナビゲーション\">\n      <a href=\"index.html\">ホーム</a>\n      <a href=\"about.html\">協議会について</a>\n      <a href=\"members.html\">会員社</a>\n      <a href=\"services.html\" class=\"is-active\">活動内容</a>\n      <a href=\"public.html\">一般の皆様へ</a>\n      <a href=\"contact.html\">お問い合わせ</a>\n      <a href=\"contact.html\" class=\"nav-cta\">侵害の報告</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">ホーム</a> &nbsp;/&nbsp; 活動内容</div>\n      <h1>活動内容</h1>\n      <p>協議会が会員社のために行う業務です。個別の対応を積み重ねるのではなく、検出・検証・削除・報告を一続きの処理として継続的に運用しています。</p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">主な業務</span>\n        <h2>会員社の作品を守るために必要なすべて</h2>\n      </div>\n\n      <div class=\"grid grid-2\">\n        <div class=\"card\">\n          <div class=\"icon\">M</div>\n          <h3>継続的なモニタリング</h3>\n          <p>違法な複製が実際に流通する経路を、それぞれの更新頻度に合わせて巡回します。</p>\n          <ul class=\"checklist\">\n            <li>配信・埋め込みポータル、IPTVおよび再配信サービス</li>\n            <li>アップローダー、ファイルホスト、公開設定のクラウドストレージ</li>\n            <li>トレントインデックス、DHT、Usenetインデクサ</li>\n            <li>SNS動画、ショート動画プラットフォーム、掲示板</li>\n            <li>公開メッセージチャンネル、リンクまとめサイト</li>\n            <li>作品名による検索結果</li>\n          </ul>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"icon\">F</div>\n          <h3>コンテンツ・フィンガープリント</h3>\n          <p>ファイル名による照合は容易に回避されます。内容そのものを照合するため、改変後も特定できます。</p>\n          <ul class=\"checklist\">\n            <li>再エンコードやトリミングに耐える映像の知覚ハッシュ</li>\n            <li>楽曲、吹替、オーディオ作品の音声フィンガープリント</li>\n            <li>出版物・マンガ向けの画像およびテキスト類似度判定</li>\n            <li>左右反転、速度変更、レターボックス、字幕焼き込みの検出</li>\n            <li>切り抜き・まとめ動画に対する部分一致判定</li>\n          </ul>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"icon\">T</div>\n          <h3>削除要請と通知管理</h3>\n          <p>検証済みの案件について、実際に対処できる相手方へ、適用される法令に基づいて通知します。</p>\n          <ul class=\"checklist\">\n            <li>米国所在のサービス・検索エンジンへのDMCA通知</li>\n            <li>日本法、EU法その他各国制度に基づく通知</li>\n            <li>信頼済み報告者制度を通じたプラットフォームへの直接申告</li>\n            <li>ホスティング事業者、CDN、レジストラ、決済事業者への段階的対応</li>\n            <li>再投稿の自動再通知</li>\n          </ul>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"icon\">D</div>\n          <h3>検索結果からの削除</h3>\n          <p>ファイルを削除しても、海賊版サイトが正規配信より上位に残れば対策は半分です。検索面にも並行して対応します。</p>\n          <ul class=\"checklist\">\n            <li>主要検索エンジンに対する侵害URLの削除申請</li>\n            <li>作品名・ブランド名の検索結果の監視</li>\n            <li>ドメイン変更とミラーサイト網の追跡</li>\n            <li>正規ページの表示順位回復状況の報告</li>\n          </ul>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"icon\">L</div>\n          <h3>同時配信・公開前の保護</h3>\n          <p>最も価値の高い時間帯は、最も短い時間帯でもあります。専用の即応体制で対応します。</p>\n          <ul class=\"checklist\">\n            <li>同時配信期間中のリアルタイム監視</li>\n            <li>検出から数分単位での対応を目標</li>\n            <li>対応形式に応じた電子透かしによる流出元の特定</li>\n            <li>放映・掲載開始前の事前巡回</li>\n          </ul>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"icon\">R</div>\n          <h3>証拠保全・報告・API</h3>\n          <p>処理の全過程を記録し、立証と次の判断に使える形で保管します。</p>\n          <ul class=\"checklist\">\n            <li>日時を記録した証拠一式と取得時の保全データ</li>\n            <li>検出・通知・削除結果のダッシュボード表示</li>\n            <li>経営層およびライセンサー向けの定期報告</li>\n            <li>自社システムと連携するREST APIおよびWebhook</li>\n            <li>常習的侵害者・非協力的事業者に関する情報</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">会員種別</span>\n        <h2>提供内容の区分</h2>\n        <p>目安です。実際の対象範囲は、作品数、公開頻度、対象地域に応じて個別に設定します。</p>\n      </div>\n\n      <div class=\"table-scroll\">\n        <table class=\"data\">\n          <thead>\n            <tr>\n              <th scope=\"col\">&nbsp;</th>\n              <th scope=\"col\">準会員</th>\n              <th scope=\"col\">正会員</th>\n              <th scope=\"col\">同時配信対応</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr>\n              <th scope=\"row\">監視頻度</th>\n              <td>1日1回</td>\n              <td>常時</td>\n              <td>常時＋リアルタイム対応</td>\n            </tr>\n            <tr>\n              <th scope=\"row\">照合方式</th>\n              <td>映像・音声</td>\n              <td>映像・音声・画像・テキスト</td>\n              <td>全方式＋部分一致</td>\n            </tr>\n            <tr>\n              <th scope=\"row\">検索結果の削除</th>\n              <td>対象</td>\n              <td>対象</td>\n              <td>対象＋キーワード監視</td>\n            </tr>\n            <tr>\n              <th scope=\"row\">対応目標</th>\n              <td>24時間以内</td>\n              <td>2時間以内</td>\n              <td>配信期間中は数分単位</td>\n            </tr>\n            <tr>\n              <th scope=\"row\">報告</th>\n              <td>月次</td>\n              <td>週次＋ダッシュボード</td>\n              <td>リアルタイム表示・API・Webhook</td>\n            </tr>\n            <tr>\n              <th scope=\"row\">サポート</th>\n              <td>メール</td>\n              <td>専任担当者</td>\n              <td>専任担当者＋緊急連絡体制</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n\n      <p class=\"text-center mt-3 mb-0\">\n        <a class=\"btn btn-dark\" href=\"contact.html\">ご要望を相談する</a>\n      </p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap prose\">\n      <span class=\"kicker\">よくあるご質問</span>\n      <h2>お問い合わせの多い点</h2>\n      <div class=\"faq mt-2\">\n        <details>\n          <summary>実際にどのくらいで削除されますか</summary>\n          <p>\n            相手方によります。信頼済み報告者制度のある大手プラットフォームでは数時間、\n            小規模な事業者ではより時間を要し、一部は通知に応じません。\n            応じない場合は上位のプロバイダ、レジストラ、決済事業者へ段階を上げます。\n            報告では平均値ではなく、実際の分布をお示しします。\n          </p>\n        </details>\n        <details>\n          <summary>削除しても再投稿された場合は</summary>\n          <p>\n            再投稿は想定内であり、自動で処理されます。作品のフィンガープリントを登録済みであれば、\n            新たな複製は次回の巡回で検出され、改めて申請いただくことなく再通知されます。\n            繰り返す投稿者は常習的侵害者として記録します。\n          </p>\n        </details>\n        <details>\n          <summary>正当なコンテンツを誤って削除する可能性は</summary>\n          <p>\n            可能性をゼロにはできないため、そうならない設計にしています。ライセンシーおよび\n            提携先のURLは除外リストに登録し、照合の確度基準は厳しめに設定し、\n            判断が分かれる案件は人が確認し、批評・論評その他の正当な利用は対象外としています。\n            影響を受けた方は異議を申し立てられます。手順は\n            <a href=\"public.html#counter-notice\">一般の皆様へ</a>のページに記載しています。\n          </p>\n        </details>\n        <details>\n          <summary>個々の視聴者に対して措置を取りますか</summary>\n          <p>\n            行いません。ファンに対する提訴、請求、警告書の送付は一切なく、\n            協議会の規程上、会員社がそれを指示することもできません。\n            権利行使の対象は違法な複製の流通です。\n          </p>\n        </details>\n        <details>\n          <summary>対象地域はどこまでですか</summary>\n          <p>\n            検出は全世界を対象とします。通知は相手方に適用される制度——米国所在のサービスには\n            DMCA、必要に応じて日本およびEUの手続、その他の地域ではプラットフォームの規約——\n            に従って送信します。通知は30以上の言語で対応しています。\n          </p>\n        </details>\n        <details>\n          <summary>加入にあたって必要なものは</summary>\n          <p>\n            作品リスト、権利を保有していることの証明、同時配信・連載のスケジュール、\n            および除外リストに登録するための正規配信URL（海外ライセンシーを含む）です。\n            参照用の素材があれば照合精度が上がりますが、必須ではありません。\n          </p>\n        </details>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"cta\">\n    <div class=\"wrap\">\n      <h2>加入をご検討中ですか</h2>\n      <p>保護をご希望の作品をお知らせいただければ、対象範囲をご提案します。</p>\n      <a class=\"btn\" href=\"contact.html\">事務局に問い合わせる</a>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"../assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。\n          会員社の作品の違法流通に、共同で対処しています。\n        </p>\n      </div>\n      <div>\n        <h4>協議会</h4>\n        <ul>\n          <li><a href=\"about.html\">協議会について</a></li>\n          <li><a href=\"members.html\">会員社</a></li>\n          <li><a href=\"services.html\">活動内容</a></li>\n          <li><a href=\"public.html\">一般の皆様へ</a></li>\n          <li><a href=\"contact.html\">お問い合わせ</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>規約・法務</h4>\n        <ul>\n          <li><a href=\"imprint.html\">運営者情報</a></li>\n          <li><a href=\"privacy.html\">プライバシーポリシー</a></li>\n          <li><a href=\"public.html#counter-notice\">異議申立て</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>連絡先</h4>\n        <ul>\n          <li>〒101-8050</li>\n          <li>東京都千代田区一ツ橋4-6-10</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">03-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>\n      <ul>\n        <li><a href=\"imprint.html\">運営者情報</a></li>\n        <li><a href=\"privacy.html\">プライバシー</a></li>\n        <li><a href=\"contact.html\">侵害の報告</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"../assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/members.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Members — AMRC</title>\n<meta name=\"description\" content=\"The anime studios, manga publishers and licensors that make up the Anime &amp; Manga Rights Council, and the rights each has entrusted to it.\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/members.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/members.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/members.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/members.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"Members — AMRC\">\n<meta property=\"og:description\" content=\"The companies that make up the Council.\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/members.html\">\n<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">Skip to content</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">+81 3-3230-6016</a></span>\n      <span class=\"muted nowrap\">Chiyoda-ku, Tokyo — JST (UTC+9)</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <span class=\"lang-pill is-active\">EN</span>\n      <a class=\"lang-pill\" href=\"ja/members.html\" title=\"日本語版\">日本語</a>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">Anime &amp; Manga Rights Council</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"Primary\">\n      <a href=\"index.html\">Home</a>\n      <a href=\"about.html\">About</a>\n      <a href=\"members.html\" class=\"is-active\">Members</a>\n      <a href=\"services.html\">Services</a>\n      <a href=\"public.html\">Public</a>\n      <a href=\"contact.html\">Contact</a>\n      <a href=\"contact.html\" class=\"nav-cta\">Report piracy</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">Home</a> &nbsp;/&nbsp; Members</div>\n      <h1>Our members</h1>\n      <p>\n        The Council acts on behalf of the anime studios, manga publishers and licensors\n        listed below. Each has entrusted specified works to us for enforcement.\n      </p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n\n      <div class=\"section-title mt-3\">\n        <span class=\"kicker\">Membership</span>\n        <h2>Companies represented by the Council</h2>\n        <p>\n          A full member entrusts its catalogue to the Council, holds a seat in the\n          members' meeting, and is bound by the rules of enforcement.\n        </p>\n      </div>\n\n      <div class=\"roster-group\">\n        <div class=\"roster-head\">\n          <h3>Manga publishers</h3>\n          <span class=\"count\">&mdash; members</span>\n        </div>\n        <ul class=\"roster\">\n          <!-- ============================================================\n               PASTE MANGA PUBLISHERS HERE — one line each:\n\n               <li><span class=\"name\">Company Name</span><span class=\"meta\">Since 2024</span></li>\n\n               The .meta line is optional; drop it for a name-only plate.\n               ============================================================ -->\n          <li class=\"is-empty\"><span class=\"name\">Member name</span><span class=\"meta\">Since 20XX</span></li>\n          <li class=\"is-empty\"><span class=\"name\">Member name</span><span class=\"meta\">Since 20XX</span></li>\n          <li class=\"is-empty\"><span class=\"name\">Member name</span><span class=\"meta\">Since 20XX</span></li>\n          <li class=\"is-empty\"><span class=\"name\">Member name</span><span class=\"meta\">Since 20XX</span></li>\n          <li class=\"is-empty\"><span class=\"name\">Member name</span><span class=\"meta\">Since 20XX</span></li>\n        </ul>\n      </div>\n\n      <div class=\"roster-group\">\n        <div class=\"roster-head\">\n          <h3>Animation studios</h3>\n          <span class=\"count\">&mdash; members</span>\n        </div>\n        <ul class=\"roster\">\n          <!-- ============================================================\n               PASTE ANIMATION STUDIOS HERE — same pattern as above.\n               ============================================================ -->\n          <li class=\"is-empty\"><span class=\"name\">Member name</span><span class=\"meta\">Since 20XX</span></li>\n          <li class=\"is-empty\"><span class=\"name\">Member name</span><span class=\"meta\">Since 20XX</span></li>\n          <li class=\"is-empty\"><span class=\"name\">Member name</span><span class=\"meta\">Since 20XX</span></li>\n          <li class=\"is-empty\"><span class=\"name\">Member name</span><span class=\"meta\">Since 20XX</span></li>\n          <li class=\"is-empty\"><span class=\"name\">Member name</span><span class=\"meta\">Since 20XX</span></li>\n        </ul>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap prose\">\n      <span class=\"kicker\">Scope</span>\n      <h2>What membership does and does not mean</h2>\n      <p>\n        Publishing this roster is how platforms and hosting providers verify that a notice\n        from us is authorised. So it is worth being precise about what it asserts.\n      </p>\n      <ul class=\"checklist\">\n        <li>Each company listed has appointed the Council to act for it on the works it has entrusted — no more.</li>\n        <li>Membership does not transfer copyright. Every work remains the property of its rights holder.</li>\n        <li>A member's licensees and official distribution channels are allow-listed, never targeted.</li>\n        <li>The Council does not act for non-members, and does not claim to represent the industry as a whole.</li>\n        <li>Company names and marks shown here belong to their respective owners and appear with permission.</li>\n      </ul>\n\n      <div class=\"notice notice-info\">\n        <p class=\"mb-0\">\n          Platforms verifying a notice can write to\n          <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a> quoting the\n          notice reference, and we will confirm the member's authorisation for the work\n          concerned.\n        </p>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"cta\">\n    <div class=\"wrap\">\n      <h2>Interested in joining the Council?</h2>\n      <p>\n        We will assess how your titles are currently being distributed illegally and set\n        out what membership would cover — with no obligation.\n      </p>\n      <a class=\"btn\" href=\"contact.html\">Enquire about membership</a>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          The Anime &amp; Manga Rights Council is a member body of Japanese anime and\n          manga companies, acting together against the illegal distribution of their\n          works worldwide.\n        </p>\n      </div>\n      <div>\n        <h4>Company</h4>\n        <ul>\n          <li><a href=\"about.html\">About us</a></li>\n          <li><a href=\"members.html\">Our members</a></li>\n          <li><a href=\"services.html\">Services</a></li>\n          <li><a href=\"public.html\">Public information</a></li>\n          <li><a href=\"contact.html\">Contact</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Legal</h4>\n        <ul>\n          <li><a href=\"imprint.html\">Imprint</a></li>\n          <li><a href=\"privacy.html\">Privacy policy</a></li>\n          <li><a href=\"public.html#counter-notice\">Counter-notice</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Contact</h4>\n        <ul>\n          <li>4-6-10 Hitotsubashi</li>\n          <li>Chiyoda-ku, Tokyo 101-8050</li>\n          <li>Japan</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">+81 3-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>\n      <ul>\n        <li><a href=\"imprint.html\">Imprint</a></li>\n        <li><a href=\"privacy.html\">Privacy</a></li>\n        <li><a href=\"contact.html\">Report piracy</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/privacy.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Privacy Policy — AMRC</title>\n<meta name=\"description\" content=\"How the Anime &amp; Manga Rights Council collects, uses, stores and protects personal data on this website and in the course of its enforcement work.\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/privacy.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/privacy.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/privacy.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/privacy.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"Privacy Policy — AMRC\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/privacy.html\">\n<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">Skip to content</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">+81 3-3230-6016</a></span>\n      <span class=\"muted nowrap\">Chiyoda-ku, Tokyo — JST (UTC+9)</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <span class=\"lang-pill is-active\">EN</span>\n      <a class=\"lang-pill\" href=\"ja/privacy.html\" title=\"日本語版\">日本語</a>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">Anime &amp; Manga Rights Council</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"Primary\">\n      <a href=\"index.html\">Home</a>\n      <a href=\"about.html\">About</a>\n      <a href=\"members.html\">Members</a>\n      <a href=\"services.html\">Services</a>\n      <a href=\"public.html\">Public</a>\n      <a href=\"contact.html\">Contact</a>\n      <a href=\"contact.html\" class=\"nav-cta\">Report piracy</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">Home</a> &nbsp;/&nbsp; Privacy policy</div>\n      <h1>Privacy policy</h1>\n      <p>How we handle personal data on this website and in the course of our work.</p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap prose\">\n\n      <h2>1. Who is responsible</h2>\n      <p>\n        The Anime &amp; Manga Rights Council, 4-6-10 Hitotsubashi, Chiyoda-ku, Tokyo 101-8050, Japan, is\n        responsible for the personal data processed through this website. You can reach us\n        at <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a> or\n        <a href=\"tel:+81332306016\">+81 3-3230-6016</a> for any question about this policy or\n        about your data.\n      </p>\n\n      <h2>2. What we collect</h2>\n\n      <h3>2.1 When you visit this website</h3>\n      <p>\n        Our hosting provider records standard server log data when a page is requested: the\n        IP address of the request, the date and time, the page requested, the referring page\n        where one is sent, and the browser and operating system reported by your browser.\n        This is needed to deliver the site and to detect abuse or technical faults. Logs are\n        kept for a short period and then deleted.\n      </p>\n\n      <h3>2.2 When you use the contact form</h3>\n      <p>\n        We process the details you enter: your name, organisation, email address, telephone\n        number where given, the category of your enquiry, and the content of your message.\n        We use them only to answer you and to manage the resulting business relationship. If\n        an enquiry does not lead to a relationship, we delete the correspondence once it is\n        no longer needed.\n      </p>\n\n      <h3>2.3 In the course of our services</h3>\n      <p>\n        When we detect and act against infringing material, we record evidence about\n        publicly accessible listings: URLs, file identifiers, page content, timestamps and\n        the publicly displayed account name of an uploader where one is shown. This can\n        constitute personal data. We do not attempt to identify individual viewers, we do\n        not obtain subscriber data from internet providers, and we do not build behavioural\n        profiles of internet users.\n      </p>\n\n      <h3>2.4 Cookies and analytics</h3>\n      <p>\n        This website sets no advertising cookies and no third-party tracking cookies. If\n        analytics are used, they will be privacy-respecting and configured without\n        cross-site tracking; where consent is required, it will be requested before any\n        non-essential cookie is set.\n      </p>\n\n      <h2>3. Why we may process your data</h2>\n      <ul>\n        <li>To respond to an enquiry you have sent us.</li>\n        <li>To perform a contract with you, or to take steps at your request before entering into one.</li>\n        <li>To pursue our legitimate interests and those of our members in operating the site securely and in enforcing copyright.</li>\n        <li>To comply with legal obligations, including record-keeping and responding to lawful requests.</li>\n        <li>Where you have given consent, for the specific purpose described at the time.</li>\n      </ul>\n\n      <h2>4. Who we share it with</h2>\n      <p>\n        We do not sell personal data. We share it only where necessary:\n      </p>\n      <ul>\n        <li>with service providers who host our website, send our email and store our data, under contract and on our instructions;</li>\n        <li>with the member company on whose behalf a specific enforcement action is taken;</li>\n        <li>with platforms and hosting providers, to the extent a takedown notice necessarily identifies the material and the notifier;</li>\n        <li>with our professional advisers, where needed;</li>\n        <li>with authorities or courts where we are legally required to do so.</li>\n      </ul>\n\n      <h2>5. International transfers</h2>\n      <p>\n        Because our work is worldwide, data may be transferred outside Japan — most often\n        when a notice is sent to a platform or host in another country. Where a transfer\n        involves personal data, we make it on the basis of an appropriate safeguard\n        recognised by the applicable law.\n      </p>\n\n      <h2>6. How long we keep it</h2>\n      <p>\n        Enquiry correspondence is kept for as long as needed to answer it and for a\n        reasonable period afterwards. Member records are kept for the duration of the\n        relationship and for the retention period required by Japanese commercial and tax\n        law. Enforcement evidence is kept for as long as it may be needed to defend or\n        substantiate a notice. Server logs are kept briefly and then deleted.\n      </p>\n\n      <h2>7. Your rights</h2>\n      <p>\n        Subject to the law that applies to you, you can ask us to confirm what personal data\n        we hold about you, to give you a copy, to correct it if it is inaccurate, to delete\n        it, to restrict or object to its use, and to withdraw a consent you have given.\n        Withdrawing consent does not affect processing carried out beforehand.\n      </p>\n      <p>\n        Write to <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a>. We\n        respond within one month, and we may need to verify your identity first. If you are\n        not satisfied with our answer, you may complain to the Personal Information\n        Protection Commission of Japan or to the supervisory authority in your own country.\n      </p>\n\n      <h2>8. Security</h2>\n      <p>\n        We apply technical and organisational measures appropriate to the risk: encryption\n        in transit, access control on a need-to-know basis, logging of access to sensitive\n        systems, and regular review. No system is perfectly secure, but we work to keep the\n        data we hold proportionate to what we actually need.\n      </p>\n\n      <h2>9. Children</h2>\n      <p>\n        This website is directed at businesses, member companies and rights holders. We do not knowingly\n        collect personal data from children.\n      </p>\n\n      <h2>10. Changes</h2>\n      <p>\n        We may update this policy as our services or the law change. The current version is\n        always published on this page; significant changes will be highlighted here.\n      </p>\n\n      <h2>11. Contact</h2>\n      <p>\n        Anime &amp; Manga Rights Council<br>\n        4-6-10 Hitotsubashi, Chiyoda-ku, Tokyo 101-8050, Japan<br>\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a> ·\n        <a href=\"tel:+81332306016\">+81 3-3230-6016</a>\n      </p>\n\n      <p class=\"small muted mt-3\">Last updated: <span data-year>2026</span></p>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          The Anime &amp; Manga Rights Council is a member body of Japanese anime and\n          manga companies, acting together against the illegal distribution of their\n          works worldwide.\n        </p>\n      </div>\n      <div>\n        <h4>Company</h4>\n        <ul>\n          <li><a href=\"about.html\">About us</a></li>\n          <li><a href=\"members.html\">Our members</a></li>\n          <li><a href=\"services.html\">Services</a></li>\n          <li><a href=\"public.html\">Public information</a></li>\n          <li><a href=\"contact.html\">Contact</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Legal</h4>\n        <ul>\n          <li><a href=\"imprint.html\">Imprint</a></li>\n          <li><a href=\"privacy.html\">Privacy policy</a></li>\n          <li><a href=\"public.html#counter-notice\">Counter-notice</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Contact</h4>\n        <ul>\n          <li>4-6-10 Hitotsubashi</li>\n          <li>Chiyoda-ku, Tokyo 101-8050</li>\n          <li>Japan</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">+81 3-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>\n      <ul>\n        <li><a href=\"imprint.html\">Imprint</a></li>\n        <li><a href=\"privacy.html\">Privacy</a></li>\n        <li><a href=\"contact.html\">Report piracy</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/public.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Public Information — AMRC</title>\n<meta name=\"description\" content=\"Information for platforms, hosts, uploaders and the public: what our notices mean, how to respond, and how to file a counter-notice.\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/public.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/public.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/public.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/public.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"Public Information — AMRC\">\n<meta property=\"og:description\" content=\"What our notices mean, how to respond, and how to file a counter-notice.\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/public.html\">\n<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">Skip to content</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">+81 3-3230-6016</a></span>\n      <span class=\"muted nowrap\">Chiyoda-ku, Tokyo — JST (UTC+9)</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <span class=\"lang-pill is-active\">EN</span>\n      <a class=\"lang-pill\" href=\"ja/public.html\" title=\"日本語版\">日本語</a>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">Anime &amp; Manga Rights Council</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"Primary\">\n      <a href=\"index.html\">Home</a>\n      <a href=\"about.html\">About</a>\n      <a href=\"members.html\">Members</a>\n      <a href=\"services.html\">Services</a>\n      <a href=\"public.html\" class=\"is-active\">Public</a>\n      <a href=\"contact.html\">Contact</a>\n      <a href=\"imprint.html\">Imprint</a>\n      <a href=\"contact.html\" class=\"nav-cta\">Report piracy</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">Home</a> &nbsp;/&nbsp; Public</div>\n      <h1>Public information</h1>\n      <p>\n        This page is for platform operators, hosting providers, site owners, uploaders\n        and anyone else who has received a notice from the Council — or simply wants to\n        know how we operate.\n      </p>\n    </div>\n  </section>\n\n  <section class=\"section-tight section-grey\">\n    <div class=\"wrap\">\n      <div class=\"stats\">\n        <div class=\"stat\">\n          <small>we never file</small>\n          <div class=\"figure\">0</div>\n          <div class=\"label\">Claims against fans</div>\n        </div>\n        <div class=\"stat\">\n          <small>reviewed by a person</small>\n          <div class=\"figure\">100%</div>\n          <div class=\"label\">Of borderline matches</div>\n        </div>\n        <div class=\"stat\">\n          <small>always</small>\n          <div class=\"figure\">Withdrawn</div>\n          <div class=\"label\">If shown to be mistaken</div>\n        </div>\n        <div class=\"stat\">\n          <small>&nbsp;</small>\n          <div class=\"figure\">1 day</div>\n          <div class=\"label\">Target reply to counter-notices</div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap prose\">\n\n      <span class=\"kicker\">Our commitments</span>\n      <h2>What we will and will not do</h2>\n      <p>\n        Anti-piracy enforcement affects real people, including people who have done\n        nothing wrong. We publish the limits we work within so that they can be held\n        against us.\n      </p>\n      <ul class=\"checklist\">\n        <li><strong>We never pursue fans.</strong> No lawsuits, no settlement demands, no invoices, no threatening letters to viewers, readers or listeners.</li>\n        <li><strong>We do not target lawful use.</strong> Reviews, criticism, commentary, parody, news reporting, education and other transformative or permitted uses are excluded from enforcement.</li>\n        <li><strong>We verify rights first.</strong> No notice is sent on behalf of a client until we have confirmed they hold the rights they claim.</li>\n        <li><strong>We identify ourselves.</strong> Every notice states who sent it, on whose behalf, the work concerned and the legal basis.</li>\n        <li><strong>We accept being wrong.</strong> Mistaken removals are corrected quickly and without argument once shown to be mistaken.</li>\n        <li><strong>We minimise data.</strong> We record what is needed to evidence an infringement, and we do not build profiles of individual internet users.</li>\n      </ul>\n\n      <hr>\n\n      <span class=\"kicker\">For platforms &amp; hosts</span>\n      <h2>If you have received a notice from us</h2>\n      <p>\n        Our notices are machine-generated but individually verified. Each one contains the\n        identification of the protected work, the specific infringing URL or file, the\n        rights holder we act for, the legal basis, our contact details and a unique\n        reference number.\n      </p>\n      <p>\n        The fastest way to resolve a notice is to act on the identified URL and reply to\n        the notice address quoting the reference. If a notice looks wrong to you, say so —\n        we would rather withdraw an incorrect notice than have it actioned.\n      </p>\n      <p>\n        If you operate a service with a high volume of user uploads, we are happy to\n        arrange a direct or automated reporting channel instead of email. Write to\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a> with\n        \"Platform channel\" in the subject line.\n      </p>\n\n      <hr>\n\n      <h2 id=\"counter-notice\">Filing a counter-notice</h2>\n      <p>\n        If content of yours was removed because of one of our notices and you believe the\n        removal was wrong — because you hold the rights, because you are licensed, or\n        because your use is permitted by law — you can dispute it. You may do so through\n        the platform that removed the content, and you may also write to us directly.\n      </p>\n      <p>To dispute a notice with us, email\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a> with the\n        subject line <strong>\"Counter-notice\"</strong> and include:\n      </p>\n      <ol>\n        <li>The reference number shown in the notice, if you have it.</li>\n        <li>The exact URL or identifier of the material that was removed.</li>\n        <li>Your name and an address and email at which you can be contacted.</li>\n        <li>The reason you believe the removal was mistaken — for example, that you own or license the work, or that your use is permitted.</li>\n        <li>Any evidence supporting that, such as a licence, a contract or a release.</li>\n      </ol>\n      <p>\n        We aim to respond within one business day (JST) and to resolve disputes within\n        five. If we agree the notice was wrong, we withdraw it and ask the platform to\n        restore the content. If we disagree, we will tell you why in writing, so that you\n        can take the matter further with the platform or with your own legal advisers.\n      </p>\n\n      <div class=\"notice notice-info\">\n        <p>\n          Filing a counter-notice may have legal consequences and, on some platforms, may\n          disclose your contact details to the rights holder. Nothing here is legal advice\n          — if you are unsure, consult a qualified lawyer in your jurisdiction.\n        </p>\n      </div>\n\n      <hr>\n\n      <span class=\"kicker\">For rights holders</span>\n      <h2>Reporting piracy of your own work</h2>\n      <p>\n        If you are a rights holder and have found your work distributed illegally, use our\n        <a href=\"contact.html\">contact form</a> or write to\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a>. Include the\n        title, evidence that you hold the rights, and any URLs you have already found.\n      </p>\n      <p>\n        We can only act for our member companies, but we will tell you what your options\n        are and, where a matter falls outside what we do, point you toward the right route\n        — including whether joining the Council would cover it.\n      </p>\n\n      <hr>\n\n      <span class=\"kicker\">For researchers &amp; press</span>\n      <h2>Press &amp; academic enquiries</h2>\n      <p>\n        Journalists and researchers working on online piracy, platform liability or notice\n        practice can reach us at\n        <a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a>. We can\n        usually discuss methodology and aggregate figures; client identities and case\n        details are confidential.\n      </p>\n    </div>\n  </section>\n\n  <section class=\"cta\">\n    <div class=\"wrap\">\n      <h2>Still have a question?</h2>\n      <p>Notices, disputes, platform channels or press — one address reaches the right desk.</p>\n      <a class=\"btn\" href=\"contact.html\">Get in touch</a>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          The Anime &amp; Manga Rights Council is a member body of Japanese anime and\n          manga companies, acting together against the illegal distribution of their\n          works worldwide.\n        </p>\n      </div>\n      <div>\n        <h4>Company</h4>\n        <ul>\n          <li><a href=\"about.html\">About us</a></li>\n          <li><a href=\"members.html\">Our members</a></li>\n          <li><a href=\"services.html\">Services</a></li>\n          <li><a href=\"public.html\">Public information</a></li>\n          <li><a href=\"contact.html\">Contact</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Legal</h4>\n        <ul>\n          <li><a href=\"imprint.html\">Imprint</a></li>\n          <li><a href=\"privacy.html\">Privacy policy</a></li>\n          <li><a href=\"public.html#counter-notice\">Counter-notice</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Contact</h4>\n        <ul>\n          <li>4-6-10 Hitotsubashi</li>\n          <li>Chiyoda-ku, Tokyo 101-8050</li>\n          <li>Japan</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">+81 3-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>\n      <ul>\n        <li><a href=\"imprint.html\">Imprint</a></li>\n        <li><a href=\"privacy.html\">Privacy</a></li>\n        <li><a href=\"contact.html\">Report piracy</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/robots.txt":{"type":"text/plain; charset=utf-8","body":"User-agent: *\nAllow: /\nDisallow: /contact.php\n\nSitemap: https://tokyocopyright.com/sitemap.xml\n"},"/services.html":{"type":"text/html; charset=utf-8","body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Services — AMRC</title>\n<meta name=\"description\" content=\"Monitoring, content fingerprinting, automated takedown notices, search de-indexing, simulcast protection and evidence reporting, carried out for Council members.\">\n<meta name=\"robots\" content=\"index, follow\">\n<link rel=\"canonical\" href=\"https://tokyocopyright.com/services.html\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://tokyocopyright.com/services.html\">\n<link rel=\"alternate\" hreflang=\"ja\" href=\"https://tokyocopyright.com/ja/services.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://tokyocopyright.com/services.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"AMRC\">\n<meta property=\"og:title\" content=\"Services — AMRC\">\n<meta property=\"og:description\" content=\"End-to-end anti-piracy for member companies: detection, verification, takedown, de-indexing and reporting.\">\n<meta property=\"og:url\" content=\"https://tokyocopyright.com/services.html\">\n<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"assets/css/app.css\">\n</head>\n<body>\n<a class=\"skip-link\" href=\"#main\">Skip to content</a>\n\n<div class=\"topbar\">\n  <div class=\"wrap\">\n    <div class=\"topbar-contact\">\n      <span><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></span>\n      <span class=\"nowrap\"><a href=\"tel:+81332306016\">+81 3-3230-6016</a></span>\n      <span class=\"muted nowrap\">Chiyoda-ku, Tokyo — JST (UTC+9)</span>\n    </div>\n    <div class=\"topbar-langs\">\n      <span class=\"lang-pill is-active\">EN</span>\n      <a class=\"lang-pill\" href=\"ja/services.html\" title=\"日本語版\">日本語</a>\n    </div>\n  </div>\n</div>\n\n<header class=\"masthead\">\n  <div class=\"wrap\">\n    <a class=\"brand\" href=\"index.html\">\n      <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"38\" height=\"38\">\n      <span class=\"brand-name\">AMRC\n        <span class=\"brand-tag\">Anime &amp; Manga Rights Council</span>\n      </span>\n    </a>\n    <button class=\"nav-toggle\" type=\"button\" aria-controls=\"primary-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span></span><span></span><span></span>\n    </button>\n    <nav class=\"nav\" id=\"primary-nav\" aria-label=\"Primary\">\n      <a href=\"index.html\">Home</a>\n      <a href=\"about.html\">About</a>\n      <a href=\"members.html\">Members</a>\n      <a href=\"services.html\" class=\"is-active\">Services</a>\n      <a href=\"public.html\">Public</a>\n      <a href=\"contact.html\">Contact</a>\n      <a href=\"contact.html\" class=\"nav-cta\">Report piracy</a>\n    </nav>\n  </div>\n</header>\n\n<main id=\"main\">\n\n  <section class=\"page-head\">\n    <div class=\"wrap\">\n      <div class=\"crumbs\"><a href=\"index.html\">Home</a> &nbsp;/&nbsp; Services</div>\n      <h1>Services</h1>\n      <p>\n        What the Council does for its members: detection, verification, removal and\n        reporting, operated as one continuous pipeline rather than a series of manual\n        campaigns.\n      </p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">Core services</span>\n        <h2>Everything needed to keep a member catalogue clean</h2>\n      </div>\n\n      <div class=\"grid grid-2\">\n        <div class=\"card\">\n          <div class=\"icon\">M</div>\n          <h3>Continuous monitoring</h3>\n          <p>\n            We sweep the channels where pirated copies actually circulate, on a schedule\n            tuned to how quickly each one turns over:\n          </p>\n          <ul class=\"checklist\">\n            <li>Streaming and embed portals, IPTV and restreaming services</li>\n            <li>Cyberlockers, file hosts and public cloud drives</li>\n            <li>Torrent indexes, DHT swarms and Usenet indexers</li>\n            <li>Social video, short-form platforms and user forums</li>\n            <li>Public messaging channels and link aggregators</li>\n            <li>Search engine results for your title keywords</li>\n          </ul>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"icon\">F</div>\n          <h3>Content fingerprinting</h3>\n          <p>\n            Filename matching is trivially defeated. We match on the content itself, so a\n            copy stays identifiable after it has been altered:\n          </p>\n          <ul class=\"checklist\">\n            <li>Perceptual video hashing that survives re-encoding and cropping</li>\n            <li>Audio fingerprints for music, dubs and audiobooks</li>\n            <li>Image and text similarity for publishing and manga</li>\n            <li>Detection of mirrored, sped-up, letterboxed and overlaid copies</li>\n            <li>Partial-match detection for clips and compilations</li>\n          </ul>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"icon\">T</div>\n          <h3>Takedown &amp; notice management</h3>\n          <p>\n            Verified matches become properly formed notices, addressed to the party that\n            can act, under the law that applies to them:\n          </p>\n          <ul class=\"checklist\">\n            <li>DMCA notices to US-hosted services and search engines</li>\n            <li>Notices under Japanese, EU and other national regimes as applicable</li>\n            <li>Platform-native reporting via trusted-flagger channels</li>\n            <li>Escalation to hosts, CDNs, registrars and payment providers</li>\n            <li>Automatic re-notice when content is re-uploaded</li>\n          </ul>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"icon\">D</div>\n          <h3>Search de-indexing</h3>\n          <p>\n            Removing the file is only half the job if the pirate page still outranks your\n            own release. We work the search layer in parallel:\n          </p>\n          <ul class=\"checklist\">\n            <li>Removal requests for infringing URLs from major search engines</li>\n            <li>Monitoring of brand and title keyword results</li>\n            <li>Tracking of domain-hopping and mirror networks</li>\n            <li>Reporting on the visibility recovered for legitimate pages</li>\n          </ul>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"icon\">L</div>\n          <h3>Simulcast &amp; pre-release protection</h3>\n          <p>\n            The highest-value window is the shortest. Weekly simulcasts, theatrical\n            premieres, chapter drops and screeners get a dedicated rapid-response track:\n          </p>\n          <ul class=\"checklist\">\n            <li>Real-time monitoring across the simulcast window</li>\n            <li>Target response measured in minutes from detection</li>\n            <li>Watermark tracing to identify the leak source where supported</li>\n            <li>Pre-release sweeps ahead of a scheduled airing or chapter release</li>\n          </ul>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"icon\">R</div>\n          <h3>Evidence, reporting &amp; API</h3>\n          <p>\n            Everything the pipeline does is recorded, so you can prove it and act on it:\n          </p>\n          <ul class=\"checklist\">\n            <li>Timestamped evidence packages with preserved captures</li>\n            <li>Live dashboard of detections, notices and removal outcomes</li>\n            <li>Scheduled reporting for management and licensors</li>\n            <li>REST API and webhooks for your own systems</li>\n            <li>Repeat-infringer and hostile-host intelligence</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"section section-grey\">\n    <div class=\"wrap\">\n      <div class=\"section-title\">\n        <span class=\"kicker\">Coverage</span>\n        <h2>Service levels</h2>\n        <p>Indicative tiers. Each member’s cover is scoped to catalogue size, release cadence and territories.</p>\n      </div>\n\n      <div class=\"table-scroll\">\n        <table class=\"data\">\n          <thead>\n            <tr>\n              <th scope=\"col\">&nbsp;</th>\n              <th scope=\"col\">Associate</th>\n              <th scope=\"col\">Full member</th>\n              <th scope=\"col\">Simulcast tier</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr>\n              <th scope=\"row\">Monitoring frequency</th>\n              <td>Daily sweeps</td>\n              <td>Continuous</td>\n              <td>Continuous + real-time simulcast mode</td>\n            </tr>\n            <tr>\n              <th scope=\"row\">Fingerprint matching</th>\n              <td>Video &amp; audio</td>\n              <td>Video, audio, image &amp; text</td>\n              <td>Full stack + partial-match clips</td>\n            </tr>\n            <tr>\n              <th scope=\"row\">Search de-indexing</th>\n              <td>Included</td>\n              <td>Included</td>\n              <td>Included + keyword monitoring</td>\n            </tr>\n            <tr>\n              <th scope=\"row\">Response target</th>\n              <td>Within 24 hours</td>\n              <td>Within 2 hours</td>\n              <td>Minutes, during simulcast windows</td>\n            </tr>\n            <tr>\n              <th scope=\"row\">Reporting</th>\n              <td>Monthly</td>\n              <td>Weekly + dashboard</td>\n              <td>Live dashboard, API &amp; webhooks</td>\n            </tr>\n            <tr>\n              <th scope=\"row\">Support</th>\n              <td>Email</td>\n              <td>Named contact</td>\n              <td>Named contact + on-call escalation</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n\n      <p class=\"text-center mt-3 mb-0\">\n        <a class=\"btn btn-dark\" href=\"contact.html\">Discuss your requirements</a>\n      </p>\n    </div>\n  </section>\n\n  <section class=\"section\">\n    <div class=\"wrap prose\">\n      <span class=\"kicker\">Questions</span>\n      <h2>Common questions</h2>\n      <div class=\"faq mt-2\">\n        <details>\n          <summary>How quickly does content actually come down?</summary>\n          <p>\n            It depends on the recipient. Major platforms with trusted-flagger channels\n            typically act within hours; smaller hosts take longer, and a minority ignore\n            notices entirely — those get escalated to their upstream provider, registrar or\n            payment processor. Our reporting shows the real distribution rather than a\n            headline average.\n          </p>\n        </details>\n        <details>\n          <summary>What happens when a pirate simply re-uploads?</summary>\n          <p>\n            Re-uploads are expected and handled automatically. Once a work is fingerprinted,\n            a new copy is detected on the next sweep and re-noticed without anyone having to\n            file a fresh request. Persistent re-uploaders are tracked as repeat infringers.\n          </p>\n        </details>\n        <details>\n          <summary>Could you remove something that is legitimate?</summary>\n          <p>\n            The risk is never zero, so we design against it: licensee and partner URLs are\n            allow-listed, confidence thresholds are set conservatively, borderline matches\n            go to human review, and reviews, criticism and other transformative uses are\n            excluded. Anyone affected can file a counter-notice — the route is described on\n            our <a href=\"public.html#counter-notice\">public information page</a>.\n          </p>\n        </details>\n        <details>\n          <summary>Do you take action against individual viewers?</summary>\n          <p>\n            No. We do not sue, invoice or send demand letters to fans, and the Council’s\n            rules do not permit a member to direct us to. Our enforcement is aimed at the\n            distribution of infringing copies.\n          </p>\n        </details>\n        <details>\n          <summary>Which territories do you cover?</summary>\n          <p>\n            Detection is worldwide. Notices are issued under whichever regime applies to the\n            recipient — DMCA for US-hosted services, Japanese and EU procedures where\n            relevant, and platform policy elsewhere. We issue notices in over 30 languages.\n          </p>\n        </details>\n        <details>\n          <summary>What do you need from us to start?</summary>\n          <p>\n            A catalogue list, evidence that you hold the rights, your simulcast or\n            serialisation schedule, and the URLs of your licensed distribution — including\n            your overseas licensees — so we can allow-list them. Reference files or\n            screeners improve fingerprint quality but are not always required.\n          </p>\n        </details>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"cta\">\n    <div class=\"wrap\">\n      <h2>Interested in joining?</h2>\n      <p>Tell us what you need protected and we will scope what membership would cover.</p>\n      <a class=\"btn\" href=\"contact.html\">Contact our team</a>\n    </div>\n  </section>\n\n</main>\n\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <div class=\"footer-grid\">\n      <div>\n        <a class=\"brand\" href=\"index.html\">\n          <img class=\"brand-mark\" src=\"assets/img/logo.svg\" alt=\"\" width=\"34\" height=\"34\">\n          <span class=\"brand-name\">AMRC</span>\n        </a>\n        <p class=\"mt-2\">\n          The Anime &amp; Manga Rights Council is a member body of Japanese anime and\n          manga companies, acting together against the illegal distribution of their\n          works worldwide.\n        </p>\n      </div>\n      <div>\n        <h4>Company</h4>\n        <ul>\n          <li><a href=\"about.html\">About us</a></li>\n          <li><a href=\"members.html\">Our members</a></li>\n          <li><a href=\"services.html\">Services</a></li>\n          <li><a href=\"public.html\">Public information</a></li>\n          <li><a href=\"contact.html\">Contact</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Legal</h4>\n        <ul>\n          <li><a href=\"imprint.html\">Imprint</a></li>\n          <li><a href=\"privacy.html\">Privacy policy</a></li>\n          <li><a href=\"public.html#counter-notice\">Counter-notice</a></li>\n        </ul>\n      </div>\n      <div>\n        <h4>Contact</h4>\n        <ul>\n          <li>4-6-10 Hitotsubashi</li>\n          <li>Chiyoda-ku, Tokyo 101-8050</li>\n          <li>Japan</li>\n          <li><a href=\"mailto:legal@tokyocopyright.com\">legal@tokyocopyright.com</a></li>\n          <li><a href=\"tel:+81332306016\">+81 3-3230-6016</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"footer-bottom\">\n      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>\n      <ul>\n        <li><a href=\"imprint.html\">Imprint</a></li>\n        <li><a href=\"privacy.html\">Privacy</a></li>\n        <li><a href=\"contact.html\">Report piracy</a></li>\n      </ul>\n    </div>\n  </div>\n</footer>\n\n<script src=\"assets/js/app.js\" defer></script>\n</body>\n</html>\n"},"/sitemap.xml":{"type":"application/xml; charset=utf-8","body":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://tokyocopyright.com/</loc>\n    <changefreq>monthly</changefreq>\n    <priority>1.0</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/about.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/members.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/services.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/public.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/contact.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/imprint.html</loc>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/privacy.html</loc>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/ja/index.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>1.0</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/ja/about.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/ja/members.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/ja/services.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/ja/public.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/ja/contact.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/ja/imprint.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.3</priority>\n  </url>\n  <url>\n    <loc>https://tokyocopyright.com/ja/privacy.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.3</priority>\n  </url>\n</urlset>\n"}};
+/* ============================================================================
+   EMBEDDED FILES — each one below is wrapped in a banner like:
+
+       // ====================
+       //  /members.html
+       // ====================
+
+   Search for the path to jump straight to a file. The HTML inside each
+   block is raw and editable — change it here and redeploy, or edit
+   site/<file> and re-run this build.
+
+     - /404.html
+     - /about.html
+     - /assets/css/app.css
+     - /assets/img/logo.svg
+     - /assets/js/app.js
+     - /contact.html
+     - /favicon.svg
+     - /imprint.html
+     - /index.html
+     - /ja/404.html
+     - /ja/about.html
+     - /ja/contact.html
+     - /ja/imprint.html
+     - /ja/index.html
+     - /ja/members.html
+     - /ja/privacy.html
+     - /ja/public.html
+     - /ja/services.html
+     - /members.html
+     - /privacy.html
+     - /public.html
+     - /robots.txt
+     - /services.html
+     - /sitemap.xml
+   ============================================================================ */
+
+const ASSETS = {};
+
+// ============================================================================
+//  /404.html
+// ============================================================================
+ASSETS["/404.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — AMRC</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">Anime &amp; Manga Rights Council</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="members.html">Members</a>
+      <a href="services.html">Services</a>
+      <a href="public.html">Public</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Report piracy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section text-center">
+    <div class="wrap">
+      <span class="kicker">Error 404</span>
+      <h1>This page could not be found</h1>
+      <p class="lead">
+        The address may have changed, or the link that brought you here may be out of date.
+      </p>
+      <p class="mt-2">
+        <a class="btn btn-primary" href="index.html">Back to the home page</a>
+        <a class="btn btn-dark" href="contact.html">Contact us</a>
+      </p>
+      <p class="muted mt-3 mb-0">
+        Looking to dispute a takedown notice? See the
+        <a href="public.html#counter-notice">counter-notice procedure</a>.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom footer-bottom-bare">
+      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>
+      <ul>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /about.html
+// ============================================================================
+ASSETS["/about.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — AMRC</title>
+<meta name="description" content="The Anime &amp; Manga Rights Council is a Chiyoda-ku based member body: how it is governed, how companies join, and the principles that constrain its enforcement.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/about.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/about.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/about.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/about.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="About — AMRC">
+<meta property="og:description" content="Who we are, how we work, and the principles that shape our enforcement.">
+<meta property="og:url" content="https://tokyocopyright.com/about.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">+81 3-3230-6016</a></span>
+      <span class="muted nowrap">Chiyoda-ku, Tokyo — JST (UTC+9)</span>
+    </div>
+    <div class="topbar-langs">
+      <span class="lang-pill is-active">EN</span>
+      <a class="lang-pill" href="ja/about.html" title="日本語版">日本語</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">Anime &amp; Manga Rights Council</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="is-active">About</a>
+      <a href="members.html">Members</a>
+      <a href="services.html">Services</a>
+      <a href="public.html">Public</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Report piracy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; About</div>
+      <h1>About the Council</h1>
+      <p>
+        A member body of Japanese anime and manga companies, operating the shared
+        technical infrastructure its members use to find and remove illegal copies of
+        their works — anywhere in the world.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <span class="kicker">Who we are</span>
+          <h2>A shared enforcement body, not a law firm</h2>
+          <p>
+            The Council was founded on a simple observation: the bottleneck in
+            anti-piracy is not the law, it is throughput. A single popular series can be
+            re-uploaded thousands of times a week across dozens of platforms. No studio
+            or publisher can keep up with that alone, and every one of them was paying
+            separately to lose the same fight.
+          </p>
+          <p>
+            So the members built one pipeline and share it. Crawlers, fingerprint matching
+            and notice dispatch run continuously across the combined catalogue, and our
+            people concentrate on the cases that genuinely need human judgement — ambiguous
+            matches, repeat offenders, hostile hosts and pre-publication leaks.
+          </p>
+          <p class="mb-0">
+            We work alongside our members' legal counsel; we do not replace them and we
+            do not provide legal advice.
+          </p>
+        </div>
+        <div class="split-figure">
+          <h3>At a glance</h3>
+          <ul class="checklist">
+            <li>Secretariat in Chiyoda-ku, Tokyo</li>
+            <li>Enforcement operating 24 hours a day, all year</li>
+            <li>Notices issued in 30+ languages</li>
+            <li>Members across animation studios, manga publishers and licensors</li>
+            <li>Support in English and Japanese</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">Principles</span>
+        <h2>How we choose to work</h2>
+        <p>These are binding on the Council, not marketing lines. They constrain what we will act on, even at a member’s request.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Never against fans</h3>
+          <p>
+            We do not sue, invoice, threaten or send demand letters to viewers, readers or
+            listeners. Our work targets the distribution of infringing copies, not the
+            audience.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Accuracy before volume</h3>
+          <p>
+            A wrong takedown removes lawful speech and damages the member company. Confidence
+            thresholds, allow-lists for licensees, and human review on borderline cases
+            are built into the pipeline.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Proportionate response</h3>
+          <p>
+            We start with the host or platform that can resolve the issue directly, and
+            escalate to registrars, payment providers or search engines only when that
+            fails.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Verified rights only</h3>
+          <p>
+            Before a single notice is sent we confirm that the member actually holds the
+            rights it claims, for the territories it claims — including which overseas
+            licensee holds the simulcast.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Transparent to the other side</h3>
+          <p>
+            Every notice identifies us, states the legal basis, and explains how to file a
+            counter-notice if the recipient disagrees.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Data minimisation</h3>
+          <p>
+            We collect the evidence needed to prove an infringement and no more. We do not
+            build profiles of individual internet users.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <span class="kicker">Membership</span>
+      <h2>How a company joins</h2>
+      <p>
+        Most memberships begin with a piracy assessment: a prospective member gives us a
+        handful of titles, and we report back on where they are currently being distributed
+        illegally and at what scale. That report is yours whether or not you join.
+      </p>
+      <p>
+        If you proceed, accession takes a few days. We ingest your catalogue and proof of
+        rights, generate reference fingerprints, register your simulcast and serialisation
+        calendar so that new episodes and chapters are protected from the minute they go
+        live, and set up your dashboard and API credentials.
+      </p>
+      <p>
+        From there the system runs by itself. Members receive scheduled reporting, a live
+        view of detections and removals, a seat in the members’ meeting where enforcement
+        policy is set, and a named contact in Tokyo for anything that needs a person.
+      </p>
+
+      <div class="notice mt-2">
+        <p>
+          <strong>Please note:</strong> the Council provides technical enforcement
+          services to its members. We are not a law firm and nothing on this website
+          constitutes legal advice. Where litigation is appropriate, we support a
+          member's counsel with evidence and reporting.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">Governance</span>
+        <h2>How the Council is run</h2>
+        <p>
+          The Council acts only on the authority its members give it, and that authority
+          is written down rather than assumed.
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Members' meeting</h3>
+          <p>
+            Every full member holds one seat and one vote, regardless of catalogue size.
+            The meeting sets enforcement policy, admits new members and approves the
+            budget.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Secretariat</h3>
+          <p>
+            A standing team in Chiyoda-ku runs day-to-day enforcement within the policy
+            the members have set. It cannot broaden the scope of enforcement on its own
+            initiative.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Rules of enforcement</h3>
+          <p>
+            The commitments above are written into the Council's rules. A member cannot
+            instruct the secretariat to act against a fan, or to file a notice over a work
+            it does not hold rights in.
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Want to see the scale of the problem for your catalogue?</h2>
+      <p>Send us a few titles and we will come back with a written assessment.</p>
+      <a class="btn" href="contact.html">Request an assessment</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          The Anime &amp; Manga Rights Council is a member body of Japanese anime and
+          manga companies, acting together against the illegal distribution of their
+          works worldwide.
+        </p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="members.html">Our members</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="public.html">Public information</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="public.html#counter-notice">Counter-notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>4-6-10 Hitotsubashi</li>
+          <li>Chiyoda-ku, Tokyo 101-8050</li>
+          <li>Japan</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">+81 3-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>
+      <ul>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Report piracy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /assets/css/app.css
+// ============================================================================
+ASSETS["/assets/css/app.css"] = {
+  type: "text/css; charset=utf-8",
+  body: `/* ==========================================================================
+   AMRC — global stylesheet
+   Self-contained: no CDNs, no webfonts, no external assets.
+   ========================================================================== */
+
+:root {
+  --ink: #0b1524;
+  --ink-2: #12213a;
+  --ink-3: #1b2f4d;
+  --paper: #ffffff;
+  --paper-2: #f4f6f9;
+  --paper-3: #e7ecf2;
+  --line: #d8e0ea;
+  --body: #364559;
+  --muted: #6b7c90;
+  --brand: #b4152c;
+  --brand-dark: #8d0f21;
+  --brand-soft: #fdeef0;
+  --accent: #1f6feb;
+  --ok: #1a7f4b;
+  --radius: 6px;
+  --shadow: 0 1px 2px rgba(11, 21, 36, .06), 0 8px 24px rgba(11, 21, 36, .06);
+  --wrap: 1140px;
+  --sans: "Helvetica Neue", Helvetica, Arial, "Hiragino Kaku Gothic ProN",
+          "Yu Gothic", Meiryo, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--body);
+  background: var(--paper);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--brand); text-decoration: none; }
+a:hover, a:focus { color: var(--brand-dark); text-decoration: underline; }
+
+h1, h2, h3, h4 {
+  margin: 0 0 .6em;
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+
+h1 { font-size: 2.35rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1rem; }
+p  { margin: 0 0 1.1em; }
+
+ul, ol { margin: 0 0 1.1em; padding-left: 1.25em; }
+li { margin-bottom: .45em; }
+
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text-center { text-align: center; }
+.lead { font-size: 1.15rem; color: var(--body); }
+.muted { color: var(--muted); }
+.small { font-size: .875rem; }
+.nowrap { white-space: nowrap; }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link ------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--brand);
+  color: #fff;
+  padding: 10px 16px;
+  z-index: 200;
+}
+.skip-link:focus { left: 0; color: #fff; }
+
+/* Top bar --------------------------------------------------------------- */
+.topbar {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  font-size: .82rem;
+}
+.topbar .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 40px;
+}
+.topbar a { color: var(--muted); }
+.topbar a:hover { color: var(--brand); }
+.topbar-contact { display: flex; flex-wrap: wrap; gap: 18px; }
+.topbar-langs { display: flex; gap: 10px; align-items: center; }
+.lang-pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  letter-spacing: .06em;
+  font-size: .72rem;
+  text-transform: uppercase;
+}
+.lang-pill.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.lang-pill:hover { text-decoration: none; }
+
+/* Masthead / navigation -------------------------------------------------- */
+.masthead {
+  background: var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.masthead .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand:hover { text-decoration: none; }
+.brand-mark { width: 38px; height: 38px; flex: 0 0 38px; }
+.brand-name {
+  color: #fff;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  line-height: 1.1;
+}
+.brand-tag {
+  display: block;
+  color: #8fa3bd;
+  font-size: .66rem;
+  font-weight: 400;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid #33465f;
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  margin: 4px 0;
+}
+
+.nav { display: flex; align-items: center; gap: 4px; }
+.nav a {
+  display: block;
+  padding: 10px 14px;
+  color: #cdd8e6;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+}
+.nav a:hover { background: var(--ink-3); color: #fff; text-decoration: none; }
+.nav a.is-active { color: #fff; background: var(--brand); }
+.nav .nav-cta {
+  margin-left: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+.nav .nav-cta:hover { background: var(--paper-3); color: var(--ink); }
+
+/* Hero ------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  background: linear-gradient(150deg, #0b1524 0%, #14283f 55%, #1d3a5c 100%);
+  color: #e8eef6;
+  padding: 84px 0 76px;
+  overflow: hidden;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+  background-size: 46px 46px;
+  pointer-events: none;
+}
+.hero .wrap { position: relative; z-index: 1; max-width: 900px; }
+.hero .eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 5px 14px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #c9d8ea;
+}
+.hero h1 { color: #fff; font-size: 3rem; margin-bottom: .35em; }
+.hero .rule {
+  width: 68px;
+  height: 4px;
+  background: var(--brand);
+  margin: 0 auto 26px;
+  border-radius: 2px;
+}
+.hero p { font-size: 1.2rem; color: #c3d1e2; max-width: 720px; margin-inline: auto; }
+.hero-actions { margin-top: 30px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* Page banner (inner pages) ---------------------------------------------- */
+.page-head {
+  background: linear-gradient(150deg, #0b1524 0%, #162b45 100%);
+  color: #d6e1ee;
+  padding: 54px 0 48px;
+}
+.page-head h1 { color: #fff; margin-bottom: .3em; }
+.page-head p { margin: 0; color: #b6c6da; max-width: 760px; }
+.crumbs {
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #7e93ad;
+  margin-bottom: 14px;
+}
+.crumbs a { color: #9fb3cb; }
+
+/* Buttons ---------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 13px 26px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-size: .84rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn:hover, .btn:focus { text-decoration: none; }
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-primary:hover { background: var(--brand-dark); color: #fff; }
+.btn-ghost { border-color: rgba(255, 255, 255, .45); color: #fff; background: transparent; }
+.btn-ghost:hover { background: rgba(255, 255, 255, .12); color: #fff; }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: var(--ink-3); color: #fff; }
+
+/* Sections --------------------------------------------------------------- */
+.section { padding: 72px 0; }
+.section-tight { padding: 52px 0; }
+.section-grey { background: var(--paper-2); border-block: 1px solid var(--line); }
+.section-ink { background: var(--ink); color: #c6d3e3; }
+.section-ink h2, .section-ink h3 { color: #fff; }
+
+.section-title { max-width: 760px; margin: 0 auto 46px; text-align: center; }
+.kicker,
+.section-title .kicker {
+  display: block;
+  margin-bottom: 10px;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+.section-title p { margin: 0; color: var(--muted); font-size: 1.05rem; }
+
+/* Statement band --------------------------------------------------------- */
+.statement { padding: 62px 0; }
+.statement h2 {
+  max-width: 940px;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: center;
+  color: var(--ink-2);
+}
+.statement strong { font-weight: 700; color: var(--ink); }
+
+/* Stats ------------------------------------------------------------------ */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.stat { text-align: center; padding: 8px 6px; }
+.stat small {
+  display: block;
+  min-height: 20px;
+  font-size: .74rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stat .figure {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin: 2px 0 4px;
+}
+.stat .label { font-size: .92rem; color: var(--body); }
+.section-ink .stat .figure { color: #fff; }
+.section-ink .stat .label { color: #b8c7da; }
+.section-ink .stat small { color: #8296ae; }
+
+/* Card grid -------------------------------------------------------------- */
+.grid { display: grid; gap: 24px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  box-shadow: var(--shadow);
+}
+.card h3 { margin-bottom: .5em; }
+.card p:last-child, .card ul:last-child { margin-bottom: 0; }
+.card .icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.card-flat { box-shadow: none; background: transparent; }
+
+/* Cards sitting on the dark band. */
+.section-ink .card { background: var(--ink-2); border-color: #263a54; }
+
+/* A honeypot field: off-screen for people, still filled in by bots.
+   Kept as a class rather than an inline style so the CSP can stay style-src 'self'. */
+.field-trap { position: absolute; left: -9999px; }
+
+.split-top { align-items: start; }
+.footer-bottom-bare { margin-top: 0; border-top: 0; }
+
+/* Member roster — typographic, no logos ---------------------------------- */
+.roster-group + .roster-group { margin-top: 46px; }
+.roster-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--ink);
+}
+.roster-head h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.roster-head .count {
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.roster {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.roster li {
+  margin: 0;
+  padding: 24px 14px;
+  min-height: 104px;
+  background: var(--paper);
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+.roster .name {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  letter-spacing: -.005em;
+}
+.roster .meta {
+  display: block;
+  margin-top: 7px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Unfilled slot — greyed so an unedited roster is obviously a placeholder.
+   Remove the is-empty class (or delete the row) as each real member is added. */
+.roster li.is-empty { background: var(--paper-2); }
+.roster li.is-empty .name { color: #a9b6c6; font-weight: 600; }
+.roster li.is-empty .meta { color: #b8c3d0; }
+
+@media (max-width: 1000px) { .roster { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .roster { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 380px)  { .roster { grid-template-columns: 1fr; } }
+
+/* Member roster (card variant, retained) --------------------------------- */
+.member-card { text-align: center; }
+.member-card h3 { font-size: 1rem; margin-bottom: .35em; }
+.member-logo {
+  display: grid;
+  place-items: center;
+  height: 68px;
+  margin-bottom: 16px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  color: var(--muted);
+  font-size: 1rem;
+  letter-spacing: .08em;
+}
+/* Swap .member-logo for an <img class="member-logo-img"> once real logos exist. */
+.member-logo-img {
+  height: 68px;
+  width: 100%;
+  margin-bottom: 16px;
+  object-fit: contain;
+}
+
+/* Numbered process ------------------------------------------------------- */
+.steps { counter-reset: step; display: grid; gap: 22px; grid-template-columns: repeat(4, 1fr); }
+.step {
+  position: relative;
+  padding: 26px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--brand);
+  border-radius: var(--radius);
+}
+.step::before {
+  counter-increment: step;
+  content: "0" counter(step);
+  display: block;
+  margin-bottom: 10px;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  color: var(--brand);
+}
+.step h3 { font-size: 1.05rem; }
+.step p { margin: 0; font-size: .95rem; }
+
+/* Feature list ----------------------------------------------------------- */
+.checklist { list-style: none; padding: 0; margin: 0; }
+.checklist li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: .8em;
+}
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .5em;
+  width: 16px;
+  height: 8px;
+  border-left: 2px solid var(--brand);
+  border-bottom: 2px solid var(--brand);
+  transform: rotate(-45deg);
+}
+
+/* Split media ------------------------------------------------------------ */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.split-figure {
+  background: linear-gradient(150deg, #14283f, #24445f);
+  border-radius: var(--radius);
+  padding: 34px;
+  color: #dbe6f2;
+  box-shadow: var(--shadow);
+}
+.split-figure h3 { color: #fff; }
+.split-figure .checklist li::before { border-color: #7fb2ff; }
+
+/* Table ------------------------------------------------------------------ */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table.data {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  background: var(--paper);
+  font-size: .95rem;
+}
+table.data th, table.data td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+table.data thead th {
+  background: var(--ink);
+  color: #fff;
+  font-size: .76rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+table.data tbody tr:nth-child(even) { background: var(--paper-2); }
+
+/* Definition rows (imprint / contact details) ---------------------------- */
+.deflist { display: grid; grid-template-columns: 200px 1fr; gap: 0; margin: 0; }
+.deflist dt {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-weight: 700;
+  color: var(--ink);
+  font-size: .9rem;
+}
+.deflist dd {
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Notice / callout ------------------------------------------------------- */
+.notice {
+  border-left: 4px solid var(--brand);
+  background: var(--brand-soft);
+  padding: 18px 22px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.notice p:last-child { margin-bottom: 0; }
+.notice-info { border-left-color: var(--accent); background: #eef4ff; }
+
+/* Forms ------------------------------------------------------------------ */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: flex; flex-direction: column; }
+.field-full { grid-column: 1 / -1; }
+.field label {
+  margin-bottom: 6px;
+  font-size: .84rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.field .req { color: var(--brand); }
+.field .hint { margin-top: 6px; font-size: .8rem; color: var(--muted); }
+.field input, .field select, .field textarea {
+  font: inherit;
+  font-size: .95rem;
+  color: var(--ink);
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  width: 100%;
+}
+.field textarea { min-height: 150px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, .15);
+}
+.field-check {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  grid-column: 1 / -1;
+}
+.field-check input { width: auto; margin-top: 5px; }
+.field-check label { font-weight: 400; font-size: .9rem; color: var(--body); }
+
+.form-status {
+  display: none;
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  font-size: .95rem;
+}
+.form-status.is-visible { display: block; }
+.form-status.is-ok { background: #e9f6ee; border: 1px solid #b6dfc6; color: var(--ok); }
+.form-status.is-error { background: var(--brand-soft); border: 1px solid #f0c2ca; color: var(--brand-dark); }
+
+/* FAQ -------------------------------------------------------------------- */
+.faq details {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  margin-bottom: 12px;
+  padding: 0 20px;
+}
+.faq summary {
+  cursor: pointer;
+  padding: 16px 0;
+  font-weight: 700;
+  color: var(--ink);
+  list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; float: right; color: var(--brand); font-size: 1.2rem; line-height: 1; }
+.faq details[open] summary::after { content: "\\2013"; }
+.faq details > p { margin: 0 0 16px; }
+
+/* CTA strip -------------------------------------------------------------- */
+.cta {
+  background: var(--brand);
+  color: #fff;
+  padding: 54px 0;
+  text-align: center;
+}
+.cta h2 { color: #fff; }
+.cta p { color: #ffe2e6; max-width: 640px; margin: 0 auto 24px; }
+.cta .btn { background: #fff; color: var(--brand); }
+.cta .btn:hover { background: var(--ink); color: #fff; }
+
+/* Footer ----------------------------------------------------------------- */
+.footer {
+  background: var(--ink);
+  color: #9db0c7;
+  padding: 54px 0 0;
+  font-size: .92rem;
+}
+.footer h4 {
+  color: #fff;
+  font-size: .78rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footer a { color: #b9c8db; }
+.footer a:hover { color: #fff; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 32px; }
+.footer ul { list-style: none; padding: 0; margin: 0; }
+.footer li { margin-bottom: .5em; }
+.footer .brand-name { font-size: 1.05rem; }
+.footer-bottom {
+  margin-top: 40px;
+  border-top: 1px solid #22344c;
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  justify-content: space-between;
+  font-size: .84rem;
+  color: #7f93ac;
+}
+.footer-bottom ul { display: flex; flex-wrap: wrap; gap: 18px; }
+
+/* Utilities -------------------------------------------------------------- */
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mt-2 { margin-top: 1.5rem; }
+.mt-3 { margin-top: 2.25rem; }
+.prose { max-width: 820px; }
+.prose h2 { margin-top: 2.2rem; }
+.prose h3 { margin-top: 1.6rem; }
+
+/* Responsive ------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .split { grid-template-columns: 1fr; gap: 30px; }
+}
+
+@media (max-width: 800px) {
+  .nav-toggle { display: block; }
+  .masthead .wrap { flex-wrap: wrap; }
+  .nav {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-bottom: 12px;
+  }
+  .nav.is-open { display: flex; }
+  .nav a { padding: 12px 4px; border-bottom: 1px solid #1e3149; border-radius: 0; }
+  .nav .nav-cta { margin: 12px 0 0; text-align: center; border-radius: var(--radius); }
+  .topbar .wrap { justify-content: center; }
+}
+
+@media (max-width: 720px) {
+  h1 { font-size: 1.9rem; }
+  .hero { padding: 60px 0 54px; }
+  .hero h1 { font-size: 2.1rem; }
+  .hero p { font-size: 1.05rem; }
+  .section { padding: 52px 0; }
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .deflist { grid-template-columns: 1fr; }
+  .deflist dt { border-bottom: 0; padding-bottom: 0; }
+  .statement h2 { font-size: 1.25rem; text-align: left; }
+}
+
+@media (max-width: 480px) {
+  .steps { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .stat .figure { font-size: 1.8rem; }
+}
+
+@media print {
+  .masthead, .topbar, .cta, .nav-toggle, .footer { display: none; }
+  body { color: #000; }
+}
+`
+};
+
+// ============================================================================
+//  /assets/img/logo.svg
+// ============================================================================
+ASSETS["/assets/img/logo.svg"] = {
+  type: "image/svg+xml",
+  body: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Anime &amp; Manga Rights Council">
+  <defs>
+    <linearGradient id="amrcBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16294170"/>
+      <stop offset="0" stop-color="#162941"/>
+      <stop offset="1" stop-color="#0b1524"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#amrcBg)"/>
+
+  <!-- Monogram A, drawn as paths so it never depends on a font being present.
+       The counter is cut with evenodd rather than overpainted, so the mark
+       stays correct on any background. -->
+  <path fill="#ffffff" fill-rule="evenodd"
+        d="M32 11 L49 47 L40.2 47 L36.7 39.4 L27.3 39.4 L23.8 47 L15 47 Z
+           M32 24.2 L28.6 32.4 L35.4 32.4 Z"/>
+
+  <!-- Rule: the council's line under the mark -->
+  <rect x="19" y="51" width="26" height="4" rx="2" fill="#d51e38"/>
+</svg>
+`
+};
+
+// ============================================================================
+//  /assets/js/app.js
+// ============================================================================
+ASSETS["/assets/js/app.js"] = {
+  type: "text/javascript; charset=utf-8",
+  body: `/* AMRC — small progressive-enhancement layer. No dependencies. */
+(function () {
+  'use strict';
+
+  /* --- Mobile navigation ------------------------------------------------ */
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('primary-nav');
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  /* --- Current year in the footer --------------------------------------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-year]'), function (el) {
+    el.textContent = String(new Date().getFullYear());
+  });
+
+  /* --- Contact form ------------------------------------------------------
+     Posts JSON to the endpoint in data-endpoint (contact.php on cPanel/WHM,
+     /api/contact on Cloudflare Workers). If no backend is reachable we fall
+     back to a pre-filled mailto: so the enquiry is never lost.            */
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+
+  var statusBox = document.getElementById('form-status');
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var mailbox = form.getAttribute('data-mailbox') || 'legal@tokyocopyright.com';
+
+  function setStatus(message, kind) {
+    if (!statusBox) return;
+    statusBox.innerHTML = message;
+    statusBox.className = 'form-status is-visible ' + (kind === 'ok' ? 'is-ok' : 'is-error');
+    statusBox.setAttribute('role', kind === 'ok' ? 'status' : 'alert');
+  }
+
+  function mailtoFallback(data) {
+    var subject = '[' + (data.subject || 'Enquiry') + '] ' + (data.company || data.name || '');
+    var body = [
+      'Name: ' + (data.name || ''),
+      'Company: ' + (data.company || ''),
+      'Email: ' + (data.email || ''),
+      'Phone: ' + (data.phone || ''),
+      'Rights type: ' + (data.rights || ''),
+      '',
+      data.message || ''
+    ].join('\\n');
+    return 'mailto:' + mailbox +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    /* Honeypot: silently accept and drop obvious bots. */
+    if (form.elements.website && form.elements.website.value) {
+      setStatus('Thank you — your enquiry has been received.', 'ok');
+      form.reset();
+      return;
+    }
+
+    var data = {};
+    Array.from(new FormData(form)).forEach(function (pair) {
+      data[pair[0]] = typeof pair[1] === 'string' ? pair[1].trim() : pair[1];
+    });
+
+    if (!data.name || !data.email || !data.message) {
+      setStatus('Please complete the name, email and message fields.', 'error');
+      return;
+    }
+    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$/.test(data.email)) {
+      setStatus('That email address does not look valid.', 'error');
+      return;
+    }
+    if (form.elements.consent && !form.elements.consent.checked) {
+      setStatus('Please confirm the privacy consent checkbox before sending.', 'error');
+      return;
+    }
+
+    var endpoint = form.getAttribute('data-endpoint');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.dataset.label = submitBtn.textContent;
+      submitBtn.textContent = 'Sending…';
+    }
+
+    function restore() {
+      if (!submitBtn) return;
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitBtn.dataset.label || 'Send enquiry';
+    }
+
+    fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json().catch(function () { return { ok: true }; });
+      })
+      .then(function (res) {
+        if (res && res.ok === false) throw new Error(res.error || 'rejected');
+        setStatus(
+          'Thank you — your enquiry has been received. The secretariat replies to ' +
+          'enquiries within one business day (JST).',
+          'ok'
+        );
+        form.reset();
+      })
+      .catch(function () {
+        setStatus(
+          'The contact service is unavailable right now. ' +
+          '<a href="' + mailtoFallback(data) + '">Click here to send the same message by email</a> ' +
+          'or write to <a href="mailto:' + mailbox + '">' + mailbox + '</a>.',
+          'error'
+        );
+      })
+      .then(restore, restore);
+  });
+})();
+`
+};
+
+// ============================================================================
+//  /contact.html
+// ============================================================================
+ASSETS["/contact.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — AMRC</title>
+<meta name="description" content="Contact the Anime &amp; Manga Rights Council in Chiyoda-ku, Tokyo. Membership enquiries, takedown notices, counter-notices and press: legal@tokyocopyright.com, +81 3-3230-6016.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/contact.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/contact.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/contact.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="Contact — AMRC">
+<meta property="og:description" content="Membership enquiries, notices, counter-notices and press contacts.">
+<meta property="og:url" content="https://tokyocopyright.com/contact.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">+81 3-3230-6016</a></span>
+      <span class="muted nowrap">Chiyoda-ku, Tokyo — JST (UTC+9)</span>
+    </div>
+    <div class="topbar-langs">
+      <span class="lang-pill is-active">EN</span>
+      <a class="lang-pill" href="ja/contact.html" title="日本語版">日本語</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">Anime &amp; Manga Rights Council</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="members.html">Members</a>
+      <a href="services.html">Services</a>
+      <a href="public.html">Public</a>
+      <a href="contact.html" class="is-active">Contact</a>
+      <a href="imprint.html">Imprint</a>
+      <a href="contact.html" class="nav-cta">Report piracy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Contact</div>
+      <h1>Contact us</h1>
+      <p>
+        Membership enquiries, piracy reports, notice disputes and press — all reach us at
+        the address below. Enquiries in English or Japanese are equally welcome.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split split-top">
+
+        <div>
+          <span class="kicker">Send a message</span>
+          <h2>Enquiry form</h2>
+          <p>
+            Tell us what you need protected, or what you need resolved. We reply to
+            membership enquiries within one business day (JST).
+          </p>
+
+          <form id="contact-form"
+                method="post"
+                action="contact.php"
+                data-endpoint="contact.php"
+                data-mailbox="legal@tokyocopyright.com"
+                novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="f-name">Name <span class="req">*</span></label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="f-company">Company / organisation</label>
+                <input id="f-company" name="company" type="text" autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="f-email">Email <span class="req">*</span></label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone</label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="f-subject">Reason for contact</label>
+                <select id="f-subject" name="subject">
+                  <option>Membership enquiry</option>
+                  <option>Piracy assessment request</option>
+                  <option>Report piracy of our work</option>
+                  <option>Counter-notice / dispute a removal</option>
+                  <option>Platform or hosting provider</option>
+                  <option>Press or research</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-rights">Type of content</label>
+                <select id="f-rights" name="rights">
+                  <option>Anime — broadcast or simulcast</option>
+                  <option>Anime — film or OVA</option>
+                  <option>Manga or serialised comics</option>
+                  <option>Light novels or publishing</option>
+                  <option>Music, soundtracks or drama CDs</option>
+                  <option>Merchandise or official art</option>
+                  <option>Not applicable</option>
+                </select>
+              </div>
+              <div class="field field-full">
+                <label for="f-message">Message <span class="req">*</span></label>
+                <textarea id="f-message" name="message" required
+                  placeholder="Titles concerned, URLs you have already found, and what you would like us to do."></textarea>
+                <span class="hint">Please do not include passwords, screener credentials or other secrets in this form.</span>
+              </div>
+
+              <!-- Honeypot: hidden from people, tempting to bots. -->
+              <div class="field field-trap" aria-hidden="true">
+                <label for="f-website">Leave this field empty</label>
+                <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="field-check">
+                <input id="f-consent" name="consent" type="checkbox" value="yes" required>
+                <label for="f-consent">
+                  I agree that the Council may store and use the details above in order
+                  to respond to this enquiry, as described in the
+                  <a href="privacy.html">privacy policy</a>. <span class="req">*</span>
+                </label>
+              </div>
+            </div>
+
+            <p class="mt-2">
+              <button class="btn btn-primary" type="submit">Send enquiry</button>
+            </p>
+            <div id="form-status" class="form-status"></div>
+            <noscript>
+              <div class="notice mt-2">
+                <p>
+                  This form needs JavaScript to submit. Please email
+                  <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a>
+                  instead — we read that mailbox continuously.
+                </p>
+              </div>
+            </noscript>
+          </form>
+        </div>
+
+        <div>
+          <div class="card">
+            <span class="kicker">Secretariat</span>
+            <h3>Anime &amp; Manga Rights Council</h3>
+            <dl class="deflist">
+              <dt>Address</dt>
+              <dd>
+                4-6-10 Hitotsubashi<br>
+                Chiyoda-ku, Tokyo 101-8050<br>
+                Japan
+              </dd>
+              <dt>Email</dt>
+              <dd><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></dd>
+              <dt>Telephone</dt>
+              <dd><a href="tel:+81332306016">+81 3-3230-6016</a><br>
+                  <span class="small muted">Domestic: 03-3230-6016</span></dd>
+              <dt>Hours</dt>
+              <dd>Mon–Fri, 09:00–18:00 JST<br>
+                  <span class="small muted">Enforcement systems operate 24/7</span></dd>
+              <dt>Languages</dt>
+              <dd>English, 日本語</dd>
+            </dl>
+          </div>
+
+          <div class="card mt-2">
+            <h3>Which address to use</h3>
+            <ul class="checklist mb-0">
+              <li><strong>Membership &amp; assessments</strong> — the form, or the address above.</li>
+              <li><strong>Disputing a removal</strong> — email with the subject <em>"Counter-notice"</em>; see <a href="public.html#counter-notice">the procedure</a>.</li>
+              <li><strong>Platforms &amp; hosts</strong> — email with the subject <em>"Platform channel"</em> to set up direct reporting.</li>
+              <li><strong>Press &amp; research</strong> — email with the subject <em>"Press"</em>.</li>
+            </ul>
+          </div>
+
+          <div class="notice notice-info mt-2">
+            <p class="mb-0">
+              <strong>Reporting piracy of a member work?</strong> Include the title, the
+              member company if you know it, and any URLs you have already found — it lets
+              us act on the first reply rather than the third.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">Getting here</span>
+        <h2>Chiyoda-ku, Tokyo</h2>
+        <p>
+          Our office is in the Hitotsubashi district of Chiyoda-ku, central Tokyo.
+          Visits are by appointment only — please arrange one in advance by email.
+        </p>
+      </div>
+      <p class="text-center mb-0">
+        <a class="btn btn-dark"
+           href="https://www.google.com/maps/search/?api=1&amp;query=4-6-10+Hitotsubashi+Chiyoda-ku+Tokyo+101-8050"
+           target="_blank" rel="noopener noreferrer">Open in maps</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          The Anime &amp; Manga Rights Council is a member body of Japanese anime and
+          manga companies, acting together against the illegal distribution of their
+          works worldwide.
+        </p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="members.html">Our members</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="public.html">Public information</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="public.html#counter-notice">Counter-notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>4-6-10 Hitotsubashi</li>
+          <li>Chiyoda-ku, Tokyo 101-8050</li>
+          <li>Japan</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">+81 3-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>
+      <ul>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Report piracy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "url": "https://tokyocopyright.com/contact.html",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Anime & Manga Rights Council",
+    "email": "legal@tokyocopyright.com",
+    "telephone": "+81-3-3230-6016",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4-6-10 Hitotsubashi",
+      "addressLocality": "Chiyoda-ku",
+      "addressRegion": "Tokyo",
+      "postalCode": "101-8050",
+      "addressCountry": "JP"
+    }
+  }
+}
+</script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /favicon.svg
+// ============================================================================
+ASSETS["/favicon.svg"] = {
+  type: "image/svg+xml",
+  body: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Anime &amp; Manga Rights Council">
+  <defs>
+    <linearGradient id="amrcBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16294170"/>
+      <stop offset="0" stop-color="#162941"/>
+      <stop offset="1" stop-color="#0b1524"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#amrcBg)"/>
+
+  <!-- Monogram A, drawn as paths so it never depends on a font being present.
+       The counter is cut with evenodd rather than overpainted, so the mark
+       stays correct on any background. -->
+  <path fill="#ffffff" fill-rule="evenodd"
+        d="M32 11 L49 47 L40.2 47 L36.7 39.4 L27.3 39.4 L23.8 47 L15 47 Z
+           M32 24.2 L28.6 32.4 L35.4 32.4 Z"/>
+
+  <!-- Rule: the council's line under the mark -->
+  <rect x="19" y="51" width="26" height="4" rx="2" fill="#d51e38"/>
+</svg>
+`
+};
+
+// ============================================================================
+//  /imprint.html
+// ============================================================================
+ASSETS["/imprint.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imprint — AMRC</title>
+<meta name="description" content="Legal notice and site information for the Anime &amp; Manga Rights Council, 4-6-10 Hitotsubashi, Chiyoda-ku, Tokyo 101-8050, Japan.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/imprint.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/imprint.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/imprint.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/imprint.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="Imprint — AMRC">
+<meta property="og:url" content="https://tokyocopyright.com/imprint.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">+81 3-3230-6016</a></span>
+      <span class="muted nowrap">Chiyoda-ku, Tokyo — JST (UTC+9)</span>
+    </div>
+    <div class="topbar-langs">
+      <span class="lang-pill is-active">EN</span>
+      <a class="lang-pill" href="ja/imprint.html" title="日本語版">日本語</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">Anime &amp; Manga Rights Council</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="members.html">Members</a>
+      <a href="services.html">Services</a>
+      <a href="public.html">Public</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Report piracy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Imprint</div>
+      <h1>Imprint</h1>
+      <p>Legal notice and information about the operator of this website.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+
+      <h2 class="mt-0">Site operator</h2>
+      <dl class="deflist">
+        <dt>Company</dt>
+        <dd>Anime &amp; Manga Rights Council (AMRC)<br>
+          <span class="small muted">アニメ・マンガ権利協議会</span></dd>
+        <dt>Registered address</dt>
+        <dd>
+          4-6-10 Hitotsubashi<br>
+          Chiyoda-ku, Tokyo 101-8050<br>
+          Japan
+        </dd>
+        <dt>Email</dt>
+        <dd><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></dd>
+        <dt>Telephone</dt>
+        <dd><a href="tel:+81332306016">+81 3-3230-6016</a> (domestic 03-3230-6016)</dd>
+        <dt>Business</dt>
+        <dd>Collective anti-piracy and content protection on behalf of member companies</dd>
+        <dt>Representative director</dt>
+        <dd>Akihito Fukuhara</dd>
+        <dt>Representative</dt>
+        <dd>Ken Ishikawa</dd>
+        <dt>Responsible for content</dt>
+        <dd>Ken Ishikawa, at the address above</dd>
+      </dl>
+
+
+      <h2>Disclaimer</h2>
+
+      <h3>Content of this site</h3>
+      <p>
+        The content of this website is provided for general information about our services.
+        We take care to keep it accurate and current, but we give no guarantee that it is
+        complete, accurate or up to date at any given moment. Nothing on this site is legal
+        advice, and nothing on it forms a contract or a binding offer of services.
+      </p>
+
+      <h3>External links</h3>
+      <p>
+        Where this site links to external websites, those sites are outside our control. We
+        check links at the time they are added, but we are not responsible for the content
+        of any external site. If you believe a link from this site leads to unlawful
+        content, please tell us and we will remove it.
+      </p>
+
+      <h3>Copyright in this site</h3>
+      <p>
+        The text, layout, graphics and code of this website are protected by copyright and
+        belong to the Anime &amp; Manga Rights Council unless stated otherwise. Reproduction, adaptation or
+        distribution beyond what copyright law permits requires our prior written consent.
+        Personal, non-commercial use is permitted.
+      </p>
+
+      <h3>Trade marks</h3>
+      <p>
+        Product names, company names and marks referred to on this site belong to their
+        respective owners and are used for identification purposes only. Their use does not
+        imply any endorsement or affiliation.
+      </p>
+
+      <h2>Notices to us</h2>
+      <p>
+        Formal notices, including notices about content on this website, should be sent to
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a> or by post to
+        the registered address above. If you wish to dispute a takedown notice we have sent,
+        follow the procedure set out on our
+        <a href="public.html#counter-notice">public information page</a>.
+      </p>
+
+      <h2>Privacy</h2>
+      <p>
+        How we handle personal data is described in our
+        <a href="privacy.html">privacy policy</a>.
+      </p>
+
+      <p class="small muted mt-3">Last updated: <span data-year>2026</span></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          The Anime &amp; Manga Rights Council is a member body of Japanese anime and
+          manga companies, acting together against the illegal distribution of their
+          works worldwide.
+        </p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="members.html">Our members</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="public.html">Public information</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="public.html#counter-notice">Counter-notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>4-6-10 Hitotsubashi</li>
+          <li>Chiyoda-ku, Tokyo 101-8050</li>
+          <li>Japan</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">+81 3-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>
+      <ul>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Report piracy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /index.html
+// ============================================================================
+ASSETS["/index.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMRC — Anime &amp; Manga Rights Council</title>
+<meta name="description" content="The Anime &amp; Manga Rights Council is a member body of Japanese anime and manga companies acting together against the illegal distribution of their works worldwide.">
+<meta name="keywords" content="anime anti piracy, manga anti piracy, scanlation, aggregator sites, content protection, takedown, DMCA, copyright enforcement, Japan, Tokyo">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/index.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="AMRC — Anime &amp; Manga Rights Council">
+<meta property="og:description" content="Japanese anime and manga companies acting together against illegal distribution of their works, worldwide.">
+<meta property="og:url" content="https://tokyocopyright.com/">
+<meta property="og:image" content="https://tokyocopyright.com/assets/img/logo.svg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">+81 3-3230-6016</a></span>
+      <span class="muted nowrap">Chiyoda-ku, Tokyo — JST (UTC+9)</span>
+    </div>
+    <div class="topbar-langs">
+      <span class="lang-pill is-active">EN</span>
+      <a class="lang-pill" href="ja/index.html" title="日本語版">日本語</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">Anime &amp; Manga Rights Council</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html" class="is-active">Home</a>
+      <a href="about.html">About</a>
+      <a href="members.html">Members</a>
+      <a href="services.html">Services</a>
+      <a href="public.html">Public</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Report piracy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap text-center">
+      <span class="eyebrow">Established in Tokyo · Operating worldwide</span>
+      <h1>Piracy ends where we begin.</h1>
+      <div class="rule"></div>
+      <p>
+        The Anime &amp; Manga Rights Council is a member body of Japanese anime and manga
+        companies. We locate illegal copies of our members' works across the open web,
+        streaming portals, aggregator sites, file hosts, social platforms and messaging
+        networks — and we get them removed, at scale, around the clock.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="members.html">Our members</a>
+        <a class="btn btn-ghost" href="services.html">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <h2>
+        Anime and manga are among the most pirated content in the world, and no single
+        studio or publisher can meet that scale alone. Our members meet it
+        <strong>together</strong> — pooling detection, evidence and enforcement across
+        one shared platform, without ever suing a single fan.
+      </h2>
+    </div>
+  </section>
+
+  <section class="section-tight section-grey">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat">
+          <small>we never file</small>
+          <div class="figure">None</div>
+          <div class="label">Lawsuits against fans</div>
+        </div>
+        <div class="stat">
+          <small>enforcement runs</small>
+          <div class="figure">24/7</div>
+          <div class="label">Every day of the year</div>
+        </div>
+        <div class="stat">
+          <small>reviewed by a person</small>
+          <div class="figure">Every</div>
+          <div class="label">Borderline match</div>
+        </div>
+        <div class="stat">
+          <small>we answer within</small>
+          <div class="figure">1 day</div>
+          <div class="label">Counter-notices, JST</div>
+        </div>
+      </div>
+      <!-- These four are policies the Council sets for itself, so they are true by
+           definition rather than by measurement. Swap in performance figures
+           (titles protected, copies removed, removal rate) once you have data you
+           can evidence — an unverifiable performance claim is the first thing an
+           opposing lawyer or journalist will test. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">What we do</span>
+        <h2>One platform, every distribution channel</h2>
+        <p>
+          Pirated material does not stay in one place. Our crawlers and fingerprint
+          matching follow it wherever it travels, and our notice pipeline reaches the
+          parties who can actually take it down.
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon">01</div>
+          <h3>Continuous monitoring</h3>
+          <p>
+            Search engines, streaming and cyberlocker sites, torrent indexes, IPTV
+            portals, social video, cloud drives and closed messaging channels are swept
+            continuously — new releases from the moment of publication.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">02</div>
+          <h3>Content fingerprinting</h3>
+          <p>
+            Video, audio and page-image fingerprints identify a member's work even when it
+            has been re-encoded, cropped, mirrored, hardsubbed over, slowed down or
+            re-uploaded under an unrelated title.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">03</div>
+          <h3>Automated takedown</h3>
+          <p>
+            Verified matches trigger properly formed notices to hosts, platforms, CDNs,
+            registrars and search engines under the applicable law of each jurisdiction —
+            in the correct language, day and night.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">04</div>
+          <h3>Search de-indexing</h3>
+          <p>
+            Infringing URLs are removed from search results so that pirated copies stop
+            outranking the official release on the first page.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">05</div>
+          <h3>Simulcast protection</h3>
+          <p>
+            New episodes and theatrical premieres are monitored in real time from the
+            moment they air, with a rapid-response window measured in minutes, not days.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">06</div>
+          <h3>Evidence &amp; reporting</h3>
+          <p>
+            Every notice, response and re-upload is logged with timestamps and preserved
+            evidence — usable for reporting, negotiation, or escalation to counsel.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-center mt-3 mb-0">
+        <a class="btn btn-dark" href="services.html">Full service overview</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">The process</span>
+        <h2>From upload to removal</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Accession</h3>
+          <p>A joining member lodges its catalogue and proof of rights. We build reference fingerprints and register the simulcast calendar.</p>
+        </div>
+        <div class="step">
+          <h3>Detection</h3>
+          <p>Crawlers and matching engines locate copies and near-copies across every monitored channel.</p>
+        </div>
+        <div class="step">
+          <h3>Verification</h3>
+          <p>Matches are scored and checked so that legitimate, licensed and fair-use material is never targeted.</p>
+        </div>
+        <div class="step">
+          <h3>Removal</h3>
+          <p>Notices go out automatically, re-uploads are caught, and results land in the member's dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <span class="kicker">Why companies join</span>
+          <h2>Enforcement that protects the fandom, not just the catalogue</h2>
+          <p>
+            Anime and manga are carried by their fans. Enforcement aimed at viewers and
+            readers damages the very works it is meant to defend, so our members have bound
+            the Council to a different model: we act against the infrastructure that
+            distributes illegal copies, never against the audience.
+          </p>
+          <ul class="checklist">
+            <li>No lawsuits, no cease-and-desist letters and no damages claims against fans — ever.</li>
+            <li>No mass surveillance of private users; we index public and semi-public distribution only.</li>
+            <li>Human review before any borderline notice leaves our system.</li>
+            <li>A documented counter-notice route for anyone who believes a removal was wrong.</li>
+          </ul>
+          <p class="mb-0"><a href="public.html">Read our public commitments →</a></p>
+        </div>
+        <div class="split-figure">
+          <h3>What membership gives you</h3>
+          <p>
+            Companies join when in-house teams can no longer keep pace with the volume of
+            re-uploads — and because acting collectively carries weight that a single
+            studio's notices do not.
+          </p>
+          <ul class="checklist">
+            <li>Millions of notices processed per year</li>
+            <li>Coverage in 30+ languages and scripts</li>
+            <li>24/7 automated operation, JST-based support</li>
+            <li>Direct trusted-flagger channels with major platforms</li>
+            <li>API and dashboard access for your own team</li>
+            <li>Shared intelligence on repeat-infringing networks</li>
+            <li>One voice in dealings with the major platforms</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-ink">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">Coverage</span>
+        <h2>What we protect</h2>
+      </div>
+      <div class="grid grid-4">
+        <div class="card card-flat">
+          <h3>Broadcast &amp; simulcast anime</h3>
+          <p class="small mb-0">Weekly episodes, unauthorised subs and dubs, embed portals and IPTV restreams.</p>
+        </div>
+        <div class="card card-flat">
+          <h3>Manga &amp; serialisation</h3>
+          <p class="small mb-0">Raw scans, scanlation mirrors, aggregator sites and pre-publication leaks.</p>
+        </div>
+        <div class="card card-flat">
+          <h3>Features &amp; OVAs</h3>
+          <p class="small mb-0">Theatrical releases, home video rips, box sets and screener leaks.</p>
+        </div>
+        <div class="card card-flat">
+          <h3>Music &amp; audio works</h3>
+          <p class="small mb-0">Opening and ending themes, soundtracks, drama CDs and unreleased material.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Considering membership?</h2>
+      <p>
+        Send us a title and we will report back on where it is currently being
+        distributed illegally, and what joining the Council would cover — with no
+        obligation.
+      </p>
+      <a class="btn" href="contact.html">Request a piracy assessment</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          The Anime &amp; Manga Rights Council is a member body of Japanese anime and
+          manga companies, acting together against the illegal distribution of their
+          works worldwide.
+        </p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="members.html">Our members</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="public.html">Public information</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="public.html#counter-notice">Counter-notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>4-6-10 Hitotsubashi</li>
+          <li>Chiyoda-ku, Tokyo 101-8050</li>
+          <li>Japan</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">+81 3-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>
+      <ul>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Report piracy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Anime & Manga Rights Council",
+  "url": "https://tokyocopyright.com",
+  "logo": "https://tokyocopyright.com/assets/img/logo.svg",
+  "email": "legal@tokyocopyright.com",
+  "telephone": "+81-3-3230-6016",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4-6-10 Hitotsubashi",
+    "addressLocality": "Chiyoda-ku",
+    "addressRegion": "Tokyo",
+    "postalCode": "101-8050",
+    "addressCountry": "JP"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "legal@tokyocopyright.com",
+    "telephone": "+81-3-3230-6016",
+    "availableLanguage": ["en", "ja"]
+  }
+}
+</script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /ja/404.html
+// ============================================================================
+ASSETS["/ja/404.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ページが見つかりません — AMRC</title>
+<meta name="description" content="お探しのページは見つかりませんでした。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/ja/404.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/404.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/404.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/404.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="ページが見つかりません — AMRC">
+<meta property="og:description" content="お探しのページは見つかりませんでした。">
+<meta property="og:url" content="https://tokyocopyright.com/ja/404.html">
+<meta property="og:locale" content="ja_JP">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">03-3230-6016</a></span>
+      <span class="muted nowrap">東京都千代田区 — 平日 9:00–18:00</span>
+    </div>
+    <div class="topbar-langs">
+      <a class="lang-pill" href="../404.html" title="English">EN</a>
+      <span class="lang-pill is-active">日本語</span>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">アニメ・マンガ権利協議会</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="メニューを開閉">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="about.html">協議会について</a>
+      <a href="members.html">会員社</a>
+      <a href="services.html">活動内容</a>
+      <a href="public.html">一般の皆様へ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html" class="nav-cta">侵害の報告</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section text-center">
+    <div class="wrap">
+      <span class="kicker">エラー 404</span>
+      <h1>ページが見つかりませんでした</h1>
+      <p class="lead">
+        アドレスが変更されたか、リンクが古くなっている可能性があります。
+      </p>
+      <p class="mt-2">
+        <a class="btn btn-primary" href="index.html">ホームに戻る</a>
+        <a class="btn btn-dark" href="contact.html">お問い合わせ</a>
+      </p>
+      <p class="muted mt-3 mb-0">
+        削除要請に異議をお持ちの方は、
+        <a href="public.html#counter-notice">異議申立ての手順</a>をご覧ください。
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。
+          会員社の作品の違法流通に、共同で対処しています。
+        </p>
+      </div>
+      <div>
+        <h4>協議会</h4>
+        <ul>
+          <li><a href="about.html">協議会について</a></li>
+          <li><a href="members.html">会員社</a></li>
+          <li><a href="services.html">活動内容</a></li>
+          <li><a href="public.html">一般の皆様へ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>規約・法務</h4>
+        <ul>
+          <li><a href="imprint.html">運営者情報</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="public.html#counter-notice">異議申立て</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>連絡先</h4>
+        <ul>
+          <li>〒101-8050</li>
+          <li>東京都千代田区一ツ橋4-6-10</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">03-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>
+      <ul>
+        <li><a href="imprint.html">運営者情報</a></li>
+        <li><a href="privacy.html">プライバシー</a></li>
+        <li><a href="contact.html">侵害の報告</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /ja/about.html
+// ============================================================================
+ASSETS["/ja/about.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>協議会について — AMRC</title>
+<meta name="description" content="アニメ・マンガ権利協議会の成り立ち、活動の原則、運営体制、および加入の手続きについてご説明します。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/ja/about.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/about.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/about.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/about.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="協議会について — AMRC">
+<meta property="og:description" content="アニメ・マンガ権利協議会の成り立ち、活動の原則、運営体制、および加入の手続きについてご説明します。">
+<meta property="og:url" content="https://tokyocopyright.com/ja/about.html">
+<meta property="og:locale" content="ja_JP">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">03-3230-6016</a></span>
+      <span class="muted nowrap">東京都千代田区 — 平日 9:00–18:00</span>
+    </div>
+    <div class="topbar-langs">
+      <a class="lang-pill" href="../about.html" title="English">EN</a>
+      <span class="lang-pill is-active">日本語</span>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">アニメ・マンガ権利協議会</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="メニューを開閉">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="about.html" class="is-active">協議会について</a>
+      <a href="members.html">会員社</a>
+      <a href="services.html">活動内容</a>
+      <a href="public.html">一般の皆様へ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html" class="nav-cta">侵害の報告</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">ホーム</a> &nbsp;/&nbsp; 協議会について</div>
+      <h1>協議会について</h1>
+      <p>日本のアニメ・マンガ関連企業による会員制団体として、会員社が共同で利用する技術基盤を運営しています。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <span class="kicker">私たちについて</span>
+          <h2>法律事務所ではなく、共同の権利行使機関です</h2>
+          <p>
+            協議会は、ひとつの認識から生まれました。海賊版対策における制約は法制度ではなく、
+            処理能力にあるということです。人気作品は一週間のうちに、数十のプラットフォームで
+            数千回も再投稿されます。この量に単独で対応できる企業はなく、
+            各社が個別に費用を負担しながら、同じ戦いに敗れ続けていました。
+          </p>
+          <p>
+            そこで会員社は、ひとつの処理基盤を構築し、共同で利用することにしました。
+            クローラー、フィンガープリント照合、通知送信は全作品を横断して稼働し続け、
+            担当者は人の判断を要する案件——判定が分かれるもの、常習的な侵害者、
+            要請に応じない事業者、掲載前の流出——に専念します。
+          </p>
+          <p class="mb-0">
+            協議会は会員社の顧問弁護士と連携して活動します。これに代わるものではなく、
+            法的助言を行うものでもありません。
+          </p>
+        </div>
+        <div class="split-figure">
+          <h3>概要</h3>
+          <ul class="checklist">
+            <li>事務局：東京都千代田区</li>
+            <li>年中無休・24時間体制での権利行使</li>
+            <li>30以上の言語で通知を送信</li>
+            <li>会員社：アニメ制作会社、マンガ出版社、ライセンサー</li>
+            <li>対応言語：日本語・英語</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">活動の原則</span>
+        <h2>私たちが定めている制約</h2>
+        <p>以下は宣伝文句ではなく、協議会を拘束する規則です。会員社の要請であっても、これを超えて行動することはありません。</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>ファンを対象としない</h3>
+          <p>
+            視聴者・読者・聴取者に対する提訴、請求、警告、督促は行いません。
+            対象とするのは違法な複製の流通であり、受け手ではありません。
+          </p>
+        </div>
+        <div class="card">
+          <h3>量より正確性</h3>
+          <p>
+            誤った削除は正当な表現を奪い、会員社の信用を損ないます。
+            照合の確度基準、ライセンシーの除外リスト、判断が分かれる案件の人による確認を、
+            処理過程に組み込んでいます。
+          </p>
+        </div>
+        <div class="card">
+          <h3>段階的な対応</h3>
+          <p>
+            まず直接対処できるホスティング事業者・プラットフォームに要請し、
+            応じられない場合に限り、レジストラ、決済事業者、検索エンジンへ段階を上げます。
+          </p>
+        </div>
+        <div class="card">
+          <h3>権利の確認を前提に</h3>
+          <p>
+            通知を一件でも送る前に、会員社が主張する権利を、主張する地域について実際に
+            保有しているかを確認します。海外ライセンシーによる同時配信の権利関係も含みます。
+          </p>
+        </div>
+        <div class="card">
+          <h3>相手方への透明性</h3>
+          <p>
+            すべての通知に、送信者、依頼元、対象作品、法的根拠を明記し、
+            異議がある場合の申立方法を案内しています。
+          </p>
+        </div>
+        <div class="card">
+          <h3>データの最小化</h3>
+          <p>
+            侵害の立証に必要な証拠のみを記録し、それ以上は収集しません。
+            個人の利用者のプロファイルを作成することはありません。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <span class="kicker">加入について</span>
+      <h2>加入までの流れ</h2>
+      <p>
+        多くの場合、まず侵害状況の調査から始まります。加入をご検討の企業から数作品をお預かりし、
+        現在どこで、どの程度の規模で違法に流通しているかをご報告します。
+        この報告書は、加入されるかどうかにかかわらずお渡しします。
+      </p>
+      <p>
+        お進みいただく場合、加入手続きは数日で完了します。作品リストと権利の証明をお預かりし、
+        照合用フィンガープリントを生成し、同時配信・連載のスケジュールを登録します。
+        これにより、最新話や新章は公開の瞬間から保護対象となります。あわせて、
+        ダッシュボードとAPIの認証情報を発行します。
+      </p>
+      <p>
+        以後、システムは自動で稼働します。会員社には定期報告、検出・削除状況のリアルタイム表示、
+        権利行使方針を決定する会員総会での議決権、そして人の対応が必要な場合の
+        東京の専任担当者が提供されます。
+      </p>
+
+      <div class="notice mt-2">
+        <p>
+          <strong>ご留意ください：</strong>協議会は会員社に対し技術的な権利行使業務を提供します。
+          法律事務所ではなく、本サイトの記載は法的助言を構成するものではありません。
+          訴訟が適切な場合には、会員社の代理人に対し証拠と報告を提供して支援します。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">運営体制</span>
+        <h2>協議会の運営</h2>
+        <p>協議会は会員社から与えられた権限の範囲でのみ活動します。その権限は、明文化されています。</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>会員総会</h3>
+          <p>
+            正会員は保有作品の規模にかかわらず、一社一議決権を有します。
+            総会は権利行使方針を定め、新規会員を承認し、予算を議決します。
+          </p>
+        </div>
+        <div class="card">
+          <h3>事務局</h3>
+          <p>
+            千代田区の常設チームが、総会の定めた方針の範囲内で日々の権利行使を担います。
+            事務局の判断で対象範囲を広げることはできません。
+          </p>
+        </div>
+        <div class="card">
+          <h3>権利行使規程</h3>
+          <p>
+            前掲の原則は協議会の規程に明記されています。会員社が事務局に対し、
+            ファンへの措置や、権利を有しない作品についての通知を指示することはできません。
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>作品の被害状況をご確認になりますか</h2>
+      <p>数作品をお知らせいただければ、調査のうえ書面でご報告します。</p>
+      <a class="btn" href="contact.html">調査を依頼する</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。
+          会員社の作品の違法流通に、共同で対処しています。
+        </p>
+      </div>
+      <div>
+        <h4>協議会</h4>
+        <ul>
+          <li><a href="about.html">協議会について</a></li>
+          <li><a href="members.html">会員社</a></li>
+          <li><a href="services.html">活動内容</a></li>
+          <li><a href="public.html">一般の皆様へ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>規約・法務</h4>
+        <ul>
+          <li><a href="imprint.html">運営者情報</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="public.html#counter-notice">異議申立て</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>連絡先</h4>
+        <ul>
+          <li>〒101-8050</li>
+          <li>東京都千代田区一ツ橋4-6-10</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">03-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>
+      <ul>
+        <li><a href="imprint.html">運営者情報</a></li>
+        <li><a href="privacy.html">プライバシー</a></li>
+        <li><a href="contact.html">侵害の報告</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /ja/contact.html
+// ============================================================================
+ASSETS["/ja/contact.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせ — AMRC</title>
+<meta name="description" content="アニメ・マンガ権利協議会へのお問い合わせ。加入のご相談、侵害の報告、異議申立て、取材：legal@tokyocopyright.com / 03-3230-6016">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/ja/contact.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/contact.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/contact.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="お問い合わせ — AMRC">
+<meta property="og:description" content="アニメ・マンガ権利協議会へのお問い合わせ。加入のご相談、侵害の報告、異議申立て、取材：legal@tokyocopyright.com / 03-3230-6016">
+<meta property="og:url" content="https://tokyocopyright.com/ja/contact.html">
+<meta property="og:locale" content="ja_JP">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">03-3230-6016</a></span>
+      <span class="muted nowrap">東京都千代田区 — 平日 9:00–18:00</span>
+    </div>
+    <div class="topbar-langs">
+      <a class="lang-pill" href="../contact.html" title="English">EN</a>
+      <span class="lang-pill is-active">日本語</span>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">アニメ・マンガ権利協議会</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="メニューを開閉">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="about.html">協議会について</a>
+      <a href="members.html">会員社</a>
+      <a href="services.html">活動内容</a>
+      <a href="public.html">一般の皆様へ</a>
+      <a href="contact.html" class="is-active">お問い合わせ</a>
+      <a href="contact.html" class="nav-cta">侵害の報告</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">ホーム</a> &nbsp;/&nbsp; お問い合わせ</div>
+      <h1>お問い合わせ</h1>
+      <p>加入のご相談、侵害の報告、通知に関する異議申立て、取材のいずれも、以下の窓口で承ります。日本語・英語のどちらでもお受けしています。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split split-top">
+
+        <div>
+          <span class="kicker">お問い合わせフォーム</span>
+          <h2>ご用件をお聞かせください</h2>
+          <p>
+            保護をご希望の内容、または解決をご希望の事項をお知らせください。
+            加入に関するお問い合わせには、1営業日以内（日本時間）にご返信します。
+          </p>
+
+          <form id="contact-form"
+                method="post"
+                action="../contact.php"
+                data-endpoint="../contact.php"
+                data-mailbox="legal@tokyocopyright.com"
+                novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="f-name">お名前 <span class="req">*</span></label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="f-company">会社・団体名</label>
+                <input id="f-company" name="company" type="text" autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="f-email">メールアドレス <span class="req">*</span></label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="f-phone">電話番号</label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="f-subject">お問い合わせ区分</label>
+                <select id="f-subject" name="subject">
+                  <option>加入について</option>
+                  <option>侵害状況の調査依頼</option>
+                  <option>自社作品の侵害報告</option>
+                  <option>異議申立て・削除への不服</option>
+                  <option>プラットフォーム／ホスティング事業者</option>
+                  <option>取材・研究</option>
+                  <option>その他</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-rights">作品の種別</label>
+                <select id="f-rights" name="rights">
+                  <option>アニメ — 放送・同時配信</option>
+                  <option>アニメ — 劇場作品・OVA</option>
+                  <option>マンガ・連載作品</option>
+                  <option>ライトノベル・出版物</option>
+                  <option>音楽・サウンドトラック・ドラマCD</option>
+                  <option>商品・公式イラスト</option>
+                  <option>該当なし</option>
+                </select>
+              </div>
+              <div class="field field-full">
+                <label for="f-message">お問い合わせ内容 <span class="req">*</span></label>
+                <textarea id="f-message" name="message" required
+                  placeholder="対象作品、すでに把握されているURL、ご希望の対応内容をご記入ください。"></textarea>
+                <span class="hint">パスワードや試写用の認証情報など、秘匿すべき情報は記入しないでください。</span>
+              </div>
+
+              <div class="field field-trap" aria-hidden="true">
+                <label for="f-website">この欄は空欄のままにしてください</label>
+                <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="field-check">
+                <input id="f-consent" name="consent" type="checkbox" value="yes" required>
+                <label for="f-consent">
+                  本お問い合わせへの回答のため、当協議会が上記の情報を保管・利用することに同意します
+                  （<a href="privacy.html">プライバシーポリシー</a>）。<span class="req">*</span>
+                </label>
+              </div>
+            </div>
+
+            <p class="mt-2">
+              <button class="btn btn-primary" type="submit">送信する</button>
+            </p>
+            <div id="form-status" class="form-status"></div>
+            <noscript>
+              <div class="notice mt-2">
+                <p>
+                  このフォームの送信にはJavaScriptが必要です。
+                  <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a>
+                  まで直接メールでご連絡ください。
+                </p>
+              </div>
+            </noscript>
+          </form>
+        </div>
+
+        <div>
+          <div class="card">
+            <span class="kicker">事務局</span>
+            <h3>アニメ・マンガ権利協議会</h3>
+            <dl class="deflist">
+              <dt>所在地</dt>
+              <dd>
+                〒101-8050<br>
+                東京都千代田区一ツ橋4-6-10
+              </dd>
+              <dt>メール</dt>
+              <dd><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></dd>
+              <dt>電話</dt>
+              <dd><a href="tel:+81332306016">03-3230-6016</a><br>
+                  <span class="small muted">海外から：+81 3-3230-6016</span></dd>
+              <dt>受付時間</dt>
+              <dd>平日 9:00–18:00（日本時間）<br>
+                  <span class="small muted">監視システムは24時間稼働しています</span></dd>
+              <dt>対応言語</dt>
+              <dd>日本語・English</dd>
+            </dl>
+          </div>
+
+          <div class="card mt-2">
+            <h3>ご用件別の窓口</h3>
+            <ul class="checklist mb-0">
+              <li><strong>加入・調査依頼</strong> — 本フォーム、または上記アドレスへ。</li>
+              <li><strong>削除への不服</strong> — 件名を<em>「異議申立て」</em>としてメールを。手順は<a href="public.html#counter-notice">こちら</a>。</li>
+              <li><strong>プラットフォーム事業者</strong> — 件名を<em>「プラットフォーム連携」</em>として、直接報告の設定をご相談ください。</li>
+              <li><strong>取材・研究</strong> — 件名を<em>「取材」</em>としてご連絡ください。</li>
+            </ul>
+          </div>
+
+          <div class="notice notice-info mt-2">
+            <p class="mb-0">
+              <strong>会員社作品の侵害を報告される場合</strong>は、作品名、分かる範囲での権利者、
+              すでに把握されているURLをお知らせください。初回のご返信で対応に着手できます。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">所在地</span>
+        <h2>東京都千代田区</h2>
+        <p>
+          事務局は千代田区一ツ橋にあります。ご来訪は事前予約制です。
+          あらかじめメールにてご連絡ください。
+        </p>
+      </div>
+      <p class="text-center mb-0">
+        <a class="btn btn-dark"
+           href="https://www.google.com/maps/search/?api=1&amp;query=東京都千代田区一ツ橋4-6-10"
+           target="_blank" rel="noopener noreferrer">地図で見る</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。
+          会員社の作品の違法流通に、共同で対処しています。
+        </p>
+      </div>
+      <div>
+        <h4>協議会</h4>
+        <ul>
+          <li><a href="about.html">協議会について</a></li>
+          <li><a href="members.html">会員社</a></li>
+          <li><a href="services.html">活動内容</a></li>
+          <li><a href="public.html">一般の皆様へ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>規約・法務</h4>
+        <ul>
+          <li><a href="imprint.html">運営者情報</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="public.html#counter-notice">異議申立て</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>連絡先</h4>
+        <ul>
+          <li>〒101-8050</li>
+          <li>東京都千代田区一ツ橋4-6-10</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">03-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>
+      <ul>
+        <li><a href="imprint.html">運営者情報</a></li>
+        <li><a href="privacy.html">プライバシー</a></li>
+        <li><a href="contact.html">侵害の報告</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /ja/imprint.html
+// ============================================================================
+ASSETS["/ja/imprint.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>運営者情報 — AMRC</title>
+<meta name="description" content="アニメ・マンガ権利協議会の運営者情報、免責事項、著作権表示。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/ja/imprint.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/imprint.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/imprint.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/imprint.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="運営者情報 — AMRC">
+<meta property="og:description" content="アニメ・マンガ権利協議会の運営者情報、免責事項、著作権表示。">
+<meta property="og:url" content="https://tokyocopyright.com/ja/imprint.html">
+<meta property="og:locale" content="ja_JP">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">03-3230-6016</a></span>
+      <span class="muted nowrap">東京都千代田区 — 平日 9:00–18:00</span>
+    </div>
+    <div class="topbar-langs">
+      <a class="lang-pill" href="../imprint.html" title="English">EN</a>
+      <span class="lang-pill is-active">日本語</span>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">アニメ・マンガ権利協議会</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="メニューを開閉">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="about.html">協議会について</a>
+      <a href="members.html">会員社</a>
+      <a href="services.html">活動内容</a>
+      <a href="public.html">一般の皆様へ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html" class="nav-cta">侵害の報告</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">ホーム</a> &nbsp;/&nbsp; 運営者情報</div>
+      <h1>運営者情報</h1>
+      <p>本サイトの運営者に関する情報および法的表示です。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+
+      <h2 class="mt-0">運営者</h2>
+      <dl class="deflist">
+        <dt>名称</dt>
+        <dd>アニメ・マンガ権利協議会（AMRC）<br>
+          <span class="small muted">Anime &amp; Manga Rights Council</span></dd>
+        <dt>所在地</dt>
+        <dd>
+          〒101-8050<br>
+          東京都千代田区一ツ橋4-6-10
+        </dd>
+        <dt>メール</dt>
+        <dd><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></dd>
+        <dt>電話</dt>
+        <dd><a href="tel:+81332306016">03-3230-6016</a></dd>
+        <dt>代表取締役</dt>
+        <dd>Akihito Fukuhara</dd>
+        <dt>代表者</dt>
+        <dd>Ken Ishikawa</dd>
+        <dt>事業内容</dt>
+        <dd>会員社を代理する著作権保護および海賊版対策業務</dd>
+        <dt>本サイトの管理責任者</dt>
+        <dd>Ken Ishikawa（上記所在地）</dd>
+      </dl>
+
+
+      <h2>免責事項</h2>
+
+      <h3>掲載内容について</h3>
+      <p>
+        本サイトの内容は、当協議会の活動に関する一般的な情報提供を目的としています。
+        正確かつ最新の状態を保つよう努めていますが、内容の完全性、正確性、
+        最新性を保証するものではありません。本サイトの記載は法的助言を構成せず、
+        契約の申込みまたは業務提供の確定的な申出を構成するものでもありません。
+      </p>
+
+      <h3>外部リンクについて</h3>
+      <p>
+        本サイトから外部サイトへリンクしている場合、当該サイトは当協議会の管理下にありません。
+        掲載時に確認は行っていますが、外部サイトの内容について責任を負いかねます。
+        本サイトからのリンク先に違法な内容があるとお気づきの場合は、ご連絡いただければ削除します。
+      </p>
+
+      <h3>本サイトの著作権</h3>
+      <p>
+        本サイトの文章、レイアウト、図版、コードは著作権により保護されており、
+        特段の記載がない限りアニメ・マンガ権利協議会に帰属します。
+        著作権法上認められる範囲を超える複製、翻案、頒布には、事前の書面による許諾が必要です。
+        私的かつ非商業的な利用は認められます。
+      </p>
+
+      <h3>商標について</h3>
+      <p>
+        本サイトに記載の製品名、会社名、標章は各権利者に帰属し、識別のためにのみ使用しています。
+        使用は、推奨または提携関係を意味するものではありません。
+      </p>
+
+      <h2>当協議会への通知</h2>
+      <p>
+        本サイトの掲載内容に関するものを含む正式なご通知は、
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a>
+        または上記所在地宛にご送付ください。当協議会が送信した削除要請に異議がある場合は、
+        <a href="public.html#counter-notice">一般の皆様へ</a>のページに記載の手順に従ってください。
+      </p>
+
+      <h2>個人情報の取扱い</h2>
+      <p>
+        個人情報の取扱いについては<a href="privacy.html">プライバシーポリシー</a>をご覧ください。
+      </p>
+
+      <p class="small muted mt-3">最終更新：<span data-year>2026</span>年</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。
+          会員社の作品の違法流通に、共同で対処しています。
+        </p>
+      </div>
+      <div>
+        <h4>協議会</h4>
+        <ul>
+          <li><a href="about.html">協議会について</a></li>
+          <li><a href="members.html">会員社</a></li>
+          <li><a href="services.html">活動内容</a></li>
+          <li><a href="public.html">一般の皆様へ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>規約・法務</h4>
+        <ul>
+          <li><a href="imprint.html">運営者情報</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="public.html#counter-notice">異議申立て</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>連絡先</h4>
+        <ul>
+          <li>〒101-8050</li>
+          <li>東京都千代田区一ツ橋4-6-10</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">03-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>
+      <ul>
+        <li><a href="imprint.html">運営者情報</a></li>
+        <li><a href="privacy.html">プライバシー</a></li>
+        <li><a href="contact.html">侵害の報告</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /ja/index.html
+// ============================================================================
+ASSETS["/ja/index.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMRC — アニメ・マンガ権利協議会</title>
+<meta name="description" content="アニメ・マンガ権利協議会（AMRC）は、日本のアニメ・マンガ関連企業による会員制団体です。会員社の作品の違法流通に対し、世界規模で共同対処しています。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/ja/index.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/index.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/index.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="AMRC — アニメ・マンガ権利協議会">
+<meta property="og:description" content="アニメ・マンガ権利協議会（AMRC）は、日本のアニメ・マンガ関連企業による会員制団体です。会員社の作品の違法流通に対し、世界規模で共同対処しています。">
+<meta property="og:url" content="https://tokyocopyright.com/ja/index.html">
+<meta property="og:locale" content="ja_JP">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">03-3230-6016</a></span>
+      <span class="muted nowrap">東京都千代田区 — 平日 9:00–18:00</span>
+    </div>
+    <div class="topbar-langs">
+      <a class="lang-pill" href="../index.html" title="English">EN</a>
+      <span class="lang-pill is-active">日本語</span>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">アニメ・マンガ権利協議会</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="メニューを開閉">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="メインナビゲーション">
+      <a href="index.html" class="is-active">ホーム</a>
+      <a href="about.html">協議会について</a>
+      <a href="members.html">会員社</a>
+      <a href="services.html">活動内容</a>
+      <a href="public.html">一般の皆様へ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html" class="nav-cta">侵害の報告</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap text-center">
+      <span class="eyebrow">東京発・世界規模で活動</span>
+      <h1>海賊版は、ここで終わる。</h1>
+      <div class="rule"></div>
+      <p>
+        アニメ・マンガ権利協議会（AMRC）は、日本のアニメ・マンガ関連企業による会員制団体です。
+        会員社の作品の違法な複製を、一般のウェブサイト、配信ポータル、まとめサイト、ファイルホスト、
+        SNS、メッセージングサービスに至るまで検出し、24時間体制で削除しています。
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="members.html">会員社一覧</a>
+        <a class="btn btn-ghost" href="services.html">活動内容を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <h2>
+        アニメとマンガは、世界で最も海賊版の被害を受けているコンテンツのひとつです。
+        その規模は、一社単独で対応できるものではありません。会員社は
+        <strong>共同で</strong>これに向き合い、検出・証拠保全・権利行使を一つの基盤に集約しています。
+        ファン個人を提訴することは、一切ありません。
+      </h2>
+    </div>
+  </section>
+
+  <section class="section-tight section-grey">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat">
+          <small>一切行いません</small>
+          <div class="figure">なし</div>
+          <div class="label">ファンへの法的措置</div>
+        </div>
+        <div class="stat">
+          <small>稼働体制</small>
+          <div class="figure">24/7</div>
+          <div class="label">年中無休で監視</div>
+        </div>
+        <div class="stat">
+          <small>担当者が確認</small>
+          <div class="figure">全件</div>
+          <div class="label">判断の分かれる案件</div>
+        </div>
+        <div class="stat">
+          <small>回答の目安</small>
+          <div class="figure">1営業日</div>
+          <div class="label">異議申立てへの回答</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">活動内容</span>
+        <h2>あらゆる流通経路を、一つの基盤で</h2>
+        <p>
+          違法な複製は一箇所に留まりません。クローラーとフィンガープリント照合が拡散を追跡し、
+          実際に削除を実行できる事業者へ通知を届けます。
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon">01</div>
+          <h3>継続的なモニタリング</h3>
+          <p>
+            検索エンジン、配信・アップローダーサイト、トレントインデックス、IPTVポータル、
+            SNS動画、クラウドストレージ、非公開のメッセージチャンネルまでを継続的に巡回します。
+            新作は公開直後から対象となります。
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">02</div>
+          <h3>コンテンツ・フィンガープリント</h3>
+          <p>
+            映像・音声・誌面画像の特徴量照合により、再エンコード、トリミング、左右反転、
+            字幕の焼き込み、再生速度の変更、無関係なタイトルでの再投稿を経ても、
+            会員社の作品を特定します。
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">03</div>
+          <h3>削除要請の送信</h3>
+          <p>
+            照合・検証を経た案件について、ホスティング事業者、プラットフォーム、CDN、
+            レジストラ、検索エンジンに対し、各国の適用法令に基づく削除要請を、
+            相手方の言語で昼夜を問わず送信します。
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">04</div>
+          <h3>検索結果からの削除</h3>
+          <p>
+            侵害URLを検索結果から削除し、海賊版が正規配信より上位に表示される状態を解消します。
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">05</div>
+          <h3>同時配信の保護</h3>
+          <p>
+            最新話の配信や劇場公開については、放映開始の瞬間からリアルタイムで監視し、
+            数日ではなく数分単位での対応を目標としています。
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">06</div>
+          <h3>証拠保全と報告</h3>
+          <p>
+            すべての通知・回答・再投稿を、日時とともに記録・保全します。
+            報告、交渉、代理人への引き継ぎのいずれにも利用できる形式で保管します。
+          </p>
+        </div>
+      </div>
+
+      <p class="text-center mt-3 mb-0">
+        <a class="btn btn-dark" href="services.html">活動内容の詳細</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">対応の流れ</span>
+        <h2>投稿の検出から削除まで</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>加入</h3>
+          <p>加入時に作品リストと権利の証明をご提出いただき、照合用フィンガープリントと配信スケジュールを登録します。</p>
+        </div>
+        <div class="step">
+          <h3>検出</h3>
+          <p>クローラーと照合エンジンが、監視対象のあらゆる経路から複製・類似コンテンツを検出します。</p>
+        </div>
+        <div class="step">
+          <h3>検証</h3>
+          <p>検出結果を評価・確認し、正規配信、ライセンス許諾済みの利用、法令上認められる利用を対象外とします。</p>
+        </div>
+        <div class="step">
+          <h3>削除</h3>
+          <p>通知を自動送信し、再投稿を捕捉します。結果は会員社のダッシュボードに反映されます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <span class="kicker">加入の理由</span>
+          <h2>作品だけでなく、ファンも守る権利行使</h2>
+          <p>
+            アニメとマンガは、ファンによって支えられています。視聴者や読者に向けた権利行使は、
+            守るべき作品そのものを傷つけます。そのため会員社は、協議会に対し明確な制約を課しています。
+            私たちが対処するのは違法な複製を流通させる仕組みであり、ファンではありません。
+          </p>
+          <ul class="checklist">
+            <li>ファンに対する提訴、警告書の送付、損害賠償請求は一切行いません。</li>
+            <li>個人利用者の監視は行いません。公開・半公開の流通のみを対象とします。</li>
+            <li>判断の分かれる案件は、送信前に必ず担当者が確認します。</li>
+            <li>削除が誤りと思われる場合のため、異議申立ての窓口を明示しています。</li>
+          </ul>
+          <p class="mb-0"><a href="public.html">私たちの約束を読む →</a></p>
+        </div>
+        <div class="split-figure">
+          <h3>会員社が得られるもの</h3>
+          <p>
+            社内体制では再投稿の量に対応しきれなくなったとき、そして単独の通知にはない重みを
+            共同での行動が持つために、各社は協議会に加入します。
+          </p>
+          <ul class="checklist">
+            <li>年間を通じた大量の通知処理</li>
+            <li>30以上の言語・文字体系に対応</li>
+            <li>24時間365日の自動運用と、日本時間でのサポート</li>
+            <li>主要プラットフォームとの信頼済み報告経路の利用</li>
+            <li>自社システムと連携できるAPI・ダッシュボード</li>
+            <li>常習的な侵害ネットワークに関する情報の共有</li>
+            <li>プラットフォームとの交渉における統一した窓口</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-ink">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">対象範囲</span>
+        <h2>保護の対象</h2>
+      </div>
+      <div class="grid grid-4">
+        <div class="card card-flat">
+          <h3>放送・同時配信アニメ</h3>
+          <p class="small mb-0">毎話の配信、無許諾の字幕・吹替、埋め込みポータル、IPTVによる再配信。</p>
+        </div>
+        <div class="card card-flat">
+          <h3>マンガ・連載作品</h3>
+          <p class="small mb-0">生スキャン、無断翻訳版のミラー、まとめサイト、掲載前の流出。</p>
+        </div>
+        <div class="card card-flat">
+          <h3>劇場作品・OVA</h3>
+          <p class="small mb-0">劇場公開作品、パッケージのリッピング、BOX商品、試写用素材の流出。</p>
+        </div>
+        <div class="card card-flat">
+          <h3>音楽・音声作品</h3>
+          <p class="small mb-0">主題歌、サウンドトラック、ドラマCD、未発表音源。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>加入をご検討中ですか</h2>
+      <p>
+        作品名をお知らせいただければ、現在どこで違法に流通しているかを調査し、
+        加入によって何が対象となるかをご報告します。費用や義務は発生しません。
+      </p>
+      <a class="btn" href="contact.html">侵害状況の調査を依頼する</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。
+          会員社の作品の違法流通に、共同で対処しています。
+        </p>
+      </div>
+      <div>
+        <h4>協議会</h4>
+        <ul>
+          <li><a href="about.html">協議会について</a></li>
+          <li><a href="members.html">会員社</a></li>
+          <li><a href="services.html">活動内容</a></li>
+          <li><a href="public.html">一般の皆様へ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>規約・法務</h4>
+        <ul>
+          <li><a href="imprint.html">運営者情報</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="public.html#counter-notice">異議申立て</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>連絡先</h4>
+        <ul>
+          <li>〒101-8050</li>
+          <li>東京都千代田区一ツ橋4-6-10</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">03-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>
+      <ul>
+        <li><a href="imprint.html">運営者情報</a></li>
+        <li><a href="privacy.html">プライバシー</a></li>
+        <li><a href="contact.html">侵害の報告</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /ja/members.html
+// ============================================================================
+ASSETS["/ja/members.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>会員社 — AMRC</title>
+<meta name="description" content="アニメ・マンガ権利協議会を構成するアニメ制作会社、マンガ出版社、ライセンサーの一覧です。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/ja/members.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/members.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/members.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/members.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="会員社 — AMRC">
+<meta property="og:description" content="アニメ・マンガ権利協議会を構成するアニメ制作会社、マンガ出版社、ライセンサーの一覧です。">
+<meta property="og:url" content="https://tokyocopyright.com/ja/members.html">
+<meta property="og:locale" content="ja_JP">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">03-3230-6016</a></span>
+      <span class="muted nowrap">東京都千代田区 — 平日 9:00–18:00</span>
+    </div>
+    <div class="topbar-langs">
+      <a class="lang-pill" href="../members.html" title="English">EN</a>
+      <span class="lang-pill is-active">日本語</span>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">アニメ・マンガ権利協議会</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="メニューを開閉">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="about.html">協議会について</a>
+      <a href="members.html" class="is-active">会員社</a>
+      <a href="services.html">活動内容</a>
+      <a href="public.html">一般の皆様へ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html" class="nav-cta">侵害の報告</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">ホーム</a> &nbsp;/&nbsp; 会員社</div>
+      <h1>会員社</h1>
+      <p>協議会は、以下のアニメ制作会社・マンガ出版社・ライセンサーを代理して活動します。各社は特定の作品について権利行使を委任しています。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+
+      <div class="section-title mt-3">
+        <span class="kicker">会員構成</span>
+        <h2>協議会が代理する企業</h2>
+        <p>
+          正会員は保有作品を協議会に委任し、会員総会に議席を有し、権利行使規程に拘束されます。
+        </p>
+      </div>
+
+      <div class="roster-group">
+        <div class="roster-head">
+          <h3>マンガ出版社</h3>
+          <span class="count">&mdash; 社</span>
+        </div>
+        <ul class="roster">
+          <!-- 出版社をここに追加してください（一社一行）:
+               <li><span class="name">株式会社◯◯</span><span class="meta">2024年より</span></li>
+               .meta は省略可能です。 -->
+          <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+          <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+          <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+          <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+          <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+        </ul>
+      </div>
+
+      <div class="roster-group">
+        <div class="roster-head">
+          <h3>アニメ制作会社</h3>
+          <span class="count">&mdash; 社</span>
+        </div>
+        <ul class="roster">
+          <!-- 制作会社をここに追加してください。形式は上記と同じです。 -->
+          <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+          <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+          <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+          <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+          <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap prose">
+      <span class="kicker">掲載の意味</span>
+      <h2>会員であることが示す範囲</h2>
+      <p>
+        この一覧は、プラットフォームやホスティング事業者が、当協議会からの通知が正当な権限に
+        基づくものかを確認するための情報です。そのため、何を示すものかを明確にしておきます。
+      </p>
+      <ul class="checklist">
+        <li>掲載各社は、委任した作品について協議会を代理人として指名しています。それ以上の権限はありません。</li>
+        <li>会員となることで著作権が移転することはありません。各作品の権利は権利者に帰属したままです。</li>
+        <li>会員社のライセンシーおよび正規配信経路は除外リストに登録され、対象となることはありません。</li>
+        <li>協議会は会員社以外を代理せず、業界全体を代表するものでもありません。</li>
+        <li>掲載の社名および標章は各社に帰属し、許諾を得て表示しています。</li>
+      </ul>
+
+      <div class="notice notice-info">
+        <p class="mb-0">
+          通知の正当性を確認されるプラットフォームの担当者様は、通知に記載の参照番号を添えて
+          <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a>
+          までご連絡ください。当該作品についての委任状況をご回答します。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>加入をご検討の企業様へ</h2>
+      <p>
+        貴社作品の現在の違法流通状況を調査し、加入によって何が対象となるかをご説明します。
+        費用や義務は発生しません。
+      </p>
+      <a class="btn" href="contact.html">加入について問い合わせる</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。
+          会員社の作品の違法流通に、共同で対処しています。
+        </p>
+      </div>
+      <div>
+        <h4>協議会</h4>
+        <ul>
+          <li><a href="about.html">協議会について</a></li>
+          <li><a href="members.html">会員社</a></li>
+          <li><a href="services.html">活動内容</a></li>
+          <li><a href="public.html">一般の皆様へ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>規約・法務</h4>
+        <ul>
+          <li><a href="imprint.html">運営者情報</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="public.html#counter-notice">異議申立て</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>連絡先</h4>
+        <ul>
+          <li>〒101-8050</li>
+          <li>東京都千代田区一ツ橋4-6-10</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">03-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>
+      <ul>
+        <li><a href="imprint.html">運営者情報</a></li>
+        <li><a href="privacy.html">プライバシー</a></li>
+        <li><a href="contact.html">侵害の報告</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /ja/privacy.html
+// ============================================================================
+ASSETS["/ja/privacy.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー — AMRC</title>
+<meta name="description" content="アニメ・マンガ権利協議会における個人情報の取得、利用、保管、保護の方針。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/ja/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/privacy.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="プライバシーポリシー — AMRC">
+<meta property="og:description" content="アニメ・マンガ権利協議会における個人情報の取得、利用、保管、保護の方針。">
+<meta property="og:url" content="https://tokyocopyright.com/ja/privacy.html">
+<meta property="og:locale" content="ja_JP">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">03-3230-6016</a></span>
+      <span class="muted nowrap">東京都千代田区 — 平日 9:00–18:00</span>
+    </div>
+    <div class="topbar-langs">
+      <a class="lang-pill" href="../privacy.html" title="English">EN</a>
+      <span class="lang-pill is-active">日本語</span>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">アニメ・マンガ権利協議会</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="メニューを開閉">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="about.html">協議会について</a>
+      <a href="members.html">会員社</a>
+      <a href="services.html">活動内容</a>
+      <a href="public.html">一般の皆様へ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html" class="nav-cta">侵害の報告</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">ホーム</a> &nbsp;/&nbsp; プライバシーポリシー</div>
+      <h1>プライバシーポリシー</h1>
+      <p>本サイトおよび当協議会の業務における個人情報の取扱いについてご説明します。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+
+      <h2>1. 事業者</h2>
+      <p>
+        アニメ・マンガ権利協議会（〒101-8050 東京都千代田区一ツ橋4-6-10）が、
+        本サイトを通じて取得する個人情報について責任を負います。本ポリシーまたは
+        個人情報に関するお問い合わせは、
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a>
+        または <a href="tel:+81332306016">03-3230-6016</a> までご連絡ください。
+      </p>
+
+      <h2>2. 取得する情報</h2>
+
+      <h3>2.1 本サイトのご利用時</h3>
+      <p>
+        ページの要求時に、ホスティング事業者が標準的なサーバーログを記録します。
+        要求元のIPアドレス、日時、要求されたページ、参照元ページ、
+        ブラウザおよびOSの情報が含まれます。これはサイトの提供と、
+        不正利用・技術的障害の検知に必要なものです。ログは短期間の保存後に削除されます。
+      </p>
+
+      <h3>2.2 お問い合わせフォームのご利用時</h3>
+      <p>
+        ご入力いただいたお名前、会社・団体名、メールアドレス、電話番号（ご記入の場合）、
+        お問い合わせ区分、内容を取得します。これらはご回答および、
+        その後の取引関係の管理のためにのみ利用します。取引に至らなかった場合、
+        必要がなくなった時点で削除します。
+      </p>
+
+      <h3>2.3 権利行使業務において</h3>
+      <p>
+        侵害コンテンツの検出および対応にあたり、公開されている掲載情報について証拠を記録します。
+        URL、ファイル識別情報、ページの内容、日時、および表示されている投稿者名が含まれ、
+        これらは個人情報に該当し得ます。当協議会は、個々の視聴者を特定しようとせず、
+        通信事業者から契約者情報を取得せず、利用者の行動プロファイルを作成しません。
+      </p>
+
+      <h3>2.4 クッキーおよびアクセス解析</h3>
+      <p>
+        本サイトは広告クッキーおよび第三者によるトラッキングクッキーを使用していません。
+        アクセス解析を利用する場合は、プライバシーに配慮した方式とし、
+        サイトを跨いだ追跡は行いません。同意が必要な場合は、
+        必須でないクッキーの設定前に同意を取得します。
+      </p>
+
+      <h2>3. 利用目的</h2>
+      <ul>
+        <li>お問い合わせへの回答のため。</li>
+        <li>契約の履行、または契約締結に向けた準備のため。</li>
+        <li>サイトの安全な運営および著作権の保護という、当協議会および会員社の正当な利益のため。</li>
+        <li>記録保存および適法な請求への対応を含む、法令上の義務の履行のため。</li>
+        <li>ご同意をいただいた場合、その際にお示しした目的のため。</li>
+      </ul>
+
+      <h2>4. 第三者提供</h2>
+      <p>個人情報を販売することはありません。必要な範囲でのみ提供します。</p>
+      <ul>
+        <li>サイトのホスティング、メール送信、データ保管を行う委託先（契約に基づき、当協議会の指示の範囲で）</li>
+        <li>個別の権利行使を依頼した会員社</li>
+        <li>削除要請の性質上、対象物および通知者を特定する必要がある範囲で、プラットフォームおよびホスティング事業者</li>
+        <li>必要な場合、当協議会の専門家（弁護士等）</li>
+        <li>法令に基づき求められる場合、行政機関または裁判所</li>
+      </ul>
+
+      <h2>5. 国外移転</h2>
+      <p>
+        当協議会の業務は世界を対象とするため、他国のプラットフォームやホスティング事業者へ
+        通知を送信する際などに、情報が日本国外へ移転されることがあります。
+        個人情報を含む移転については、適用法令が認める適切な保護措置に基づいて行います。
+      </p>
+
+      <h2>6. 保存期間</h2>
+      <p>
+        お問い合わせの記録は、回答に必要な期間および合理的な期間経過後まで保存します。
+        会員社に関する記録は、関係の継続期間および日本の商法・税法上必要とされる期間保存します。
+        権利行使の証拠は、通知を裏付け、または防御するために必要となり得る期間保存します。
+        サーバーログは短期間で削除します。
+      </p>
+
+      <h2>7. ご本人の権利</h2>
+      <p>
+        適用される法令に従い、保有する個人情報の有無の確認、開示、訂正、削除、
+        利用停止・利用への異議、および同意の撤回を求めることができます。
+        同意の撤回は、それ以前に行われた取扱いの適法性に影響しません。
+      </p>
+      <p>
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a>
+        までご連絡ください。1か月以内に回答します。ご本人であることの確認を
+        させていただく場合があります。回答にご納得いただけない場合は、
+        個人情報保護委員会またはお住まいの国の監督機関に申し立てることができます。
+      </p>
+
+      <h2>8. 安全管理</h2>
+      <p>
+        リスクに応じた技術的・組織的な安全管理措置を講じています。通信の暗号化、
+        必要最小限のアクセス権限、重要システムへのアクセス記録、定期的な見直しを含みます。
+        完全に安全なシステムは存在しませんが、保有する情報を必要な範囲に留めるよう努めています。
+      </p>
+
+      <h2>9. お子様について</h2>
+      <p>
+        本サイトは事業者および権利者の方を対象としています。
+        お子様から意図的に個人情報を取得することはありません。
+      </p>
+
+      <h2>10. 本ポリシーの変更</h2>
+      <p>
+        業務内容または法令の変更に応じて、本ポリシーを改定することがあります。
+        最新版は常に本ページに掲載します。重要な変更については本ページでお知らせします。
+      </p>
+
+      <h2>11. お問い合わせ先</h2>
+      <p>
+        アニメ・マンガ権利協議会<br>
+        〒101-8050 東京都千代田区一ツ橋4-6-10<br>
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a> ·
+        <a href="tel:+81332306016">03-3230-6016</a>
+      </p>
+
+      <p class="small muted mt-3">最終更新：<span data-year>2026</span>年</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。
+          会員社の作品の違法流通に、共同で対処しています。
+        </p>
+      </div>
+      <div>
+        <h4>協議会</h4>
+        <ul>
+          <li><a href="about.html">協議会について</a></li>
+          <li><a href="members.html">会員社</a></li>
+          <li><a href="services.html">活動内容</a></li>
+          <li><a href="public.html">一般の皆様へ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>規約・法務</h4>
+        <ul>
+          <li><a href="imprint.html">運営者情報</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="public.html#counter-notice">異議申立て</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>連絡先</h4>
+        <ul>
+          <li>〒101-8050</li>
+          <li>東京都千代田区一ツ橋4-6-10</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">03-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>
+      <ul>
+        <li><a href="imprint.html">運営者情報</a></li>
+        <li><a href="privacy.html">プライバシー</a></li>
+        <li><a href="contact.html">侵害の報告</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /ja/public.html
+// ============================================================================
+ASSETS["/ja/public.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一般の皆様へ — AMRC</title>
+<meta name="description" content="プラットフォーム事業者、ホスティング事業者、投稿者の皆様へ。当協議会の通知の内容、対応方法、異議申立ての手順をご案内します。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/ja/public.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/public.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/public.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/public.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="一般の皆様へ — AMRC">
+<meta property="og:description" content="プラットフォーム事業者、ホスティング事業者、投稿者の皆様へ。当協議会の通知の内容、対応方法、異議申立ての手順をご案内します。">
+<meta property="og:url" content="https://tokyocopyright.com/ja/public.html">
+<meta property="og:locale" content="ja_JP">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">03-3230-6016</a></span>
+      <span class="muted nowrap">東京都千代田区 — 平日 9:00–18:00</span>
+    </div>
+    <div class="topbar-langs">
+      <a class="lang-pill" href="../public.html" title="English">EN</a>
+      <span class="lang-pill is-active">日本語</span>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">アニメ・マンガ権利協議会</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="メニューを開閉">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="about.html">協議会について</a>
+      <a href="members.html">会員社</a>
+      <a href="services.html">活動内容</a>
+      <a href="public.html" class="is-active">一般の皆様へ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html" class="nav-cta">侵害の報告</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">ホーム</a> &nbsp;/&nbsp; 一般の皆様へ</div>
+      <h1>一般の皆様へ</h1>
+      <p>プラットフォーム運営者、ホスティング事業者、サイト管理者、投稿者の皆様、および当協議会の通知を受け取られた方、活動内容をお知りになりたい方に向けたご案内です。</p>
+    </div>
+  </section>
+
+  <section class="section-tight section-grey">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat">
+          <small>一切ありません</small>
+          <div class="figure">0件</div>
+          <div class="label">ファンへの法的請求</div>
+        </div>
+        <div class="stat">
+          <small>担当者が確認</small>
+          <div class="figure">全件</div>
+          <div class="label">判断の分かれる案件</div>
+        </div>
+        <div class="stat">
+          <small>誤りが判明した場合</small>
+          <div class="figure">撤回</div>
+          <div class="label">直ちに取り下げます</div>
+        </div>
+        <div class="stat">
+          <small>回答の目安</small>
+          <div class="figure">1営業日</div>
+          <div class="label">異議申立てへの回答</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+
+      <span class="kicker">私たちの約束</span>
+      <h2>行うこと、行わないこと</h2>
+      <p>
+        海賊版対策は、何も悪いことをしていない方を含め、現実の人々に影響します。
+        そのため、私たちが自らに課している制約を公開しています。
+      </p>
+      <ul class="checklist">
+        <li><strong>ファンを対象としません。</strong>視聴者・読者・聴取者に対する提訴、和解金の請求、督促、警告書の送付は行いません。</li>
+        <li><strong>正当な利用を対象としません。</strong>批評、論評、パロディ、報道、教育目的その他法令上認められる利用は、権利行使の対象外です。</li>
+        <li><strong>権利を確認してから行動します。</strong>会員社が主張する権利を保有していることを確認するまで、通知は送信しません。</li>
+        <li><strong>差出人を明示します。</strong>すべての通知に、送信者、依頼元、対象作品、法的根拠を記載しています。</li>
+        <li><strong>誤りを認めます。</strong>削除が誤りであったと示された場合、速やかに、争わずに是正します。</li>
+        <li><strong>データを最小限にします。</strong>侵害の立証に必要な記録のみを保持し、個人のプロファイルは作成しません。</li>
+      </ul>
+
+      <hr>
+
+      <span class="kicker">事業者の皆様へ</span>
+      <h2>当協議会から通知を受け取られた場合</h2>
+      <p>
+        当協議会の通知は自動生成されますが、一件ごとに検証されています。通知には、
+        対象作品の特定情報、侵害しているURLまたはファイル、依頼元の会員社、法的根拠、
+        連絡先、および固有の参照番号が記載されています。
+      </p>
+      <p>
+        最も早い解決方法は、記載のURLに対処し、参照番号を添えて通知記載のアドレスへご返信いただくことです。
+        通知の内容に誤りがあるとお考えの場合は、その旨をお知らせください。
+        誤った通知が実行されるより、撤回する方を望みます。
+      </p>
+      <p>
+        利用者投稿の多いサービスを運営されている場合、メールに代えて直接または自動での報告経路を
+        設定することも可能です。件名を「プラットフォーム連携」として
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a> までご連絡ください。
+      </p>
+
+      <hr>
+
+      <h2 id="counter-notice">異議申立ての手順</h2>
+      <p>
+        当協議会の通知によりコンテンツが削除され、その削除が誤りであるとお考えの場合——
+        権利を保有している、許諾を得ている、または法令上認められる利用である場合——
+        異議を申し立てることができます。削除を行ったプラットフォームを通じてでも、
+        当協議会へ直接でも構いません。
+      </p>
+      <p>
+        当協議会へ申し立てる場合は、件名を<strong>「異議申立て」</strong>として
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a> 宛に、
+        以下をご記載のうえご連絡ください。
+      </p>
+      <ol>
+        <li>通知に記載された参照番号（お分かりになる場合）</li>
+        <li>削除された対象の正確なURLまたは識別情報</li>
+        <li>お名前、およびご連絡可能な住所・メールアドレス</li>
+        <li>削除が誤りであるとお考えの理由（権利の保有、許諾の有無、認められる利用である旨など）</li>
+        <li>これを裏付ける資料（許諾契約、契約書、リリース等）</li>
+      </ol>
+      <p>
+        1営業日以内（日本時間）の回答、および5営業日以内の解決を目標としています。
+        通知が誤りであったと判断した場合は、これを撤回し、プラットフォームに復旧を要請します。
+        見解が異なる場合は、その理由を書面でお伝えします。プラットフォームまたは
+        ご自身の法律顧問を通じて、さらに手続を進めていただくことができます。
+      </p>
+
+      <div class="notice notice-info">
+        <p>
+          異議申立てには法的な効果が生じる場合があり、プラットフォームによっては
+          連絡先が権利者に開示されることがあります。本記載は法的助言ではありません。
+          ご不明な点は、お住まいの地域の弁護士にご相談ください。
+        </p>
+      </div>
+
+      <hr>
+
+      <span class="kicker">権利者の皆様へ</span>
+      <h2>ご自身の作品の被害を報告する</h2>
+      <p>
+        権利者の方で、ご自身の作品が違法に流通しているのを見つけられた場合は、
+        <a href="contact.html">お問い合わせフォーム</a>または
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a> までご連絡ください。
+        作品名、権利を保有していることの証明、すでに把握されているURLをお知らせいただけると助かります。
+      </p>
+      <p>
+        当協議会が代理できるのは会員社に限られますが、取り得る選択肢をお伝えし、
+        当協議会の対象外の事案については適切な窓口をご案内します。
+        加入により対応可能となるかどうかも、あわせてお答えします。
+      </p>
+
+      <hr>
+
+      <span class="kicker">報道・研究の皆様へ</span>
+      <h2>取材・研究のお問い合わせ</h2>
+      <p>
+        オンライン海賊版、プラットフォームの責任、通知実務について取材・研究をされている
+        記者・研究者の方は、<a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a>
+        までご連絡ください。手法および集計値については通常お話しできますが、
+        会員社の個別情報および案件の詳細は非公開です。
+      </p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>その他のお問い合わせ</h2>
+      <p>通知、異議申立て、プラットフォーム連携、取材——いずれも同じ窓口で承ります。</p>
+      <a class="btn" href="contact.html">お問い合わせ</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。
+          会員社の作品の違法流通に、共同で対処しています。
+        </p>
+      </div>
+      <div>
+        <h4>協議会</h4>
+        <ul>
+          <li><a href="about.html">協議会について</a></li>
+          <li><a href="members.html">会員社</a></li>
+          <li><a href="services.html">活動内容</a></li>
+          <li><a href="public.html">一般の皆様へ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>規約・法務</h4>
+        <ul>
+          <li><a href="imprint.html">運営者情報</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="public.html#counter-notice">異議申立て</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>連絡先</h4>
+        <ul>
+          <li>〒101-8050</li>
+          <li>東京都千代田区一ツ橋4-6-10</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">03-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>
+      <ul>
+        <li><a href="imprint.html">運営者情報</a></li>
+        <li><a href="privacy.html">プライバシー</a></li>
+        <li><a href="contact.html">侵害の報告</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /ja/services.html
+// ============================================================================
+ASSETS["/ja/services.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>活動内容 — AMRC</title>
+<meta name="description" content="モニタリング、フィンガープリント照合、削除要請、検索結果からの削除、同時配信の保護、証拠保全と報告。会員社のために協議会が行う業務です。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/ja/services.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/services.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/services.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/services.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="活動内容 — AMRC">
+<meta property="og:description" content="モニタリング、フィンガープリント照合、削除要請、検索結果からの削除、同時配信の保護、証拠保全と報告。会員社のために協議会が行う業務です。">
+<meta property="og:url" content="https://tokyocopyright.com/ja/services.html">
+<meta property="og:locale" content="ja_JP">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">03-3230-6016</a></span>
+      <span class="muted nowrap">東京都千代田区 — 平日 9:00–18:00</span>
+    </div>
+    <div class="topbar-langs">
+      <a class="lang-pill" href="../services.html" title="English">EN</a>
+      <span class="lang-pill is-active">日本語</span>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">アニメ・マンガ権利協議会</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="メニューを開閉">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="about.html">協議会について</a>
+      <a href="members.html">会員社</a>
+      <a href="services.html" class="is-active">活動内容</a>
+      <a href="public.html">一般の皆様へ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html" class="nav-cta">侵害の報告</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">ホーム</a> &nbsp;/&nbsp; 活動内容</div>
+      <h1>活動内容</h1>
+      <p>協議会が会員社のために行う業務です。個別の対応を積み重ねるのではなく、検出・検証・削除・報告を一続きの処理として継続的に運用しています。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">主な業務</span>
+        <h2>会員社の作品を守るために必要なすべて</h2>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="icon">M</div>
+          <h3>継続的なモニタリング</h3>
+          <p>違法な複製が実際に流通する経路を、それぞれの更新頻度に合わせて巡回します。</p>
+          <ul class="checklist">
+            <li>配信・埋め込みポータル、IPTVおよび再配信サービス</li>
+            <li>アップローダー、ファイルホスト、公開設定のクラウドストレージ</li>
+            <li>トレントインデックス、DHT、Usenetインデクサ</li>
+            <li>SNS動画、ショート動画プラットフォーム、掲示板</li>
+            <li>公開メッセージチャンネル、リンクまとめサイト</li>
+            <li>作品名による検索結果</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">F</div>
+          <h3>コンテンツ・フィンガープリント</h3>
+          <p>ファイル名による照合は容易に回避されます。内容そのものを照合するため、改変後も特定できます。</p>
+          <ul class="checklist">
+            <li>再エンコードやトリミングに耐える映像の知覚ハッシュ</li>
+            <li>楽曲、吹替、オーディオ作品の音声フィンガープリント</li>
+            <li>出版物・マンガ向けの画像およびテキスト類似度判定</li>
+            <li>左右反転、速度変更、レターボックス、字幕焼き込みの検出</li>
+            <li>切り抜き・まとめ動画に対する部分一致判定</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">T</div>
+          <h3>削除要請と通知管理</h3>
+          <p>検証済みの案件について、実際に対処できる相手方へ、適用される法令に基づいて通知します。</p>
+          <ul class="checklist">
+            <li>米国所在のサービス・検索エンジンへのDMCA通知</li>
+            <li>日本法、EU法その他各国制度に基づく通知</li>
+            <li>信頼済み報告者制度を通じたプラットフォームへの直接申告</li>
+            <li>ホスティング事業者、CDN、レジストラ、決済事業者への段階的対応</li>
+            <li>再投稿の自動再通知</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">D</div>
+          <h3>検索結果からの削除</h3>
+          <p>ファイルを削除しても、海賊版サイトが正規配信より上位に残れば対策は半分です。検索面にも並行して対応します。</p>
+          <ul class="checklist">
+            <li>主要検索エンジンに対する侵害URLの削除申請</li>
+            <li>作品名・ブランド名の検索結果の監視</li>
+            <li>ドメイン変更とミラーサイト網の追跡</li>
+            <li>正規ページの表示順位回復状況の報告</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">L</div>
+          <h3>同時配信・公開前の保護</h3>
+          <p>最も価値の高い時間帯は、最も短い時間帯でもあります。専用の即応体制で対応します。</p>
+          <ul class="checklist">
+            <li>同時配信期間中のリアルタイム監視</li>
+            <li>検出から数分単位での対応を目標</li>
+            <li>対応形式に応じた電子透かしによる流出元の特定</li>
+            <li>放映・掲載開始前の事前巡回</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">R</div>
+          <h3>証拠保全・報告・API</h3>
+          <p>処理の全過程を記録し、立証と次の判断に使える形で保管します。</p>
+          <ul class="checklist">
+            <li>日時を記録した証拠一式と取得時の保全データ</li>
+            <li>検出・通知・削除結果のダッシュボード表示</li>
+            <li>経営層およびライセンサー向けの定期報告</li>
+            <li>自社システムと連携するREST APIおよびWebhook</li>
+            <li>常習的侵害者・非協力的事業者に関する情報</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">会員種別</span>
+        <h2>提供内容の区分</h2>
+        <p>目安です。実際の対象範囲は、作品数、公開頻度、対象地域に応じて個別に設定します。</p>
+      </div>
+
+      <div class="table-scroll">
+        <table class="data">
+          <thead>
+            <tr>
+              <th scope="col">&nbsp;</th>
+              <th scope="col">準会員</th>
+              <th scope="col">正会員</th>
+              <th scope="col">同時配信対応</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">監視頻度</th>
+              <td>1日1回</td>
+              <td>常時</td>
+              <td>常時＋リアルタイム対応</td>
+            </tr>
+            <tr>
+              <th scope="row">照合方式</th>
+              <td>映像・音声</td>
+              <td>映像・音声・画像・テキスト</td>
+              <td>全方式＋部分一致</td>
+            </tr>
+            <tr>
+              <th scope="row">検索結果の削除</th>
+              <td>対象</td>
+              <td>対象</td>
+              <td>対象＋キーワード監視</td>
+            </tr>
+            <tr>
+              <th scope="row">対応目標</th>
+              <td>24時間以内</td>
+              <td>2時間以内</td>
+              <td>配信期間中は数分単位</td>
+            </tr>
+            <tr>
+              <th scope="row">報告</th>
+              <td>月次</td>
+              <td>週次＋ダッシュボード</td>
+              <td>リアルタイム表示・API・Webhook</td>
+            </tr>
+            <tr>
+              <th scope="row">サポート</th>
+              <td>メール</td>
+              <td>専任担当者</td>
+              <td>専任担当者＋緊急連絡体制</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-center mt-3 mb-0">
+        <a class="btn btn-dark" href="contact.html">ご要望を相談する</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <span class="kicker">よくあるご質問</span>
+      <h2>お問い合わせの多い点</h2>
+      <div class="faq mt-2">
+        <details>
+          <summary>実際にどのくらいで削除されますか</summary>
+          <p>
+            相手方によります。信頼済み報告者制度のある大手プラットフォームでは数時間、
+            小規模な事業者ではより時間を要し、一部は通知に応じません。
+            応じない場合は上位のプロバイダ、レジストラ、決済事業者へ段階を上げます。
+            報告では平均値ではなく、実際の分布をお示しします。
+          </p>
+        </details>
+        <details>
+          <summary>削除しても再投稿された場合は</summary>
+          <p>
+            再投稿は想定内であり、自動で処理されます。作品のフィンガープリントを登録済みであれば、
+            新たな複製は次回の巡回で検出され、改めて申請いただくことなく再通知されます。
+            繰り返す投稿者は常習的侵害者として記録します。
+          </p>
+        </details>
+        <details>
+          <summary>正当なコンテンツを誤って削除する可能性は</summary>
+          <p>
+            可能性をゼロにはできないため、そうならない設計にしています。ライセンシーおよび
+            提携先のURLは除外リストに登録し、照合の確度基準は厳しめに設定し、
+            判断が分かれる案件は人が確認し、批評・論評その他の正当な利用は対象外としています。
+            影響を受けた方は異議を申し立てられます。手順は
+            <a href="public.html#counter-notice">一般の皆様へ</a>のページに記載しています。
+          </p>
+        </details>
+        <details>
+          <summary>個々の視聴者に対して措置を取りますか</summary>
+          <p>
+            行いません。ファンに対する提訴、請求、警告書の送付は一切なく、
+            協議会の規程上、会員社がそれを指示することもできません。
+            権利行使の対象は違法な複製の流通です。
+          </p>
+        </details>
+        <details>
+          <summary>対象地域はどこまでですか</summary>
+          <p>
+            検出は全世界を対象とします。通知は相手方に適用される制度——米国所在のサービスには
+            DMCA、必要に応じて日本およびEUの手続、その他の地域ではプラットフォームの規約——
+            に従って送信します。通知は30以上の言語で対応しています。
+          </p>
+        </details>
+        <details>
+          <summary>加入にあたって必要なものは</summary>
+          <p>
+            作品リスト、権利を保有していることの証明、同時配信・連載のスケジュール、
+            および除外リストに登録するための正規配信URL（海外ライセンシーを含む）です。
+            参照用の素材があれば照合精度が上がりますが、必須ではありません。
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>加入をご検討中ですか</h2>
+      <p>保護をご希望の作品をお知らせいただければ、対象範囲をご提案します。</p>
+      <a class="btn" href="contact.html">事務局に問い合わせる</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="../assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          アニメ・マンガ権利協議会は、日本のアニメ・マンガ関連企業による会員制団体です。
+          会員社の作品の違法流通に、共同で対処しています。
+        </p>
+      </div>
+      <div>
+        <h4>協議会</h4>
+        <ul>
+          <li><a href="about.html">協議会について</a></li>
+          <li><a href="members.html">会員社</a></li>
+          <li><a href="services.html">活動内容</a></li>
+          <li><a href="public.html">一般の皆様へ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>規約・法務</h4>
+        <ul>
+          <li><a href="imprint.html">運営者情報</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="public.html#counter-notice">異議申立て</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>連絡先</h4>
+        <ul>
+          <li>〒101-8050</li>
+          <li>東京都千代田区一ツ橋4-6-10</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">03-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> アニメ・マンガ権利協議会</div>
+      <ul>
+        <li><a href="imprint.html">運営者情報</a></li>
+        <li><a href="privacy.html">プライバシー</a></li>
+        <li><a href="contact.html">侵害の報告</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /members.html
+// ============================================================================
+ASSETS["/members.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Members — AMRC</title>
+<meta name="description" content="The anime studios, manga publishers and licensors that make up the Anime &amp; Manga Rights Council, and the rights each has entrusted to it.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/members.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/members.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/members.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/members.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="Members — AMRC">
+<meta property="og:description" content="The companies that make up the Council.">
+<meta property="og:url" content="https://tokyocopyright.com/members.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">+81 3-3230-6016</a></span>
+      <span class="muted nowrap">Chiyoda-ku, Tokyo — JST (UTC+9)</span>
+    </div>
+    <div class="topbar-langs">
+      <span class="lang-pill is-active">EN</span>
+      <a class="lang-pill" href="ja/members.html" title="日本語版">日本語</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">Anime &amp; Manga Rights Council</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="members.html" class="is-active">Members</a>
+      <a href="services.html">Services</a>
+      <a href="public.html">Public</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Report piracy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Members</div>
+      <h1>Our members</h1>
+      <p>
+        The Council acts on behalf of the anime studios, manga publishers and licensors
+        listed below. Each has entrusted specified works to us for enforcement.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+
+      <div class="section-title mt-3">
+        <span class="kicker">Membership</span>
+        <h2>Companies represented by the Council</h2>
+        <p>
+          A full member entrusts its catalogue to the Council, holds a seat in the
+          members' meeting, and is bound by the rules of enforcement.
+        </p>
+      </div>
+
+      <div class="roster-group">
+        <div class="roster-head">
+          <h3>Manga publishers</h3>
+          <span class="count">&mdash; members</span>
+        </div>
+        <ul class="roster">
+          <!-- ============================================================
+               PASTE MANGA PUBLISHERS HERE — one line each:
+
+               <li><span class="name">Company Name</span><span class="meta">Since 2024</span></li>
+
+               The .meta line is optional; drop it for a name-only plate.
+               ============================================================ -->
+          <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+          <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+          <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+          <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+          <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+        </ul>
+      </div>
+
+      <div class="roster-group">
+        <div class="roster-head">
+          <h3>Animation studios</h3>
+          <span class="count">&mdash; members</span>
+        </div>
+        <ul class="roster">
+          <!-- ============================================================
+               PASTE ANIMATION STUDIOS HERE — same pattern as above.
+               ============================================================ -->
+          <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+          <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+          <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+          <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+          <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap prose">
+      <span class="kicker">Scope</span>
+      <h2>What membership does and does not mean</h2>
+      <p>
+        Publishing this roster is how platforms and hosting providers verify that a notice
+        from us is authorised. So it is worth being precise about what it asserts.
+      </p>
+      <ul class="checklist">
+        <li>Each company listed has appointed the Council to act for it on the works it has entrusted — no more.</li>
+        <li>Membership does not transfer copyright. Every work remains the property of its rights holder.</li>
+        <li>A member's licensees and official distribution channels are allow-listed, never targeted.</li>
+        <li>The Council does not act for non-members, and does not claim to represent the industry as a whole.</li>
+        <li>Company names and marks shown here belong to their respective owners and appear with permission.</li>
+      </ul>
+
+      <div class="notice notice-info">
+        <p class="mb-0">
+          Platforms verifying a notice can write to
+          <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a> quoting the
+          notice reference, and we will confirm the member's authorisation for the work
+          concerned.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Interested in joining the Council?</h2>
+      <p>
+        We will assess how your titles are currently being distributed illegally and set
+        out what membership would cover — with no obligation.
+      </p>
+      <a class="btn" href="contact.html">Enquire about membership</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          The Anime &amp; Manga Rights Council is a member body of Japanese anime and
+          manga companies, acting together against the illegal distribution of their
+          works worldwide.
+        </p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="members.html">Our members</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="public.html">Public information</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="public.html#counter-notice">Counter-notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>4-6-10 Hitotsubashi</li>
+          <li>Chiyoda-ku, Tokyo 101-8050</li>
+          <li>Japan</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">+81 3-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>
+      <ul>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Report piracy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /privacy.html
+// ============================================================================
+ASSETS["/privacy.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — AMRC</title>
+<meta name="description" content="How the Anime &amp; Manga Rights Council collects, uses, stores and protects personal data on this website and in the course of its enforcement work.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/privacy.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="Privacy Policy — AMRC">
+<meta property="og:url" content="https://tokyocopyright.com/privacy.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">+81 3-3230-6016</a></span>
+      <span class="muted nowrap">Chiyoda-ku, Tokyo — JST (UTC+9)</span>
+    </div>
+    <div class="topbar-langs">
+      <span class="lang-pill is-active">EN</span>
+      <a class="lang-pill" href="ja/privacy.html" title="日本語版">日本語</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">Anime &amp; Manga Rights Council</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="members.html">Members</a>
+      <a href="services.html">Services</a>
+      <a href="public.html">Public</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Report piracy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Privacy policy</div>
+      <h1>Privacy policy</h1>
+      <p>How we handle personal data on this website and in the course of our work.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+
+      <h2>1. Who is responsible</h2>
+      <p>
+        The Anime &amp; Manga Rights Council, 4-6-10 Hitotsubashi, Chiyoda-ku, Tokyo 101-8050, Japan, is
+        responsible for the personal data processed through this website. You can reach us
+        at <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a> or
+        <a href="tel:+81332306016">+81 3-3230-6016</a> for any question about this policy or
+        about your data.
+      </p>
+
+      <h2>2. What we collect</h2>
+
+      <h3>2.1 When you visit this website</h3>
+      <p>
+        Our hosting provider records standard server log data when a page is requested: the
+        IP address of the request, the date and time, the page requested, the referring page
+        where one is sent, and the browser and operating system reported by your browser.
+        This is needed to deliver the site and to detect abuse or technical faults. Logs are
+        kept for a short period and then deleted.
+      </p>
+
+      <h3>2.2 When you use the contact form</h3>
+      <p>
+        We process the details you enter: your name, organisation, email address, telephone
+        number where given, the category of your enquiry, and the content of your message.
+        We use them only to answer you and to manage the resulting business relationship. If
+        an enquiry does not lead to a relationship, we delete the correspondence once it is
+        no longer needed.
+      </p>
+
+      <h3>2.3 In the course of our services</h3>
+      <p>
+        When we detect and act against infringing material, we record evidence about
+        publicly accessible listings: URLs, file identifiers, page content, timestamps and
+        the publicly displayed account name of an uploader where one is shown. This can
+        constitute personal data. We do not attempt to identify individual viewers, we do
+        not obtain subscriber data from internet providers, and we do not build behavioural
+        profiles of internet users.
+      </p>
+
+      <h3>2.4 Cookies and analytics</h3>
+      <p>
+        This website sets no advertising cookies and no third-party tracking cookies. If
+        analytics are used, they will be privacy-respecting and configured without
+        cross-site tracking; where consent is required, it will be requested before any
+        non-essential cookie is set.
+      </p>
+
+      <h2>3. Why we may process your data</h2>
+      <ul>
+        <li>To respond to an enquiry you have sent us.</li>
+        <li>To perform a contract with you, or to take steps at your request before entering into one.</li>
+        <li>To pursue our legitimate interests and those of our members in operating the site securely and in enforcing copyright.</li>
+        <li>To comply with legal obligations, including record-keeping and responding to lawful requests.</li>
+        <li>Where you have given consent, for the specific purpose described at the time.</li>
+      </ul>
+
+      <h2>4. Who we share it with</h2>
+      <p>
+        We do not sell personal data. We share it only where necessary:
+      </p>
+      <ul>
+        <li>with service providers who host our website, send our email and store our data, under contract and on our instructions;</li>
+        <li>with the member company on whose behalf a specific enforcement action is taken;</li>
+        <li>with platforms and hosting providers, to the extent a takedown notice necessarily identifies the material and the notifier;</li>
+        <li>with our professional advisers, where needed;</li>
+        <li>with authorities or courts where we are legally required to do so.</li>
+      </ul>
+
+      <h2>5. International transfers</h2>
+      <p>
+        Because our work is worldwide, data may be transferred outside Japan — most often
+        when a notice is sent to a platform or host in another country. Where a transfer
+        involves personal data, we make it on the basis of an appropriate safeguard
+        recognised by the applicable law.
+      </p>
+
+      <h2>6. How long we keep it</h2>
+      <p>
+        Enquiry correspondence is kept for as long as needed to answer it and for a
+        reasonable period afterwards. Member records are kept for the duration of the
+        relationship and for the retention period required by Japanese commercial and tax
+        law. Enforcement evidence is kept for as long as it may be needed to defend or
+        substantiate a notice. Server logs are kept briefly and then deleted.
+      </p>
+
+      <h2>7. Your rights</h2>
+      <p>
+        Subject to the law that applies to you, you can ask us to confirm what personal data
+        we hold about you, to give you a copy, to correct it if it is inaccurate, to delete
+        it, to restrict or object to its use, and to withdraw a consent you have given.
+        Withdrawing consent does not affect processing carried out beforehand.
+      </p>
+      <p>
+        Write to <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a>. We
+        respond within one month, and we may need to verify your identity first. If you are
+        not satisfied with our answer, you may complain to the Personal Information
+        Protection Commission of Japan or to the supervisory authority in your own country.
+      </p>
+
+      <h2>8. Security</h2>
+      <p>
+        We apply technical and organisational measures appropriate to the risk: encryption
+        in transit, access control on a need-to-know basis, logging of access to sensitive
+        systems, and regular review. No system is perfectly secure, but we work to keep the
+        data we hold proportionate to what we actually need.
+      </p>
+
+      <h2>9. Children</h2>
+      <p>
+        This website is directed at businesses, member companies and rights holders. We do not knowingly
+        collect personal data from children.
+      </p>
+
+      <h2>10. Changes</h2>
+      <p>
+        We may update this policy as our services or the law change. The current version is
+        always published on this page; significant changes will be highlighted here.
+      </p>
+
+      <h2>11. Contact</h2>
+      <p>
+        Anime &amp; Manga Rights Council<br>
+        4-6-10 Hitotsubashi, Chiyoda-ku, Tokyo 101-8050, Japan<br>
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a> ·
+        <a href="tel:+81332306016">+81 3-3230-6016</a>
+      </p>
+
+      <p class="small muted mt-3">Last updated: <span data-year>2026</span></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          The Anime &amp; Manga Rights Council is a member body of Japanese anime and
+          manga companies, acting together against the illegal distribution of their
+          works worldwide.
+        </p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="members.html">Our members</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="public.html">Public information</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="public.html#counter-notice">Counter-notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>4-6-10 Hitotsubashi</li>
+          <li>Chiyoda-ku, Tokyo 101-8050</li>
+          <li>Japan</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">+81 3-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>
+      <ul>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Report piracy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /public.html
+// ============================================================================
+ASSETS["/public.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Public Information — AMRC</title>
+<meta name="description" content="Information for platforms, hosts, uploaders and the public: what our notices mean, how to respond, and how to file a counter-notice.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/public.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/public.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/public.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/public.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="Public Information — AMRC">
+<meta property="og:description" content="What our notices mean, how to respond, and how to file a counter-notice.">
+<meta property="og:url" content="https://tokyocopyright.com/public.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">+81 3-3230-6016</a></span>
+      <span class="muted nowrap">Chiyoda-ku, Tokyo — JST (UTC+9)</span>
+    </div>
+    <div class="topbar-langs">
+      <span class="lang-pill is-active">EN</span>
+      <a class="lang-pill" href="ja/public.html" title="日本語版">日本語</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">Anime &amp; Manga Rights Council</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="members.html">Members</a>
+      <a href="services.html">Services</a>
+      <a href="public.html" class="is-active">Public</a>
+      <a href="contact.html">Contact</a>
+      <a href="imprint.html">Imprint</a>
+      <a href="contact.html" class="nav-cta">Report piracy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Public</div>
+      <h1>Public information</h1>
+      <p>
+        This page is for platform operators, hosting providers, site owners, uploaders
+        and anyone else who has received a notice from the Council — or simply wants to
+        know how we operate.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight section-grey">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat">
+          <small>we never file</small>
+          <div class="figure">0</div>
+          <div class="label">Claims against fans</div>
+        </div>
+        <div class="stat">
+          <small>reviewed by a person</small>
+          <div class="figure">100%</div>
+          <div class="label">Of borderline matches</div>
+        </div>
+        <div class="stat">
+          <small>always</small>
+          <div class="figure">Withdrawn</div>
+          <div class="label">If shown to be mistaken</div>
+        </div>
+        <div class="stat">
+          <small>&nbsp;</small>
+          <div class="figure">1 day</div>
+          <div class="label">Target reply to counter-notices</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+
+      <span class="kicker">Our commitments</span>
+      <h2>What we will and will not do</h2>
+      <p>
+        Anti-piracy enforcement affects real people, including people who have done
+        nothing wrong. We publish the limits we work within so that they can be held
+        against us.
+      </p>
+      <ul class="checklist">
+        <li><strong>We never pursue fans.</strong> No lawsuits, no settlement demands, no invoices, no threatening letters to viewers, readers or listeners.</li>
+        <li><strong>We do not target lawful use.</strong> Reviews, criticism, commentary, parody, news reporting, education and other transformative or permitted uses are excluded from enforcement.</li>
+        <li><strong>We verify rights first.</strong> No notice is sent on behalf of a client until we have confirmed they hold the rights they claim.</li>
+        <li><strong>We identify ourselves.</strong> Every notice states who sent it, on whose behalf, the work concerned and the legal basis.</li>
+        <li><strong>We accept being wrong.</strong> Mistaken removals are corrected quickly and without argument once shown to be mistaken.</li>
+        <li><strong>We minimise data.</strong> We record what is needed to evidence an infringement, and we do not build profiles of individual internet users.</li>
+      </ul>
+
+      <hr>
+
+      <span class="kicker">For platforms &amp; hosts</span>
+      <h2>If you have received a notice from us</h2>
+      <p>
+        Our notices are machine-generated but individually verified. Each one contains the
+        identification of the protected work, the specific infringing URL or file, the
+        rights holder we act for, the legal basis, our contact details and a unique
+        reference number.
+      </p>
+      <p>
+        The fastest way to resolve a notice is to act on the identified URL and reply to
+        the notice address quoting the reference. If a notice looks wrong to you, say so —
+        we would rather withdraw an incorrect notice than have it actioned.
+      </p>
+      <p>
+        If you operate a service with a high volume of user uploads, we are happy to
+        arrange a direct or automated reporting channel instead of email. Write to
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a> with
+        "Platform channel" in the subject line.
+      </p>
+
+      <hr>
+
+      <h2 id="counter-notice">Filing a counter-notice</h2>
+      <p>
+        If content of yours was removed because of one of our notices and you believe the
+        removal was wrong — because you hold the rights, because you are licensed, or
+        because your use is permitted by law — you can dispute it. You may do so through
+        the platform that removed the content, and you may also write to us directly.
+      </p>
+      <p>To dispute a notice with us, email
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a> with the
+        subject line <strong>"Counter-notice"</strong> and include:
+      </p>
+      <ol>
+        <li>The reference number shown in the notice, if you have it.</li>
+        <li>The exact URL or identifier of the material that was removed.</li>
+        <li>Your name and an address and email at which you can be contacted.</li>
+        <li>The reason you believe the removal was mistaken — for example, that you own or license the work, or that your use is permitted.</li>
+        <li>Any evidence supporting that, such as a licence, a contract or a release.</li>
+      </ol>
+      <p>
+        We aim to respond within one business day (JST) and to resolve disputes within
+        five. If we agree the notice was wrong, we withdraw it and ask the platform to
+        restore the content. If we disagree, we will tell you why in writing, so that you
+        can take the matter further with the platform or with your own legal advisers.
+      </p>
+
+      <div class="notice notice-info">
+        <p>
+          Filing a counter-notice may have legal consequences and, on some platforms, may
+          disclose your contact details to the rights holder. Nothing here is legal advice
+          — if you are unsure, consult a qualified lawyer in your jurisdiction.
+        </p>
+      </div>
+
+      <hr>
+
+      <span class="kicker">For rights holders</span>
+      <h2>Reporting piracy of your own work</h2>
+      <p>
+        If you are a rights holder and have found your work distributed illegally, use our
+        <a href="contact.html">contact form</a> or write to
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a>. Include the
+        title, evidence that you hold the rights, and any URLs you have already found.
+      </p>
+      <p>
+        We can only act for our member companies, but we will tell you what your options
+        are and, where a matter falls outside what we do, point you toward the right route
+        — including whether joining the Council would cover it.
+      </p>
+
+      <hr>
+
+      <span class="kicker">For researchers &amp; press</span>
+      <h2>Press &amp; academic enquiries</h2>
+      <p>
+        Journalists and researchers working on online piracy, platform liability or notice
+        practice can reach us at
+        <a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a>. We can
+        usually discuss methodology and aggregate figures; client identities and case
+        details are confidential.
+      </p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Still have a question?</h2>
+      <p>Notices, disputes, platform channels or press — one address reaches the right desk.</p>
+      <a class="btn" href="contact.html">Get in touch</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          The Anime &amp; Manga Rights Council is a member body of Japanese anime and
+          manga companies, acting together against the illegal distribution of their
+          works worldwide.
+        </p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="members.html">Our members</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="public.html">Public information</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="public.html#counter-notice">Counter-notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>4-6-10 Hitotsubashi</li>
+          <li>Chiyoda-ku, Tokyo 101-8050</li>
+          <li>Japan</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">+81 3-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>
+      <ul>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Report piracy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /robots.txt
+// ============================================================================
+ASSETS["/robots.txt"] = {
+  type: "text/plain; charset=utf-8",
+  body: `User-agent: *
+Allow: /
+Disallow: /contact.php
+
+Sitemap: https://tokyocopyright.com/sitemap.xml
+`
+};
+
+// ============================================================================
+//  /services.html
+// ============================================================================
+ASSETS["/services.html"] = {
+  type: "text/html; charset=utf-8",
+  body: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services — AMRC</title>
+<meta name="description" content="Monitoring, content fingerprinting, automated takedown notices, search de-indexing, simulcast protection and evidence reporting, carried out for Council members.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tokyocopyright.com/services.html">
+<link rel="alternate" hreflang="en" href="https://tokyocopyright.com/services.html">
+<link rel="alternate" hreflang="ja" href="https://tokyocopyright.com/ja/services.html">
+<link rel="alternate" hreflang="x-default" href="https://tokyocopyright.com/services.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRC">
+<meta property="og:title" content="Services — AMRC">
+<meta property="og:description" content="End-to-end anti-piracy for member companies: detection, verification, takedown, de-indexing and reporting.">
+<meta property="og:url" content="https://tokyocopyright.com/services.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></span>
+      <span class="nowrap"><a href="tel:+81332306016">+81 3-3230-6016</a></span>
+      <span class="muted nowrap">Chiyoda-ku, Tokyo — JST (UTC+9)</span>
+    </div>
+    <div class="topbar-langs">
+      <span class="lang-pill is-active">EN</span>
+      <a class="lang-pill" href="ja/services.html" title="日本語版">日本語</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+      <span class="brand-name">AMRC
+        <span class="brand-tag">Anime &amp; Manga Rights Council</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="members.html">Members</a>
+      <a href="services.html" class="is-active">Services</a>
+      <a href="public.html">Public</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Report piracy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Services</div>
+      <h1>Services</h1>
+      <p>
+        What the Council does for its members: detection, verification, removal and
+        reporting, operated as one continuous pipeline rather than a series of manual
+        campaigns.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">Core services</span>
+        <h2>Everything needed to keep a member catalogue clean</h2>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="icon">M</div>
+          <h3>Continuous monitoring</h3>
+          <p>
+            We sweep the channels where pirated copies actually circulate, on a schedule
+            tuned to how quickly each one turns over:
+          </p>
+          <ul class="checklist">
+            <li>Streaming and embed portals, IPTV and restreaming services</li>
+            <li>Cyberlockers, file hosts and public cloud drives</li>
+            <li>Torrent indexes, DHT swarms and Usenet indexers</li>
+            <li>Social video, short-form platforms and user forums</li>
+            <li>Public messaging channels and link aggregators</li>
+            <li>Search engine results for your title keywords</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">F</div>
+          <h3>Content fingerprinting</h3>
+          <p>
+            Filename matching is trivially defeated. We match on the content itself, so a
+            copy stays identifiable after it has been altered:
+          </p>
+          <ul class="checklist">
+            <li>Perceptual video hashing that survives re-encoding and cropping</li>
+            <li>Audio fingerprints for music, dubs and audiobooks</li>
+            <li>Image and text similarity for publishing and manga</li>
+            <li>Detection of mirrored, sped-up, letterboxed and overlaid copies</li>
+            <li>Partial-match detection for clips and compilations</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">T</div>
+          <h3>Takedown &amp; notice management</h3>
+          <p>
+            Verified matches become properly formed notices, addressed to the party that
+            can act, under the law that applies to them:
+          </p>
+          <ul class="checklist">
+            <li>DMCA notices to US-hosted services and search engines</li>
+            <li>Notices under Japanese, EU and other national regimes as applicable</li>
+            <li>Platform-native reporting via trusted-flagger channels</li>
+            <li>Escalation to hosts, CDNs, registrars and payment providers</li>
+            <li>Automatic re-notice when content is re-uploaded</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">D</div>
+          <h3>Search de-indexing</h3>
+          <p>
+            Removing the file is only half the job if the pirate page still outranks your
+            own release. We work the search layer in parallel:
+          </p>
+          <ul class="checklist">
+            <li>Removal requests for infringing URLs from major search engines</li>
+            <li>Monitoring of brand and title keyword results</li>
+            <li>Tracking of domain-hopping and mirror networks</li>
+            <li>Reporting on the visibility recovered for legitimate pages</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">L</div>
+          <h3>Simulcast &amp; pre-release protection</h3>
+          <p>
+            The highest-value window is the shortest. Weekly simulcasts, theatrical
+            premieres, chapter drops and screeners get a dedicated rapid-response track:
+          </p>
+          <ul class="checklist">
+            <li>Real-time monitoring across the simulcast window</li>
+            <li>Target response measured in minutes from detection</li>
+            <li>Watermark tracing to identify the leak source where supported</li>
+            <li>Pre-release sweeps ahead of a scheduled airing or chapter release</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">R</div>
+          <h3>Evidence, reporting &amp; API</h3>
+          <p>
+            Everything the pipeline does is recorded, so you can prove it and act on it:
+          </p>
+          <ul class="checklist">
+            <li>Timestamped evidence packages with preserved captures</li>
+            <li>Live dashboard of detections, notices and removal outcomes</li>
+            <li>Scheduled reporting for management and licensors</li>
+            <li>REST API and webhooks for your own systems</li>
+            <li>Repeat-infringer and hostile-host intelligence</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="wrap">
+      <div class="section-title">
+        <span class="kicker">Coverage</span>
+        <h2>Service levels</h2>
+        <p>Indicative tiers. Each member’s cover is scoped to catalogue size, release cadence and territories.</p>
+      </div>
+
+      <div class="table-scroll">
+        <table class="data">
+          <thead>
+            <tr>
+              <th scope="col">&nbsp;</th>
+              <th scope="col">Associate</th>
+              <th scope="col">Full member</th>
+              <th scope="col">Simulcast tier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Monitoring frequency</th>
+              <td>Daily sweeps</td>
+              <td>Continuous</td>
+              <td>Continuous + real-time simulcast mode</td>
+            </tr>
+            <tr>
+              <th scope="row">Fingerprint matching</th>
+              <td>Video &amp; audio</td>
+              <td>Video, audio, image &amp; text</td>
+              <td>Full stack + partial-match clips</td>
+            </tr>
+            <tr>
+              <th scope="row">Search de-indexing</th>
+              <td>Included</td>
+              <td>Included</td>
+              <td>Included + keyword monitoring</td>
+            </tr>
+            <tr>
+              <th scope="row">Response target</th>
+              <td>Within 24 hours</td>
+              <td>Within 2 hours</td>
+              <td>Minutes, during simulcast windows</td>
+            </tr>
+            <tr>
+              <th scope="row">Reporting</th>
+              <td>Monthly</td>
+              <td>Weekly + dashboard</td>
+              <td>Live dashboard, API &amp; webhooks</td>
+            </tr>
+            <tr>
+              <th scope="row">Support</th>
+              <td>Email</td>
+              <td>Named contact</td>
+              <td>Named contact + on-call escalation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-center mt-3 mb-0">
+        <a class="btn btn-dark" href="contact.html">Discuss your requirements</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <span class="kicker">Questions</span>
+      <h2>Common questions</h2>
+      <div class="faq mt-2">
+        <details>
+          <summary>How quickly does content actually come down?</summary>
+          <p>
+            It depends on the recipient. Major platforms with trusted-flagger channels
+            typically act within hours; smaller hosts take longer, and a minority ignore
+            notices entirely — those get escalated to their upstream provider, registrar or
+            payment processor. Our reporting shows the real distribution rather than a
+            headline average.
+          </p>
+        </details>
+        <details>
+          <summary>What happens when a pirate simply re-uploads?</summary>
+          <p>
+            Re-uploads are expected and handled automatically. Once a work is fingerprinted,
+            a new copy is detected on the next sweep and re-noticed without anyone having to
+            file a fresh request. Persistent re-uploaders are tracked as repeat infringers.
+          </p>
+        </details>
+        <details>
+          <summary>Could you remove something that is legitimate?</summary>
+          <p>
+            The risk is never zero, so we design against it: licensee and partner URLs are
+            allow-listed, confidence thresholds are set conservatively, borderline matches
+            go to human review, and reviews, criticism and other transformative uses are
+            excluded. Anyone affected can file a counter-notice — the route is described on
+            our <a href="public.html#counter-notice">public information page</a>.
+          </p>
+        </details>
+        <details>
+          <summary>Do you take action against individual viewers?</summary>
+          <p>
+            No. We do not sue, invoice or send demand letters to fans, and the Council’s
+            rules do not permit a member to direct us to. Our enforcement is aimed at the
+            distribution of infringing copies.
+          </p>
+        </details>
+        <details>
+          <summary>Which territories do you cover?</summary>
+          <p>
+            Detection is worldwide. Notices are issued under whichever regime applies to the
+            recipient — DMCA for US-hosted services, Japanese and EU procedures where
+            relevant, and platform policy elsewhere. We issue notices in over 30 languages.
+          </p>
+        </details>
+        <details>
+          <summary>What do you need from us to start?</summary>
+          <p>
+            A catalogue list, evidence that you hold the rights, your simulcast or
+            serialisation schedule, and the URLs of your licensed distribution — including
+            your overseas licensees — so we can allow-list them. Reference files or
+            screeners improve fingerprint quality but are not always required.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Interested in joining?</h2>
+      <p>Tell us what you need protected and we will scope what membership would cover.</p>
+      <a class="btn" href="contact.html">Contact our team</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand-mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+          <span class="brand-name">AMRC</span>
+        </a>
+        <p class="mt-2">
+          The Anime &amp; Manga Rights Council is a member body of Japanese anime and
+          manga companies, acting together against the illegal distribution of their
+          works worldwide.
+        </p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="members.html">Our members</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="public.html">Public information</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="public.html#counter-notice">Counter-notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>4-6-10 Hitotsubashi</li>
+          <li>Chiyoda-ku, Tokyo 101-8050</li>
+          <li>Japan</li>
+          <li><a href="mailto:legal@tokyocopyright.com">legal@tokyocopyright.com</a></li>
+          <li><a href="tel:+81332306016">+81 3-3230-6016</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year>2026</span> Anime &amp; Manga Rights Council. All rights reserved.</div>
+      <ul>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Report piracy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
+`
+};
+
+// ============================================================================
+//  /sitemap.xml
+// ============================================================================
+ASSETS["/sitemap.xml"] = {
+  type: "application/xml; charset=utf-8",
+  body: `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tokyocopyright.com/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/members.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/services.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/public.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/contact.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/imprint.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/ja/index.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/ja/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/ja/members.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/ja/services.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/ja/public.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/ja/contact.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/ja/imprint.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://tokyocopyright.com/ja/privacy.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>
+`
+};
 
 const MAIL_TO = 'legal@tokyocopyright.com';
 const MAIL_FROM = 'AMRC Website <website@tokyocopyright.com>';
