@@ -160,12 +160,16 @@ function serve(pathname, request) {
   /* "/" -> the home page. */
   if (pathname === '/' || pathname === '') pathname = '/index.html';
 
-  /* Trailing slash: /about/ -> /about */
+  /* Trailing slash: /about/ -> /about, /ja/ -> /ja */
   if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);
 
-  /* Extensionless: /about -> /about.html */
   let asset = ASSETS[pathname];
+
+  /* Extensionless: /about -> /about.html */
   if (!asset && !pathname.includes('.')) asset = ASSETS[pathname + '.html'];
+
+  /* Directory index: /ja -> /ja/index.html */
+  if (!asset && !pathname.includes('.')) asset = ASSETS[pathname + '/index.html'];
 
   const status = asset ? 200 : 404;
   if (!asset) asset = ASSETS['/404.html'];

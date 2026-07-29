@@ -1,12 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Anime &amp; Manga Rights Council">
   <defs>
-    <linearGradient id="tcg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#d51e38"/>
-      <stop offset="1" stop-color="#8d0f21"/>
+    <linearGradient id="amrcBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16294170"/>
+      <stop offset="0" stop-color="#162941"/>
+      <stop offset="1" stop-color="#0b1524"/>
     </linearGradient>
   </defs>
-  <path d="M32 3 6 13v20c0 15.2 10.6 25.6 26 28 15.4-2.4 26-12.8 26-28V13L32 3Z" fill="url(#tcg)"/>
-  <path d="M32 9 12 16.7V33c0 12 8.2 20.4 20 22.7 11.8-2.3 20-10.7 20-22.7V16.7L32 9Z" fill="#fff" opacity=".12"/>
-  <circle cx="32" cy="31" r="12.5" fill="none" stroke="#fff" stroke-width="3"/>
-  <path d="M37.6 25.9a7.6 7.6 0 1 0 0 10.2" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#amrcBg)"/>
+
+  <!-- Monogram A, drawn as paths so it never depends on a font being present.
+       The counter is cut with evenodd rather than overpainted, so the mark
+       stays correct on any background. -->
+  <path fill="#ffffff" fill-rule="evenodd"
+        d="M32 11 L49 47 L40.2 47 L36.7 39.4 L27.3 39.4 L23.8 47 L15 47 Z
+           M32 24.2 L28.6 32.4 L35.4 32.4 Z"/>
+
+  <!-- Rule: the council's line under the mark -->
+  <rect x="19" y="51" width="26" height="4" rx="2" fill="#d51e38"/>
 </svg>
