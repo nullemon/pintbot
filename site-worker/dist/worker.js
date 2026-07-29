@@ -1442,7 +1442,6 @@ ASSETS["/contact.html"] = {
       <a href="services.html">Services</a>
       <a href="public.html">Public</a>
       <a href="contact.html" class="is-active">Contact</a>
-      <a href="imprint.html">Imprint</a>
       <a href="contact.html" class="nav-cta">Report piracy</a>
     </nav>
   </div>
@@ -5366,7 +5365,6 @@ ASSETS["/public.html"] = {
       <a href="services.html">Services</a>
       <a href="public.html" class="is-active">Public</a>
       <a href="contact.html">Contact</a>
-      <a href="imprint.html">Imprint</a>
       <a href="contact.html" class="nav-cta">Report piracy</a>
     </nav>
   </div>
