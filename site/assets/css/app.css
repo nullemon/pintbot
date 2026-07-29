@@ -376,7 +376,73 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .split-top { align-items: start; }
 .footer-bottom-bare { margin-top: 0; border-top: 0; }
 
-/* Member roster ---------------------------------------------------------- */
+/* Member roster — typographic, no logos ---------------------------------- */
+.roster-group + .roster-group { margin-top: 46px; }
+.roster-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--ink);
+}
+.roster-head h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.roster-head .count {
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.roster {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.roster li {
+  margin: 0;
+  padding: 24px 14px;
+  min-height: 104px;
+  background: var(--paper);
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+.roster .name {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  letter-spacing: -.005em;
+}
+.roster .meta {
+  display: block;
+  margin-top: 7px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (max-width: 1000px) { .roster { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .roster { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 380px)  { .roster { grid-template-columns: 1fr; } }
+
+/* Member roster (card variant, retained) --------------------------------- */
 .member-card { text-align: center; }
 .member-card h3 { font-size: 1rem; margin-bottom: .35em; }
 .member-logo {
