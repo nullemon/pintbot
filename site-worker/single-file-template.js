@@ -1,5 +1,5 @@
 /**
- * Tokyo Copyright — complete website in a single Cloudflare Worker.
+ * AMRC — complete website in a single Cloudflare Worker.
  *
  * GENERATED FILE — do not edit by hand.
  * Edit the pages in site/ and re-run:  node site-worker/build-single-file.mjs
@@ -23,7 +23,7 @@
 const ASSETS = __ASSETS__;
 
 const MAIL_TO = 'legal@tokyocopyright.com';
-const MAIL_FROM = 'Tokyo Copyright Website <website@tokyocopyright.com>';
+const MAIL_FROM = 'AMRC Website <website@tokyocopyright.com>';
 const MAX_BODY = 20000;
 
 const SECURITY_HEADERS = {
@@ -49,7 +49,7 @@ const clean = (value, max) =>
 
 function buildMessage(f) {
   return [
-    'A new enquiry was submitted on the Tokyo Copyright website.',
+    'A new enquiry was submitted on the AMRC website.',
     '',
     `Name:         ${f.name}`,
     `Company:      ${f.company || '—'}`,
@@ -74,7 +74,7 @@ async function sendViaResend(env, f) {
       from: env.MAIL_FROM || MAIL_FROM,
       to: [env.MAIL_TO || MAIL_TO],
       reply_to: f.email,
-      subject: `[Tokyo Copyright] ${f.subject || 'Website enquiry'} — ${f.company || f.name}`,
+      subject: `[AMRC] ${f.subject || 'Website enquiry'} — ${f.company || f.name}`,
       text: buildMessage(f),
     }),
   });

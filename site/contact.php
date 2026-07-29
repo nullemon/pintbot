@@ -1,6 +1,6 @@
 <?php
 /**
- * Tokyo Copyright — contact form handler for cPanel / WHM (Apache + PHP).
+ * AMRC — contact form handler for cPanel / WHM (Apache + PHP).
  *
  * Drop this in the same directory as contact.html. The front-end posts JSON here
  * and expects {"ok":true} or {"ok":false,"error":"..."} back.
@@ -15,7 +15,7 @@ declare(strict_types=1);
 
 const MAIL_TO      = 'legal@tokyocopyright.com';
 const MAIL_FROM    = 'website@tokyocopyright.com';   // must be a mailbox on THIS domain
-const SITE_NAME    = 'Tokyo Copyright';
+const SITE_NAME    = 'AMRC';
 const MAX_BODY     = 20000;                          // bytes accepted from the client
 const RATE_SECONDS = 20;                             // min seconds between sends per IP
 

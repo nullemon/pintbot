@@ -1,5 +1,5 @@
 /**
- * Tokyo Copyright — Cloudflare Worker.
+ * AMRC — Cloudflare Worker.
  *
  * Serves the static site from the ASSETS binding and handles the contact form
  * at POST /api/contact (and /contact.php, so the same HTML works on cPanel and
@@ -14,7 +14,7 @@
  */
 
 const MAIL_TO = 'legal@tokyocopyright.com';
-const MAIL_FROM = 'Tokyo Copyright Website <website@tokyocopyright.com>';
+const MAIL_FROM = 'AMRC Website <website@tokyocopyright.com>';
 const MAX_BODY = 20000;
 
 const SECURITY_HEADERS = {
@@ -38,7 +38,7 @@ const clean = (value, max) =>
 
 function buildMessage(f) {
   return [
-    'A new enquiry was submitted on tokyocopyright.com.',
+    'A new enquiry was submitted on the AMRC website.',
     '',
     `Name:         ${f.name}`,
     `Company:      ${f.company || '—'}`,
@@ -63,7 +63,7 @@ async function sendViaResend(env, f) {
       from: env.MAIL_FROM || MAIL_FROM,
       to: [env.MAIL_TO || MAIL_TO],
       reply_to: f.email,
-      subject: `[Tokyo Copyright] ${f.subject || 'Website enquiry'} — ${f.company || f.name}`,
+      subject: `[AMRC] ${f.subject || 'Website enquiry'} — ${f.company || f.name}`,
       text: buildMessage(f),
     }),
   });

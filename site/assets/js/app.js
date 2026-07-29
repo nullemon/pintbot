@@ -1,4 +1,4 @@
-/* Tokyo Copyright — small progressive-enhancement layer. No dependencies. */
+/* AMRC — small progressive-enhancement layer. No dependencies. */
 (function () {
   'use strict';
 
@@ -105,8 +105,8 @@
       .then(function (res) {
         if (res && res.ok === false) throw new Error(res.error || 'rejected');
         setStatus(
-          'Thank you — your enquiry has been received. Our team replies to rights ' +
-          'holder enquiries within one business day (JST).',
+          'Thank you — your enquiry has been received. The secretariat replies to ' +
+          'enquiries within one business day (JST).',
           'ok'
         );
         form.reset();

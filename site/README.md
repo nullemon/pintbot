@@ -1,7 +1,8 @@
-# Tokyo Copyright — website
+# AMRC — website
 
-A static, dependency-free website for **Tokyo Copyright**, an anti-piracy /
-content protection company in Chiyoda-ku, Tokyo.
+A static, dependency-free website for the **Anime & Manga Rights Council**
+(AMRC / アニメ・マンガ権利協議会), a member body of Japanese anime and manga
+companies based in Chiyoda-ku, Tokyo.
 
 No build step, no framework, no CDN, no webfonts. Plain HTML, one CSS file and
 one small JS file — so it can be uploaded to cPanel/WHM as-is, or deployed to
@@ -12,10 +13,11 @@ Cloudflare Workers unchanged.
 | File | Page | Purpose |
 | --- | --- | --- |
 | `index.html` | Home | Positioning, headline figures, services overview, process |
-| `about.html` | About | Who we are, principles, how an engagement works |
-| `services.html` | Services | The six core services, service-level table, FAQ |
+| `about.html` | About | Who we are, principles, governance, how a company joins |
+| `members.html` | Members | Member roster — full members, associates, scope of authority |
+| `services.html` | Services | The six core services, membership tier table, FAQ |
 | `public.html` | Public | Notices, commitments, **counter-notice procedure**, press |
-| `contact.html` | Contact | Enquiry form, office details, which address to use |
+| `contact.html` | Contact | Enquiry form, secretariat details, which address to use |
 | `imprint.html` | Imprint | Legal notice, disclaimer, copyright |
 | `privacy.html` | Privacy | Privacy policy (APPI/GDPR-shaped, needs legal review) |
 | `404.html` | Not found | Error page |
@@ -79,11 +81,22 @@ and want everything in one place.
 
 ## Before going live
 
+- [ ] **Replace the member roster in `members.html`.** The cards and the associate
+      table are placeholders. List only companies that have given **written consent**
+      to be named. The roster is what platforms check to confirm a notice is
+      authorised, so a wrong entry costs far more credibility than a short list does.
 - [ ] Replace the placeholder figures on the home page (`24,000`, `61,000,000`,
       `96.4%`) and on `public.html` with real numbers, or delete the blocks.
       Publishing unverified statistics is a legal risk in itself.
-- [ ] Fill in the imprint: company registration number (法人番号), representative
-      director, invoice registration number. Marked with a notice on the page.
+- [ ] Fill in the imprint and governance details: legal form (一般社団法人 or
+      otherwise), registration number (法人番号), representative director, date
+      constituted, and a link to the articles of association. Both `imprint.html`
+      and `about.html` carry an on-page note.
+- [ ] Decide the Council's relationship to any other organisation before claiming
+      one. Do not describe AMRC as affiliated with, endorsed by, or a body of
+      another association — including CODA — without that organisation's written
+      permission. A takedown notice that overstates its authority is the one
+      credibility attack you cannot recover from.
 - [ ] Have `privacy.html` reviewed against APPI (and GDPR if you serve the EU/UK),
       and fill in the hosting provider and retention periods.
 - [ ] Swap the canonical/OG domain if it is not `tokyocopyright.com` —

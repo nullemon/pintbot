@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Tokyo Copyright — global stylesheet
+   AMRC — global stylesheet
    Self-contained: no CDNs, no webfonts, no external assets.
    ========================================================================== */
 
@@ -375,6 +375,29 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 
 .split-top { align-items: start; }
 .footer-bottom-bare { margin-top: 0; border-top: 0; }
+
+/* Member roster ---------------------------------------------------------- */
+.member-card { text-align: center; }
+.member-card h3 { font-size: 1rem; margin-bottom: .35em; }
+.member-logo {
+  display: grid;
+  place-items: center;
+  height: 68px;
+  margin-bottom: 16px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  color: var(--muted);
+  font-size: 1rem;
+  letter-spacing: .08em;
+}
+/* Swap .member-logo for an <img class="member-logo-img"> once real logos exist. */
+.member-logo-img {
+  height: 68px;
+  width: 100%;
+  margin-bottom: 16px;
+  object-fit: contain;
+}
 
 /* Numbered process ------------------------------------------------------- */
 .steps { counter-reset: step; display: grid; gap: 22px; grid-template-columns: repeat(4, 1fr); }

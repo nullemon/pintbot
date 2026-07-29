@@ -1,4 +1,4 @@
-# Tokyo Copyright — Apache config for cPanel / WHM shared hosting.
+# AMRC — Apache config for cPanel / WHM shared hosting.
 # Upload the contents of site/ into public_html/ (this file included).
 
 DirectoryIndex index.html index.php
