@@ -3753,14 +3753,24 @@ ASSETS["/ja/members.html"] = {
           <span class="count">&mdash; 社</span>
         </div>
         <ul class="roster">
-          <!-- 出版社をここに追加してください（一社一行）:
+          <!-- ====================================================================
+               ▼▼▼  マンガ出版社はこの2本の線の間に貼り付けてください  ▼▼▼
+               下のグレーの行を削除し、一社につき一行を追加します:
+
                <li><span class="name">株式会社◯◯</span><span class="meta">2024年より</span></li>
-               .meta は省略可能です。 -->
+
+               .meta は省略可能です。見出しの社数の更新もお忘れなく。
+               ==================================================================== -->
+
           <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
           <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
           <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
           <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
           <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+
+          <!-- ====================================================================
+               ▲▲▲  マンガ出版社 ここまで  ▲▲▲
+               ==================================================================== -->
         </ul>
       </div>
 
@@ -3770,12 +3780,24 @@ ASSETS["/ja/members.html"] = {
           <span class="count">&mdash; 社</span>
         </div>
         <ul class="roster">
-          <!-- 制作会社をここに追加してください。形式は上記と同じです。 -->
+          <!-- ====================================================================
+               ▼▼▼  アニメ制作会社はこの2本の線の間に貼り付けてください  ▼▼▼
+               下のグレーの行を削除し、一社につき一行を追加します:
+
+               <li><span class="name">株式会社◯◯</span><span class="meta">2024年より</span></li>
+
+               .meta は省略可能です。見出しの社数の更新もお忘れなく。
+               ==================================================================== -->
+
           <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
           <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
           <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
           <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
           <li class="is-empty"><span class="name">会員社名</span><span class="meta">20XX年より</span></li>
+
+          <!-- ====================================================================
+               ▲▲▲  アニメ制作会社 ここまで  ▲▲▲
+               ==================================================================== -->
         </ul>
       </div>
     </div>
@@ -4862,18 +4884,25 @@ ASSETS["/members.html"] = {
           <span class="count">&mdash; members</span>
         </div>
         <ul class="roster">
-          <!-- ============================================================
-               PASTE MANGA PUBLISHERS HERE — one line each:
+          <!-- ====================================================================
+               ▼▼▼  PASTE MANGA PUBLISHERS BETWEEN THESE TWO LINES  ▼▼▼
+               Delete the greyed rows below, then add one line per company:
 
                <li><span class="name">Company Name</span><span class="meta">Since 2024</span></li>
 
-               The .meta line is optional; drop it for a name-only plate.
-               ============================================================ -->
+               Drop the .meta span for a name-only plate. Remember to update
+               the member count in the heading above.
+               ==================================================================== -->
+
           <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
           <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
           <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
           <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
           <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+
+          <!-- ====================================================================
+               ▲▲▲  END OF MANGA PUBLISHERS  ▲▲▲
+               ==================================================================== -->
         </ul>
       </div>
 
@@ -4883,14 +4912,25 @@ ASSETS["/members.html"] = {
           <span class="count">&mdash; members</span>
         </div>
         <ul class="roster">
-          <!-- ============================================================
-               PASTE ANIMATION STUDIOS HERE — same pattern as above.
-               ============================================================ -->
+          <!-- ====================================================================
+               ▼▼▼  PASTE ANIMATION STUDIOS BETWEEN THESE TWO LINES  ▼▼▼
+               Delete the greyed rows below, then add one line per company:
+
+               <li><span class="name">Company Name</span><span class="meta">Since 2024</span></li>
+
+               Drop the .meta span for a name-only plate. Remember to update
+               the member count in the heading above.
+               ==================================================================== -->
+
           <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
           <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
           <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
           <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
           <li class="is-empty"><span class="name">Member name</span><span class="meta">Since 20XX</span></li>
+
+          <!-- ====================================================================
+               ▲▲▲  END OF ANIMATION STUDIOS  ▲▲▲
+               ==================================================================== -->
         </ul>
       </div>
     </div>
