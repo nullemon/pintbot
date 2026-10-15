@@ -12,6 +12,7 @@ from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.core.database import SessionLocal, get_db
+from app.core.logging import emit_scan_event
 from app.models import (
     Asset,
     Endpoint,
@@ -207,6 +208,7 @@ def cancel_scan(scan_id: str, db: DB):
         )
         db.commit()
         db.refresh(scan)
+        emit_scan_event(scan_id, "scan_cancelled", {"reason": "Researcher cancelled scan"})
     return record(scan)
 
 
@@ -217,13 +219,47 @@ def scan_events(
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
     newest_first: bool = False,
+    category: Literal["all", "ai", "errors", "requests", "scope"] = "all",
 ):
     require(db, Scan, scan_id)
+    query = select(ScanEvent).where(ScanEvent.scan_id == scan_id)
+    if category == "ai":
+        query = query.where(ScanEvent.kind.startswith("ai_"))
+    elif category == "errors":
+        query = query.where(
+            ScanEvent.kind.in_(
+                [
+                    "ai_provider_failed",
+                    "ai_provider_retry",
+                    "ai_provider_refused",
+                    "ai_review_refused",
+                    "ai_unavailable",
+                    "ai_priority_fallback",
+                    "scanner_error",
+                    "request_error",
+                    "rate_limit_triggered",
+                    "budget_exhausted",
+                    "ai_action_denied",
+                    "redirect_blocked",
+                    "discovered_out_of_scope",
+                ]
+            )
+        )
+    elif category == "requests":
+        query = query.where(
+            ScanEvent.kind.in_(
+                ["request_sent", "response_received", "request_error", "rate_limit_triggered"]
+            )
+        )
+    elif category == "scope":
+        query = query.where(
+            ScanEvent.kind.in_(
+                ["scope_check", "redirect_blocked", "discovered_out_of_scope", "ai_action_denied"]
+            )
+        )
     return page(
         db,
-        select(ScanEvent)
-        .where(ScanEvent.scan_id == scan_id)
-        .order_by(
+        query.order_by(
             ScanEvent.created_at.desc() if newest_first else ScanEvent.created_at,
             ScanEvent.id.desc() if newest_first else ScanEvent.id,
         ),

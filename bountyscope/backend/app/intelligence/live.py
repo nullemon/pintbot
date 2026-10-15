@@ -12,7 +12,7 @@ from app.core.database import SessionLocal
 from app.core.http import BudgetExceeded, ScanCancelled
 from app.intelligence.analyzer import analyze_finding, prioritize_findings
 from app.intelligence.dispatcher import SafeToolDispatcher
-from app.intelligence.providers import ProviderUnavailable, get_provider
+from app.intelligence.providers import ProviderRefused, ProviderUnavailable, get_provider
 from app.models import Finding, ScanFinding
 from app.scope.guard import ScopeDenied
 from app.utils.redaction import sanitize
@@ -24,6 +24,8 @@ class LiveAdvisor:
         self.provider = provider if provider is not None else get_provider()
         if self.provider and ctx.profile == "exposure":
             self.provider.focus = "Only directory indexing, exposed files, source disclosures and enumerable media. Prioritize confirmed index signatures and sensitive-file indicators. Do not propose header, cookie or CORS checks. Plain public image availability alone is not a vulnerability."
+        if self.provider:
+            self.provider.event_sink = ctx.event
         self.clock = clock
         self.round_limit = min(3, max(0, settings.ai_max_rounds))
         self.action_limit = min(20, max(0, settings.ai_max_actions_per_round))
@@ -134,6 +136,13 @@ class LiveAdvisor:
             self.publish(status="waiting", message="Review complete; continuing discovery")
         except (ScanCancelled, BudgetExceeded):
             raise
+        except ProviderRefused as exc:
+            self.stopped = True
+            self.ctx.event("ai_review_refused", {"reason": str(exc), "round": current})
+            self.publish(
+                status="refused",
+                message="Provider declined this review; deterministic scanning continues. Automatic AI retries stopped.",
+            )
         except (
             ProviderUnavailable,
             httpx.HTTPError,
@@ -205,7 +214,12 @@ class LiveAdvisor:
             result = await analyze_finding(snapshot, evidence, self.provider)
             self.ctx.check_cancelled()
             if not result.get("available"):
-                raise ProviderUnavailable(
+                error_type = (
+                    ProviderRefused
+                    if result.get("error_code") == "refused"
+                    else ProviderUnavailable
+                )
+                raise error_type(
                     result.get(
                         "error",
                         "Finding analysis failed; check provider connectivity or structured output",
@@ -225,7 +239,7 @@ class LiveAdvisor:
         self.publish()
 
     def finish(self):
-        if self.progress["status"] not in {"disabled", "unavailable"}:
+        if self.progress["status"] not in {"disabled", "unavailable", "refused"}:
             self.publish(
                 status="complete",
                 message="Bounded AI review complete; remaining findings may require manual analysis",

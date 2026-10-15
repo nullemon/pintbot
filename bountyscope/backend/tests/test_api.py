@@ -140,3 +140,54 @@ def test_priority_sort_exposure_filter_and_live_progress():
     events = client.get(f"/api/scans/{scan_id}/events?newest_first=true").json()
     assert events["items"][0]["kind"] == "ai_progress"
     assert client.get("/api/findings?sort=unsupported").status_code == 422
+
+
+def test_live_log_filters_paginate_authorize_and_isolate_scans():
+    p = project()
+    kinds = [
+        "ai_provider_started",
+        "ai_provider_refused",
+        "ai_review_refused",
+        "request_sent",
+        "response_received",
+        "request_error",
+        "discovered_out_of_scope",
+        "scope_check",
+        "scanner_error",
+    ]
+    with SessionLocal() as db:
+        scan = Scan(project_id=p["id"], target="https://example.com/", status="complete")
+        other = Scan(project_id=p["id"], target="https://example.com/", status="complete")
+        db.add_all([scan, other])
+        db.flush()
+        scan_id = scan.id
+        for kind in kinds:
+            db.add(ScanEvent(scan_id=scan.id, kind=kind, data={"message": "Synthetic metadata"}))
+        db.add(ScanEvent(scan_id=other.id, kind="ai_provider_failed", data={}))
+        db.add(
+            ScanEvent(
+                scan_id=scan.id,
+                kind="ai_progress",
+                data={"status": "refused", "enabled": True, "round": 1},
+            )
+        )
+        db.commit()
+    url = f"/api/scans/{scan_id}/events"
+    assert TestClient(app).get(url).status_code == 401
+    assert client.get(url + "?category=unknown").status_code == 422
+    assert client.get(url + "?category=ai").json()["total"] == 4
+    assert client.get(url + "?category=errors").json()["total"] == 5
+    requests = client.get(url + "?category=requests").json()
+    assert {e["kind"] for e in requests["items"]} == {
+        "request_sent",
+        "response_received",
+        "request_error",
+    }
+    scope = client.get(url + "?category=scope").json()
+    assert {e["kind"] for e in scope["items"]} == {"scope_check", "discovered_out_of_scope"}
+    first = client.get(url + "?category=ai&newest_first=true&limit=2").json()
+    second = client.get(url + "?category=ai&newest_first=true&limit=2&offset=2").json()
+    assert first["total"] == second["total"] == 4
+    assert not {e["id"] for e in first["items"]} & {e["id"] for e in second["items"]}
+    assert all(e["scan_id"] == scan_id for e in first["items"] + second["items"])
+    assert client.get(f"/api/scans/{scan_id}").json()["ai_progress"]["status"] == "refused"

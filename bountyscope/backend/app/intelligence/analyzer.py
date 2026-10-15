@@ -13,7 +13,7 @@ from app.intelligence.dispatcher import (
     check_cancelled,
     event,
 )
-from app.intelligence.providers import ProviderUnavailable, get_provider
+from app.intelligence.providers import ProviderRefused, ProviderUnavailable, get_provider
 from app.intelligence.schemas import FindingAnalysis, PrioritizedFinding
 from app.intelligence.summaries import bounded, read
 from app.scope.guard import ScopeDenied
@@ -56,6 +56,7 @@ async def analyze_finding(finding, evidence, provider=None):
         return {
             **_fallback(finding, "provider_unavailable"),
             "error": str(exc) if isinstance(exc, ProviderUnavailable) else type(exc).__name__,
+            "error_code": "refused" if isinstance(exc, ProviderRefused) else "unavailable",
         }
     output.update(
         {
@@ -101,6 +102,8 @@ async def prioritize_findings(findings, provider=None):
                     )
                     seen.add(item.finding_id)
             baseline = accepted + [item for item in baseline if item["finding_id"] not in seen]
+        except ProviderRefused:
+            raise
         except (ProviderUnavailable, ValidationError, httpx.HTTPError, ValueError, TypeError):
             pass
     return sorted(baseline, key=lambda item: item["score"], reverse=True)

@@ -14,7 +14,7 @@ export type Scan = {
   ai_progress?: AIProgress | null;
 };
 export type AIProgress = {
-  enabled: boolean; status: "disabled" | "waiting" | "analyzing" | "complete" | "unavailable";
+  enabled: boolean; status: "disabled" | "waiting" | "analyzing" | "complete" | "unavailable" | "refused";
   round: number; max_rounds: number; actions_proposed: number; actions_approved: number;
   actions_denied: number; actions_executed: number; findings_analyzed: number;
   findings_prioritized: number; message: string; last_updated: string | null;

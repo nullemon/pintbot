@@ -4,10 +4,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, CircleAlert, Clock3, Plus, Radar, ShieldCheck, Square, Target } from "lucide-react";
 import { api, date, human, number, useApi } from "@/lib/api";
-import type { Page, Project, Scan, ScanEvent } from "@/lib/types";
+import type { Page, Project, Scan } from "@/lib/types";
 import { Badge, Empty, ErrorBox, Loading, Modal, Pagination } from "./ui";
 import { PageHeading } from "./workspace";
 import AIActivity from "./ai-progress";
+import LiveLog from "./live-log";
 
 export default function Scans() {
   const [offset, setOffset] = useState(0);
@@ -54,13 +55,11 @@ export function LaunchScan({ onClose, projectId }: { onClose: () => void; projec
 
 export function ScanDetail({ id }: { id: string }) {
   const scan = useApi<Scan>(`/scans/${id}`, 2500);
-  const [offset, setOffset] = useState(0);
-  const events = useApi<Page<ScanEvent>>(`/scans/${id}/events?limit=100&offset=${offset}&newest_first=true`, 2500);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   async function cancel() {
     setBusy(true); setError("");
-    try { await api(`/scans/${id}/cancel`, { method: "POST" }); scan.refresh(); events.refresh(); }
+    try { await api(`/scans/${id}/cancel`, { method: "POST" }); scan.refresh(); }
     catch (cause) { setError(cause instanceof Error ? cause.message : "Could not cancel scan."); }
     finally { setBusy(false); }
   }
@@ -74,7 +73,7 @@ export function ScanDetail({ id }: { id: string }) {
     {(error || scan.error) && <ErrorBox message={error || scan.error} />}
     <section className="panel" style={{ marginBottom: 22 }}><div className="section-heading"><div className="button-row"><span className="project-icon"><Radar size={20} /></span><div><h2 className="mono" style={{ fontSize: 14 }}>{item.target}</h2><p>{human(item.scan_profile)} profile · Scan {item.id.slice(0, 8)}</p></div></div><Link href={`/projects/${item.project_id}`} className="text-link">View project<ArrowRight size={13} /></Link></div><div className="scan-metrics">{[["Requests sent", item.requests_sent], ["Assets discovered", item.assets_found], ["Endpoints found", item.endpoints_found], ["Findings", item.findings_found]].map(([label, value]) => <div className="scan-metric" key={String(label)}><strong>{number(Number(value))}</strong><span>{label}</span></div>)}</div><div className="progress-track"><div className="progress-fill" style={{ width: `${progress}%` }} /></div><div className="section-heading small muted" style={{ marginBottom: 0 }}><span>{number(item.requests_sent)} / {number(budget)} request budget used ({progress.toFixed(1)}%)</span><span>{finished ? `Finished ${date(item.finished_at)}` : `Started ${date(item.started_at || item.created_at)}`}</span></div></section>
     <AIActivity progress={item.ai_progress} finished={finished} stale={Boolean(scan.error)} />
-    <div className="detail-grid"><section className="panel panel-flush"><div className="panel-header"><div><h2>Activity log</h2><p>Newest events first · scope decisions and scan progress</p></div><span className="status-metric muted"><Clock3 size={13} />{events.error ? "Updates unavailable" : "Updates every 2.5 seconds"}</span></div>{events.error && <ErrorBox message={events.error} retry={events.refresh} />}{events.loading ? <Loading /> : events.data?.items.length ? <><div className="event-list">{events.data.items.map((event) => <div key={event.id} className={`event-row ${/scope|blocked|denied/i.test(event.kind) ? "event-blocked" : ""}`}><time className="event-time">{date(event.created_at)}</time><span className="event-marker" /><div style={{ minWidth: 0 }}><div className="event-kind">{human(event.kind)}</div><div className="event-data">{JSON.stringify(event.data)}</div></div></div>)}</div><Pagination total={events.data.total} offset={offset} limit={100} onChange={setOffset} /></> : <Empty title="Waiting for events" detail="Worker activity and out-of-scope decisions will appear here as the scan progresses." />}</section>
+    <div className="detail-grid"><LiveLog key={id} scanId={id} finished={finished} />
     <aside className="stack"><section className="panel"><h3 style={{ marginBottom: 19 }}>Scan configuration</h3><dl className="metadata"><div><dt>Profile</dt><dd>{human(item.scan_profile)}</dd></div><div><dt>Created</dt><dd>{date(item.created_at)}</dd></div>{Object.entries(item.limits || {}).map(([key, value]) => <div key={key}><dt>{human(key)}</dt><dd>{number(value)}</dd></div>)}</dl></section><section className="panel"><div className="button-row" style={{ marginBottom: 13 }}><Target size={16} className="muted" /><h3>Scope snapshot</h3></div><p className="muted small" style={{ marginBottom: 12 }}>The scan uses the rules captured at launch.</p>{item.scope_snapshot?.length ? item.scope_snapshot.map((rule, index) => <div key={index} className="review-rule"><span className="muted small">{human(rule.rule_type)}</span><span className="mono">{rule.value}</span>{!rule.enabled && <span className="muted">Disabled</span>}</div>) : <p className="muted small">No snapshot details returned.</p>}</section>{!!item.errors?.length && <section className="panel"><h3 style={{ color: "#e9acb9", marginBottom: 12 }}>Scan errors</h3><pre className="code-block">{JSON.stringify(item.errors, null, 2)}</pre></section>}</aside></div>
   </>;
 }

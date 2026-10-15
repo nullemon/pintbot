@@ -12,6 +12,7 @@ from app.intelligence.analyzer import analyze_finding, prioritize_findings, run_
 from app.intelligence.providers import (
     AnthropicProvider,
     OpenAIProvider,
+    ProviderRefused,
     ProviderUnavailable,
     get_provider,
 )
@@ -160,6 +161,28 @@ async def test_analysis_cannot_inflate_severity_or_more_than_five_confidence():
     result = await analyze_finding(FINDING, [], FakeProvider(analysis=malicious))
     assert result["available"] is False
     assert result["confidence"] == 68 and result["severity"] == "low"
+
+
+async def test_refused_analysis_keeps_evidence_scoring_and_exposes_typed_error():
+    class Refusing(FakeProvider):
+        async def analyze_finding(self, finding, evidence):
+            raise ProviderRefused("AI provider refused this review")
+
+    result = await analyze_finding(FINDING, [], Refusing())
+    assert result["available"] is False
+    assert result["provider"] == "deterministic" and result["error_code"] == "refused"
+    assert result["confidence"] == FINDING["confidence"]
+    assert result["severity"] == FINDING["severity"]
+    assert "secret-evidence-token" not in json.dumps(result)
+
+
+async def test_refused_prioritization_propagates_so_live_review_stops():
+    class Refusing(FakeProvider):
+        async def prioritize_findings(self, findings):
+            raise ProviderRefused("AI provider refused this review")
+
+    with pytest.raises(ProviderRefused, match="AI provider refused this review"):
+        await prioritize_findings([FINDING], Refusing())
 
 
 @pytest.mark.parametrize("adjustment", [-5, 5])

@@ -8,6 +8,7 @@ from sqlalchemy import update
 
 from app.core.config import settings
 from app.core.database import SessionLocal
+from app.core.logging import emit_scan_event
 from app.models import Project, Scan, ScanEvent, now
 from app.scope.guard import ScopeDenied, ScopeGuard
 from app.utils.redaction import clean_url, sanitize
@@ -73,6 +74,7 @@ class SafeHTTPClient:
         with SessionLocal() as db:
             db.add(ScanEvent(scan_id=self.scan_id, kind=kind, data=sanitize(data)))
             db.commit()
+        emit_scan_event(self.scan_id, kind, data)
 
     def check_cancelled(self):
         with SessionLocal() as db:

@@ -8,6 +8,7 @@ import pytest
 from app.intelligence.providers import (
     AnthropicProvider,
     OpenAIProvider,
+    ProviderRefused,
     ProviderUnavailable,
 )
 from app.intelligence.schemas import FindingAnalysis, SafeTool
@@ -281,3 +282,115 @@ async def test_openai_non_success_finish_reason_is_not_parsed_as_valid_json(
     provider = OpenAIProvider(API_KEY, "configured-model", transport=httpx.MockTransport(respond))
     with pytest.raises(ProviderUnavailable, match=expected):
         await provider.suggest_safe_next_checks([])
+
+
+@pytest.mark.parametrize("repair_first", [False, True])
+async def test_provider_events_explain_attempts_and_usage_without_recording_content(repair_first):
+    captured = []
+    events = []
+
+    def respond(request):
+        captured.append(request)
+        result = anthropic_result(
+            {"checks": PRIVATE_VALUE} if repair_first and len(captured) == 1 else PLAN
+        )
+        result["usage"] = {"input_tokens": 321, "output_tokens": 45}
+        return httpx.Response(200, json=result)
+
+    provider = AnthropicProvider(
+        API_KEY, "configured-model", transport=httpx.MockTransport(respond)
+    )
+    provider.event_sink = lambda kind, data: events.append((kind, data))
+    await provider.suggest_safe_next_checks([{"url": "https://example.test/uploads/"}])
+
+    kinds = [kind for kind, _ in events]
+    assert kinds == (
+        ["ai_provider_started", "ai_provider_retry", "ai_provider_started", "ai_provider_completed"]
+        if repair_first
+        else ["ai_provider_started", "ai_provider_completed"]
+    )
+    assert len(captured) == (2 if repair_first else 1)
+    for kind, data in events:
+        assert data["provider"] == "anthropic" and data["model"] == "configured-model"
+        assert data["task"] == "suggest_safe_next_checks"
+        assert data["schema_name"] == "FollowupPlan"
+        assert data["attempt"] in {1, 2} and data["max_attempts"] == 2
+        assert isinstance(data["elapsed_ms"], int) and data["elapsed_ms"] >= 0
+        if kind != "ai_provider_started":
+            assert data["status_code"] == 200
+            assert data["usage_input"] == 321 and data["usage_output"] == 45
+    assert events[-1][1]["attempt"] == len(captured)
+    diagnostics = json.dumps(events)
+    assert API_KEY not in diagnostics and PRIVATE_VALUE not in diagnostics
+    assert "https://example.test/uploads/" not in diagnostics
+
+
+@pytest.mark.parametrize(
+    ("provider_type", "payload"),
+    [
+        (
+            AnthropicProvider,
+            {
+                "stop_reason": "refusal",
+                "content": [{"type": "text", "text": PRIVATE_VALUE}],
+                "usage": {"input_tokens": 123, "output_tokens": 4},
+            },
+        ),
+        (
+            OpenAIProvider,
+            {
+                "choices": [
+                    {"finish_reason": "content_filter", "message": {"content": PRIVATE_VALUE}}
+                ],
+                "usage": {"prompt_tokens": 123, "completion_tokens": 4},
+            },
+        ),
+        (
+            OpenAIProvider,
+            {
+                "choices": [
+                    {
+                        "finish_reason": "stop",
+                        "message": {"refusal": PRIVATE_VALUE, "content": json.dumps(PLAN)},
+                    }
+                ],
+                "usage": {"prompt_tokens": 123, "completion_tokens": 4},
+            },
+        ),
+    ],
+)
+async def test_provider_refusal_is_explicit_and_never_retried(provider_type, payload):
+    requests, events = [], []
+
+    def respond(request):
+        requests.append(request)
+        return httpx.Response(200, json=payload)
+
+    provider = provider_type(API_KEY, "configured-model", transport=httpx.MockTransport(respond))
+    provider.event_sink = lambda kind, data: events.append((kind, data))
+    with pytest.raises(ProviderRefused, match="AI provider refused this review") as error:
+        await provider.suggest_safe_next_checks([])
+
+    assert isinstance(error.value, ProviderUnavailable)
+    assert len(requests) == 1
+    assert [kind for kind, _ in events] == ["ai_provider_started", "ai_provider_refused"]
+    final = events[-1][1]
+    assert final["attempt"] == 1 and final["status_code"] == 200
+    assert final["usage_input"] == 123 and final["usage_output"] == 4
+    assert final["task"] == "suggest_safe_next_checks" and final["schema_name"] == "FollowupPlan"
+    diagnostics = json.dumps(events)
+    assert PRIVATE_VALUE not in diagnostics and API_KEY not in diagnostics
+
+
+async def test_http_failure_event_retains_status_without_suggesting_format_retry():
+    captured, events = [], []
+    provider = anthropic_provider(
+        {"error": {"message": "Invalid key " + API_KEY}}, status_code=401, captured=captured
+    )
+    provider.event_sink = lambda kind, data: events.append((kind, data))
+    with pytest.raises(ProviderUnavailable, match="HTTP 401"):
+        await provider.suggest_safe_next_checks([])
+    assert len(captured) == 1
+    assert [kind for kind, _ in events] == ["ai_provider_started", "ai_provider_failed"]
+    assert events[-1][1]["status_code"] == 401
+    assert API_KEY not in json.dumps(events)

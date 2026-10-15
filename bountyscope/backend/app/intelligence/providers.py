@@ -2,6 +2,7 @@
 
 import asyncio
 import json
+import time
 from abc import ABC, abstractmethod
 
 import httpx
@@ -47,6 +48,10 @@ class ProviderUnavailable(RuntimeError):
     """A sanitized provider error safe to record without prompts, secrets or responses."""
 
 
+class ProviderRefused(ProviderUnavailable):
+    """The provider declined this review; never retry it as a formatting failure."""
+
+
 class AIProvider(ABC):
     @abstractmethod
     async def analyze_finding(self, finding, evidence):
@@ -78,64 +83,128 @@ class JSONProvider(AIProvider):
         self._api_key = api_key
         self.model = model
         self._transport = transport
+        self.event_sink = None
+        self._response_meta = {}
+
+    def _notify(self, kind, data):
+        payload = {"provider": self.name, "model": self.model, **data}
+        if self.event_sink:
+            self.event_sink(kind, payload)
+        else:
+            from app.core.logging import emit_scan_event
+
+            emit_scan_event("manual", kind, payload)
+
+    def _response_metadata(self, response, data):
+        self._response_meta = {"status_code": response.status_code}
+        usage = data.get("usage", {}) if isinstance(data, dict) else {}
+        if isinstance(usage, dict):
+            for field, alternatives in {
+                "usage_input": ("input_tokens", "prompt_tokens"),
+                "usage_output": ("output_tokens", "completion_tokens"),
+            }.items():
+                value = next((usage[k] for k in alternatives if k in usage), None)
+                if isinstance(value, int) and not isinstance(value, bool) and 0 <= value <= 10**9:
+                    self._response_meta[field] = value
+
+    async def _validated_request(self, prompt, schema):
+        try:
+            value = await self._request(prompt, schema=schema.model_json_schema())
+            if len(value) > 64_000:
+                raise ProviderUnavailable("Provider output exceeded the allowed size")
+            return schema.model_validate_json(json_object(value))
+        except httpx.HTTPStatusError as exc:
+            self._response_meta = {"status_code": exc.response.status_code}
+            try:
+                error = exc.response.json().get("error", {})
+                message = redact(
+                    str(error.get("message", "Request rejected")).replace(
+                        self._api_key, "[REDACTED]"
+                    )
+                )[:300]
+            except (ValueError, AttributeError):
+                message = "Request rejected"
+            raise ProviderUnavailable(
+                f"Provider HTTP {exc.response.status_code}: {message}"
+            ) from exc
+        except (httpx.TimeoutException, TimeoutError) as exc:
+            raise ProviderUnavailable("AI provider timed out; response deadline exceeded") from exc
+        except httpx.HTTPError as exc:
+            raise ProviderUnavailable("AI provider network error: " + type(exc).__name__) from exc
+        except (InvalidJSON, ValidationError):
+            raise
+        except (ValueError, KeyError, TypeError, AttributeError, IndexError) as exc:
+            raise ProviderUnavailable("AI provider returned an invalid response envelope") from exc
 
     async def _complete(self, task, data, schema):
+        output_schema = schema.model_json_schema()
         prompt = json.dumps(
             {
                 "task": task,
                 "assessment_focus": getattr(self, "focus", "authorized security observations"),
                 "untrusted_data": data,
-                "response_schema": schema.model_json_schema(),
+                "response_schema": output_schema,
             },
             ensure_ascii=True,
         )
-        output_schema = schema.model_json_schema()
         for attempt in range(2):
+            started = time.monotonic()
+            meta = {
+                "task": task,
+                "schema_name": schema.__name__,
+                "attempt": attempt + 1,
+                "max_attempts": 2,
+                "elapsed_ms": 0,
+            }
+            self._response_meta = {}
+            self._notify("ai_provider_started", meta)
             try:
-                value = await self._request(prompt, schema=output_schema)
-                if len(value) > 64_000:
-                    raise ProviderUnavailable("Provider output exceeded the allowed size")
-                return schema.model_validate_json(json_object(value))
-            except httpx.HTTPStatusError as exc:
-                try:
-                    error = exc.response.json().get("error", {})
-                    message = redact(
-                        str(error.get("message", "Request rejected")).replace(
-                            self._api_key, "[REDACTED]"
-                        )
-                    )[:300]
-                except (ValueError, AttributeError):
-                    message = "Request rejected"
-                raise ProviderUnavailable(
-                    f"Provider HTTP {exc.response.status_code}: {message}"
-                ) from exc
-            except (httpx.TimeoutException, TimeoutError) as exc:
-                raise ProviderUnavailable(
-                    "AI provider timed out; response deadline exceeded"
-                ) from exc
-            except httpx.HTTPError as exc:
-                raise ProviderUnavailable(
-                    "AI provider network error: " + type(exc).__name__
-                ) from exc
+                result = await self._validated_request(prompt, schema)
             except (InvalidJSON, ValidationError) as exc:
                 reason = (
                     schema_error(exc, output_schema)
                     if isinstance(exc, ValidationError)
                     else "AI output was not valid JSON"
                 )
+                details = {
+                    **meta,
+                    **self._response_meta,
+                    "elapsed_ms": max(0, int((time.monotonic() - started) * 1000)),
+                    "message": reason,
+                }
+                self._notify("ai_provider_failed" if attempt else "ai_provider_retry", details)
                 if attempt:
                     raise ProviderUnavailable(reason) from exc
-                # One repair attempt, without echoing raw model output or weakening validation.
-                self_output = json.loads(prompt)
-                self_output["format_repair"] = (
+                repair = json.loads(prompt)
+                repair["format_repair"] = (
                     reason
                     + ". Submit exactly the requested schema. Keep reasons short; prefer fewer checks when appropriate. No prose or extra fields."
                 )
-                prompt = json.dumps(self_output, ensure_ascii=True)
-            except (ValueError, KeyError, TypeError, AttributeError, IndexError) as exc:
-                raise ProviderUnavailable(
-                    "AI provider returned an invalid response envelope"
-                ) from exc
+                prompt = json.dumps(repair, ensure_ascii=True)
+            except ProviderUnavailable as exc:
+                self._notify(
+                    "ai_provider_refused"
+                    if isinstance(exc, ProviderRefused)
+                    else "ai_provider_failed",
+                    {
+                        **meta,
+                        **self._response_meta,
+                        "elapsed_ms": max(0, int((time.monotonic() - started) * 1000)),
+                        "message": str(exc),
+                    },
+                )
+                raise
+            else:
+                self._notify(
+                    "ai_provider_completed",
+                    {
+                        **meta,
+                        **self._response_meta,
+                        "elapsed_ms": max(0, int((time.monotonic() - started) * 1000)),
+                        "message": "Structured response validated",
+                    },
+                )
+                return result
 
     async def analyze_finding(self, finding, evidence):
         return await self._complete(
@@ -218,13 +287,14 @@ class OpenAIProvider(JSONProvider):
             if len(response.content) > 256_000:
                 raise ProviderUnavailable("Provider response exceeded the allowed size")
             data = response.json()
+            self._response_metadata(response, data)
             choice = data["choices"][0]
             if choice.get("finish_reason") == "length":
                 raise ProviderUnavailable("AI output was truncated by the provider token limit")
             if choice.get("finish_reason") == "content_filter" or choice.get("message", {}).get(
                 "refusal"
             ):
-                raise ProviderUnavailable("AI provider refused this review")
+                raise ProviderRefused("AI provider refused this review")
             value = choice["message"].get("content")
             if not isinstance(value, str) or not value.strip():
                 raise ProviderUnavailable("AI provider returned no structured result")
@@ -271,10 +341,11 @@ class AnthropicProvider(JSONProvider):
             if len(response.content) > 256_000:
                 raise ProviderUnavailable("Provider response exceeded the allowed size")
             data = response.json()
+            self._response_metadata(response, data)
             if data.get("stop_reason") == "max_tokens":
                 raise ProviderUnavailable("AI output was truncated by the provider token limit")
             if data.get("stop_reason") == "refusal":
-                raise ProviderUnavailable("AI provider refused this review")
+                raise ProviderRefused("AI provider refused this review")
             content = data.get("content")
             if not isinstance(content, list):
                 raise ProviderUnavailable("AI provider returned no structured result")

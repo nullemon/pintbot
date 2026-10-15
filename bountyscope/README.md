@@ -192,3 +192,30 @@ Directory findings store observed entry counts and a sample of at most 10 names/
 The connectivity command `docker compose exec worker python -m app.intelligence.diagnose --test` only tests a short message request. To verify the actual production structured-review path, run `docker compose exec worker python -m app.intelligence.diagnose --structured`. This sends synthetic observations and validates the result; it never executes proposed target checks. It uses one billable provider request and at most one additional formatting-repair request.
 
 Claude review requests now use a forced `submit_result` response schema tool. That tool submits data only; it cannot execute commands or make network requests. The same strict action/field validation remains authoritative. A single complete JSON code fence is tolerated for legacy text responses, while commentary, multiple JSON documents, unknown fields and unsupported actions are rejected. Malformed JSON/schema output gets one bounded repair attempt without echoing rejected content. Refusals, token truncation, timeouts and HTTP errors receive distinct sanitized messages. Provider read timeout is 90 seconds with an overall 110-second deadline; output remains capped at 8192 tokens and 256 KB of provider response. Raw invalid model output and credentials are never placed in scan events or logs.
+
+### Live logs and provider refusals
+
+Open **Scans → your scan → Live log**. Select **AI** for provider calls and bounded follow-up decisions, **Errors & warnings** for failures/refusals, **Requests** for target traffic, or **Scope** for approvals and skips. The newest page refreshes every 2.5 seconds during a scan. Pause updates to inspect it; viewing older pages also pauses updates. Refresh, last successful refresh time, expandable redacted details, copying and **Download loaded page** are available. The download contains that page only.
+
+Provider events record the task, configured model, schema, attempt, elapsed time, HTTP status when available and integer usage counts returned by the provider. A started event without a completed/failed/refused event means no final decision has been recorded yet. Historical events cannot gain metadata that was not recorded when they occurred.
+
+To follow container logs in Windows Command Prompt, from the `bountyscope` folder run:
+
+```cmd
+docker compose logs -f --tail=100 --timestamps worker api
+```
+
+Press Ctrl+C to stop viewing logs; containers keep running. Scan stages, target request metadata and AI diagnostics are mirrored as bounded redacted JSON records even with the worker's default WARNING log level. Keys, prompts, raw model output, response bodies and cookie values are omitted. A provider HTTP response is recorded separately from a scan-target response.
+
+**Provider declined review** means the API returned a refusal. A positive account balance or successful connectivity test does not guarantee acceptance of a particular review. BountyScope stops subsequent automatic AI calls for that scan, retains the refusal in its log, and continues deterministic checks and evidence-based report generation. It does not rephrase refused content or change providers automatically. This is distinct from invalid credentials, billing/rate limits, network timeouts and schema-validation failures. The provider's private reasoning is not available to the application.
+
+To install this update, first cancel any running scans, then run:
+
+```cmd
+cd /d "%USERPROFILE%\Documents\pintbot"
+git pull --ff-only origin claude/beautiful-bell-x8lnfs
+cd bountyscope
+docker compose up -d --build api worker frontend
+```
+
+Refresh the browser. New calls record the additional diagnostics; completed scans retain the metadata originally stored.

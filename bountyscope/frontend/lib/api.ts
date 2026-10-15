@@ -23,7 +23,7 @@ export async function api<T>(path: string, options: RequestInit = {}): Promise<T
 }
 
 export function useApi<T>(path: string | null, poll = 0) {
-  const [result, setResult] = useState<{ path: string | null; data: T | null; error: string }>({ path: null, data: null, error: "" });
+  const [result, setResult] = useState<{ path: string | null; data: T | null; error: string; updatedAt: string | null }>({ path: null, data: null, error: "", updatedAt: null });
   const [loading, setLoading] = useState(true);
   const [revision, setRevision] = useState(0);
   const refresh = useCallback(() => setRevision((value) => value + 1), []);
@@ -37,10 +37,10 @@ export function useApi<T>(path: string | null, poll = 0) {
       reading = true;
       try {
         const result = await api<T>(path, { signal: controller.signal });
-        if (active) setResult({ path, data: result, error: "" });
+        if (active) setResult({ path, data: result, error: "", updatedAt: new Date().toISOString() });
       } catch (cause) {
         const transient = !(cause instanceof ApiError) || cause.status === 429 || cause.status >= 500;
-        if (active && !controller.signal.aborted) setResult((current) => ({ path, data: transient && current.path === path ? current.data : null, error: cause instanceof Error ? cause.message : "Could not load data." }));
+        if (active && !controller.signal.aborted) setResult((current) => ({ path, data: transient && current.path === path ? current.data : null, error: cause instanceof Error ? cause.message : "Could not load data.", updatedAt: current.path === path ? current.updatedAt : null }));
       } finally { reading = false; if (active) setLoading(false); }
     };
     void read();
@@ -48,12 +48,12 @@ export function useApi<T>(path: string | null, poll = 0) {
     return () => { active = false; controller.abort(); window.clearInterval(timer); };
   }, [path, poll, revision]);
   useEffect(() => {
-    function authChanged() { setResult({ path: null, data: null, error: "" }); refresh(); }
+    function authChanged() { setResult({ path: null, data: null, error: "", updatedAt: null }); refresh(); }
     window.addEventListener("bountyscope:auth-changed", authChanged);
     return () => window.removeEventListener("bountyscope:auth-changed", authChanged);
   }, [refresh]);
   const current = result.path === path;
-  return { data: current ? result.data : null, error: current ? result.error : "", loading: Boolean(path) && (loading || !current), refresh };
+  return { data: current ? result.data : null, error: current ? result.error : "", updatedAt: current ? result.updatedAt : null, loading: Boolean(path) && (loading || !current), refresh };
 }
 
 export function query(values: Record<string, string | number | undefined>) {

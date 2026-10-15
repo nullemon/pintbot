@@ -135,6 +135,9 @@ async def test_complete_pipeline_redaction_scope_and_reports(monkeypatch):
         assert any(e.request_metadata["method"] == "HEAD" for e in evidence)
         events = list(db.scalars(select(ScanEvent).where(ScanEvent.scan_id == scan_id)))
         assert any(e.kind == "redirect_blocked" for e in events)
+        assert any(e.kind == "scope_check" and e.data.get("allowed") is False for e in events)
+        assert not any(e.kind == "scanner_error" for e in events)
+        assert not scan.errors
         from app.reports.generator import generate_report
 
         directory = next(f for f in findings if f.scanner == "directory_listing")

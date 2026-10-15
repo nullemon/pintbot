@@ -41,10 +41,10 @@ export function Modal({ title, children, onClose, wide = false }: { title: strin
   }, []);
   return <div className="modal-backdrop" onClick={onClose}><section ref={dialog} tabIndex={-1} className={`modal ${wide ? "modal-wide" : ""}`} role="dialog" aria-modal="true" aria-label={title} onClick={(event) => event.stopPropagation()}><div className="modal-header"><h2>{title}</h2><button className="icon-button" aria-label="Close dialog" onClick={onClose}><X size={18} /></button></div>{children}</section></div>;
 }
-export function Download({ content, name, format = "text/markdown" }: { content: string; name: string; format?: string }) {
+export function Download({ content, name, format = "text/markdown", label = "Download report" }: { content: string; name: string; format?: string; label?: string }) {
   function download() {
     const url = URL.createObjectURL(new Blob([content], { type: format }));
     const anchor = document.createElement("a"); anchor.href = url; anchor.download = name; anchor.click(); URL.revokeObjectURL(url);
   }
-  return <button className="btn btn-primary" onClick={download}><ArrowDownToLine size={16} />Download report</button>;
+  return <button className="btn btn-primary" onClick={download}><ArrowDownToLine size={16} />{label}</button>;
 }

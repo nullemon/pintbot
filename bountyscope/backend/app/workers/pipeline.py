@@ -11,6 +11,7 @@ from sqlalchemy import delete, func, select, update
 from app.core.config import settings
 from app.core.database import SessionLocal
 from app.core.http import BudgetExceeded, SafeHTTPClient, ScanCancelled
+from app.core.logging import emit_scan_event
 from app.models import (
     Asset,
     Endpoint,
@@ -66,6 +67,8 @@ class ScanContext:
             db.add(ScanEvent(scan_id=self.scan_id, kind="scanner_error", data=data))
             db.commit()
 
+        emit_scan_event(self.scan_id, "scanner_error", data)
+
     def check_cancelled(self):
         self.http.check_cancelled()
 
@@ -88,6 +91,8 @@ class ScanContext:
                 )
             )
             db.commit()
+
+        emit_scan_event(self.scan_id, "stage_changed", jsonable_encoder({"stage": stage, **values}))
 
     async def remember_url(self, url, source="crawl"):
         self.check_cancelled()
@@ -521,6 +526,8 @@ async def run_scan(scan_id):
                 ctx.counts()
             except (ScanCancelled, BudgetExceeded):
                 raise
+            except ScopeDenied as exc:
+                ctx.event("scope_check", {"url": url, "allowed": False, "reason": str(exc)})
             except Exception as exc:
                 ctx.error("pipeline", exc)
             if not ctx.queue and ctx.profile != "passive" and ctx.directory_candidates:

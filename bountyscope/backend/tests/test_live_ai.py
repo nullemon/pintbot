@@ -9,7 +9,7 @@ from app.core.config import settings
 from app.core.database import SessionLocal
 from app.core.http import ScanCancelled
 from app.intelligence.live import LiveAdvisor
-from app.intelligence.providers import ProviderUnavailable
+from app.intelligence.providers import ProviderRefused, ProviderUnavailable
 from app.models import Finding, Scan, ScanEvent
 
 
@@ -120,6 +120,94 @@ async def test_provider_failure_visible_no_retry_loop(monkeypatch):
     assert "HTTP 400" in advisor.progress["message"]
     await advisor.review([{"url": "https://example.com/"}], force=True)
     assert provider.plans == 1
+
+
+async def test_provider_refusal_stops_automatic_reviews_and_survives_finish(monkeypatch):
+    monkeypatch.setattr(settings, "ai_enabled", True)
+
+    class Refusing(Provider):
+        async def suggest_safe_next_checks(self, observations):
+            self.plans += 1
+            raise ProviderRefused("AI provider refused this review")
+
+    provider = Refusing()
+    ctx = Context()
+    advisor = LiveAdvisor(ctx, provider)
+
+    async def unexpected_triage():
+        pytest.fail("A refused plan must not be followed by more provider reviews")
+
+    advisor.triage = unexpected_triage
+    assert await advisor.review([{"url": "https://example.test/"}]) == []
+    assert advisor.stopped and advisor.progress["status"] == "refused"
+    assert "deterministic" in advisor.progress["message"].lower()
+    assert "stopped" in advisor.progress["message"].lower()
+    assert await advisor.review([{"url": "https://example.test/new/"}], force=True) == []
+    advisor.finish()
+    assert provider.plans == 1 and provider.analysis_calls == 0
+    assert advisor.progress["status"] == "refused"
+    assert sum(kind == "ai_review_refused" for kind, _ in ctx.events) == 1
+    assert not any(kind == "ai_unavailable" for kind, _ in ctx.events)
+
+
+@pytest.mark.parametrize("phase", ["plan", "prioritize", "analyze"])
+async def test_refusal_at_any_ai_phase_keeps_scan_running_without_more_provider_calls(
+    monkeypatch, phase
+):
+    configure(monkeypatch)
+
+    class Refusing(Provider):
+        def __init__(self):
+            super().__init__()
+            self.priority_calls = 0
+            self.refused = False
+
+        def record(self, method):
+            assert not self.refused, "No subsequent provider task is allowed after refusal"
+            if method == phase:
+                self.refused = True
+                raise ProviderRefused("AI provider refused this review")
+
+        async def suggest_safe_next_checks(self, observations):
+            self.plans += 1
+            self.record("plan")
+            return []
+
+        async def prioritize_findings(self, findings):
+            self.priority_calls += 1
+            self.record("prioritize")
+            return await super().prioritize_findings(findings)
+
+        async def analyze_finding(self, finding, evidence):
+            self.analysis_calls += 1
+            self.record("analyze")
+            return ANALYSIS
+
+    provider = Refusing()
+    monkeypatch.setattr(settings, "ai_enabled", True)
+    monkeypatch.setattr("app.intelligence.live.get_provider", lambda: provider)
+    scan_id = seed("exposure")
+    await __import__("app.workers.pipeline", fromlist=["run_scan"]).run_scan(scan_id)
+
+    assert provider.refused
+    assert provider.plans == 1
+    assert provider.priority_calls == (0 if phase == "plan" else 1)
+    assert provider.analysis_calls == (1 if phase == "analyze" else 0)
+    with SessionLocal() as db:
+        scan = db.get(Scan, scan_id)
+        assert scan.status == "complete", scan.errors
+        assert scan.findings_found > 0 and scan.requests_sent > 0
+        events = list(
+            db.scalars(
+                select(ScanEvent).where(ScanEvent.scan_id == scan_id).order_by(ScanEvent.created_at)
+            )
+        )
+        refusal = next(i for i, event in enumerate(events) if event.kind == "ai_review_refused")
+        assert any(event.kind == "request_sent" for event in events[refusal + 1 :])
+        progress = [event.data for event in events if event.kind == "ai_progress"]
+        assert progress[-1]["status"] == "refused"
+        assert not any(event.kind == "ai_unavailable" for event in events)
+        assert not any(event.kind == "ai_batch_completed" for event in events)
 
 
 async def test_cancellation_stops_live_review_before_provider_call(monkeypatch):

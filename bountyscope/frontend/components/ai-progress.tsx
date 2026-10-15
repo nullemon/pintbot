@@ -10,6 +10,7 @@ const labels = {
   analyzing: "Analyzing observations",
   complete: "Complete",
   unavailable: "Unavailable",
+  refused: "Provider declined review",
 };
 
 const messages = {
@@ -18,6 +19,7 @@ const messages = {
   analyzing: "The server is processing a bounded AI round during this scan.",
   complete: "AI processing has finished for this scan.",
   unavailable: "Provider analysis is unavailable. See the activity log for details.",
+  refused: "The provider declined this review. Deterministic scanning continues; automatic AI retries have stopped.",
 };
 
 export default function AIActivity({ progress, finished, stale = false }: { progress?: AIProgress | null; finished: boolean; stale?: boolean }) {
@@ -38,13 +40,13 @@ export default function AIActivity({ progress, finished, stale = false }: { prog
       <div className="button-row"><BrainCircuit size={20} className="ai-icon" /><div><h2 id="ai-activity-heading">AI activity</h2><p>Live analysis and bounded follow-up decisions</p></div></div>
       <span role="status" aria-live="polite" className="button-row">
         {active && <LoaderCircle size={15} className="spin ai-icon" aria-hidden="true" />}
-        <Badge value={stale || status === "unavailable" ? "needs_verification" : status === "complete" ? "complete" : active ? "running" : "neutral"}>
+        <Badge value={stale || status === "unavailable" || status === "refused" ? "needs_verification" : status === "complete" ? "complete" : active ? "running" : "neutral"}>
           {stale ? "Updates unavailable" : stopped ? "Scan ended" : status ? labels[status] : "Progress unavailable"}
         </Badge>
       </span>
     </div>
-    <div className={stale || status === "unavailable" ? "notice notice-warning" : "ai-message"} role="status" aria-live="polite">
-      {(stale || status === "unavailable") && <CircleAlert size={16} aria-hidden="true" />}
+    <div className={stale || status === "unavailable" || status === "refused" ? "notice notice-warning" : "ai-message"} role="status" aria-live="polite">
+      {(stale || status === "unavailable" || status === "refused") && <CircleAlert size={16} aria-hidden="true" />}
       <span>{stale ? `Could not refresh AI activity. ${status ? `Last reported state: ${labels[status]}.` : "No provider activity can be confirmed."} Counters show the last successful update.` : !progress || !status ? "This API has not returned AI progress for this scan. No provider activity can be confirmed." : stopped ? "The scan has ended. No AI activity is currently running." : status === "disabled" ? messages.disabled : progress.message || messages[status]}</span>
     </div>
     {!!metrics.length && <dl className="ai-metrics">{metrics.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{number(value)}</dd></div>)}</dl>}
