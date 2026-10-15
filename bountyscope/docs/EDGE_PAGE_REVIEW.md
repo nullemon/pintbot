@@ -6,7 +6,28 @@ BountyScope can review one page while you keep that page open in Microsoft Edge.
 
 This is a bounded page review, not a claim that every vulnerability has been tested. It does not exploit the application, submit forms, guess passwords, enumerate every file or download media collections. AI can explain and prioritize observed evidence and propose existing safe checks; its suggestions do not expand project authorization.
 
-## 1. Update and start BountyScope
+## Already running: install the version 1.0.1 capture fix
+
+For this **extension-only** fix, keep the existing Docker stack running; **no Docker rebuild is needed**. In Windows Command Prompt:
+
+```cmd
+cd /d "%USERPROFILE%\Documents\pintbot"
+git pull --ff-only origin claude/beautiful-bell-x8lnfs
+```
+
+Then follow this sequence once:
+
+1. Close the BountyScope side panel.
+2. Open **`edge://extensions`**, click **Reload** on **BountyScope Page Review**, and verify **version 1.0.1**. If it remains 1.0.0, check that the loaded folder is `bountyscope\browser-extension` inside the checkout you updated.
+3. Open the actual ordinary HTTP/HTTPS target tab and wait for loading and redirects to finish.
+4. Click the **pinned BountyScope toolbar icon on that tab**, rather than opening Edge's sidebar shortcut. This explicitly selects the target tab/window and requests temporary page access.
+5. Click **Connect** if needed, then **1. Capture this page’s metadata**, without switching tabs or windows.
+
+The earlier generic capture error could occur because Edge omitted tab URL metadata; it did not prove that Edge had denied script access. The fix distinguishes missing target selection/navigation from actual access failures, while validating the URL before collecting DOM metadata. **Connected** confirms only the local API connection. Your existing local API token and provider configuration remain unchanged, and the extension adds no host permissions.
+
+If capture still fails after that sequence, use dashboard **Page review** as a fallback. Report the exact **BountyScope panel error**, Edge version from `edge://settings/help`, and whether `edge://management` says the browser is managed. Omit URL query strings, credentials and tokens.
+
+## 1. First installation or backend/frontend update
 
 Cancel running scans before replacing worker code. In **Windows Command Prompt**, run:
 
@@ -88,6 +109,8 @@ Page reviews retain a maximum of three AI rounds. For a broader URL-driven asses
 The backend fetches the chosen page; selected observed scripts, source-map metadata and media metadata may also be checked. Directory tests derive from observed resource parent paths and are bounded. Standard and Exposure also perform the existing two curated configuration checks, `/.env` and `/.git/HEAD`, on authorized observed origins, reading at most 512 bytes per response and retaining only redacted indicators; repositories and configuration values are not collected. Ordinary page links, form actions, iframe URLs and API references are inventory hints rather than a site-wide crawl. Page review does not start the normal robots/sitemap or common-directory seed discovery. Out-of-scope references are skipped and recorded.
 
 The extension sends only the current URL, bounded reference URLs, form/password-field/file-input counts and whether the browser reports a secure context. It does **not** send raw HTML, text inputs, field values, passwords, cookies, authorization headers, browser storage or screenshots. It does not click the page or submit forms. Captured metadata is untrusted and unverified; confirmed HTTP findings require guarded backend evidence.
+
+Review the ordinary **page URL**, not an image's `blob:` handle. A blob is local to its browser context and is not a fetchable scanner target. Existing Resource Timing metadata may reveal a sanitized public HTTP(S) source or API reference, but cannot guarantee recovery of the underlying image or storage origin. The extension does not read blob bytes or transfer authenticated responses.
 
 **A logged-in Edge tab does not authenticate the backend scanner.** It makes separate unauthenticated requests from Docker. Logged-in-only issues, DOM execution, browser storage issues, application business logic and full exploit verification remain manual work. A browser-only page that cannot be reached by the backend may yield little evidence. Never add credentials or secret-bearing URLs to make it accessible.
 

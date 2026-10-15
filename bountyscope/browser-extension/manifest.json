@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "BountyScope Page Review",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Review explicitly authorized pages beside the current tab using your local BountyScope scanner.",
   "minimum_chrome_version": "116",
   "permissions": ["activeTab", "scripting", "sidePanel", "storage"],

@@ -17,14 +17,15 @@ test("manifest grants only explicit tab inspection and the two local API origins
 });
 
 test("panel code does not read page text, persist tokens across browser sessions, or inject markup", async () => {
-  const files = ["panel.mjs", "client.mjs", "collector.mjs", "service-worker.js", "panel.html"];
+  const files = ["panel.mjs", "client.mjs", "collector.mjs", "tab-access.mjs", "service-worker.js", "panel.html"];
   for (const file of files) {
     const source = await readFile(new URL(file, root), "utf8");
     assert.doesNotMatch(source, /\binnerHTML\b|\bouterHTML\b|document\.cookie|\blocalStorage\b|storage\.(?:local|sync)\b|\beval\s*\(|new Function\s*\(/, file);
   }
   const panel = await readFile(new URL("panel.mjs", root), "utf8");
   assert.match(panel, /chrome\.storage\.session/);
-  assert.match(panel, /frameIds: \[0\]/);
-  assert.doesNotMatch(panel, /world:\s*["']MAIN["']/);
+  const access = await readFile(new URL("tab-access.mjs", root), "utf8");
+  assert.match(access, /frameIds: \[0\]/);
+  assert.doesNotMatch(access, /world:\s*["']MAIN["']/);
   assert.match(panel, /Automatic AI retries stopped/);
 });

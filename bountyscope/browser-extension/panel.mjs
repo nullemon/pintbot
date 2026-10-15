@@ -1,10 +1,12 @@
-import { capturePageMetadata } from "./collector.mjs";
-import { isTerminal, localOrigin, makeReviewBody, requestAPI, validateTabURL } from "./client.mjs";
+import { isTerminal, localOrigin, makeReviewBody, requestAPI } from "./client.mjs";
+import { createTabAccess } from "./tab-access.mjs";
+
+const tabAccess = createTabAccess(chrome);
 
 const $ = (id) => document.getElementById(id);
 const state = {
   origin: "http://localhost:3000", token: "", connected: false, projects: [], projectTotal: 0,
-  project: null, projectRevision: 0, snapshot: null, tabID: null, scan: null, finding: null,
+  project: null, projectRevision: 0, snapshot: null, tabID: null, tabWindowID: null, scan: null, finding: null,
   findingsOffset: 0, timer: null, polling: false, busy: false, closed: false,
   requests: new Set(), savedReview: null,
 };
@@ -42,7 +44,7 @@ function updateControls() {
   $("cancel").disabled = !active || state.busy;
 }
 function clearSnapshot(message = "") {
-  state.snapshot = null; state.tabID = null;
+  state.snapshot = null; state.tabID = null; state.tabWindowID = null;
   $("snapshot").hidden = true; $("authorized").checked = false;
   updateControls();
   if (message) showMessage("notice", message);
@@ -130,26 +132,11 @@ async function connect(event) {
   finally { state.busy = false; $("connect").disabled = false; updateControls(); }
 }
 
-async function activeTab() {
-  const window = await chrome.windows.getCurrent();
-  const tabs = await chrome.tabs.query({ active: true, windowId: window.id });
-  const tab = tabs[0];
-  if (!tab?.id || !tab.url) throw new Error("Open your target page and click the BountyScope toolbar button on that tab to grant access. Then capture again.");
-  return tab;
-}
-
 async function capture() {
   state.busy = true; clearSnapshot(); showMessage("error"); showMessage("notice");
   try {
-    const tab = await activeTab();
-    validateTabURL(tab.url);
-    let results;
-    try { results = await chrome.scripting.executeScript({ target: { tabId: tab.id, frameIds: [0] }, func: capturePageMetadata }); }
-    catch { throw new Error("Page access was not granted. Click the extension toolbar button on the target tab and capture again. Browser-protected pages cannot be inspected."); }
-    const metadata = results?.find((result) => result.frameId === 0)?.result;
-    const current = await activeTab();
-    if (!metadata?.url || current.id !== tab.id || current.url !== tab.url || metadata.url !== tab.url) throw new Error("The tab changed while capturing. Wait for navigation to finish and capture again.");
-    state.snapshot = metadata; state.tabID = tab.id;
+    const { tabId, windowId, metadata } = await tabAccess.capture();
+    state.snapshot = metadata; state.tabID = tabId; state.tabWindowID = windowId;
     $("page-url").textContent = metadata.url;
     $("page-counts").textContent = `${metadata.references.length} URL references · ${metadata.forms.total} forms · ${metadata.forms.password_fields} password inputs · metadata only`;
     $("snapshot").hidden = false;
@@ -161,7 +148,7 @@ async function capture() {
 async function startReview() {
   state.busy = true; updateControls(); showMessage("error"); showMessage("notice");
   try {
-    const tab = await activeTab();
+    const tab = await tabAccess.current();
     if (!state.snapshot || tab.id !== state.tabID || tab.url !== state.snapshot.url) {
       clearSnapshot(); throw new Error("The active tab or URL changed. Capture the target page again before review.");
     }
@@ -319,8 +306,8 @@ $("close-finding").addEventListener("click", () => { state.finding = null; $("fi
 $("save-finding").addEventListener("click", () => void saveFinding().catch(error));
 $("report-markdown").addEventListener("click", () => void downloadReport("markdown").catch(error));
 $("report-html").addEventListener("click", () => void downloadReport("html").catch(error));
-chrome.tabs.onActivated.addListener(({ tabId }) => {
-  if (state.snapshot && tabId !== state.tabID) clearSnapshot("Active tab changed. Capture the target tab again before starting another review.");
+chrome.tabs.onActivated.addListener(({ tabId, windowId }) => {
+  if (state.snapshot && windowId === state.tabWindowID && tabId !== state.tabID) clearSnapshot("Active tab changed. Capture the target tab again before starting another review.");
 });
 chrome.tabs.onUpdated.addListener((tabID, changes) => {
   if (state.snapshot && tabID === state.tabID && (changes.status === "loading" || changes.url && changes.url !== state.snapshot.url)) clearSnapshot("The captured page navigated. Capture it again before starting another review.");
