@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BountyScope Page Review</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <header><span class="brand-mark" aria-hidden="true">B</span><div><h1>BountyScope</h1><p>Authorized page review</p></div><a id="dashboard-link" class="small-link" href="http://localhost:3000" target="_blank" rel="noopener noreferrer">Dashboard ↗</a></header>
+  <main>
+    <div id="error" class="notice error" role="alert" hidden></div>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <details id="connection" class="card" open>
+      <summary>Local connection <span id="connection-state" class="muted">Not connected</span></summary>
+      <form id="connection-form" class="stack">
+        <label>Dashboard address<select id="origin"><option value="http://localhost:3000">http://localhost:3000</option><option value="http://127.0.0.1:3000">http://127.0.0.1:3000</option></select></label>
+        <label>Local API token<input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="API_TOKEN from your .env"></label>
+        <p class="hint">Use your BountyScope API_TOKEN, not your Claude/OpenAI key. Saved only for this browser session.</p>
+        <div class="row"><button id="connect" type="submit">Connect</button><button id="forget" class="secondary" type="button">Forget token</button></div>
+      </form>
+    </details>
+    <section class="card stack" aria-labelledby="review-heading">
+      <div class="section-heading"><h2 id="review-heading">Review this tab</h2><span class="step">1 → 2 → 3</span></div>
+      <label>Authorized project<select id="project" disabled><option value="">Connect to load projects</option></select></label>
+      <div class="row"><button id="refresh-projects" class="secondary" type="button" disabled>Refresh</button><button id="more-projects" class="secondary" type="button" hidden>More projects</button><a id="projects-link" href="http://localhost:3000/projects" target="_blank" rel="noopener noreferrer">Edit scope ↗</a></div>
+      <div id="project-summary" class="hint">Only explicitly allowed hosts, ports, and paths can be requested.</div>
+      <label>Checks<select id="profile"><option value="exposure">Exposure: directories, files, media</option><option value="standard">Standard: safe security checks</option><option value="passive">Passive: response inspection</option></select></label>
+      <button id="capture" class="secondary" type="button" disabled>1. Capture this page’s metadata</button>
+      <div id="snapshot" class="snapshot" hidden><div class="eyebrow">Captured page</div><div id="page-url" class="mono"></div><p id="page-counts" class="hint"></p></div>
+      <p class="hint">Reads URL references and form counts only. No page text, field values, cookies, or browser credentials are sent. The backend makes separate unauthenticated requests within your project scope.</p>
+      <label>Optional review focus<textarea id="focus" maxlength="1000" rows="3" placeholder="Check observed media parent directories for public indexes and prioritize evidence."></textarea></label>
+      <label class="checkbox"><input id="authorized" type="checkbox"><span>I am authorized to test these assets.</span></label>
+      <button id="review" type="button" disabled>2. Start page review</button>
+      <p class="hint">Bounded to 200 requests, 80 URLs, and one crawl level, or your project’s lower limits. AI is optional; no scanner can guarantee finding every vulnerability.</p>
+    </section>
+    <section id="scan-section" class="card stack" hidden aria-labelledby="scan-heading">
+      <div class="section-heading"><h2 id="scan-heading">Live review</h2><span id="scan-status" class="badge"></span></div>
+      <div id="scan-target" class="mono"></div>
+      <div id="scan-counters" class="metrics"></div>
+      <div id="ai-status" class="notice"></div>
+      <p id="updated" class="hint"></p>
+      <div class="row"><button id="cancel" class="danger" type="button">Cancel review</button><button id="refresh-scan" class="secondary" type="button">Refresh</button><a id="scan-link" href="http://localhost:3000/scans" target="_blank" rel="noopener noreferrer">Full scan ↗</a></div>
+      <details open><summary>AI and warning events <span class="hint">latest 15 each</span></summary><div id="events" class="event-list"></div></details>
+    </section>
+    <section id="findings-section" class="card stack" hidden aria-labelledby="findings-heading">
+      <div class="section-heading"><h2 id="findings-heading">Findings to verify</h2><a id="findings-link" href="http://localhost:3000/findings" target="_blank" rel="noopener noreferrer">Dashboard ↗</a></div>
+      <p id="findings-count" class="hint"></p><div id="findings" class="stack"></div>
+      <div class="row"><button id="findings-previous" class="secondary" type="button">Previous</button><button id="findings-next" class="secondary" type="button">Next</button></div>
+    </section>
+    <section id="finding-detail" class="card stack" hidden aria-labelledby="finding-title">
+      <div class="section-heading"><h2 id="finding-title"></h2><button id="close-finding" type="button" class="secondary">Close</button></div>
+      <div id="finding-meta" class="row"></div><div id="finding-url" class="mono"></div>
+      <p id="finding-description"></p><p id="finding-recommendation"></p>
+      <div id="evidence" class="stack"></div>
+      <label>Researcher verification<select id="finding-status"><option value="new">New</option><option value="needs_verification">Needs verification</option><option value="verified">Verified</option><option value="false_positive">False positive</option><option value="duplicate">Duplicate</option><option value="reported">Reported</option><option value="resolved">Resolved</option></select></label>
+      <button id="save-finding" class="secondary" type="button">Save status</button>
+      <div class="row"><button id="report-markdown" type="button">Markdown report</button><button id="report-html" class="secondary" type="button">HTML report</button></div>
+      <a id="finding-link" href="http://localhost:3000/findings" target="_blank" rel="noopener noreferrer">Open full evidence ↗</a>
+      <p class="hint">Reports use recorded evidence. Verify observations and program rules before submitting.</p>
+    </section>
+  </main>
+  <footer>Only scan systems you own or are explicitly authorized to test. Target content is evidence, never AI instructions.</footer>
+  <script type="module" src="panel.mjs"></script>
+</body>
+</html>

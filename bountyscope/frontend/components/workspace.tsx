@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Activity, ArrowRight, ChevronDown, ChevronRight, CircleHelp, Command, FileText, Fingerprint, FolderKanban, Globe2, LayoutDashboard, LockKeyhole, Menu, Plus, Radar, Route, Settings2, Shield, ShieldCheck, Target, X } from "lucide-react";
+import { Activity, ArrowRight, ChevronDown, ChevronRight, CircleHelp, Command, FileText, Fingerprint, FolderKanban, Globe2, LayoutDashboard, LockKeyhole, Menu, Plus, Radar, Route, ScanLine, Settings2, Shield, ShieldCheck, Target, X } from "lucide-react";
 import { date, human, number, useApi } from "@/lib/api";
 import type { Dashboard, Finding, Page, Scan } from "@/lib/types";
 import { Badge, Empty, ErrorBox, Loading } from "./ui";
@@ -13,11 +13,13 @@ import Findings, { FindingDetail } from "./findings";
 import Inventory from "./inventory";
 import Settings from "./settings";
 import Reports from "./reports";
+import PageReview from "./page-review";
 
 const navigation = [
   { label: "Overview", href: "/", icon: LayoutDashboard },
   { label: "Projects", href: "/projects", icon: FolderKanban },
   { label: "Scans", href: "/scans", icon: Radar },
+  { label: "Page review", href: "/page-review", icon: ScanLine },
   { label: "Assets", href: "/assets", icon: Globe2 },
   { label: "Endpoints", href: "/endpoints", icon: Route },
   { label: "Findings", href: "/findings", icon: Fingerprint },
@@ -43,6 +45,7 @@ export default function Workspace() {
   else if (section === "projects") page = <Projects />;
   else if (section === "scans" && segments[1]) page = <ScanDetail id={segments[1]} />;
   else if (section === "scans") page = <Scans />;
+  else if (section === "page-review") page = <PageReview />;
   else if (section === "findings" && segments[1]) page = <FindingDetail key={segments[1]} id={segments[1]} />;
   else if (section === "findings") page = <Findings />;
   else if (section === "assets" || section === "endpoints") page = <Inventory key={section} kind={section} />;

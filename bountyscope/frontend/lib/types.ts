@@ -12,6 +12,11 @@ export type Scan = {
   assets_found: number; endpoints_found: number; findings_found: number; errors: unknown[];
   limits?: Record<string, number>; scope_snapshot?: ScopeRule[]; cancel_requested?: boolean;
   ai_progress?: AIProgress | null;
+  page_review?: {
+    mode: "single_page";
+    focus: string;
+    context_summary?: { references: number; forms: number; password_fields: number; file_inputs: number; browser_snapshot: boolean };
+  } | null;
 };
 export type AIProgress = {
   enabled: boolean; status: "disabled" | "waiting" | "analyzing" | "complete" | "unavailable" | "refused";

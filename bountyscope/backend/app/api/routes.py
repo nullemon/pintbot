@@ -10,6 +10,7 @@ from sqlalchemy import case, delete, func, or_, select, update
 from sqlalchemy.inspection import inspect
 from sqlalchemy.orm import Session
 
+from app.api.page_review import PageReviewInput, review_snapshot, review_summary
 from app.core.config import settings
 from app.core.database import SessionLocal, get_db
 from app.core.logging import emit_scan_event
@@ -125,6 +126,23 @@ def scans(
 
 @router.post("/scans", status_code=201)
 async def create_scan(body: ScanInput, db: DB):
+    return await enqueue_scan(body, db)
+
+
+@router.post("/page-reviews", status_code=201)
+async def create_page_review(body: PageReviewInput, db: DB):
+    if not body.authorization_confirmed:
+        raise HTTPException(
+            403, "Confirm: I am authorized to test this page and its scoped assets."
+        )
+    return await enqueue_scan(
+        ScanInput(project_id=body.project_id, target=body.target, scan_profile=body.scan_profile),
+        db,
+        page_review=body,
+    )
+
+
+async def enqueue_scan(body: ScanInput, db: Session, *, page_review: PageReviewInput | None = None):
     p = require(db, Project, body.project_id)
     if not p.authorization_confirmed:
         raise HTTPException(403, "Confirm: I am authorized to test these assets.")
@@ -146,6 +164,18 @@ async def create_scan(body: ScanInput, db: DB):
         k: getattr(p, k)
         for k in ("max_rps", "max_concurrency", "max_depth", "url_cap", "request_budget")
     }
+    review = None
+    if page_review:
+        try:
+            review = review_snapshot(page_review, approved.url)
+        except (ValueError, UnicodeError) as exc:
+            raise HTTPException(422, str(exc)) from exc
+        limits.update(
+            request_budget=min(limits["request_budget"], 200),
+            url_cap=min(limits["url_cap"], 80),
+            max_depth=min(limits["max_depth"], 1),
+            max_rps=min(limits["max_rps"], 2),
+        )
     scan = Scan(
         project_id=p.id,
         target=approved.url,
@@ -154,6 +184,9 @@ async def create_scan(body: ScanInput, db: DB):
         limits=limits,
     )
     db.add(scan)
+    db.flush()
+    if review is not None:
+        db.add(ScanEvent(scan_id=scan.id, kind="page_review_requested", data=review))
     db.commit()
     # Durable queued rows are consumed by the dispatcher even after a broker outage.
     from app.workers.scan_tasks import dispatch_scan
@@ -169,7 +202,10 @@ async def create_scan(body: ScanInput, db: DB):
             )
         )
         db.commit()
-    return record(scan)
+    return {
+        **record(scan),
+        **({"page_review": review_summary(review)} if review is not None else {}),
+    }
 
 
 @router.get("/scans/{scan_id}")
@@ -189,7 +225,16 @@ def scan_detail(scan_id: str, db: DB):
             status="unavailable",
             message="Scan ended before the AI batch completed; review budget and scan events",
         )
-    return {**record(scan), "ai_progress": progress}
+    review = db.scalar(
+        select(ScanEvent)
+        .where(ScanEvent.scan_id == scan_id, ScanEvent.kind == "page_review_requested")
+        .limit(1)
+    )
+    return {
+        **record(scan),
+        "ai_progress": progress,
+        "page_review": review_summary(review.data) if review else None,
+    }
 
 
 @router.post("/scans/{scan_id}/cancel")

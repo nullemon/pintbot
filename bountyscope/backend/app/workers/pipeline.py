@@ -33,17 +33,98 @@ class ScanContext:
         self.scan_id = scan.id
         self.project_id = scan.project_id
         self.profile = scan.scan_profile
-        self.limits = scan.limits
+        with SessionLocal() as db:
+            request = db.scalar(
+                select(ScanEvent)
+                .where(ScanEvent.scan_id == scan.id, ScanEvent.kind == "page_review_requested")
+                .order_by(ScanEvent.created_at)
+                .limit(1)
+            )
+            self.page_review = (
+                request.data if request and request.data.get("version") == 1 else None
+            )
+        self.target = canonicalize(scan.target)
+        self.limits = dict(scan.limits)
+        if self.page_review:
+            # Enforce these again in the worker, independent of API admission.
+            self.limits.update(
+                request_budget=min(self.limits["request_budget"], 200),
+                url_cap=min(self.limits["url_cap"], 80),
+                max_depth=min(self.limits["max_depth"], 1),
+                max_rps=min(self.limits["max_rps"], 2),
+                max_concurrency=min(self.limits["max_concurrency"], 3),
+            )
         self.guard = ScopeGuard(scan.scope_snapshot)
-        self.http = SafeHTTPClient(scan.id, self.guard, scan.limits)
+        self.http = SafeHTTPClient(scan.id, self.guard, self.limits)
         self.queue = deque()
+        self.queued = set()
         self.known = set()
         self.visited = set()
         self.depth = 0
         self.current_asset = None
         self.directory_candidates = set()
-        self.directory_candidate_limit = min(200, self.limits["url_cap"])
+        self.directory_candidate_limit = min(
+            20 if self.page_review else 200, self.limits["url_cap"]
+        )
+        self.directory_candidates_seen = set()
         self.evidence_seen = set()
+        self.scanner_state = {"probes": set()}
+
+    def page_review_fetch_allowed(self, url, source):
+        """Page references are inventory; only selected resources enter its fetch queue."""
+        if not self.page_review:
+            return True
+        if source in {
+            "html:a",
+            "html:area",
+            "html:form",
+            "html:iframe",
+            "browser:link",
+            "browser:form",
+            "browser:iframe",
+            "browser:canonical",
+        }:
+            return False
+        return (
+            (source == "manual" and url == self.target)
+            or source in {"scanner:directory", "html:script", "browser:script"}
+            or source in {"html:img", "html:video", "html:audio", "html:source", "html:object"}
+            or source in {"browser:image", "browser:media"}
+            or source == "javascript:sourcemap"
+            or (source == "javascript" and urlsplit(url).path.lower().endswith((".js", ".mjs")))
+            or metadata_only(url, source)
+        )
+
+    def enqueue_url(self, url, source, enqueue):
+        if enqueue is False or not self.page_review_fetch_allowed(url, source):
+            return
+        passive_fetch = source == "manual" or (
+            not self.page_review and urlsplit(url).path in {"/robots.txt", "/sitemap.xml"}
+        )
+        if (
+            url not in self.queued
+            and self.depth <= self.limits["max_depth"]
+            and (self.profile != "passive" or passive_fetch)
+        ):
+            self.queue.append((url, self.depth, source))
+            self.queued.add(url)
+
+    def add_directory_candidates(self, discovered):
+        from app.recon.discovery import parent_directories
+
+        if self.profile == "passive":
+            return
+        for directory in parent_directories(discovered):
+            if not self.page_review:
+                if len(self.directory_candidates) < self.directory_candidate_limit:
+                    self.directory_candidates.add(directory)
+                continue
+            if directory in self.directory_candidates_seen:
+                continue
+            if len(self.directory_candidates_seen) >= self.directory_candidate_limit:
+                break
+            self.directory_candidates_seen.add(directory)
+            self.directory_candidates.add(directory)
 
     def event(self, kind, data):
         self.http.event(kind, data)
@@ -94,10 +175,8 @@ class ScanContext:
 
         emit_scan_event(self.scan_id, "stage_changed", jsonable_encoder({"stage": stage, **values}))
 
-    async def remember_url(self, url, source="crawl"):
+    async def remember_url(self, url, source="crawl", *, enqueue=None):
         self.check_cancelled()
-        if len(self.known) >= self.limits["url_cap"]:
-            return False
         try:
             url = canonicalize(url)
             self.guard.check_url(url)
@@ -110,9 +189,16 @@ class ScanContext:
         except (ScopeDenied, ValueError, UnicodeError) as exc:
             self.event("discovered_out_of_scope", {"url": url, "reason": str(exc)})
             return False
-        if metadata_only(url, source):
+        if metadata_only(url, source) or (
+            self.page_review and source in {"browser:image", "browser:media"}
+        ):
             self.http.metadata_only_urls.add(url)
         if url in self.known:
+            # A link may be catalogued before the same URL is observed as a script.
+            if self.page_review:
+                self.enqueue_url(url, source, enqueue)
+            return False
+        if len(self.known) >= self.limits["url_cap"]:
             return False
         self.known.add(url)
         # DNS for each newly discovered host is validated now and again before requesting.
@@ -131,6 +217,13 @@ class ScanContext:
             )
             return False
         p = urlsplit(url)
+        if self.page_review:
+            # Disable site-wide seed discovery, including for referenced CDN origins.
+            from app.scanners.base import origin
+
+            self.scanner_state["probes"].update(
+                {"discovery:" + origin(url), "exposure_directories:" + origin(url)}
+            )
         with SessionLocal() as db:
             asset = db.scalar(
                 select(Asset).where(
@@ -169,10 +262,61 @@ class ScanContext:
                 )
                 db.add(endpoint)
             db.commit()
-        passive_fetch = source == "manual" or urlsplit(url).path in {"/robots.txt", "/sitemap.xml"}
-        if self.depth <= self.limits["max_depth"] and (self.profile != "passive" or passive_fetch):
-            self.queue.append((url, self.depth, source))
+        self.enqueue_url(url, source, enqueue)
         return True
+
+    async def browser_observation(self):
+        """Treat user-captured DOM metadata as hints, never confirmed HTTP evidence."""
+        if not self.page_review:
+            return None
+        snapshot = self.page_review.get("browser_snapshot")
+        if not isinstance(snapshot, dict) or snapshot.get("url") != self.target:
+            return None
+        links = []
+        self.depth = 1
+        kinds = {
+            "link",
+            "script",
+            "stylesheet",
+            "image",
+            "media",
+            "iframe",
+            "canonical",
+            "form",
+            "api",
+        }
+        references = [
+            item
+            for item in snapshot.get("references", [])[:200]
+            if isinstance(item, dict) and item.get("kind") in kinds
+        ]
+        # Do not let navigation menus exhaust the inventory cap before page resources.
+        references.sort(key=lambda item: item["kind"] not in {"script", "image", "media"})
+        for reference in references:
+            if not isinstance(reference, dict) or reference.get("kind") not in kinds:
+                continue
+            url = reference.get("url")
+            if not isinstance(url, str):
+                continue
+            if await self.remember_url(url, "browser:" + reference["kind"]):
+                links.append(url)
+                if reference["kind"] in {"image", "media", "script"}:
+                    self.add_directory_candidates(url)
+        self.depth = 0
+        return sanitize(
+            {
+                "url": self.target,
+                "provenance": "browser_snapshot_unverified",
+                "researcher_focus": str(self.page_review.get("focus", ""))[:1000],
+                "discovered_urls": links[:20],
+                "form_summary": {
+                    key: max(0, min(10000, value))
+                    for key, value in (snapshot.get("forms") or {}).items()
+                    if key in {"total", "auth_inputs", "file_inputs"} and type(value) is int
+                },
+                "secure_context": bool(snapshot.get("secure_context")),
+            }
+        )
 
     async def process_ai_page(self, page):
         from app.scanners import analyze_page
@@ -394,7 +538,6 @@ async def run_scan(scan_id):
     from app.recon.discovery import (
         discover_html,
         discover_javascript,
-        parent_directories,
         parse_robots,
         parse_sitemap,
     )
@@ -428,10 +571,14 @@ async def run_scan(scan_id):
         await ctx.remember_url(scan.target, "manual")
         target = urlsplit(scan.target)
         origin = f"{target.scheme}://{target.netloc}"
-        await ctx.remember_url(origin + "/robots.txt", "robots")
-        await ctx.remember_url(origin + "/sitemap.xml", "sitemap")
+        if not ctx.page_review:
+            await ctx.remember_url(origin + "/robots.txt", "robots")
+            await ctx.remember_url(origin + "/sitemap.xml", "sitemap")
         ctx.set_stage("probing")
         observations = []
+        browser_observation = await ctx.browser_observation()
+        if browser_observation:
+            observations.append(browser_observation)
         while ctx.queue:
             ctx.check_cancelled()
             url, depth, source = ctx.queue.popleft()
@@ -443,7 +590,7 @@ async def run_scan(scan_id):
             try:
                 suffix = urlsplit(url).path.lower()
                 # Images/archives become metadata only; never mass-download media or dumps.
-                only_metadata = metadata_only(url, source)
+                only_metadata = metadata_only(url, source) or url in ctx.http.metadata_only_urls
                 limit = (
                     131072
                     if source == "scanner:directory"
@@ -477,8 +624,10 @@ async def run_scan(scan_id):
                     )
                 elif "html" in content_type and not is_directory_listing(page):
                     links.extend(discover_html(page))
+                if ctx.page_review:
+                    links.sort(key=lambda item: not ctx.page_review_fetch_allowed(*item))
                 for discovered, link_source in links:
-                    if depth < ctx.limits["max_depth"]:
+                    if ctx.page_review or depth < ctx.limits["max_depth"]:
                         await ctx.remember_url(discovered, link_source)
                     else:
                         # Still evaluate discovered scope and record excluded URLs.
@@ -488,10 +637,7 @@ async def run_scan(scan_id):
                             ctx.event(
                                 "discovered_out_of_scope", {"url": discovered, "reason": str(exc)}
                             )
-                    if ctx.profile != "passive":
-                        for directory in parent_directories(discovered):
-                            if len(ctx.directory_candidates) < ctx.directory_candidate_limit:
-                                ctx.directory_candidates.add(directory)
+                    ctx.add_directory_candidates(discovered)
                 ctx.set_stage("scanning")
                 if inspect.iscoroutinefunction(analyze_page):
                     candidates = await analyze_page(ctx, page)
@@ -508,6 +654,16 @@ async def run_scan(scan_id):
                             "signals": [c.title for c in candidates],
                             "discovered_urls": [u for u, _ in links[:20]],
                             "parent_directories": sorted(ctx.directory_candidates)[:20],
+                            **(
+                                {
+                                    "researcher_focus": str(ctx.page_review.get("focus", ""))[
+                                        :1000
+                                    ],
+                                    "provenance": "guarded_http",
+                                }
+                                if ctx.page_review
+                                else {}
+                            ),
                         }
                     )
                 )
@@ -533,8 +689,12 @@ async def run_scan(scan_id):
             if not ctx.queue and ctx.profile != "passive" and ctx.directory_candidates:
                 directories = sorted(ctx.directory_candidates)
                 ctx.directory_candidates.clear()
+                if ctx.page_review:
+                    ctx.depth = 1
                 for directory in directories:
-                    await ctx.remember_url(directory, "scanner")
+                    await ctx.remember_url(
+                        directory, "scanner:directory" if ctx.page_review else "scanner"
+                    )
         ctx.set_stage("analyzing")
         await ctx.ai.review(observations, force=True)
         ctx.ai.finish()

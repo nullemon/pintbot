@@ -94,6 +94,24 @@ def observation_summary(observations):
             ],
             "truncated": bool(read(page, "truncated", False)),
         }
+        provenance = read(page, "provenance")
+        if provenance in {"guarded_http", "browser_snapshot_unverified"}:
+            entry["provenance"] = provenance
+        focus = read(page, "researcher_focus")
+        if isinstance(focus, str) and focus:
+            entry["researcher_focus"] = bounded(focus, 1000)
+        forms = read(page, "form_summary")
+        if isinstance(forms, Mapping):
+            entry["form_summary"] = {
+                key: value
+                for key in ("total", "auth_inputs", "file_inputs")
+                if isinstance(value := forms.get(key), int)
+                and not isinstance(value, bool)
+                and 0 <= value <= 10000
+            }
+        secure_context = read(page, "secure_context")
+        if isinstance(secure_context, bool):
+            entry["secure_context"] = secure_context
         if len(json.dumps([*result, entry], ensure_ascii=True)) > 64000:
             entry["discovered_urls"] = []
             entry["parent_directories"] = []

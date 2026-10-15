@@ -15,9 +15,20 @@ BountyScope is an authorization-aware, non-destructive reconnaissance applicatio
 - `backend/app/intelligence`: optional OpenAI/Anthropic analysis and safe follow-ups.
 - `backend/app/reports`: deterministic evidence-based escaped reports.
 - `frontend`: Next.js/TypeScript dashboard. Never expose provider keys here.
+- `browser-extension`: unpacked Edge/Chromium side panel. Explicit `activeTab`
+  capture sends bounded URL references and form counts, never HTML, page text,
+  field values, cookies or storage. Host permissions allow only the local
+  dashboard; target checks use the backend's guarded client.
 - `fixture`: intentionally insecure synthetic target; local test network only.
 
 Use typed Pydantic inputs, SQLAlchemy parameterized queries, small cohesive functions and explicit exceptions. Escape target strings in UI/report output. Redact and minimize BEFORE database storage or AI calls. Never persist raw bodies or cookie/credential values. Archive, dump, media and source-map requests are metadata-only. Exposure samples are capped at512 bytes, then discarded after classification/hash. Redirects revalidate DNS and pin approved IPs. TLS verification stays enabled. Do not change these invariants to fix a test.
+
+Page reviews use the existing scan lifecycle. Commit the sanitized
+`page_review_requested` event before dispatching the worker. Apply the lower of
+project limits and page-review caps. Browser observations are unverified clues,
+never confirmed finding evidence. The scanner does not inherit the browser login.
+Do not add broad extension host permissions, cookie/debugger access, automatic DOM
+capture or automatic replay of reviews declined by an AI provider.
 
 ## Development and tests
 
@@ -32,6 +43,7 @@ python3.12 -m venv .venv
 (cd backend && ../.venv/bin/ruff check app tests alembic)
 (cd backend && ../.venv/bin/ruff format --check app tests alembic)
 (cd frontend && npm ci && npm run lint && npm run typecheck && npm run build)
+node --test browser-extension/tests/*.test.mjs
 ```
 
 Run Compose with one worker execution slot. Increasing worker replicas requires a shared distributed rate/concurrency admission service first. The current conservative executor honors upper bounds by processing target requests serially.
@@ -39,3 +51,9 @@ Run Compose with one worker execution slot. Increasing worker replicas requires 
 Migration workflow: change models, generate `alembic revision --autogenerate -m ...` inside backend, review the migration, test upgrade/check/downgrade on an isolated database, then `alembic upgrade head`. Production schema changes never run `create_all`; API startup applies migrations before worker startup. Append-only event triggers must remain intact.
 
 End-to-end validation: `docker compose up -d --build`, then `.venv/bin/python scripts/smoke.py`. Never substitute an unrelated live Internet target for the synthetic fixture. Do not enable invasive exploitation, credential use, mass extraction, POST crawling, destructive checks, or uncontrolled discovery.
+
+Page-review validation with the synthetic Compose fixture and AI disabled:
+`.venv/bin/python scripts/page_review_smoke.py` and the same command with
+`--profile standard`. For browser setup and manual toolbar/side-panel checks, see
+`docs/EDGE_PAGE_REVIEW.md`. Cloud-managed browsers may prohibit loading unpacked
+extensions; report that limitation and never override administrator policy.

@@ -50,6 +50,20 @@ python3.12 -m venv .venv
 
 This creates a lab project and runs the actual API → Redis/Celery → PostgreSQL → fixture workflow. It asserts findings, inventory, redaction, verification, both report formats, request-host exclusions, no directory-child file fetching and cancellation. AI must be disabled for this deterministic smoke run. It leaves synthetic scan results in the dashboard for inspection.
 
+## Review one page beside an Edge tab
+
+Open **Page review** in the dashboard to check one authorized URL, or load the local Edge extension from `browser-extension/` to keep the review in Edge's side panel beside the current tab. The extension captures resource URLs and form counts only after your click; it never sends browser cookies, passwords, raw HTML or screenshots. Provider keys stay server-side. Its API bearer token is held in browser session storage.
+
+The review checks the chosen page, selected observed resource metadata and bounded parent-directory candidates. Standard/Exposure retain the two existing `/.env` and `/.git/HEAD` checks with a maximum 512-byte sample and redacted evidence. It inventories ordinary links/forms/API references without starting a site-wide crawl or robots/sitemap/common-directory discovery. Hard ceilings are 200 requests, 80 URLs, depth 1 and 2 requests/second; lower project limits win. All traffic and AI follow-ups retain ScopeGuard, cancellation, redaction and request-budget enforcement. Captured browser metadata is an unverified hint, not confirmed vulnerability evidence.
+
+Follow the [Windows update, Edge installation and usage guide](docs/EDGE_PAGE_REVIEW.md). Use dashboard Page review with Windows Snap/Edge Split screen if you do not want an extension. Backend requests are unauthenticated and do not inherit a logged-in tab's session. AI is optional; a provider refusal stops further AI calls for that review while deterministic results and reports remain available. Automation cannot promise to find every issue.
+
+A dedicated local-fixture end-to-end check is available with AI disabled:
+
+```bash
+.venv/bin/python scripts/page_review_smoke.py
+```
+
 ## Architecture
 
 | Service | Responsibility |

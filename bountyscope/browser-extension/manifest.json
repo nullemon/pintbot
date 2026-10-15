@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "BountyScope Page Review",
+  "version": "1.0.0",
+  "description": "Review explicitly authorized pages beside the current tab using your local BountyScope scanner.",
+  "minimum_chrome_version": "116",
+  "permissions": ["activeTab", "scripting", "sidePanel", "storage"],
+  "host_permissions": ["http://localhost:3000/*", "http://127.0.0.1:3000/*"],
+  "background": { "service_worker": "service-worker.js" },
+  "action": { "default_title": "Open BountyScope page review" },
+  "side_panel": { "default_path": "panel.html" },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src http://localhost:3000 http://127.0.0.1:3000; base-uri 'none'"
+  }
+}
