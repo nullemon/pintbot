@@ -13,11 +13,13 @@ import Findings, { FindingDetail } from "./findings";
 import Inventory from "./inventory";
 import Settings from "./settings";
 import Reports from "./reports";
+import Autopilot from "./autopilot";
 import PageReview from "./page-review";
 
 const navigation = [
   { label: "Overview", href: "/", icon: LayoutDashboard },
   { label: "Projects", href: "/projects", icon: FolderKanban },
+  { label: "Autopilot", href: "/autopilot", icon: Activity },
   { label: "Scans", href: "/scans", icon: Radar },
   { label: "Page review", href: "/page-review", icon: ScanLine },
   { label: "Assets", href: "/assets", icon: Globe2 },
@@ -51,6 +53,7 @@ export default function Workspace() {
   else if (section === "assets" || section === "endpoints") page = <Inventory key={section} kind={section} />;
   else if (section === "settings") page = <Settings />;
   else if (section === "reports") page = <Reports />;
+  else if (section === "autopilot") page = <Autopilot />;
   else page = <Empty title="Page not found" detail="Choose a section from your workspace navigation." action={<Link href="/" className="btn btn-primary">Back to overview</Link>} />;
   return <div className="shell">
     {menu && <button className="sidebar-backdrop" aria-label="Close navigation backdrop" onClick={() => setMenu(false)} />}

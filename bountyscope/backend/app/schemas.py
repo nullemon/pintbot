@@ -80,6 +80,12 @@ class ScanInput(BaseModel):
     extended_confirmed: bool = False
 
 
+class AutopilotInput(BaseModel):
+    target: str = Field(min_length=1, max_length=3000)
+    project_id: str | None = Field(default=None, min_length=1, max_length=100)
+    scan_profile: Literal["exposure", "standard"] = "exposure"
+
+
 class FindingPatch(BaseModel):
     status: FindingStatus | None = None
     researcher_notes: str | None = Field(default=None, max_length=30000)

@@ -16,6 +16,8 @@ _CONFIG_LOCK = threading.RLock()
 _EVENTS = frozenset(
     {
         "stage_changed",
+        "scan_completed",
+        "autopilot_reports_created",
         "scan_cancelled",
         "scanner_error",
         "request_sent",

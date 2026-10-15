@@ -43,6 +43,14 @@ class ScanContext:
             self.page_review = (
                 request.data if request and request.data.get("version") == 1 else None
             )
+            self.autopilot = (
+                db.scalar(
+                    select(ScanEvent.id)
+                    .where(ScanEvent.scan_id == scan.id, ScanEvent.kind == "autopilot_requested")
+                    .limit(1)
+                )
+                is not None
+            )
         self.target = canonicalize(scan.target)
         self.limits = dict(scan.limits)
         if self.page_review:
@@ -68,6 +76,8 @@ class ScanContext:
         )
         self.directory_candidates_seen = set()
         self.evidence_seen = set()
+        self.skipped_url_admissions = 0
+        self.skipped_depth_admissions = 0
         self.scanner_state = {"probes": set()}
 
     def page_review_fetch_allowed(self, url, source):
@@ -101,6 +111,8 @@ class ScanContext:
         passive_fetch = source == "manual" or (
             not self.page_review and urlsplit(url).path in {"/robots.txt", "/sitemap.xml"}
         )
+        if url not in self.queued and self.depth > self.limits["max_depth"]:
+            self.skipped_depth_admissions += 1
         if (
             url not in self.queued
             and self.depth <= self.limits["max_depth"]
@@ -199,6 +211,7 @@ class ScanContext:
                 self.enqueue_url(url, source, enqueue)
             return False
         if len(self.known) >= self.limits["url_cap"]:
+            self.skipped_url_admissions += 1
             return False
         self.known.add(url)
         # DNS for each newly discovered host is validated now and again before requesting.
@@ -579,8 +592,48 @@ async def run_scan(scan_id):
         browser_observation = await ctx.browser_observation()
         if browser_observation:
             observations.append(browser_observation)
-        while ctx.queue:
+        while True:
             ctx.check_cancelled()
+            if not ctx.queue:
+                if ctx.profile != "passive" and ctx.directory_candidates:
+                    directories = sorted(ctx.directory_candidates)
+                    ctx.directory_candidates.clear()
+                    if ctx.page_review:
+                        ctx.depth = 1
+                    for directory in directories:
+                        await ctx.remember_url(
+                            directory, "scanner:directory" if ctx.page_review else "scanner"
+                        )
+                    if ctx.queue:
+                        continue
+                ctx.set_stage("analyzing")
+                # Final AI discoveries remain part of this scan's guarded queue.
+                # Treat a permitted follow-up as one discovery hop, never as an
+                # unrestricted fresh crawl; the original caps stay authoritative.
+                ctx.depth = 1
+                before_round = ctx.ai.progress["round"]
+                followups = await ctx.ai.review(observations, force=True)
+                for page in followups:
+                    observations.append(
+                        sanitize(
+                            {
+                                "url": page.url,
+                                "status": page.status,
+                                "content_type": page.headers.get("content-type", ""),
+                            }
+                        )
+                    )
+                observations = observations[-200:]
+                if ctx.queue or ctx.directory_candidates:
+                    continue
+                if (
+                    followups
+                    and not ctx.ai.stopped
+                    and ctx.ai.progress["round"] > before_round
+                    and ctx.ai.progress["round"] < ctx.ai.round_limit
+                ):
+                    continue
+                break
             url, depth, source = ctx.queue.popleft()
             if url in ctx.visited:
                 continue
@@ -686,19 +739,12 @@ async def run_scan(scan_id):
                 ctx.event("scope_check", {"url": url, "allowed": False, "reason": str(exc)})
             except Exception as exc:
                 ctx.error("pipeline", exc)
-            if not ctx.queue and ctx.profile != "passive" and ctx.directory_candidates:
-                directories = sorted(ctx.directory_candidates)
-                ctx.directory_candidates.clear()
-                if ctx.page_review:
-                    ctx.depth = 1
-                for directory in directories:
-                    await ctx.remember_url(
-                        directory, "scanner:directory" if ctx.page_review else "scanner"
-                    )
-        ctx.set_stage("analyzing")
-        await ctx.ai.review(observations, force=True)
         ctx.ai.finish()
         ctx.counts()
+        from app.workers.completion import draft_reports, record_completion
+
+        draft_reports(ctx)
+        record_completion(ctx)
         ctx.set_stage("complete", finished_at=datetime.now(UTC))
     except ScanCancelled:
         ctx.event(
@@ -709,6 +755,10 @@ async def run_scan(scan_id):
         ctx.event(
             "budget_exhausted", {"message": "Request budget reached; remaining checks skipped"}
         )
+        from app.workers.completion import draft_reports, record_completion
+
+        draft_reports(ctx)
+        record_completion(ctx, budget_reached=True)
         ctx.set_stage("complete", finished_at=datetime.now(UTC))
     except Exception as exc:
         ctx.error("scan", exc)

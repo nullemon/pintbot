@@ -30,6 +30,11 @@ never confirmed finding evidence. The scanner does not inherit the browser login
 Do not add broad extension host permissions, cookie/debugger access, automatic DOM
 capture or automatic replay of reviews declined by an AI provider.
 
+Autopilot must resolve an existing confirmed project, never infer authorization
+from a URL. Drain guarded work discovered by final AI reviews before completing a
+scan. Persist completion diagnostics. Automatic local report drafts must use saved
+evidence, retain researcher verification status, and never submit externally.
+
 ## Development and tests
 
 Existing isolated cloud tasks should use this checkout; do not create worktrees unless requested.

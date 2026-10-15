@@ -26,7 +26,15 @@ from app.models import (
     ScanFinding,
     ScopeRule,
 )
-from app.schemas import FindingPatch, ProjectInput, ProjectPatch, ReportInput, RuleInput, ScanInput
+from app.schemas import (
+    AutopilotInput,
+    FindingPatch,
+    ProjectInput,
+    ProjectPatch,
+    ReportInput,
+    RuleInput,
+    ScanInput,
+)
 from app.scope.guard import ScopeDenied, ScopeGuard
 from app.utils.redaction import sanitize
 
@@ -129,6 +137,34 @@ async def create_scan(body: ScanInput, db: DB):
     return await enqueue_scan(body, db)
 
 
+@router.post("/autopilot", status_code=201)
+async def create_autopilot(body: AutopilotInput, db: DB):
+    """Resolve an existing authorized project; never create or expand authorization."""
+    if body.project_id:
+        project_id = body.project_id
+    else:
+        target = body.target if "://" in body.target else "https://" + body.target
+        matches = []
+        for project in db.scalars(select(Project).where(Project.authorization_confirmed.is_(True))):
+            try:
+                ScopeGuard(rules_for(db, project.id)).check_url(target)
+            except (ScopeDenied, ValueError):
+                continue
+            matches.append(project.id)
+        if not matches:
+            raise HTTPException(422, "Create an authorized project covering this URL first.")
+        if len(matches) > 1:
+            raise HTTPException(
+                409, "This URL matches multiple projects. Select the intended project."
+            )
+        project_id = matches[0]
+    return await enqueue_scan(
+        ScanInput(project_id=project_id, target=body.target, scan_profile=body.scan_profile),
+        db,
+        autopilot=True,
+    )
+
+
 @router.post("/page-reviews", status_code=201)
 async def create_page_review(body: PageReviewInput, db: DB):
     if not body.authorization_confirmed:
@@ -142,7 +178,13 @@ async def create_page_review(body: PageReviewInput, db: DB):
     )
 
 
-async def enqueue_scan(body: ScanInput, db: Session, *, page_review: PageReviewInput | None = None):
+async def enqueue_scan(
+    body: ScanInput,
+    db: Session,
+    *,
+    page_review: PageReviewInput | None = None,
+    autopilot: bool = False,
+):
     p = require(db, Project, body.project_id)
     if not p.authorization_confirmed:
         raise HTTPException(403, "Confirm: I am authorized to test these assets.")
@@ -187,6 +229,14 @@ async def enqueue_scan(body: ScanInput, db: Session, *, page_review: PageReviewI
     db.flush()
     if review is not None:
         db.add(ScanEvent(scan_id=scan.id, kind="page_review_requested", data=review))
+    if autopilot:
+        db.add(
+            ScanEvent(
+                scan_id=scan.id,
+                kind="autopilot_requested",
+                data={"version": 1, "automatic_report_drafts": True},
+            )
+        )
     db.commit()
     # Durable queued rows are consumed by the dispatcher even after a broker outage.
     from app.workers.scan_tasks import dispatch_scan
@@ -204,12 +254,15 @@ async def enqueue_scan(body: ScanInput, db: Session, *, page_review: PageReviewI
         db.commit()
     return {
         **record(scan),
+        "autopilot": autopilot,
         **({"page_review": review_summary(review)} if review is not None else {}),
     }
 
 
 @router.get("/scans/{scan_id}")
 def scan_detail(scan_id: str, db: DB):
+    from app.workers.completion import saved_completion
+
     scan = require(db, Scan, scan_id)
     latest = db.scalar(
         select(ScanEvent)
@@ -234,6 +287,13 @@ def scan_detail(scan_id: str, db: DB):
         **record(scan),
         "ai_progress": progress,
         "page_review": review_summary(review.data) if review else None,
+        "completion": saved_completion(db, scan),
+        "autopilot": db.scalar(
+            select(ScanEvent.id)
+            .where(ScanEvent.scan_id == scan_id, ScanEvent.kind == "autopilot_requested")
+            .limit(1)
+        )
+        is not None,
     }
 
 

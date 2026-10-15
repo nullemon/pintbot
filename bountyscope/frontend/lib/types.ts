@@ -7,6 +7,8 @@ export type Project = {
   max_depth: number; url_cap: number; request_budget: number; created_at: string; scope?: ScopeRule[];
 };
 export type Scan = {
+  autopilot?: boolean;
+  completion?: { reason: string; message: string; response_status_counts?: Record<string, number>; skipped_url_admissions?: number; skipped_depth_admissions?: number; scope_skips?: number; ai_rounds_used?: number; ai_round_limit?: number } | null;
   id: string; project_id: string; target: string; status: string; scan_profile: "exposure" | "passive" | "standard" | "extended";
   created_at: string; started_at?: string; finished_at?: string; requests_sent: number;
   assets_found: number; endpoints_found: number; findings_found: number; errors: unknown[];

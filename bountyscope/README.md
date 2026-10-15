@@ -183,6 +183,36 @@ Automation detects indicators, not business impact. Verify findings manually bef
 
 ## Live AI review during active scans
 
+### URL-only Autopilot
+
+Open **Autopilot** in the sidebar (`http://localhost:3000/autopilot`), enter the
+target URL and start. The URL must already belong to an authorization-confirmed
+project. A unique matching project is selected automatically; select the project
+explicitly when several match. Autopilot never creates authorization or expands
+scope. Choose Exposure for directories/files/media or Standard for all currently
+implemented safe checks.
+
+The scan performs discovery, deterministic checks and bounded AI follow-ups without
+further prompts. Newly discovered work from the final AI review is processed before
+completion. The original request/rate/URL/depth limits and three AI rounds remain
+authoritative. A refusal stops AI calls while deterministic scanning continues.
+
+Findings appear directly on the scan detail page, including all scanner categories.
+Autopilot creates Markdown and HTML drafts for at most 20 evidence-backed findings
+with confidence at least 75 and severity above informational. False positives,
+duplicates, reported/resolved findings and findings without retained evidence are
+excluded. Drafts are available in **Reports**; verification statuses are unchanged,
+and nothing is submitted to a bounty program automatically.
+
+**Why this scan finished** records URL/depth/request limits, scope skips and HTTP
+status counts. The request budget is an upper bound, not a target to consume. A scan
+can finish after a small number of requests when discovery yields no further
+eligible work. Zero findings means no supported exposure was confirmed in the
+checked responses; it does not establish that every vulnerability was ruled out.
+Older scans show HTTP counts from their saved events, with an explicit notice when
+their original completion reason was not recorded. Settings showing AI enabled
+describe configuration and do not establish that a particular review succeeded.
+
 With AI enabled and a valid provider key/model, new scans now interleave AI review with the crawl. The first batch becomes eligible after five fetched pages or 30 seconds; subsequent live batches wait for ten more pages or 30 seconds. A total ceiling of three rounds includes a reserved final review. These are bounded pauses for review, not unlimited parallel agents or per-response model calls.
 
 The scan details display AI status, round, proposed/approved/denied/executed actions and finding-analysis/priority counts. Provider failures are visible and stop further automatic AI retries for that scan while deterministic scanning continues. Passive profiles allow analysis and prioritization but never AI target follow-up requests. Standard/Extended permit only the existing guarded capability enum. Use the Priority sorting option in Findings; the score is advisory and never changes scanner severity or researcher verification status.
