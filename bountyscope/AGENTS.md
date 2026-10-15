@@ -34,6 +34,11 @@ Autopilot must resolve an existing confirmed project, never infer authorization
 from a URL. Drain guarded work discovered by final AI reviews before completing a
 scan. Persist completion diagnostics. Automatic local report drafts must use saved
 evidence, retain researcher verification status, and never submit externally.
+Autopilot uses the shared scan budget instead of the regular three-round AI cap.
+Keep a bounded, redacted history of completed and denied checks. Stop after the
+configured consecutive rounds without fresh completed checks, on exhausted limits,
+cancellation or provider refusal/failure. Never add unlimited retries, repeated
+target requests or a requirement to keep searching until a finding exists.
 
 ## Development and tests
 

@@ -1,6 +1,6 @@
 "use client";
 import { BrainCircuit, CircleAlert, LoaderCircle } from "lucide-react";
-import { date, number } from "@/lib/api";
+import { date, human, number } from "@/lib/api";
 import type { AIProgress } from "@/lib/types";
 import { Badge } from "./ui";
 
@@ -26,6 +26,7 @@ export default function AIActivity({ progress, finished, stale = false }: { prog
   const status = progress?.enabled === false ? "disabled" : progress?.status;
   const stopped = finished && (status === "waiting" || status === "analyzing");
   const active = status === "analyzing" && !finished && !stale;
+  const budgetRounds = progress?.round_policy === "budget" || progress?.max_rounds === null;
   const metrics = progress ? [
     ["Findings analyzed", progress.findings_analyzed],
     ["Findings prioritized", progress.findings_prioritized],
@@ -51,7 +52,9 @@ export default function AIActivity({ progress, finished, stale = false }: { prog
     </div>
     {!!metrics.length && <dl className="ai-metrics">{metrics.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{number(value)}</dd></div>)}</dl>}
     {progress && <div className="ai-activity-footer muted small">
-      <span>{progress.enabled ? `AI rounds: ${number(progress.round)} / ${number(progress.max_rounds)} maximum` : "AI provider calls disabled"}</span>
+      <span>{progress.enabled ? budgetRounds ? `AI rounds: ${number(progress.round)} · limited by scan budget` : `AI rounds: ${number(progress.round)} / ${number(progress.max_rounds ?? undefined)} maximum` : "AI provider calls disabled"}</span>
+      {progress.enabled && budgetRounds && progress.action_budget !== undefined && <span>AI action limit: {number(progress.action_budget)} unique checks</span>}
+      {progress.stop_reason && <span>AI stop reason: {human(progress.stop_reason)}</span>}
       <span>Last AI update: {date(progress.last_updated || undefined)}</span>
     </div>}
   </section>;

@@ -191,7 +191,10 @@ function renderScan(scan) {
   if (progress?.status === "refused") {
     $("ai-status").textContent = "Provider declined this review; deterministic scanning continues. Automatic AI retries stopped. Available account credit does not override a provider refusal.";
   } else if (progress) {
-    $("ai-status").textContent = `AI ${human(progress.status)} · round ${progress.round ?? 0}/${progress.max_rounds ?? 3}. ${progress.message || ""} Approved ${progress.actions_approved ?? 0}; denied ${progress.actions_denied ?? 0}; analyzed ${progress.findings_analyzed ?? 0}.`;
+    const rounds = progress.round_policy === "budget" || progress.max_rounds === null
+      ? `${progress.round ?? 0} · scan budget`
+      : `${progress.round ?? 0}/${progress.max_rounds ?? 3}`;
+    $("ai-status").textContent = `AI ${human(progress.status)} · round ${rounds}. ${progress.message || ""} Approved ${progress.actions_approved ?? 0}; denied ${progress.actions_denied ?? 0}; analyzed ${progress.findings_analyzed ?? 0}.`;
   } else $("ai-status").textContent = "AI status is not available yet. Deterministic checks do not require an AI key.";
   updateControls();
 }

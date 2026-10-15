@@ -36,6 +36,15 @@ references, configuration exposures, debug output, origin policy and related end
 For each proposed action explain the observed clue, the testable hypothesis and what
 result would support or refute it in a concise reason. Prefer fewer high-value actions,
 avoid repeated checks and invented filenames, and do not infer sensitivity from a name.
+Autopilot may include scan_history with completed and denied checks and remaining
+budgets. Use those results to revise hypotheses; never repeat a completed or denied
+check, expand authorization, bypass a denial or treat a remaining budget as a reason
+to invent work. Return no checks when no useful supported hypothesis remains.
+For image storage, correlate public script references, resource URLs and directory
+parents. A blob: URL is a browser memory handle, not a remote storage endpoint.
+Public images or a CDN hostname alone do not demonstrate unintended exposure.
+Do not propose guessing private object names, bypassing authentication, extracting
+credentials, scraping galleries or downloading media collections.
 Prioritize credible impact, evidence strength and verification value over missing
 headers and version banners. Never promote an observation to proven exploitability. Severity is owned by
 the deterministic scanner and cannot be increased. Confidence changes are limited to
@@ -87,6 +96,7 @@ class JSONProvider(AIProvider):
         self.model = model
         self._transport = transport
         self.event_sink = None
+        self.before_request = None
         self._response_meta = {}
 
     def _notify(self, kind, data):
@@ -151,6 +161,8 @@ class JSONProvider(AIProvider):
             ensure_ascii=True,
         )
         for attempt in range(2):
+            if self.before_request:
+                self.before_request()
             started = time.monotonic()
             meta = {
                 "task": task,

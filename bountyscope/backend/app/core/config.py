@@ -1,3 +1,4 @@
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -14,6 +15,7 @@ class Settings(BaseSettings):
     anthropic_model: str = ""
     ai_max_rounds: int = 3
     ai_max_actions_per_round: int = 20
+    ai_autopilot_no_progress_rounds: int = Field(default=3, ge=1, le=10)
     ai_live_interval_seconds: int = 30
     ai_live_max_findings: int = 20
     evidence_retention_days: int = 30

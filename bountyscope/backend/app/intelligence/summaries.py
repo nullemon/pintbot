@@ -95,8 +95,34 @@ def observation_summary(observations):
             "truncated": bool(read(page, "truncated", False)),
         }
         provenance = read(page, "provenance")
-        if provenance in {"guarded_http", "browser_snapshot_unverified"}:
+        if provenance in {"guarded_http", "browser_snapshot_unverified", "scan_history"}:
             entry["provenance"] = provenance
+        for key in ("remaining_request_budget", "remaining_action_budget", "checks_attempted"):
+            value = read(page, key)
+            if isinstance(value, int) and not isinstance(value, bool) and 0 <= value <= 10000:
+                entry[key] = value
+        history = read(page, "check_history")
+        if isinstance(history, (list, tuple)):
+            entry["check_history"] = []
+            for item in history[-40:]:
+                if not isinstance(item, Mapping):
+                    continue
+                previous = {
+                    "tool": bounded(read(item, "tool"), 80),
+                    "url": bounded(read(item, "url"), 512),
+                    "reason": bounded(read(item, "reason"), 160),
+                }
+                outcome = read(item, "outcome")
+                if outcome in {"executed", "duplicate", "denied"}:
+                    previous["outcome"] = outcome
+                status = read(item, "status")
+                if (
+                    isinstance(status, int)
+                    and not isinstance(status, bool)
+                    and 100 <= status <= 599
+                ):
+                    previous["status"] = status
+                entry["check_history"].append(previous)
         focus = read(page, "researcher_focus")
         if isinstance(focus, str) and focus:
             entry["researcher_focus"] = bounded(focus, 1000)

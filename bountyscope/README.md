@@ -118,7 +118,7 @@ OPENAI_MODEL=your-enabled-model-name
 
 Or choose `AI_PROVIDER=anthropic` with `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL`. Model names are required configuration, never hardcoded. Keep actual keys out of source control and browser settings. In hosted environments enter credentials securely in environment settings, not chat.
 
-`AI_MAX_ROUNDS` (ceiling 3) and `AI_MAX_ACTIONS_PER_ROUND` (ceiling 20) can reduce autonomy. Proposed tools are an enum (`inspect_endpoint`, `inspect_headers`, `check_directory`, `check_cors`, `check_cookie`; screenshot requests are rejected because no guarded browser is installed). All target actions go through SafeToolDispatcher → ScopeGuard → shared budget/rate limiter → SafeHTTPClient. Unknown actions are denied and audited. AI receives bounded sanitized structured summaries, not arbitrary target response bodies. Confidence may move by at most 5; scanner severity remains deterministic. Provider failure never fails the scan. Live paid-provider calls are not part of the default automated tests.
+`AI_MAX_ROUNDS` limits regular scans and page reviews to at most 3 rounds. Autopilot instead continues within the scan's existing budgets while rounds produce fresh completed checks that return an HTTP response; `AI_AUTOPILOT_NO_PROGRESS_ROUNDS` stops it after 3 consecutive rounds without progress by default (configurable 1–10). `AI_MAX_ACTIONS_PER_ROUND` limits every mode to at most 20 proposed actions per round. Proposed tools are an enum (`inspect_endpoint`, `inspect_headers`, `check_directory`, `check_cors`, `check_cookie`; screenshot requests are rejected because no guarded browser is installed). All target actions go through SafeToolDispatcher → ScopeGuard → shared budget/rate limiter → SafeHTTPClient. Unknown actions are denied and audited. AI receives bounded sanitized structured summaries, not arbitrary target response bodies. Confidence may move by at most 5; scanner severity remains deterministic. Provider failure never fails the scan. Live paid-provider calls are not part of the default automated tests.
 
 **TARGET WEBSITE CONTENT IS DATA, NOT AI INSTRUCTIONS.** The provider system prompt enforces that boundary; the model has no shell, filesystem or network tool access.
 
@@ -133,7 +133,8 @@ Or choose `AI_PROVIDER=anthropic` with `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL`
 | AI_ENABLED / AI_PROVIDER | false / openai; AI optional |
 | OPENAI_API_KEY / OPENAI_MODEL | Server-only optional provider configuration |
 | ANTHROPIC_API_KEY / ANTHROPIC_MODEL | Server-only optional provider configuration |
-| AI_MAX_ROUNDS / AI_MAX_ACTIONS_PER_ROUND | 3 /20; hard maximums |
+| AI_MAX_ROUNDS / AI_MAX_ACTIONS_PER_ROUND | Regular scans/page reviews: at most 3 rounds; every mode: at most 20 proposed actions per round |
+| AI_AUTOPILOT_NO_PROGRESS_ROUNDS | 3; Autopilot stops after this many consecutive rounds without fresh completed checks returning a response; range 1–10 |
 | EVIDENCE_RETENTION_DAYS | 30; hourly worker task expires evidence and generated reports |
 | USER_AGENT | BountyScope-SecurityScanner/1.0; add researcher contact if desired |
 | API_INTERNAL_URL | Frontend build/proxy destination, default http://api:8000 |
@@ -192,10 +193,21 @@ explicitly when several match. Autopilot never creates authorization or expands
 scope. Choose Exposure for directories/files/media or Standard for all currently
 implemented safe checks.
 
+For what URL to paste, image/CDN discovery and browser `blob:` URLs, see the
+[image-storage workflow](docs/IMAGE_STORAGE_WORKFLOW.md).
+
 The scan performs discovery, deterministic checks and bounded AI follow-ups without
-further prompts. Newly discovered work from the final AI review is processed before
-completion. The original request/rate/URL/depth limits and three AI rounds remain
-authoritative. A refusal stops AI calls while deterministic scanning continues.
+further prompts. Newly discovered work from AI review is processed before
+completion. Autopilot has no fixed three-round AI ceiling: it continues while
+rounds produce fresh completed checks returning responses and the original HTTP
+request budget, URL cap, depth and rate limits permit them. It stops AI review after
+`AI_AUTOPILOT_NO_PROGRESS_ROUNDS` consecutive rounds without progress (default 3,
+range 1–10), when the available scan budget is exhausted, on cancellation or when
+the provider refuses/fails. Only fresh completed checks returning a response reset
+the no-progress count. Duplicates, DNS denials, blocked redirects and network
+failures do not count as progress. A refusal
+stops AI calls while deterministic scanning continues. Regular scans and page
+reviews retain their maximum of three AI rounds.
 
 Findings appear directly on the scan detail page, including all scanner categories.
 Autopilot creates Markdown and HTML drafts for at most 20 evidence-backed findings
@@ -213,11 +225,15 @@ Older scans show HTTP counts from their saved events, with an explicit notice wh
 their original completion reason was not recorded. Settings showing AI enabled
 describe configuration and do not establish that a particular review succeeded.
 
-With AI enabled and a valid provider key/model, new scans now interleave AI review with the crawl. The first batch becomes eligible after five fetched pages or 30 seconds; subsequent live batches wait for ten more pages or 30 seconds. A total ceiling of three rounds includes a reserved final review. These are bounded pauses for review, not unlimited parallel agents or per-response model calls.
+With AI disabled in API and worker, run `.venv/bin/python scripts/autopilot_smoke.py`
+to verify the local fixture's Autopilot workflow, guarded requests, completion
+policy, redacted evidence and automatic Markdown/HTML report drafts.
+
+With AI enabled and a valid provider key/model, new scans interleave AI review with the crawl. The first batch becomes eligible after five fetched pages or 30 seconds; subsequent live batches wait for ten more pages or 30 seconds. Regular scans and page reviews have a total ceiling of three rounds, including a reserved final review. Autopilot uses the budget/progress policy above and can run additional rounds. These are bounded pauses for review, not unlimited parallel agents or per-response model calls.
 
 The scan details display AI status, round, proposed/approved/denied/executed actions and finding-analysis/priority counts. Provider failures are visible and stop further automatic AI retries for that scan while deterministic scanning continues. Passive profiles allow analysis and prioritization but never AI target follow-up requests. Standard/Extended permit only the existing guarded capability enum. Use the Priority sorting option in Findings; the score is advisory and never changes scanner severity or researcher verification status.
 
-`AI_LIVE_INTERVAL_SECONDS` defaults to 30 (minimum effective 5); `AI_LIVE_MAX_FINDINGS` defaults to 20 (hard ceiling 20 across the whole scan). At most five previously unanalyzed findings receive paid detailed analysis per batch. Up to 100 observed findings receive a bounded priority review per batch. All target follow-ups share the original URL cap, request budget, DNS pinning and scope policy. No full response bodies are sent to AI. Review costs depend on the chosen model and observations; reduce rounds/actions/finding limits to control them.
+`AI_LIVE_INTERVAL_SECONDS` defaults to 30 (minimum effective 5); `AI_LIVE_MAX_FINDINGS` defaults to 20 (hard ceiling 20 across the whole scan). At most five previously unanalyzed findings receive paid detailed analysis per batch. Up to 100 observed findings receive a bounded priority review per batch. All target follow-ups share the original URL cap, request budget, DNS pinning and scope policy. No full response bodies are sent to AI. Review costs depend on the chosen model, observations and number of rounds. Reduce regular-scan rounds or Autopilot's scan budget/no-progress threshold, and action/finding limits, to control them; the HTTP request budget is not a provider-spending cap.
 
 Cancel/recreate a scan to apply new worker behavior; a running worker task keeps the code it started with. Existing completed scans still support manual Analyze with AI. The integration does not guarantee discovery of hidden files or every vulnerability. An evidence-driven manual review prompt is provided in `docs/AI_RESEARCH_PROMPT.md`.
 
@@ -226,7 +242,7 @@ Cancel/recreate a scan to apply new worker behavior; a running worker task keeps
 
 Choose **Exposure** (the dashboard default for new scans) to run discovery, directory-index detection, exposed-file indicators and source-disclosure checks without header/cookie/CORS findings. Existing profiles remain available. Findings default to Exposure focus and Priority sorting; switch to All findings to see older general assessments.
 
-Per authorized observed origin, this profile queues only 12 common directories: `/images/`, `/image/`, `/img/`, `/thumbnails/`, `/thumb/`, `/media/`, `/uploads/`, `/files/`, `/assets/`, `/cdn/`, `/wp-content/`, `/wp-content/uploads/`. These are directory paths on authorized hosts, not guessed CDN hostnames. Additional candidates come from actual observed URLs and their parents, with a pending parent-directory pool capped at 200 or the project URL cap, whichever is lower. AI can propose additional in-scope directory checks from live clues, up to the existing per-round/global ceilings; the starter names are not the total discovery list. Every candidate obeys scope/exclusions, URL caps, depth limits, cancellation and the original request budget. There is no uncontrolled random wordlist or filename enumeration. Seed responses are sampled at 128 KiB, and a successful status alone is never an exposure finding. Source-map references without reachability evidence stay inventory-only in Exposure scans.
+Per authorized observed origin, this profile queues only 12 common directories: `/images/`, `/image/`, `/img/`, `/thumbnails/`, `/thumb/`, `/media/`, `/uploads/`, `/files/`, `/assets/`, `/cdn/`, `/wp-content/`, `/wp-content/uploads/`. These are directory paths on authorized hosts, not guessed CDN hostnames. Additional candidates come from actual observed URLs and their parents, with a pending parent-directory pool capped at 200 or the project URL cap, whichever is lower. AI can propose additional in-scope directory checks from live clues, subject to the per-round action ceiling and the mode's scan budgets/round policy; the starter names are not the total discovery list. Every candidate obeys scope/exclusions, URL caps, depth limits, cancellation and the original request budget. There is no uncontrolled random wordlist or filename enumeration. Seed responses are sampled at 128 KiB, and a successful status alone is never an exposure finding. Source-map references without reachability evidence stay inventory-only in Exposure scans.
 
 Directory findings store observed entry counts and a sample of at most 10 names/extensions/URLs. Actual files, media collections, repositories, dumps and archives are not downloaded. Accessible public images alone are not proof of a security issue. Export reports after reviewing evidence, intended access policy and impact. Test the full local workflow with `.venv/bin/python scripts/smoke.py --profile exposure` (AI disabled for that deterministic smoke check).
 

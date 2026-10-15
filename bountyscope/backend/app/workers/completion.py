@@ -37,6 +37,7 @@ def saved_completion(db, scan):
 
 
 def record_completion(ctx, *, budget_reached=False):
+    budget_reached = budget_reached or ctx.remaining_request_budget() <= 0
     if budget_reached:
         reason, message = (
             "request_budget_reached",
@@ -82,7 +83,9 @@ def record_completion(ctx, *, budget_reached=False):
             "response_status_counts": statuses,
             "ai_status": ctx.ai.progress["status"],
             "ai_rounds_used": ctx.ai.progress["round"],
-            "ai_round_limit": ctx.ai.round_limit,
+            "ai_round_limit": ctx.ai.progress["max_rounds"],
+            "ai_round_policy": ctx.ai.progress["round_policy"],
+            "ai_stop_reason": ctx.ai.progress["stop_reason"],
             "ai_actions_executed": ctx.ai.progress["actions_executed"],
             "profile": ctx.profile,
             "mode": "single_page" if ctx.page_review else "site_scan",

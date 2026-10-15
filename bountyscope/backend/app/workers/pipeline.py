@@ -165,6 +165,11 @@ class ScanContext:
     def check_cancelled(self):
         self.http.check_cancelled()
 
+    def remaining_request_budget(self):
+        with SessionLocal() as db:
+            scan = db.get(Scan, self.scan_id)
+            return max(0, self.limits["request_budget"] - scan.requests_sent)
+
     def set_ai_round(self, value):
         self.set_stage("analyzing", ai_round=value)
 
@@ -627,10 +632,9 @@ async def run_scan(scan_id):
                 if ctx.queue or ctx.directory_candidates:
                     continue
                 if (
-                    followups
-                    and not ctx.ai.stopped
+                    (followups or ctx.ai.budget_mode)
+                    and ctx.ai.can_continue()
                     and ctx.ai.progress["round"] > before_round
-                    and ctx.ai.progress["round"] < ctx.ai.round_limit
                 ):
                     continue
                 break
@@ -752,6 +756,10 @@ async def run_scan(scan_id):
         )
     except BudgetExceeded:
         ctx.counts()
+        if ctx.ai.provider and not ctx.ai.stopped:
+            ctx.ai.stop_followups(
+                "request_budget_reached", "The shared scan request budget was reached"
+            )
         ctx.event(
             "budget_exhausted", {"message": "Request budget reached; remaining checks skipped"}
         )

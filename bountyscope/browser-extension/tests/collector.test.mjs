@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { afterEach, test } from "node:test";
 import { capturePageMetadata } from "../collector.mjs";
 
-const original = Object.fromEntries(["document", "location", "isSecureContext", "fetch"].map((key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
+const original = Object.fromEntries(["document", "location", "isSecureContext", "fetch", "performance"].map((key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
 afterEach(() => {
   for (const [key, descriptor] of Object.entries(original)) {
     if (descriptor) Object.defineProperty(globalThis, key, descriptor);
@@ -18,7 +18,7 @@ function element(tag, attributes = {}) {
   return node;
 }
 
-function page(nodes, { url = "https://authorized.test/current/", baseURI, forms = 0, passwords = 0, files = 0 } = {}) {
+function page(nodes, { url = "https://authorized.test/current/", baseURI, forms = 0, passwords = 0, files = 0, resources = [] } = {}) {
   const document = {
     baseURI,
     querySelectorAll(selector) {
@@ -38,6 +38,7 @@ function page(nodes, { url = "https://authorized.test/current/", baseURI, forms 
     location: { configurable: true, value: { href: url } },
     isSecureContext: { configurable: true, value: true },
     fetch: { configurable: true, value() { throw new Error("Collector must never fetch target resources"); } },
+    performance: { configurable: true, value: { getEntriesByType(type) { assert.equal(type, "resource"); return resources; } } },
   });
 }
 
@@ -171,4 +172,69 @@ test("rejects OAuth/secret fragments and JWT-looking fragments without logging o
     page([], { url: `https://authorized.test/#${fragment}` });
     assert.throws(capturePageMetadata, /Open a clean URL without credentials/);
   }
+});
+
+test("captures existing fetch/XHR resource URL clues without reading network content", () => {
+  const recorded = (name, initiatorType) => {
+    const entry = { name, initiatorType };
+    for (const forbidden of ["body", "headers", "response", "responseStatus", "transferSize", "encodedBodySize", "decodedBodySize", "duration", "serverTiming"]) {
+      Object.defineProperty(entry, forbidden, { get() { throw new Error(`Must not read resource ${forbidden}`); } });
+    }
+    return entry;
+  };
+  page([], { resources: [
+    recorded("https://storage.cdn.test/uploads/photo.webp?signature=SECRET#fragment", "fetch"),
+    recorded("https://storage.cdn.test/media/content/123?token=SECRET", "xmlhttprequest"),
+    recorded("https://authorized.test/assets/lazy.js", "script"),
+    recorded("https://cdn.thirdparty.test/theme.css", "link"),
+    recorded("https://storage.cdn.test/media/video.mp4", "fetch"),
+  ] });
+  const result = capturePageMetadata();
+  assert.deepEqual(result.references, [
+    { kind: "image", url: "https://storage.cdn.test/uploads/photo.webp" },
+    { kind: "api", url: "https://storage.cdn.test/media/content/123" },
+    { kind: "script", url: "https://authorized.test/assets/lazy.js" },
+    { kind: "stylesheet", url: "https://cdn.thirdparty.test/theme.css" },
+    { kind: "media", url: "https://storage.cdn.test/media/video.mp4" },
+  ]);
+  assert.doesNotMatch(JSON.stringify(result), /SECRET|signature|token|fragment/);
+});
+
+test("drops blob/data resource references and never dereferences their contents", () => {
+  const image = element("img", { src: "blob:https://authorized.test/fake-image" });
+  image.currentSrc = "blob:https://authorized.test/fake-image";
+  page([image], { resources: [
+    { name: "blob:https://authorized.test/fake-image", initiatorType: "fetch" },
+    { name: "data:image/png;base64,SECRET", initiatorType: "img" },
+    { name: "https://name:SECRET@storage.cdn.test/private.jpg", initiatorType: "img" },
+    { name: "https://storage.cdn.test/api/image/1?api_key=SECRET", initiatorType: "fetch" },
+  ] });
+  assert.deepEqual(capturePageMetadata().references, [{ kind: "api", url: "https://storage.cdn.test/api/image/1" }]);
+});
+
+test("resource timing is optional and remains within the existing count/byte caps", () => {
+  const resources = Array.from({ length: 800 }, (_, index) => ({ name: `https://storage.cdn.test/uploads/${"é".repeat(400)}-${index}.jpg?token=SECRET`, initiatorType: "fetch" }));
+  page([], { resources });
+  const result = capturePageMetadata();
+  assert.ok(result.references.length > 0 && result.references.length <= 200);
+  assert.ok(result.references.every((item) => Number(item.url.match(/-(\d+)\.jpg$/)?.[1]) >= 300), "only the latest 500 recorded entries are inspected");
+  assert.ok(new TextEncoder().encode(JSON.stringify(result)).length <= 50 * 1024);
+  page([element("img", { src: "/safe.jpg" })]);
+  globalThis.performance.getEntriesByType = () => { throw new Error("Timing buffer unavailable"); };
+  assert.deepEqual(capturePageMetadata().references, [{ kind: "image", url: "https://authorized.test/safe.jpg" }]);
+});
+
+test("resource clues are captured before navigation menus and deduplicated with DOM URLs", () => {
+  const nodes = Array.from({ length: 6000 }, (_, index) => element("a", { href: `/navigation/${index}` }));
+  nodes.push(element("img", { src: "https://storage.cdn.test/photo.jpg?token=SECRET" }));
+  page(nodes, { resources: [
+    { name: "https://storage.cdn.test/photo.jpg?signature=SECRET", initiatorType: "fetch" },
+    { name: "https://storage.cdn.test/api/image/7?key=SECRET", initiatorType: "xmlhttprequest" },
+  ] });
+  const result = capturePageMetadata();
+  assert.deepEqual(result.references.slice(0, 2), [
+    { kind: "image", url: "https://storage.cdn.test/photo.jpg" },
+    { kind: "api", url: "https://storage.cdn.test/api/image/7" },
+  ]);
+  assert.equal(result.references.length, 200);
 });

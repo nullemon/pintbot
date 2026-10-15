@@ -49,8 +49,40 @@ export function capturePageMetadata() {
     references.push(reference);
     contextBytes += bytes;
   };
+  const collectRecordedResources = () => {
+    let entries;
+    try {
+      // Resource Timing contains URLs already loaded by this page. Reading its
+      // existing buffer neither observes future traffic nor requests resources.
+      entries = globalThis.performance?.getEntriesByType?.("resource");
+    } catch {
+      // Timing metadata is optional; DOM capture still works when unavailable.
+      return;
+    }
+    if (!Array.isArray(entries)) return;
+    for (let index = Math.max(0, entries.length - 500); index < entries.length && references.length < 200; index += 1) {
+      const entry = entries[index];
+      if (!entry || typeof entry.name !== "string" || entry.name.length > 6000) continue;
+      let recorded;
+      try { recorded = new URL(entry.name); } catch { continue; }
+      if (!["http:", "https:"].includes(recorded.protocol) || recorded.username || recorded.password) continue;
+      const initiator = typeof entry.initiatorType === "string" ? entry.initiatorType.toLowerCase() : "";
+      const path = recorded.pathname.toLowerCase();
+      let kind;
+      if (initiator === "script" || /\.(?:m?js)$/.test(path)) kind = "script";
+      else if (initiator === "img" || /\.(?:avif|bmp|gif|ico|jpe?g|png|svg|tiff?|webp)$/.test(path)) kind = "image";
+      else if (["audio", "video"].includes(initiator) || /\.(?:aac|flac|m4a|m4v|mp3|mp4|ogg|ogv|wav|webm)$/.test(path)) kind = "media";
+      else if (path.endsWith(".css")) kind = "stylesheet";
+      else if (["fetch", "xmlhttprequest"].includes(initiator)) kind = "api";
+      else continue;
+      add(recorded.href, kind);
+    }
+  };
   // Resource-first passes prevent a large navigation menu from hiding media/scripts.
-  for (const selector of ["script[src]", "img, source[src], video[src], audio[src]", "link[href], a[href], iframe[src], form[action], [data-api-url], [data-endpoint]"]) {
+  const selectors = ["script[src]", "img, source[src], video[src], audio[src]", "link[href], a[href], iframe[src], form[action], [data-api-url], [data-endpoint]"];
+  for (let pass = 0; pass < selectors.length; pass += 1) {
+    if (pass === 2) collectRecordedResources();
+    const selector = selectors[pass];
     const nodes = document.querySelectorAll(selector);
     for (let index = 0; index < Math.min(nodes.length, 5000) && references.length < 200; index += 1) {
       const node = nodes[index];

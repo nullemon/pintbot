@@ -28,7 +28,7 @@
       <label>Checks<select id="profile"><option value="exposure">Exposure: directories, files, media</option><option value="standard">Standard: safe security checks</option><option value="passive">Passive: response inspection</option></select></label>
       <button id="capture" class="secondary" type="button" disabled>1. Capture this page’s metadata</button>
       <div id="snapshot" class="snapshot" hidden><div class="eyebrow">Captured page</div><div id="page-url" class="mono"></div><p id="page-counts" class="hint"></p></div>
-      <p class="hint">Reads URL references and form counts only. No page text, field values, cookies, or browser credentials are sent. The backend makes separate unauthenticated requests within your project scope.</p>
+      <p class="hint">Reads page references, already-recorded resource URLs, and form counts only. No page text, field values, cookies, or browser credentials are sent. The backend makes separate unauthenticated requests within your project scope.</p>
       <label>Optional review focus<textarea id="focus" maxlength="1000" rows="3" placeholder="Check observed media parent directories for public indexes and prioritize evidence."></textarea></label>
       <label class="checkbox"><input id="authorized" type="checkbox"><span>I am authorized to test these assets.</span></label>
       <button id="review" type="button" disabled>2. Start page review</button>

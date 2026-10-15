@@ -1,6 +1,7 @@
 """A small capability boundary between untrusted AI plans and target HTTP."""
 
 import inspect
+from collections import deque
 from urllib.parse import urlsplit
 
 import httpx
@@ -40,21 +41,37 @@ class SafeToolDispatcher:
 
     def __init__(self, ctx, *, max_actions=MAX_ROUNDS * MAX_ACTIONS_PER_ROUND, observed_urls=()):
         self.ctx = ctx
-        self.max_actions = min(max(0, int(max_actions)), MAX_ROUNDS * MAX_ACTIONS_PER_ROUND)
+        ceiling = (
+            min(10000, max(0, int(ctx.limits["request_budget"])))
+            if getattr(ctx, "autopilot", False)
+            else MAX_ROUNDS * MAX_ACTIONS_PER_ROUND
+        )
+        self.max_actions = min(max(0, int(max_actions)), ceiling)
         self.actions = 0
         self.seen = set()
         self.observed_urls = set(observed_urls)
+        self.history = deque(maxlen=80)
 
     async def dispatch(self, action):
         await check_cancelled(self.ctx)
         proposal = {
-            "tool": bounded(read(action, "tool", ""), 80),
+            "tool": bounded(
+                getattr(read(action, "tool", ""), "value", read(action, "tool", "")), 80
+            ),
             "url": bounded(read(action, "url", ""), 2048),
             "reason": bounded(read(action, "reason", ""), 1000),
         }
         event(self.ctx, "ai_action_proposed", proposal)
         try:
-            return await self._dispatch_validated(action)
+            page = await self._dispatch_validated(action)
+            self.history.append(
+                {
+                    **proposal,
+                    "outcome": "executed" if page is not None else "duplicate",
+                    "status": page.status if page is not None else None,
+                }
+            )
+            return page
         except (
             ScopeDenied,
             ValidationError,
@@ -65,6 +82,7 @@ class SafeToolDispatcher:
         ) as exc:
             reason = bounded(str(exc), 300) if isinstance(exc, ScopeDenied) else type(exc).__name__
             event(self.ctx, "ai_action_denied", {**proposal, "reason": reason})
+            self.history.append({**proposal, "outcome": "denied", "reason": reason})
             raise
 
     async def _dispatch_validated(self, action):

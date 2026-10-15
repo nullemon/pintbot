@@ -8,7 +8,7 @@ export type Project = {
 };
 export type Scan = {
   autopilot?: boolean;
-  completion?: { reason: string; message: string; response_status_counts?: Record<string, number>; skipped_url_admissions?: number; skipped_depth_admissions?: number; scope_skips?: number; ai_rounds_used?: number; ai_round_limit?: number } | null;
+  completion?: { reason: string; message: string; response_status_counts?: Record<string, number>; skipped_url_admissions?: number; skipped_depth_admissions?: number; scope_skips?: number; ai_rounds_used?: number; ai_round_limit?: number | null } | null;
   id: string; project_id: string; target: string; status: string; scan_profile: "exposure" | "passive" | "standard" | "extended";
   created_at: string; started_at?: string; finished_at?: string; requests_sent: number;
   assets_found: number; endpoints_found: number; findings_found: number; errors: unknown[];
@@ -22,7 +22,9 @@ export type Scan = {
 };
 export type AIProgress = {
   enabled: boolean; status: "disabled" | "waiting" | "analyzing" | "complete" | "unavailable" | "refused";
-  round: number; max_rounds: number; actions_proposed: number; actions_approved: number;
+  round: number; max_rounds: number | null; round_policy?: "budget" | "fixed"; stop_reason?: string | null;
+  action_budget?: number; no_progress_rounds?: number; no_progress_limit?: number;
+  actions_proposed: number; actions_approved: number;
   actions_denied: number; actions_executed: number; findings_analyzed: number;
   findings_prioritized: number; message: string; last_updated: string | null;
 };
