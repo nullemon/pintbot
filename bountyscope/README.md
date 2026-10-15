@@ -165,3 +165,23 @@ The supported deployment deliberately uses one serial worker slot. Before scalin
 Discovery uses DNS validation and observed links/robots/sitemaps/JavaScript; it does not brute-force subdomains or query certificate-transparency services. TLS reports the verified handshake/certificate rather than exhaustive cipher/protocol probing. Screenshot/Playwright scanning, PDF reports, Nuclei adapters and authenticated scanning are not included. Extended currently keeps the same implemented safe checks as Standard. Source-map bodies and backup contents are intentionally not downloaded. Program rules are displayed and retained as researcher guidance; the app cannot interpret arbitrary natural-language rules as enforceable policy—express restrictions using scope/path/port limits.
 
 Automation detects indicators, not business impact. Verify findings manually before submitting them, and export only necessary redacted evidence.
+
+
+## Live AI review during active scans
+
+With AI enabled and a valid provider key/model, new scans now interleave AI review with the crawl. The first batch becomes eligible after five fetched pages or 30 seconds; subsequent live batches wait for ten more pages or 30 seconds. A total ceiling of three rounds includes a reserved final review. These are bounded pauses for review, not unlimited parallel agents or per-response model calls.
+
+The scan details display AI status, round, proposed/approved/denied/executed actions and finding-analysis/priority counts. Provider failures are visible and stop further automatic AI retries for that scan while deterministic scanning continues. Passive profiles allow analysis and prioritization but never AI target follow-up requests. Standard/Extended permit only the existing guarded capability enum. Use the Priority sorting option in Findings; the score is advisory and never changes scanner severity or researcher verification status.
+
+`AI_LIVE_INTERVAL_SECONDS` defaults to 30 (minimum effective 5); `AI_LIVE_MAX_FINDINGS` defaults to 20 (hard ceiling 20 across the whole scan). At most five previously unanalyzed findings receive paid detailed analysis per batch. Up to 100 observed findings receive a bounded priority review per batch. All target follow-ups share the original URL cap, request budget, DNS pinning and scope policy. No full response bodies are sent to AI. Review costs depend on the chosen model and observations; reduce rounds/actions/finding limits to control them.
+
+Cancel/recreate a scan to apply new worker behavior; a running worker task keeps the code it started with. Existing completed scans still support manual Analyze with AI. The integration does not guarantee discovery of hidden files or every vulnerability. An evidence-driven manual review prompt is provided in `docs/AI_RESEARCH_PROMPT.md`.
+
+
+## Exposure-only directory, file and media workflow
+
+Choose **Exposure** (the dashboard default for new scans) to run discovery, directory-index detection, exposed-file indicators and source-disclosure checks without header/cookie/CORS findings. Existing profiles remain available. Findings default to Exposure focus and Priority sorting; switch to All findings to see older general assessments.
+
+Per authorized observed origin, this profile queues only 12 common directories: `/images/`, `/image/`, `/img/`, `/thumbnails/`, `/thumb/`, `/media/`, `/uploads/`, `/files/`, `/assets/`, `/cdn/`, `/wp-content/`, `/wp-content/uploads/`. These are directory paths on authorized hosts, not guessed CDN hostnames. Additional candidates come from actual observed URLs and their parents, with a pending parent-directory pool capped at 200 or the project URL cap, whichever is lower. AI can propose additional in-scope directory checks from live clues, up to the existing per-round/global ceilings; the starter names are not the total discovery list. Every candidate obeys scope/exclusions, URL caps, depth limits, cancellation and the original request budget. There is no uncontrolled random wordlist or filename enumeration. Seed responses are sampled at 128 KiB, and a successful status alone is never an exposure finding. Source-map references without reachability evidence stay inventory-only in Exposure scans.
+
+Directory findings store observed entry counts and a sample of at most 10 names/extensions/URLs. Actual files, media collections, repositories, dumps and archives are not downloaded. Accessible public images alone are not proof of a security issue. Export reports after reviewing evidence, intended access policy and impact. Test the full local workflow with `.venv/bin/python scripts/smoke.py --profile exposure` (AI disabled for that deterministic smoke check).

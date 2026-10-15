@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Exercise the real Compose API/worker/DB/fixture end to end. Fake target only."""
 
+import argparse
 import os
 import time
 from pathlib import Path
@@ -23,6 +24,9 @@ def api(method, path, **kwargs):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--profile", choices=["standard", "exposure"], default="standard")
+    profile = parser.parse_args().profile
     api("GET", "/health")
     project = api(
         "POST",
@@ -51,7 +55,7 @@ def main():
         json={
             "project_id": project["id"],
             "target": "http://example.test:8080",
-            "scan_profile": "standard",
+            "scan_profile": profile,
         },
     )
     deadline = time.monotonic() + 180
@@ -63,14 +67,12 @@ def main():
     assert scan["status"] == "complete", scan
     findings = api("GET", "/findings", params={"project_id": project["id"], "limit": 200})["items"]
     scanners = {f["scanner"] for f in findings}
-    assert {
-        "directory_listing",
-        "security_headers",
-        "cookies",
-        "cors",
-        "exposed_files",
-        "javascript",
-    } <= scanners, scanners
+    required = {"directory_listing", "exposed_files", "javascript"}
+    if profile == "standard":
+        required |= {"security_headers", "cookies", "cors"}
+    else:
+        assert scanners <= required, scanners
+    assert required <= scanners, scanners
     directory = next(f for f in findings if f["scanner"] == "directory_listing")
     detail = api("GET", "/findings/" + directory["id"])
     assert detail["evidence"] and detail["confidence"] >= 90
@@ -124,7 +126,7 @@ def main():
         json={
             "project_id": project["id"],
             "target": "http://example.test:8080",
-            "scan_profile": "standard",
+            "scan_profile": profile,
         },
     )
     api("POST", "/scans/" + cancelled["id"] + "/cancel")
@@ -132,7 +134,7 @@ def main():
     time.sleep(2)
     assert api("GET", "/scans/" + cancelled["id"])["requests_sent"] == count
     print(
-        f"PASS: real worker scan completed; {len(findings)} findings, {len(sent)} guarded requests, scope exclusions/redaction/reports/triage/cancellation verified."
+        f"PASS: real {profile} worker scan completed; {len(findings)} findings, {len(sent)} guarded requests, scope exclusions/redaction/reports/triage/cancellation verified."
     )
 
 

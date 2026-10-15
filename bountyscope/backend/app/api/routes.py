@@ -1,12 +1,12 @@
 import asyncio
 import json
 from datetime import UTC, datetime, timedelta
-from typing import Annotated
+from typing import Annotated, Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import StreamingResponse
-from sqlalchemy import delete, func, select, update
+from sqlalchemy import case, delete, func, or_, select, update
 from sqlalchemy.inspection import inspect
 from sqlalchemy.orm import Session
 
@@ -173,7 +173,22 @@ async def create_scan(body: ScanInput, db: DB):
 
 @router.get("/scans/{scan_id}")
 def scan_detail(scan_id: str, db: DB):
-    return record(require(db, Scan, scan_id))
+    scan = require(db, Scan, scan_id)
+    latest = db.scalar(
+        select(ScanEvent)
+        .where(ScanEvent.scan_id == scan_id, ScanEvent.kind == "ai_progress")
+        .order_by(ScanEvent.created_at.desc(), ScanEvent.id.desc())
+        .limit(1)
+    )
+    progress = dict(latest.data) if latest else None
+    if progress and scan.status in {"cancelled", "failed"}:
+        progress.update(status="unavailable", message="Scan " + scan.status + "; AI work stopped")
+    if progress and scan.status == "complete" and progress.get("status") == "analyzing":
+        progress.update(
+            status="unavailable",
+            message="Scan ended before the AI batch completed; review budget and scan events",
+        )
+    return {**record(scan), "ai_progress": progress}
 
 
 @router.post("/scans/{scan_id}/cancel")
@@ -197,12 +212,21 @@ def cancel_scan(scan_id: str, db: DB):
 
 @router.get("/scans/{scan_id}/events")
 def scan_events(
-    scan_id: str, db: DB, limit: int = Query(100, ge=1, le=500), offset: int = Query(0, ge=0)
+    scan_id: str,
+    db: DB,
+    limit: int = Query(100, ge=1, le=500),
+    offset: int = Query(0, ge=0),
+    newest_first: bool = False,
 ):
     require(db, Scan, scan_id)
     return page(
         db,
-        select(ScanEvent).where(ScanEvent.scan_id == scan_id).order_by(ScanEvent.created_at),
+        select(ScanEvent)
+        .where(ScanEvent.scan_id == scan_id)
+        .order_by(
+            ScanEvent.created_at.desc() if newest_first else ScanEvent.created_at,
+            ScanEvent.id.desc() if newest_first else ScanEvent.id,
+        ),
         limit,
         offset,
     )
@@ -216,7 +240,7 @@ def scan_stream(scan_id: str, db: DB):
         last = ""
         for _ in range(1800):
             with SessionLocal() as session:
-                data = record(require(session, Scan, scan_id))
+                data = scan_detail(scan_id, session)
             encoded = json.dumps(data)
             if encoded != last:
                 yield "data: " + encoded + "\n\n"
@@ -284,6 +308,8 @@ def findings(
     host: str | None = None,
     category: str | None = None,
     confidence_min: int = Query(0, ge=0, le=100),
+    sort: Literal["recent", "priority", "confidence", "severity"] = "recent",
+    focus: Literal["all", "exposure"] = "all",
     search: str = "",
     limit: int = Query(50, ge=1, le=200),
     offset: int = Query(0, ge=0),
@@ -293,6 +319,25 @@ def findings(
         .where(Finding.confidence >= confidence_min, Finding.title.contains(search))
         .order_by(Finding.created_at.desc())
     )
+    if focus == "exposure":
+        q = q.where(
+            Finding.scanner.in_(["directory_listing", "exposed_files", "javascript"]),
+            or_(
+                Finding.scanner != "javascript", Finding.cwe != "CWE-540", Finding.confidence >= 75
+            ),
+        )
+    if sort != "recent":
+        rank = case(
+            {"critical": 5, "high": 4, "medium": 3, "low": 2, "informational": 1},
+            value=Finding.severity,
+            else_=0,
+        )
+        order = {
+            "priority": Finding.ai_analysis["priority"]["score"].as_integer().desc().nulls_last(),
+            "confidence": Finding.confidence.desc(),
+            "severity": rank.desc(),
+        }[sort]
+        q = q.order_by(None).order_by(order, rank.desc(), Finding.confidence.desc(), Finding.id)
     for name, value in {
         "project_id": project_id,
         "severity": severity,
@@ -338,7 +383,10 @@ async def analyze(finding_id: str, db: DB):
     from app.intelligence.analyzer import analyze_finding
 
     finding = require(db, Finding, finding_id)
-    finding.ai_analysis = await analyze_finding(record(finding), evidence_for(db, finding_id))
+    finding.ai_analysis = {
+        **finding.ai_analysis,
+        **await analyze_finding(record(finding), evidence_for(db, finding_id)),
+    }
     db.commit()
     return record(finding)
 

@@ -52,8 +52,11 @@ async def analyze_finding(finding, evidence, provider=None):
         result = await provider.analyze_finding(finding, evidence)
         result = FindingAnalysis.model_validate(result)
         output = sanitize(result.model_dump())
-    except (ProviderUnavailable, ValidationError, httpx.HTTPError, ValueError, TypeError):
-        return _fallback(finding, "provider_unavailable")
+    except (ProviderUnavailable, ValidationError, httpx.HTTPError, ValueError, TypeError) as exc:
+        return {
+            **_fallback(finding, "provider_unavailable"),
+            "error": str(exc) if isinstance(exc, ProviderUnavailable) else type(exc).__name__,
+        }
     output.update(
         {
             "provider": getattr(provider, "name", "configured"),
@@ -76,6 +79,7 @@ async def prioritize_findings(findings, provider=None):
                 severity.get(str(read(item, "severity", "info")), 1) * 16 + _confidence(item) // 5,
             ),
             "reason": "Ordered by observed scanner severity and confidence; impact requires verification.",
+            "source": "deterministic",
         }
         for item in findings
     ]
@@ -89,7 +93,12 @@ async def prioritize_findings(findings, provider=None):
             for item in list(proposed)[:100]:
                 item = PrioritizedFinding.model_validate(item)
                 if item.finding_id in valid_ids and item.finding_id not in seen:
-                    accepted.append(sanitize(item.model_dump()))
+                    accepted.append(
+                        {
+                            **sanitize(item.model_dump()),
+                            "source": getattr(provider, "name", "advisory"),
+                        }
+                    )
                     seen.add(item.finding_id)
             baseline = accepted + [item for item in baseline if item["finding_id"] not in seen]
         except (ProviderUnavailable, ValidationError, httpx.HTTPError, ValueError, TypeError):

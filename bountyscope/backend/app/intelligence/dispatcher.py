@@ -71,6 +71,13 @@ class SafeToolDispatcher:
         if getattr(self.ctx, "profile", "standard") == "passive":
             raise ScopeDenied("Passive scans do not permit AI follow-up requests")
         action = SafeCheck.model_validate(action)
+        if getattr(self.ctx, "profile", "standard") == "exposure" and action.tool in {
+            SafeTool.CHECK_CORS,
+            SafeTool.CHECK_COOKIE,
+        }:
+            raise ScopeDenied(
+                "Exposure profile permits directory and file checks, not CORS or cookie probes"
+            )
         if action.tool == SafeTool.CAPTURE_SCREENSHOT:
             raise ScopeDenied("Screenshot capture is unavailable: no guarded browser is configured")
         if self.actions >= self.max_actions:

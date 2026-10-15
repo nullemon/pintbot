@@ -1,5 +1,6 @@
 """Reduce observations to redacted data before they cross the provider boundary."""
 
+import json
 from collections.abc import Iterable, Mapping
 
 from app.utils.redaction import redact, sanitize
@@ -66,26 +67,36 @@ def evidence_summary(evidence):
 
 def observation_summary(observations):
     result = []
-    for page in list(observations or [])[-20:]:
+    for page in reversed(list(observations or [])[-20:]):
         headers = read(page, "headers", {}) or {}
         # Neither raw HTML nor cookies, authorization, or arbitrary header values leave the scan.
-        result.append(
-            {
-                "url": bounded(read(page, "url")),
-                "status": bounded(read(page, "status", read(page, "status_code")), 10),
-                "content_type": bounded(read(headers, "content-type"), 150),
-                "observed_security_headers": [
-                    name
-                    for name in (
-                        "content-security-policy",
-                        "strict-transport-security",
-                        "x-frame-options",
-                        "x-content-type-options",
-                        "referrer-policy",
-                    )
-                    if name in headers
-                ],
-                "truncated": bool(read(page, "truncated", False)),
-            }
-        )
-    return result
+        entry = {
+            "url": bounded(read(page, "url")),
+            "status": bounded(read(page, "status", read(page, "status_code")), 10),
+            "content_type": bounded(read(page, "content_type", read(headers, "content-type")), 150),
+            "signals": [bounded(s, 160) for s in list(read(page, "signals", []) or [])[:10]],
+            "discovered_urls": [
+                bounded(u) for u in list(read(page, "discovered_urls", []) or [])[:20]
+            ],
+            "parent_directories": [
+                bounded(u) for u in list(read(page, "parent_directories", []) or [])[:20]
+            ],
+            "observed_security_headers": [
+                name
+                for name in (
+                    "content-security-policy",
+                    "strict-transport-security",
+                    "x-frame-options",
+                    "x-content-type-options",
+                    "referrer-policy",
+                )
+                if name in headers
+            ],
+            "truncated": bool(read(page, "truncated", False)),
+        }
+        if len(json.dumps([*result, entry], ensure_ascii=True)) > 64000:
+            entry["discovered_urls"] = []
+            entry["parent_directories"] = []
+        if len(json.dumps([*result, entry], ensure_ascii=True)) <= 64000:
+            result.append(entry)
+    return list(reversed(result))

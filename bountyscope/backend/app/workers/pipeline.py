@@ -41,10 +41,13 @@ class ScanContext:
         self.depth = 0
         self.current_asset = None
         self.directory_candidates = set()
+        self.directory_candidate_limit = min(200, self.limits["url_cap"])
         self.evidence_seen = set()
 
     def event(self, kind, data):
         self.http.event(kind, data)
+        if getattr(self, "ai", None):
+            self.ai.observe_event(kind, data)
 
     def error(self, scanner, exc):
         if isinstance(exc, (ScanCancelled, BudgetExceeded)):
@@ -165,6 +168,16 @@ class ScanContext:
         if self.depth <= self.limits["max_depth"] and (self.profile != "passive" or passive_fetch):
             self.queue.append((url, self.depth, source))
         return True
+
+    async def process_ai_page(self, page):
+        from app.scanners import analyze_page
+
+        await self.remember_url(page.url, "scanner")
+        self.save_page(page)
+        for candidate in await analyze_page(self, page):
+            self.save_candidate(candidate, page)
+        self.visited.add(page.url)
+        self.counts()
 
     def save_page(self, page):
         p = urlsplit(page.url)
@@ -397,6 +410,10 @@ async def run_scan(scan_id):
             return
         db.refresh(scan)
     ctx = ScanContext(scan)
+    from app.intelligence.live import LiveAdvisor
+
+    ctx.ai = LiveAdvisor(ctx)
+    ctx.ai.publish()
     try:
         with SessionLocal() as db:
             project = db.get(Project, scan.project_id)
@@ -423,7 +440,9 @@ async def run_scan(scan_id):
                 # Images/archives become metadata only; never mass-download media or dumps.
                 only_metadata = metadata_only(url, source)
                 limit = (
-                    32768
+                    131072
+                    if source == "scanner:directory"
+                    else 32768
                     if suffix.endswith("robots.txt")
                     else 131072
                     if suffix.endswith(".xml")
@@ -466,7 +485,7 @@ async def run_scan(scan_id):
                             )
                     if ctx.profile != "passive":
                         for directory in parent_directories(discovered):
-                            if len(ctx.directory_candidates) < 40:
+                            if len(ctx.directory_candidates) < ctx.directory_candidate_limit:
                                 ctx.directory_candidates.add(directory)
                 ctx.set_stage("scanning")
                 if inspect.iscoroutinefunction(analyze_page):
@@ -482,10 +501,23 @@ async def run_scan(scan_id):
                             "status": page.status,
                             "content_type": content_type,
                             "signals": [c.title for c in candidates],
+                            "discovered_urls": [u for u, _ in links[:20]],
+                            "parent_directories": sorted(ctx.directory_candidates)[:20],
                         }
                     )
                 )
                 observations = observations[-200:]
+                ctx.counts()
+                for followup in await ctx.ai.review(observations):
+                    observations.append(
+                        sanitize(
+                            {
+                                "url": followup.url,
+                                "status": followup.status,
+                                "content_type": followup.headers.get("content-type", ""),
+                            }
+                        )
+                    )
                 ctx.counts()
             except (ScanCancelled, BudgetExceeded):
                 raise
@@ -497,35 +529,8 @@ async def run_scan(scan_id):
                 for directory in directories:
                     await ctx.remember_url(directory, "scanner")
         ctx.set_stage("analyzing")
-        from app.api.routes import evidence_for, record
-        from app.intelligence.analyzer import analyze_finding, run_followups
-
-        if settings.ai_enabled:
-            followups = await run_followups(ctx, observations)
-            for page in followups:
-                await ctx.remember_url(page.url, "scanner")
-                ctx.save_page(page)
-                for candidate in await analyze_page(ctx, page):
-                    ctx.save_candidate(candidate, page)
-            with SessionLocal() as db:
-                findings = list(
-                    db.scalars(
-                        select(Finding)
-                        .join(ScanFinding)
-                        .where(ScanFinding.scan_id == scan_id)
-                        .limit(100)
-                    )
-                )
-                for finding in findings:
-                    ctx.check_cancelled()
-                    finding.ai_analysis = await analyze_finding(
-                        record(finding), evidence_for(db, finding.id)
-                    )
-                db.commit()
-        else:
-            ctx.event(
-                "ai_disabled", {"message": "AI analysis disabled; deterministic scanning completed"}
-            )
+        await ctx.ai.review(observations, force=True)
+        ctx.ai.finish()
         ctx.counts()
         ctx.set_stage("complete", finished_at=datetime.now(UTC))
     except ScanCancelled:

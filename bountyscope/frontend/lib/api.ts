@@ -2,6 +2,9 @@
 import { useCallback, useEffect, useState } from "react";
 
 export const TOKEN_KEY = "bountyscope.apiToken";
+class ApiError extends Error {
+  constructor(message: string, readonly status: number) { super(message); }
+}
 export async function api<T>(path: string, options: RequestInit = {}): Promise<T> {
   let token: string | null = null;
   try { if (typeof window !== "undefined") token = localStorage.getItem(TOKEN_KEY); } catch { /* Unauthenticated APIs also work when browser storage is unavailable. */ }
@@ -13,17 +16,15 @@ export async function api<T>(path: string, options: RequestInit = {}): Promise<T
   if (!response.ok) {
     const body = await response.json().catch(() => null);
     const detail = body?.detail;
-    throw new Error(typeof body?.error?.message === "string" ? body.error.message : typeof detail === "string" ? detail : Array.isArray(detail) ? detail.map((item: {msg?:string}) => item.msg).join("; ") : `Request failed (${response.status}). Check API connectivity and your access token in Settings.`);
+    throw new ApiError(typeof body?.error?.message === "string" ? body.error.message : typeof detail === "string" ? detail : Array.isArray(detail) ? detail.map((item: {msg?:string}) => item.msg).join("; ") : `Request failed (${response.status}). Check API connectivity and your access token in Settings.`, response.status);
   }
   if (response.status === 204) return undefined as T;
   return response.json();
 }
 
 export function useApi<T>(path: string | null, poll = 0) {
-  const [data, setData] = useState<T | null>(null);
-  const [error, setError] = useState("");
+  const [result, setResult] = useState<{ path: string | null; data: T | null; error: string }>({ path: null, data: null, error: "" });
   const [loading, setLoading] = useState(true);
-  const [dataPath, setDataPath] = useState<string | null>(null);
   const [revision, setRevision] = useState(0);
   const refresh = useCallback(() => setRevision((value) => value + 1), []);
   useEffect(() => {
@@ -36,9 +37,10 @@ export function useApi<T>(path: string | null, poll = 0) {
       reading = true;
       try {
         const result = await api<T>(path, { signal: controller.signal });
-        if (active) { setData(result); setDataPath(path); setError(""); }
+        if (active) setResult({ path, data: result, error: "" });
       } catch (cause) {
-        if (active && !controller.signal.aborted) { setData(null); setDataPath(path); setError(cause instanceof Error ? cause.message : "Could not load data."); }
+        const transient = !(cause instanceof ApiError) || cause.status === 429 || cause.status >= 500;
+        if (active && !controller.signal.aborted) setResult((current) => ({ path, data: transient && current.path === path ? current.data : null, error: cause instanceof Error ? cause.message : "Could not load data." }));
       } finally { reading = false; if (active) setLoading(false); }
     };
     void read();
@@ -46,11 +48,12 @@ export function useApi<T>(path: string | null, poll = 0) {
     return () => { active = false; controller.abort(); window.clearInterval(timer); };
   }, [path, poll, revision]);
   useEffect(() => {
-    window.addEventListener("bountyscope:auth-changed", refresh);
-    return () => window.removeEventListener("bountyscope:auth-changed", refresh);
+    function authChanged() { setResult({ path: null, data: null, error: "" }); refresh(); }
+    window.addEventListener("bountyscope:auth-changed", authChanged);
+    return () => window.removeEventListener("bountyscope:auth-changed", authChanged);
   }, [refresh]);
-  const current = dataPath === path;
-  return { data: current ? data : null, error: current ? error : "", loading: Boolean(path) && (loading || !current), refresh };
+  const current = result.path === path;
+  return { data: current ? result.data : null, error: current ? result.error : "", loading: Boolean(path) && (loading || !current), refresh };
 }
 
 export function query(values: Record<string, string | number | undefined>) {

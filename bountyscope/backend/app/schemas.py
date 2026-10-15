@@ -76,7 +76,7 @@ class ProjectPatch(BaseModel):
 class ScanInput(BaseModel):
     project_id: str
     target: str = Field(min_length=1, max_length=3000)
-    scan_profile: Literal["passive", "standard", "extended"] = "standard"
+    scan_profile: Literal["passive", "standard", "extended", "exposure"] = "standard"
     extended_confirmed: bool = False
 
 

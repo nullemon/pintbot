@@ -87,3 +87,56 @@ def test_queue_cancel_and_append_only_event():
             raise AssertionError("Event mutation should fail")
         except ValueError:
             db.rollback()
+
+
+def test_priority_sort_exposure_filter_and_live_progress():
+    from app.models import Finding
+
+    p = project()
+    with SessionLocal() as db:
+        scan = Scan(project_id=p["id"], target="https://example.com/", status="crawling")
+        db.add(scan)
+        db.flush()
+        scan_id = scan.id
+        for title, scanner, score in [
+            ("Headers", "security_headers", 99),
+            ("Directory", "directory_listing", 80),
+            ("Config", "exposed_files", 95),
+        ]:
+            db.add(
+                Finding(
+                    project_id=p["id"],
+                    scan_id=scan.id,
+                    scanner=scanner,
+                    title=title,
+                    category="test",
+                    description="test",
+                    severity="low",
+                    confidence=95,
+                    affected_url="https://example.com/",
+                    evidence_summary="observed",
+                    recommendation="review",
+                    fingerprint=title,
+                    ai_analysis={
+                        "priority": {
+                            "score": score,
+                            "reason": "observed evidence",
+                            "source": "anthropic",
+                        }
+                    },
+                )
+            )
+        db.add(
+            ScanEvent(
+                scan_id=scan_id,
+                kind="ai_progress",
+                data={"status": "analyzing", "round": 1, "actions_executed": 2},
+            )
+        )
+        db.commit()
+    response = client.get("/api/findings?focus=exposure&sort=priority").json()
+    assert [f["title"] for f in response["items"]] == ["Config", "Directory"]
+    assert client.get(f"/api/scans/{scan_id}").json()["ai_progress"]["actions_executed"] == 2
+    events = client.get(f"/api/scans/{scan_id}/events?newest_first=true").json()
+    assert events["items"][0]["kind"] == "ai_progress"
+    assert client.get("/api/findings?sort=unsupported").status_code == 422
