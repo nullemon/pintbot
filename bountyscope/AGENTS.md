@@ -29,6 +29,12 @@ project limits and page-review caps. Browser observations are unverified clues,
 never confirmed finding evidence. The scanner does not inherit the browser login.
 Do not add broad extension host permissions, cookie/debugger access, automatic DOM
 capture or automatic replay of reviews declined by an AI provider.
+Capture must select exactly one active tab in the current window and verify the
+browser's actual isolated-script permission before reading DOM metadata. Stored
+toolbar-click IDs are not permission and must not gate capture. Never fall back
+to another window or an old tab; recheck identity and URL before and after capture
+and before review. Browser error diagnostics must contain fixed codes and safe
+counts/flags/IDs, never raw browser exceptions, URLs, tokens or page content.
 
 Autopilot must resolve an existing confirmed project, never infer authorization
 from a URL. Drain guarded work discovered by final AI reviews before completing a

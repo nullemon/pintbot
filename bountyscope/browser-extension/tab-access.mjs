@@ -3,9 +3,17 @@ import { validateTabURL } from "./client.mjs";
 
 export const targetKey = (windowId) => `captureTarget:${windowId}`;
 
-const selectMessage = "On the website tab, click the pinned BountyScope extension icon, then capture again. Opening Edge’s sidebar does not grant page access.";
 const accessMessage = "Edge did not allow access to this page. Close the panel, click the BountyScope extension icon on the website tab, and retry. Browser-protected pages cannot be inspected.";
 const changedMessage = "The selected tab changed or is navigating. Wait for the page to finish loading, click its BountyScope extension icon, and capture again.";
+
+export class TabAccessError extends Error {
+  constructor(code, message, diagnostics) {
+    super(`${message} [${code}]`);
+    this.name = "TabAccessError";
+    this.code = code;
+    this.diagnostics = { ...diagnostics, code };
+  }
+}
 
 // This permission-checked probe reads only the URL. No DOM metadata is read
 // until validateTabURL has accepted it, even when Edge omits tabs.Tab.url.
@@ -14,31 +22,38 @@ export function readPageURL() {
 }
 
 export function createTabAccess(browser) {
+  let diagnostics;
+  function failure(code, message) { return new TabAccessError(code, message, diagnostics); }
+
   async function selected() {
-    let window, tabs, saved, tab;
+    let tabs;
+    diagnostics = { stage: "select_active_tab", selection: "current_window" };
     try {
-      window = await browser.windows.getCurrent();
-      if (!Number.isInteger(window?.id) || window.id < 0) throw new Error();
-      tabs = await browser.tabs.query({ active: true, windowId: window.id });
-      saved = await browser.storage.session.get(targetKey(window.id));
+      // A session record of a toolbar click is not browser authorization. It
+      // may be missing or stale in Edge. Never let it select or reject a tab.
+      // Do not fall back to a different window or a previously selected tab.
+      tabs = await browser.tabs.query({ active: true, currentWindow: true });
     } catch {
-      throw new Error(selectMessage);
+      throw failure("TAB_QUERY_FAILED", "Edge could not identify this window’s active tab. Check the extension’s browser permissions.");
     }
-    const binding = saved?.[targetKey(window.id)];
-    if (!Number.isInteger(binding?.tabId) || binding.tabId < 0
-        || binding.windowId !== window.id || tabs?.[0]?.id !== binding.tabId) {
-      throw new Error(selectMessage);
+    diagnostics.active_tabs = Array.isArray(tabs) ? tabs.length : 0;
+    if (!Array.isArray(tabs) || !tabs.length) {
+      throw failure("NO_ACTIVE_TAB", "Edge returned no active tab in this window. Open the website in an ordinary browser tab.");
     }
-    try { tab = await browser.tabs.get(binding.tabId); }
-    catch { throw new Error(changedMessage); }
-    if (tab.id !== binding.tabId || tab.windowId !== window.id || tab.active !== true
-        || tab.status === "loading" || tab.pendingUrl) {
-      throw new Error(changedMessage);
+    if (tabs.length !== 1) {
+      throw failure("AMBIGUOUS_TAB", "Edge returned multiple active tabs. Select one target in an ordinary tab view and capture again.");
     }
+    const tab = tabs[0];
+    if (!Number.isInteger(tab?.id) || tab.id < 0 || !Number.isInteger(tab.windowId) || tab.windowId < 0 || tab.active !== true) {
+      throw failure("NO_ACTIVE_TAB", "Edge returned no usable active tab. Select the website tab and capture again.");
+    }
+    Object.assign(diagnostics, { tab_id: tab.id, window_id: tab.windowId, url_available: typeof tab.url === "string" && Boolean(tab.url) });
+    if (tab.status === "loading" || tab.pendingUrl) throw failure("TAB_LOADING", changedMessage);
     return tab;
   }
 
   async function execute(tabId, func) {
+    diagnostics.stage = func === readPageURL ? "verify_page_access" : "capture_metadata";
     try {
       return await browser.scripting.executeScript({
         target: { tabId, frameIds: [0] },
@@ -47,21 +62,34 @@ export function createTabAccess(browser) {
     } catch {
       // Browser errors may include a credential-bearing target URL. Never echo
       // their text into the panel, logs, API or persisted session settings.
-      throw new Error(accessMessage);
+      throw failure("PAGE_ACCESS_DENIED", accessMessage);
     }
   }
 
-  async function current() {
+  function validate(url) {
+    try { validateTabURL(url); }
+    catch (cause) {
+      // validateTabURL emits fixed, credential-free errors; browser exceptions
+      // themselves are never propagated into diagnostics.
+      throw failure("URL_REJECTED", cause.message);
+    }
+  }
+
+  async function current(expected) {
     const tab = await selected();
-    let url = tab.url;
-    if (typeof url !== "string" || !url) {
-      const results = await execute(tab.id, readPageURL);
-      url = results?.find((result) => result.frameId === 0)?.result;
-      validateTabURL(url);
-      const after = await selected();
-      if (after.id !== tab.id || after.windowId !== tab.windowId
-          || after.url && after.url !== url) throw new Error(changedMessage);
-    } else validateTabURL(url);
+    if (expected && (tab.id !== expected.id || tab.windowId !== expected.windowId
+        || tab.url && expected.url && tab.url !== expected.url)) throw failure("TAB_CHANGED", changedMessage);
+    if (typeof tab.url === "string" && tab.url) validate(tab.url);
+    // The browser's actual scripting grant is authoritative. A visible URL or
+    // a stored toolbar record cannot substitute for permission, even at Start.
+    const results = await execute(tab.id, readPageURL);
+    const url = results?.find((result) => result.frameId === 0)?.result;
+    validate(url);
+    if (expected?.url && url !== expected.url) throw failure("TAB_CHANGED", changedMessage);
+    if (tab.url && tab.url !== url) throw failure("TAB_CHANGED", changedMessage);
+    const after = await selected();
+    if (after.id !== tab.id || after.windowId !== tab.windowId
+        || after.url && after.url !== url) throw failure("TAB_CHANGED", changedMessage);
     return { id: tab.id, windowId: tab.windowId, url };
   }
 
@@ -69,11 +97,11 @@ export function createTabAccess(browser) {
     const tab = await current();
     const results = await execute(tab.id, capturePageMetadata);
     const metadata = results?.find((result) => result.frameId === 0)?.result;
-    if (!metadata?.url) throw new Error("Edge returned no page metadata. Reload the extension and capture again.");
-    validateTabURL(metadata.url);
-    const after = await current();
+    if (!metadata?.url) throw failure("NO_METADATA", "Edge returned no page metadata. Reload the extension and capture again.");
+    validate(metadata.url);
+    const after = await current(tab);
     if (after.id !== tab.id || after.windowId !== tab.windowId || after.url !== tab.url
-        || metadata.url !== tab.url) throw new Error(changedMessage);
+        || metadata.url !== tab.url) throw failure("TAB_CHANGED", changedMessage);
     return { tabId: tab.id, windowId: tab.windowId, metadata };
   }
 

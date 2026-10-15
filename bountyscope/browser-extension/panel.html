@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="panel.css">
 </head>
 <body>
-  <header><span class="brand-mark" aria-hidden="true">B</span><div><h1>BountyScope</h1><p>Authorized page review</p></div><a id="dashboard-link" class="small-link" href="http://localhost:3000" target="_blank" rel="noopener noreferrer">Dashboard ↗</a></header>
+  <header><span class="brand-mark" aria-hidden="true">B</span><div><h1>BountyScope</h1><p>Authorized page review · <span id="extension-version"></span></p></div><a id="dashboard-link" class="small-link" href="http://localhost:3000" target="_blank" rel="noopener noreferrer">Dashboard ↗</a></header>
   <main>
     <div id="error" class="notice error" role="alert" hidden></div>
+    <details id="capture-diagnostics" class="card" hidden><summary>Capture diagnostics</summary><pre id="capture-diagnostics-data"></pre><p class="hint">These details contain only the extension version, error code and tab selection metadata. No page URLs, content or tokens are included.</p></details>
     <div id="notice" class="notice" role="status" hidden></div>
     <details id="connection" class="card" open>
       <summary>Local connection <span id="connection-state" class="muted">Not connected</span></summary>

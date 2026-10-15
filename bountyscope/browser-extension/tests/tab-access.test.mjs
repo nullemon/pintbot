@@ -1,194 +1,246 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { createTabAccess, targetKey } from "../tab-access.mjs";
+import { createTabAccess, TabAccessError } from "../tab-access.mjs";
+
+const codes = new Set([
+  "TAB_QUERY_FAILED", "NO_ACTIVE_TAB", "AMBIGUOUS_TAB", "TAB_LOADING", "TAB_CHANGED",
+  "PAGE_ACCESS_DENIED", "URL_REJECTED", "NO_METADATA",
+]);
 
 function fixture() {
   const model = {
-    windowID: 11,
     tab: { id: 7, windowId: 11, active: true, status: "complete", url: "https://authorized.test/gallery" },
-    binding: { tabId: 7, windowId: 11 },
+    binding: { tabId: 7, windowId: 11 }, matches: null,
     probeURL: "https://authorized.test/gallery",
     metadata: { url: "https://authorized.test/gallery", references: [], forms: { total: 0, password_fields: 0, file_inputs: 0 }, secure_context: true },
-    scripts: [],
-    missingGrant: false,
-    closed: false,
-    afterProbe: null,
-    afterCapture: null,
-    frameID: 0,
+    scripts: [], queries: [], windowReads: 0, tabGets: 0, storageReads: 0,
+    queryFailure: false, storageFailure: false, missingGrant: false,
+    probeFrameID: 0, metadataFrameID: 0, afterProbe: null, afterCapture: null,
   };
   const browser = {
-    windows: { getCurrent: async () => ({ id: model.windowID }) },
-    storage: { session: { get: async () => model.binding ? { [targetKey(11)]: { ...model.binding } } : {} } },
+    windows: { getCurrent: async () => {
+      model.windowReads += 1;
+      throw new Error("Wrong window lookup SECRET-RAW-API-DIAGNOSTIC");
+    } },
+    storage: { session: { get: async () => {
+      model.storageReads += 1;
+      if (model.storageFailure) throw new Error("Storage unavailable SECRET-RAW-API-DIAGNOSTIC");
+      return model.binding ? { "captureTarget:11": { ...model.binding } } : {};
+    } } },
     tabs: {
       query: async (query) => {
-        assert.equal(query.active, true);
-        return [{ ...model.tab }];
+        model.queries.push(query);
+        assert.deepEqual(query, { active: true, currentWindow: true }, "never query a stored or last-focused arbitrary window");
+        if (model.queryFailure) throw new Error("Query unavailable https://private.test/?token=SECRET-RAW-API-DIAGNOSTIC");
+        return (model.matches || [model.tab]).map((tab) => ({ ...tab }));
       },
-      get: async (tabID) => {
-        assert.equal(tabID, 7);
-        if (model.closed) throw new Error("No tab with id SECRET-RAW-API-DIAGNOSTIC");
-        return { ...model.tab };
+      get: async () => {
+        model.tabGets += 1;
+        throw new Error("A stale bound tab must not be used as a fallback");
       },
     },
     scripting: { executeScript: async (options) => {
       model.scripts.push(options);
-      assert.equal(options.target.tabId, 7);
+      assert.equal(options.target.tabId, 7, "capture must never inject into a different tab after a race");
       assert.deepEqual(options.target.frameIds, [0]);
       assert.ok(options.world === undefined || options.world === "ISOLATED");
       assert.equal(options.target.allFrames, undefined);
-      if (model.missingGrant) throw new Error("Cannot access contents of url https://private.test/?token=SECRET-RAW-API-DIAGNOSTIC");
+      if (model.missingGrant) throw new Error("Cannot access https://private.test/?token=SECRET-RAW-API-DIAGNOSTIC");
       if (options.func.name === "capturePageMetadata") {
         model.afterCapture?.();
-        return [{ frameId: model.frameID, result: model.metadata }];
+        return [{ frameId: model.metadataFrameID, result: model.metadata }];
       }
       assert.equal(options.func.name, "readPageURL");
       model.afterProbe?.();
-      return [{ frameId: model.frameID, result: model.probeURL }];
+      return [{ frameId: model.probeFrameID, result: model.probeURL }];
     } },
   };
   return { model, browser, access: createTabAccess(browser) };
 }
 
-async function rejectedSafely(operation) {
-  await assert.rejects(operation, (cause) => cause instanceof Error && cause.message.length > 0 && !/SECRET-RAW-API-DIAGNOSTIC|private\.test/.test(cause.message));
+async function rejectedSafely(operation, expected) {
+  const accepted = expected ? new Set(Array.isArray(expected) ? expected : [expected]) : codes;
+  await assert.rejects(operation, (cause) => {
+    assert.ok(cause instanceof TabAccessError);
+    assert.ok(accepted.has(cause.code), `unexpected diagnostic code ${cause.code}`);
+    assert.ok(cause.message.length > 0);
+    const rendered = JSON.stringify({ message: cause.message, code: cause.code, diagnostics: cause.diagnostics });
+    assert.doesNotMatch(rendered, /SECRET-RAW-API-DIAGNOSTIC|private\.test|authorized\.test|https?:\/\/|\?token=/);
+    if (cause.diagnostics) for (const value of Object.values(cause.diagnostics)) {
+      assert.ok(value === null || ["number", "boolean", "string"].includes(typeof value), "diagnostics must contain scalar identifiers/counts/flags/fixed stages only");
+    }
+    return true;
+  });
 }
 
-test("toolbar binding keys are separated by browser window", () => {
-  assert.equal(targetKey(11), "captureTarget:11");
-  assert.equal(targetKey(12), "captureTarget:12");
-});
-
-test("a bound active tab with a visible safe URL needs no permission probe", async () => {
+test("current-window selection always checks actual scripting permission", async () => {
   const { access, model } = fixture();
   assert.deepEqual(await access.current(), { id: 7, windowId: 11, url: "https://authorized.test/gallery" });
-  assert.equal(model.scripts.length, 0);
+  assert.deepEqual(model.scripts.map((options) => options.func.name), ["readPageURL"]);
+  assert.equal(model.windowReads, 0); assert.equal(model.tabGets, 0);
+  assert.ok(model.queries.length >= 2, "recheck active tab after URL probe");
 });
 
-test("a missing tab URL can be recovered only through the bound tab's permission-checked URL probe", async () => {
-  const { access, model } = fixture();
-  delete model.tab.url;
-  assert.deepEqual(await access.current(), { id: 7, windowId: 11, url: "https://authorized.test/gallery" });
-  assert.equal(model.scripts.length, 1);
-  assert.equal(model.scripts[0].func.name, "readPageURL");
+test("missing or stale toolbar bindings do not replace browser permission decisions", async () => {
+  for (const binding of [null, { tabId: 99, windowId: 11 }, { tabId: 7, windowId: 12 }, { tabId: "old", windowId: 11 }]) {
+    const { access, model } = fixture(); model.binding = binding;
+    assert.deepEqual(await access.capture(), { tabId: 7, windowId: 11, metadata: model.metadata });
+    assert.ok(model.scripts.every((options) => options.target.tabId === 7));
+  }
 });
 
-test("capture works when tab.url is omitted but the explicit activeTab grant permits injection", async () => {
-  const { access, model } = fixture();
-  delete model.tab.url;
-  const result = await access.capture();
-  assert.deepEqual(result, { tabId: 7, windowId: 11, metadata: model.metadata });
+test("session storage failure does not prevent explicitly requested current-tab capture", async () => {
+  const { access, model } = fixture(); model.storageFailure = true;
+  assert.equal((await access.capture()).tabId, 7);
+  assert.equal(model.windowReads, 0); assert.equal(model.tabGets, 0);
+});
+
+test("omitted tab URL is recovered by permission-checked URL probes without a stored binding", async () => {
+  const { access, model } = fixture(); delete model.tab.url; model.binding = null;
+  assert.deepEqual(await access.capture(), { tabId: 7, windowId: 11, metadata: model.metadata });
   assert.deepEqual(model.scripts.map((options) => options.func.name), ["readPageURL", "capturePageMetadata", "readPageURL"]);
 });
 
-test("a visible protected or credential-bearing URL is rejected without injection", async () => {
+test("known protected and credential-bearing URLs fail before any injection", async () => {
   for (const url of ["edge://settings/", "chrome://extensions/", "file:///C:/private.txt", "https://authorized.test/?token=SECRET", "https://user:SECRET@authorized.test/"]) {
-    const { access, model } = fixture();
-    model.tab.url = url;
-    await rejectedSafely(access.current());
+    const { access, model } = fixture(); model.tab.url = url;
+    await rejectedSafely(access.current(), "URL_REJECTED");
     assert.equal(model.scripts.length, 0);
   }
 });
 
-test("missing, stale, or other-window toolbar bindings never trigger script injection", async () => {
-  for (const binding of [null, { tabId: 8, windowId: 11 }, { tabId: 7, windowId: 12 }, { tabId: "7", windowId: 11 }, { tabId: -1, windowId: 11 }]) {
-    const { access, model } = fixture();
-    model.binding = binding;
-    await rejectedSafely(access.current());
-    assert.equal(model.scripts.length, 0);
-  }
-  const { access, model } = fixture();
-  model.windowID = 12;
-  await rejectedSafely(access.current());
-  assert.equal(model.scripts.length, 0);
-});
-
-test("inactive, mismatched-window, and closed bound tabs are rejected", async () => {
-  for (const mutate of [
-    (model) => { model.tab.active = false; },
-    (model) => { model.tab.id = 8; },
-    (model) => { model.tab.windowId = 12; },
-    (model) => { model.closed = true; },
-  ]) {
-    const { access, model } = fixture(); mutate(model);
-    await rejectedSafely(access.current());
-    assert.equal(model.scripts.length, 0);
-  }
-});
-
-test("loading and pending navigation are rejected before probing or metadata capture", async () => {
-  for (const mutate of [
-    (model) => { model.tab.status = "loading"; },
-    (model) => { model.tab.pendingUrl = "https://authorized.test/next"; },
-    (model) => { model.tab.pendingUrl = model.tab.url; },
-  ]) {
-    const { access, model } = fixture(); mutate(model);
-    await rejectedSafely(access.capture());
-    assert.equal(model.scripts.length, 0);
-  }
-});
-
-test("missing script permission is reported safely and never yields a stale snapshot", async () => {
-  const { access, model } = fixture();
-  delete model.tab.url; model.missingGrant = true;
-  await rejectedSafely(access.capture());
+test("a readable URL does not substitute for permission: missing grant fails before DOM capture", async () => {
+  const { access, model } = fixture(); model.missingGrant = true;
+  await rejectedSafely(access.capture(), "PAGE_ACCESS_DENIED");
   assert.deepEqual(model.scripts.map((options) => options.func.name), ["readPageURL"]);
 });
 
-test("a visible URL does not substitute for permission to capture the page", async () => {
-  const { access, model } = fixture(); model.missingGrant = true;
-  await rejectedSafely(access.capture());
-  assert.deepEqual(model.scripts.map((options) => options.func.name), ["capturePageMetadata"]);
+test("a missing URL and missing permission never yield a stale snapshot", async () => {
+  const { access, model } = fixture(); delete model.tab.url; model.missingGrant = true;
+  await rejectedSafely(access.capture(), "PAGE_ACCESS_DENIED");
+  assert.deepEqual(model.scripts.map((options) => options.func.name), ["readPageURL"]);
 });
 
-test("a protected or credential-bearing URL recovered by probing is rejected before DOM capture", async () => {
+test("query failures expose typed safe diagnostics instead of native browser errors", async () => {
+  const { access, model } = fixture(); model.queryFailure = true;
+  await rejectedSafely(access.current(), "TAB_QUERY_FAILED");
+  assert.equal(model.scripts.length, 0);
+});
+
+test("no active tab does not fall back to a stored tab or another window", async () => {
+  const { access, model } = fixture(); model.matches = [];
+  await rejectedSafely(access.current(), "NO_ACTIVE_TAB");
+  assert.equal(model.scripts.length, 0); assert.equal(model.windowReads, 0); assert.equal(model.tabGets, 0);
+});
+
+test("ambiguous active-tab results are rejected instead of selecting the first record", async () => {
+  const { access, model } = fixture(); model.matches = [model.tab, { ...model.tab, id: 9, windowId: 12 }];
+  await rejectedSafely(access.current(), "AMBIGUOUS_TAB");
+  assert.equal(model.scripts.length, 0);
+});
+
+test("malformed and inactive current-window tab records are rejected", async () => {
+  for (const mutate of [
+    (model) => { model.tab.active = false; }, (model) => { model.tab.id = -1; },
+    (model) => { model.tab.id = "7"; }, (model) => { model.tab.windowId = -1; }, (model) => { delete model.tab.id; },
+  ]) {
+    const { access, model } = fixture(); mutate(model);
+    await rejectedSafely(access.current(), "NO_ACTIVE_TAB");
+    assert.equal(model.scripts.length, 0);
+  }
+});
+
+test("loading and pending navigation are rejected before URL probing or metadata capture", async () => {
+  for (const mutate of [
+    (model) => { model.tab.status = "loading"; }, (model) => { model.tab.pendingUrl = "https://authorized.test/next"; },
+    (model) => { model.tab.pendingUrl = model.tab.url; },
+  ]) {
+    const { access, model } = fixture(); mutate(model);
+    await rejectedSafely(access.capture(), "TAB_LOADING");
+    assert.equal(model.scripts.length, 0);
+  }
+});
+
+test("protected and credential-bearing probed URLs fail before DOM capture", async () => {
   for (const url of ["edge://settings/", "https://authorized.test/#access_token=SECRET"]) {
     const { access, model } = fixture(); delete model.tab.url; model.probeURL = url;
-    await rejectedSafely(access.capture());
+    await rejectedSafely(access.capture(), "URL_REJECTED");
     assert.deepEqual(model.scripts.map((options) => options.func.name), ["readPageURL"]);
   }
 });
 
-test("changing the bound/active tab while probing invalidates the recovered URL", async () => {
+test("the URL probe must agree with a visible URL before metadata capture", async () => {
+  const { access, model } = fixture(); model.probeURL = "https://authorized.test/next";
+  await rejectedSafely(access.capture(), "TAB_CHANGED");
+  assert.deepEqual(model.scripts.map((options) => options.func.name), ["readPageURL"]);
+});
+
+test("a changed current tab or window during the URL probe invalidates its result", async () => {
   for (const mutate of [
-    (model) => { model.tab.id = 8; },
-    (model) => { model.tab.active = false; },
-    (model) => { model.binding = { tabId: 8, windowId: 11 }; },
-    (model) => { model.tab.status = "loading"; },
-    (model) => { model.tab.url = "https://authorized.test/next"; },
+    (model) => { model.tab.id = 8; }, (model) => { model.tab.windowId = 12; },
+    (model) => { model.tab.url = "https://authorized.test/next"; }, (model) => { model.tab.active = false; },
+    (model) => { model.tab.status = "loading"; }, (model) => { model.matches = []; },
   ]) {
-    const { access, model } = fixture(); delete model.tab.url; model.afterProbe = () => mutate(model);
-    await rejectedSafely(access.current());
+    const { access, model } = fixture(); model.afterProbe = () => mutate(model);
+    await rejectedSafely(access.current(), ["TAB_CHANGED", "NO_ACTIVE_TAB", "TAB_LOADING"]);
   }
 });
 
-test("capture rejects metadata from a child frame or a different page URL", async () => {
+test("a missing main-frame URL probe result never proceeds to DOM capture", async () => {
+  const { access, model } = fixture(); model.probeFrameID = 4;
+  await rejectedSafely(access.capture(), ["NO_METADATA", "URL_REJECTED"]);
+  assert.deepEqual(model.scripts.map((options) => options.func.name), ["readPageURL"]);
+});
+
+test("metadata must come from the main frame and the same captured URL", async () => {
   for (const mutate of [
-    (model) => { model.frameID = 4; },
+    (model) => { model.metadataFrameID = 4; }, (model) => { model.metadata = null; },
     (model) => { model.metadata.url = "https://authorized.test/different"; },
   ]) {
     const { access, model } = fixture(); mutate(model);
-    await rejectedSafely(access.capture());
+    await rejectedSafely(access.capture(), ["NO_METADATA", "TAB_CHANGED"]);
   }
 });
 
-test("navigation or tab switching between capture and its post-check cannot create a snapshot", async () => {
+test("navigation and tab/window changes after capture discard the snapshot without switching injection targets", async () => {
   for (const mutate of [
-    (model) => { model.tab.url = "https://authorized.test/next"; },
-    (model) => { model.tab.status = "loading"; },
-    (model) => { model.tab.id = 8; },
-    (model) => { model.binding = null; },
+    (model) => { model.tab.url = "https://authorized.test/next"; model.probeURL = model.tab.url; },
+    (model) => { model.tab.status = "loading"; }, (model) => { model.tab.id = 8; },
+    (model) => { model.tab.windowId = 12; }, (model) => { model.matches = []; },
   ]) {
     const { access, model } = fixture(); model.afterCapture = () => mutate(model);
-    await rejectedSafely(access.capture());
+    await rejectedSafely(access.capture(), ["TAB_CHANGED", "NO_ACTIVE_TAB", "TAB_LOADING"]);
+    assert.ok(model.scripts.every((options) => options.target.tabId === 7));
   }
 });
 
-test("current URL is read freshly before review instead of reusing the captured snapshot", async () => {
+test("current verifies a fresh URL and real permission before starting a captured review", async () => {
   const { access, model } = fixture();
   const captured = await access.capture();
-  model.tab.url = "https://authorized.test/next";
-  const current = await access.current();
-  assert.notEqual(current.url, captured.metadata.url);
-  model.binding = null;
-  await rejectedSafely(access.current());
+  model.tab.url = "https://authorized.test/next"; model.probeURL = model.tab.url;
+  assert.notEqual((await access.current()).url, captured.metadata.url);
+  model.missingGrant = true;
+  await rejectedSafely(access.current(), "PAGE_ACCESS_DENIED");
+});
+
+test("review identity guards reject a different tab/window/visible URL before injection", async () => {
+  for (const mutate of [
+    (model) => { model.tab.id = 8; },
+    (model) => { model.tab.windowId = 12; },
+    (model) => { model.tab.url = "https://authorized.test/next"; },
+  ]) {
+    const { access, model } = fixture();
+    const expected = { id: 7, windowId: 11, url: model.tab.url };
+    mutate(model);
+    await rejectedSafely(access.current(expected), "TAB_CHANGED");
+    assert.equal(model.scripts.length, 0);
+  }
+});
+
+test("review identity guards detect hidden-URL navigation through a URL-only probe", async () => {
+  const { access, model } = fixture();
+  const expected = { id: 7, windowId: 11, url: model.tab.url };
+  delete model.tab.url; model.probeURL = "https://authorized.test/next";
+  await rejectedSafely(access.current(expected), "TAB_CHANGED");
+  assert.deepEqual(model.scripts.map((options) => options.func.name), ["readPageURL"]);
 });

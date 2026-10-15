@@ -28,7 +28,7 @@ Review the current authorized page beside the page itself. This Manifest V3 exte
 
 After future Git updates, use **Reload** on the extension’s card in `edge://extensions`, then reopen its panel. Provider settings and keys remain in the backend `.env`.
 
-## Update the capture fix: version 1.0.1
+## Update the capture fix: version 1.0.2
 
 If the stack is already running, this extension-only update needs **no Docker rebuild**:
 
@@ -38,14 +38,16 @@ git pull --ff-only origin claude/beautiful-bell-x8lnfs
 ```
 
 1. Close the BountyScope side panel.
-2. Open **`edge://extensions`**, click **Reload** on **BountyScope Page Review**, and verify **version 1.0.1**. If it still shows 1.0.0, check that the loaded folder is this checkout's `bountyscope\browser-extension` folder.
+2. Open **`edge://extensions`**, click **Reload** on **BountyScope Page Review**, and verify **version 1.0.2**. If it still shows an older version, check that the loaded folder is this checkout's `bountyscope\browser-extension` folder.
 3. Switch to the actual ordinary HTTP/HTTPS target tab and wait for its loading and redirects to finish.
-4. Click the **pinned BountyScope extension icon on that tab**. Opening it from Edge's sidebar shortcut does not select the target or grant page access.
+4. Click the **pinned BountyScope extension icon on that tab** to request temporary page access and reopen the panel. Check that the panel header also shows **Extension 1.0.2**.
 5. Click **Connect** if needed, then **1. Capture this page’s metadata**, without switching tabs or windows.
 
-The toolbar click now explicitly binds the selected tab and window. The earlier generic capture message could result from Edge omitting tab URL metadata before capture; that message did not establish an actual scripting-permission denial. Version 1.0.1 distinguishes tab selection/navigation from actual page-access failure and keeps URL privacy checks before DOM collection. **Connected** means the local API accepted the connection, not that Edge granted target-page access. Your existing local `API_TOKEN`, provider settings and backend data are unaffected; no additional host permissions are required.
+Version 1.0.2 chooses the active tab in the panel's current window when you explicitly click Capture. Browser permission checks, including a URL-only script probe before DOM collection, determine whether access is allowed. A missing or stale internal toolbar record no longer blocks capture. The version 1.0.1 selection message could instead arise from its stored-record requirement, before browser permission was tested.
 
-If that sequence still fails, report the exact **BountyScope panel error**, your Edge version from `edge://settings/help`, and whether `edge://management` says the browser is managed. Omit URL query strings, credentials and tokens. Use dashboard **Page review** with the authorized page URL while the browser-specific issue is investigated.
+**Connected** means the local API accepted the connection, not that Edge granted target-page access. Your existing local `API_TOKEN`, provider settings and backend data are unaffected; no additional host permissions are required.
+
+If capture still fails, **Capture diagnostics** expands automatically. Select and copy its safe diagnostic text manually, plus your Edge version from `edge://settings/help`. There is no separate Copy button. Its JSON contains the extension version, code, stage and tab-selection metadata, without page URLs or tokens. Codes such as `PAGE_ACCESS_DENIED` and `TAB_QUERY_FAILED` distinguish browser access failure from active-tab lookup failure. Also note whether `edge://management` says the browser is managed. Do not send page URL query strings, credentials, raw browser errors or tokens. These failures happen before a scan starts, so API/provider/container logs will not explain them. Use dashboard **Page review** with the authorized page URL while the browser-specific issue is investigated.
 
 ## Review a page in the same window
 
@@ -60,7 +62,7 @@ If that sequence still fails, report the exact **BountyScope panel error**, your
 
 Only one review is launched from this panel at a time. **Cancel review** stops new backend requests. Closing the panel or browser does **not** cancel a running backend scan. Reopening the panel and connecting during the same browser session restores its last review. You can also open **Full scan** in the dashboard.
 
-If capture fails, follow the version 1.0.1 update sequence above rather than repeatedly retrying. A permission grant does not automatically transfer to a different tab or origin. Browser-protected pages such as `edge://`, `chrome://`, local files, extension pages, and some browser-managed pages cannot be reviewed. A navigation invalidates the snapshot; capture again before starting another review.
+If capture fails, follow the version 1.0.2 update sequence above and use its typed diagnostics. A permission grant does not automatically transfer to a different tab or origin. Browser-protected pages such as `edge://`, `chrome://`, local files, extension pages, and some browser-managed pages cannot be reviewed. A navigation invalidates the snapshot; capture again before starting another review.
 
 ## What is inspected
 
@@ -79,7 +81,7 @@ AI is optional and runs only through the configured server provider and existing
 ## Connection and privacy
 
 - Only the exact local origins `http://localhost:3000` and `http://127.0.0.1:3000` are supported. Remote dashboard addresses, alternate ports, and arbitrary destinations are intentionally rejected.
-- `API_TOKEN` is held in `chrome.storage.session`, which clears when the browser session ends. It is not saved in synced storage or extension local storage. **Forget token** removes it immediately. The current scan ID and selected tab/window IDs are also session-only; DOM snapshots remain in panel memory. The toolbar selection record does not store the target URL or page content.
+- `API_TOKEN` is held in `chrome.storage.session`, which clears when the browser session ends. It is not saved in synced storage or extension local storage. **Forget token** removes it immediately. The current scan ID is also session-only; DOM snapshots remain in panel memory. Any toolbar-selection record contains identifiers only, not the target URL or page content, and is not required to capture the current active tab.
 - The extension requests `activeTab`, `scripting`, `sidePanel`, `storage`, and access to the two local dashboard origins. It has no `<all_urls>`, cookies, debugger, or request interception permission, and no automatic content scripts.
 - A connection failure usually means Docker is stopped, port 3000 is unavailable, or the local API token differs from `.env`. Check the dashboard and run:
 
@@ -101,4 +103,4 @@ node --check tab-access.mjs
 node --check service-worker.js
 ```
 
-Tests cover capture minimization, forbidden data access, URL and origin restrictions, reference deduplication/caps, request credential handling, tab/window binding, missing URL metadata, navigation changes, error rendering inputs, and manifest permissions. Final browser permission behavior should also be checked manually in Edge after loading unpacked.
+Tests cover capture minimization, forbidden data access, URL and origin restrictions, reference deduplication/caps, request credential handling, current-window active-tab selection without a stored binding, permission-checked URL probing, navigation changes, safe diagnostics, error rendering inputs, and manifest permissions. Automated regressions and a browser UI adapter do not establish native Edge permission behavior; check the actual Edge toolbar/side panel manually after loading unpacked.

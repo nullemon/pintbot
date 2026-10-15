@@ -6,7 +6,7 @@ BountyScope can review one page while you keep that page open in Microsoft Edge.
 
 This is a bounded page review, not a claim that every vulnerability has been tested. It does not exploit the application, submit forms, guess passwords, enumerate every file or download media collections. AI can explain and prioritize observed evidence and propose existing safe checks; its suggestions do not expand project authorization.
 
-## Already running: install the version 1.0.1 capture fix
+## Already running: install the version 1.0.2 capture fix
 
 For this **extension-only** fix, keep the existing Docker stack running; **no Docker rebuild is needed**. In Windows Command Prompt:
 
@@ -18,14 +18,14 @@ git pull --ff-only origin claude/beautiful-bell-x8lnfs
 Then follow this sequence once:
 
 1. Close the BountyScope side panel.
-2. Open **`edge://extensions`**, click **Reload** on **BountyScope Page Review**, and verify **version 1.0.1**. If it remains 1.0.0, check that the loaded folder is `bountyscope\browser-extension` inside the checkout you updated.
+2. Open **`edge://extensions`**, click **Reload** on **BountyScope Page Review**, and verify **version 1.0.2**. If it remains on an older version, check that the loaded folder is `bountyscope\browser-extension` inside the checkout you updated.
 3. Open the actual ordinary HTTP/HTTPS target tab and wait for loading and redirects to finish.
-4. Click the **pinned BountyScope toolbar icon on that tab**, rather than opening Edge's sidebar shortcut. This explicitly selects the target tab/window and requests temporary page access.
+4. Click the **pinned BountyScope toolbar icon on that tab** to request temporary page access and reopen the panel. Confirm **Extension 1.0.2** is visible in the panel header.
 5. Click **Connect** if needed, then **1. Capture this page’s metadata**, without switching tabs or windows.
 
-The earlier generic capture error could occur because Edge omitted tab URL metadata; it did not prove that Edge had denied script access. The fix distinguishes missing target selection/navigation from actual access failures, while validating the URL before collecting DOM metadata. **Connected** confirms only the local API connection. Your existing local API token and provider configuration remain unchanged, and the extension adds no host permissions.
+Capture now chooses the current window's active tab when you explicitly click it. A browser-permission-checked URL probe validates access before DOM collection; a missing or stale internal toolbar record is no longer a prerequisite. The earlier version 1.0.1 selection message could come from its internal record check before actual browser permission was tested. **Connected** confirms only the local API connection. Your existing local API token and provider configuration remain unchanged, and the extension adds no host permissions.
 
-If capture still fails after that sequence, use dashboard **Page review** as a fallback. Report the exact **BountyScope panel error**, Edge version from `edge://settings/help`, and whether `edge://management` says the browser is managed. Omit URL query strings, credentials and tokens.
+If capture still fails, **Capture diagnostics** expands automatically. Select and copy its safe JSON text manually, plus your Edge version from `edge://settings/help`; there is no separate Copy button. The JSON contains the extension version, code, stage and tab-selection metadata, without page URLs or tokens. For example, `PAGE_ACCESS_DENIED` identifies a failed browser page-access check; `TAB_QUERY_FAILED` identifies a failed active-tab lookup. Include whether `edge://management` says the browser is managed. Omit URL query strings, credentials, raw browser errors and tokens. These errors occur before backend scanning, so API/provider/container logs are not the relevant diagnostics. Use dashboard **Page review** as a fallback while the browser issue is investigated.
 
 ## 1. First installation or backend/frontend update
 
@@ -84,9 +84,10 @@ The extension is a local unpacked developer installation; it is not published in
 If Edge says unpacked extensions are disabled by your administrator, use the
 dashboard split-screen option below or ask your device administrator about the
 policy. The cloud validation browser has that restriction; automated coverage
-includes collector/privacy tests, a Chromium panel flow with simulated extension
-interfaces, and the real Docker API/worker workflow. The toolbar permission grant
-and native Edge panel still need a check on your permitted local browser.
+includes collector/privacy and active-tab regression tests, a Chromium panel flow
+with simulated extension interfaces, and the real Docker API/worker workflow.
+Those adapters do not verify native Edge permissions. The actual toolbar grant
+and side panel still need a check on your permitted local Edge browser.
 
 ## 4. Review the active tab
 

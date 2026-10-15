@@ -16,7 +16,14 @@ function showMessage(id, value = "") {
   $(id).hidden = !value;
 }
 function error(cause) {
-  if (cause?.name !== "AbortError" && !state.closed) showMessage("error", cause instanceof Error ? cause.message : "The operation failed.");
+  if (cause?.name !== "AbortError" && !state.closed) {
+    showMessage("error", cause instanceof Error ? cause.message : "The operation failed.");
+    if (cause?.name === "TabAccessError") {
+      $("capture-diagnostics-data").textContent = JSON.stringify({ extension_version: chrome.runtime?.getManifest?.().version || "unknown", ...cause.diagnostics }, null, 2);
+      $("capture-diagnostics").hidden = false;
+      $("capture-diagnostics").open = true;
+    }
+  }
 }
 function node(tag, text = "", className = "") {
   const element = document.createElement(tag);
@@ -104,6 +111,7 @@ async function loadProjects(append = false) {
 
 async function connect(event) {
   event.preventDefault(); showMessage("error"); showMessage("notice");
+  $("capture-diagnostics").hidden = true;
   state.busy = true; updateControls(); $("connect").disabled = true;
   stopPolling(); abortRequests();
   try {
@@ -134,6 +142,7 @@ async function connect(event) {
 
 async function capture() {
   state.busy = true; clearSnapshot(); showMessage("error"); showMessage("notice");
+  $("capture-diagnostics").hidden = true;
   try {
     const { tabId, windowId, metadata } = await tabAccess.capture();
     state.snapshot = metadata; state.tabID = tabId; state.tabWindowID = windowId;
@@ -148,7 +157,8 @@ async function capture() {
 async function startReview() {
   state.busy = true; updateControls(); showMessage("error"); showMessage("notice");
   try {
-    const tab = await tabAccess.current();
+    if (!state.snapshot) throw new Error("Capture the target page before starting a review.");
+    const tab = await tabAccess.current({ id: state.tabID, windowId: state.tabWindowID, url: state.snapshot.url });
     if (!state.snapshot || tab.id !== state.tabID || tab.url !== state.snapshot.url) {
       clearSnapshot(); throw new Error("The active tab or URL changed. Capture the target page again before review.");
     }
@@ -313,6 +323,8 @@ chrome.tabs.onUpdated.addListener((tabID, changes) => {
   if (state.snapshot && tabID === state.tabID && (changes.status === "loading" || changes.url && changes.url !== state.snapshot.url)) clearSnapshot("The captured page navigated. Capture it again before starting another review.");
 });
 window.addEventListener("pagehide", () => { state.closed = true; stopPolling(); abortRequests(); });
+
+$("extension-version").textContent = `Extension ${chrome.runtime?.getManifest?.().version || "unknown"}`;
 
 try {
   const saved = await chrome.storage.session.get(["origin", "apiToken", "activeReview"]);
