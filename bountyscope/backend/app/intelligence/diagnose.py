@@ -52,7 +52,6 @@ async def diagnose(test=False, client=None):
                 json={
                     "model": model,
                     "max_tokens": 32,
-                    "temperature": 0,
                     "messages": [{"role": "user", "content": "Reply with the word OK."}],
                 },
             )

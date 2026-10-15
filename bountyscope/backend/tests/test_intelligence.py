@@ -235,7 +235,10 @@ async def test_anthropic_fixed_endpoint_and_structured_output():
     )
     await provider.analyze_finding(FINDING, [])
     assert str(captured[0].url) == "https://api.anthropic.com/v1/messages"
-    assert "UNTRUSTED DATA" in json.loads(captured[0].content)["system"]
+    payload = json.loads(captured[0].content)
+    assert "UNTRUSTED DATA" in payload["system"]
+    assert "temperature" not in payload
+    assert payload["model"] == "environment-selected-model"
 
 
 async def test_invalid_provider_json_fails_closed_without_echoing_content():

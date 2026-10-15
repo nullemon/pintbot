@@ -47,7 +47,9 @@ async def test_provider_success_has_bounded_request(monkeypatch, capsys):
         import json
 
         assert request.url.host == "api.anthropic.com"
-        assert json.loads(request.content)["max_tokens"] == 32
+        payload = json.loads(request.content)
+        assert payload["max_tokens"] == 32
+        assert "temperature" not in payload
         return httpx.Response(200, json={"content": [{"type": "text", "text": "OK"}]})
 
     async with httpx.AsyncClient(transport=httpx.MockTransport(accept)) as client:
