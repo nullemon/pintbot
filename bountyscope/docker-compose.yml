@@ -1,0 +1,78 @@
+name: bountyscope
+x-backend: &backend
+  build: ./backend
+  env_file: .env
+  environment:
+    DATABASE_URL: postgresql+psycopg://bountyscope:${POSTGRES_PASSWORD:-bountyscope-local-only}@postgres:5432/bountyscope
+    REDIS_URL: redis://redis:6379/0
+  restart: unless-stopped
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+services:
+  frontend:
+    build: ./frontend
+    environment:
+      API_INTERNAL_URL: http://api:8000
+    ports:
+      - "127.0.0.1:3000:3000"
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+  api:
+    <<: *backend
+    command: ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+    ports:
+      - "127.0.0.1:8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os,urllib.request; r=urllib.request.Request('http://127.0.0.1:8000/api/health',headers={'Authorization':'Bearer '+os.environ.get('API_TOKEN','')}); urllib.request.urlopen(r)"]
+      interval: 5s
+      timeout: 4s
+      retries: 30
+  worker:
+    <<: *backend
+    # One execution slot makes rate/concurrency caps global for this deployment.
+    command: ["sh", "-c", "python -c 'from app.workers.scan_tasks import recover_interrupted; recover_interrupted()' && celery -A app.workers.celery_app:celery worker --pool=solo --concurrency=1 --beat --schedule=/tmp/celerybeat-schedule --loglevel=WARNING"]
+    depends_on:
+      api:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: bountyscope
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bountyscope-local-only}
+      POSTGRES_DB: bountyscope
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bountyscope"]
+      interval: 3s
+      retries: 30
+    restart: unless-stopped
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      retries: 30
+    restart: unless-stopped
+  fixture:
+    build: ./fixture
+    # Synthetic target. Private-network permission is needed in the Project.
+    networks:
+      default:
+        aliases: [example.test]
+    ports:
+      - "127.0.0.1:8088:8080"
+    restart: unless-stopped
+volumes:
+  postgres-data:
+  redis-data:
