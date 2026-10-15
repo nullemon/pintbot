@@ -55,3 +55,30 @@ async def test_provider_success_has_bounded_request(monkeypatch, capsys):
     async with httpx.AsyncClient(transport=httpx.MockTransport(accept)) as client:
         assert await diagnose(True, client) == 0
     assert "SUCCESS" in capsys.readouterr().out
+
+
+async def test_structured_diagnostic_uses_production_provider(monkeypatch, capsys):
+    configure(monkeypatch)
+
+    class Structured:
+        async def suggest_safe_next_checks(self, observations):
+            assert observations[0]["url"] == "https://example.invalid/"
+            return []
+
+    monkeypatch.setattr("app.intelligence.diagnose.get_provider", lambda: Structured())
+    assert await diagnose(structured=True) == 0
+    assert "production structured AI pipeline validated" in capsys.readouterr().out
+
+
+async def test_structured_diagnostic_surfaces_safe_schema_error(monkeypatch, capsys):
+    from app.intelligence.providers import ProviderUnavailable
+
+    configure(monkeypatch)
+
+    class Fails:
+        async def suggest_safe_next_checks(self, observations):
+            raise ProviderUnavailable("AI output schema mismatch: checks.0.tool (enum)")
+
+    monkeypatch.setattr("app.intelligence.diagnose.get_provider", lambda: Fails())
+    assert await diagnose(structured=True) == 1
+    assert "checks.0.tool (enum)" in capsys.readouterr().out

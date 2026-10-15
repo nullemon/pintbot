@@ -6,6 +6,7 @@ import asyncio
 import httpx
 
 from app.core.config import settings
+from app.intelligence.providers import ProviderUnavailable, get_provider
 from app.utils.redaction import redact
 
 
@@ -22,7 +23,7 @@ def safe_error(response, key):
     return f"HTTP {response.status_code}: {redact(kind)}: {redact(message)[:400]}"
 
 
-async def diagnose(test=False, client=None):
+async def diagnose(test=False, client=None, structured=False):
     print(f"AI_ENABLED={settings.ai_enabled}")
     print(f"AI_PROVIDER={settings.ai_provider}")
     key, model = (
@@ -37,6 +38,30 @@ async def diagnose(test=False, client=None):
             "NOT READY: enable AI and configure the selected provider's key and model in .env; recreate api and worker."
         )
         return 1
+    if structured:
+        provider = get_provider()
+        if provider is None:
+            print("NOT READY: provider configuration is missing")
+            return 1
+        try:
+            # Synthetic evidence only. Proposed actions are validated but NEVER dispatched.
+            checks = await provider.suggest_safe_next_checks(
+                [
+                    {
+                        "url": "https://example.invalid/",
+                        "status": 200,
+                        "content_type": "text/html",
+                        "signals": [],
+                    }
+                ]
+            )
+            print(
+                f"SUCCESS: production structured AI pipeline validated ({len(checks)} proposed checks; none executed)."
+            )
+            return 0
+        except ProviderUnavailable as exc:
+            print("STRUCTURED AI ERROR: " + str(exc))
+            return 1
     if not test:
         print(
             "Configuration present. Add --test to send one short provider request (billable API usage)."
@@ -74,7 +99,7 @@ async def diagnose(test=False, client=None):
             return 1
         print("SUCCESS: provider accepted the configured key, model and request options.")
         print(
-            "Now open a finding and click Analyze with AI; new scans analyze findings after scanning."
+            "Now open a finding and click Analyze with AI; new scans review observations in bounded live batches."
         )
         return 0
     except httpx.HTTPError as exc:
@@ -92,8 +117,13 @@ def main():
     parser.add_argument(
         "--test", action="store_true", help="Send one short billable provider request"
     )
+    parser.add_argument(
+        "--structured",
+        action="store_true",
+        help="Exercise production structured review with synthetic observations; one request plus at most one format-repair request, billable",
+    )
     args = parser.parse_args()
-    raise SystemExit(asyncio.run(diagnose(args.test)))
+    raise SystemExit(asyncio.run(diagnose(args.test, structured=args.structured)))
 
 
 if __name__ == "__main__":
