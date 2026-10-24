@@ -143,6 +143,138 @@ class HttpApiTests(unittest.TestCase):
             self.assertEqual(report["status"], "cancelled")
         self.assertEqual(self.request(f"/api/export?format=json&id={job['id']}")[0], 200)
 
+    def wait_verification(self, verification_id):
+        deadline = time.monotonic() + 3
+        while time.monotonic() < deadline:
+            status, _, body = self.request(f"/api/verify?id={verification_id}")
+            self.assertEqual(status, 200)
+            if body["verification"]["status"] != "running":
+                return body["verification"]
+            time.sleep(0.01)
+        self.fail("Verification did not become terminal")
+
+    @staticmethod
+    def verification_result(state="web_service"):
+        return {"state": state, "protocol": "http", "summary": "Fixture response verified",
+                "evidence": ["HTTP response received"], "url": "http://127.0.0.1/",
+                "video": None, "authentication_required": False,
+                "checked_at": "2026-10-25T00:00:00+00:00", "latency_ms": 1.0}
+
+    def test_verification_validation_rejects_addresses_injection_and_bad_settings(self):
+        base = {"host": "127.0.0.1", "port": 80, "mode": "http"}
+        invalid = [
+            {"host": "localhost"}, {"host": "http://127.0.0.1"},
+            {"host": "127.0.0.1\r\nInjected: yes"},
+            {"port": 0}, {"port": 65536}, {"port": True}, {"port": "80"},
+            {"mode": "ftp"}, {"path": "http://other.test/"},
+            {"path": "//other.test/"}, {"path": "/x\r\nInjected: yes"},
+            {"path": "/?password=private"}, {"path": "/" + "x" * 2048},
+            {"username": "user\nname"}, {"password": "pass\rword"},
+            {"username": "x" * 513}, {"password": "x" * 513},
+            {"timeout_ms": 499}, {"timeout_ms": 5001}, {"timeout_ms": True},
+            {"allow_self_signed": "false"},
+        ]
+        with patch("app.verify_service", side_effect=AssertionError("Invalid input reached network verifier")):
+            for changes in invalid:
+                with self.subTest(changes=changes):
+                    status, _, result = self.request("/api/verify", "POST", {**base, **changes})
+                    self.assertEqual(status, 400)
+                    self.assertIsInstance(result["error"], str)
+
+    def test_verification_active_cap_status_and_cancellation(self):
+        entered = threading.Event()
+        release = threading.Event()
+
+        def blocked(host, port, **kwargs):
+            entered.set()
+            while not kwargs["cancel_event"].is_set() and not release.wait(0.01):
+                pass
+            return self.verification_result("cancelled" if kwargs["cancel_event"].is_set() else "web_service")
+
+        created = []
+        with patch("app.verify_service", blocked):
+            try:
+                for port in range(8000, 8004):
+                    status, _, body = self.request("/api/verify", "POST",
+                                                   {"host": "127.0.0.1", "port": port})
+                    self.assertEqual(status, 201)
+                    created.append(body["verification"]["id"])
+                self.assertTrue(entered.wait(1))
+                self.assertEqual(self.request("/api/verify", "POST",
+                                               {"host": "127.0.0.1", "port": 8005})[0], 409)
+                _, _, listing = self.request("/api/verifications")
+                self.assertEqual(len(listing["verifications"]), 4)
+                _, _, config = self.request("/api/config")
+                self.assertEqual(len(config["verifications"]), 4)
+                self.assertEqual(self.request("/api/verify?id=missing")[0], 404)
+                self.assertEqual(self.request("/api/verify/cancel", "POST", {"id": "missing"})[0], 404)
+                self.assertEqual(self.request("/api/verify/cancel", "POST", {"id": created[0]})[0], 200)
+                self.assertEqual(self.wait_verification(created[0])["status"], "cancelled")
+            finally:
+                release.set()
+            for verification_id in created:
+                self.wait_verification(verification_id)
+
+    def test_active_verification_blocks_scan_then_new_scan_clears_old_history(self):
+        release = threading.Event()
+
+        def blocked(host, port, **kwargs):
+            release.wait(2)
+            return self.verification_result()
+
+        with patch("app.verify_service", blocked):
+            try:
+                status, _, body = self.request("/api/verify", "POST",
+                                               {"host": "127.0.0.1", "port": 80})
+                self.assertEqual(status, 201)
+                self.assertEqual(self.request("/api/scan", "POST",
+                                               {"targets": "127.0.0.1", "ports": "80"})[0], 409)
+            finally:
+                release.set()
+            self.assertEqual(self.wait_verification(body["verification"]["id"])["status"], "completed")
+        with socket.socket() as reserved:
+            reserved.bind(("127.0.0.1", 0))
+            port = reserved.getsockname()[1]
+            self.assertEqual(self.request("/api/scan", "POST",
+                                           {"targets": "127.0.0.1", "ports": str(port), "retries": 0})[0], 201)
+            self.wait_complete()
+        self.assertEqual(self.request("/api/verifications")[2]["verifications"], [])
+
+    def test_verification_exports_and_responses_never_echo_credentials(self):
+        username, password = "api-user-462", "api-password-462"
+        with socket.socket() as listener:
+            listener.bind(("127.0.0.1", 0))
+            listener.listen(4)
+            port = listener.getsockname()[1]
+            _, _, scan = self.request("/api/scan", "POST",
+                                      {"targets": "127.0.0.1", "ports": str(port), "retries": 0})
+            self.wait_complete()
+        with patch("app.verify_service", return_value=self.verification_result()) as verify:
+            status, _, created = self.request("/api/verify", "POST",
+                                              {"host": "127.0.0.1", "port": port, "mode": "http",
+                                               "path": "/custom?view=main", "username": username,
+                                               "password": password, "allow_self_signed": False})
+            self.assertEqual(status, 201)
+            completed = self.wait_verification(created["verification"]["id"])
+        self.assertEqual(completed["status"], "completed")
+        self.assertEqual(verify.call_args.kwargs["username"], username)
+        self.assertEqual(verify.call_args.kwargs["password"], password)
+        self.assertEqual(verify.call_args.kwargs["path"], "/custom?view=main")
+        self.assertEqual(verify.call_args.kwargs["timeout_ms"], 2500)
+        _, _, exported = self.request(f"/api/export?format=json&id={scan['id']}")
+        self.assertEqual(len(exported["verifications"]), 1)
+        responses = [created, completed, exported, self.request("/api/config")[2],
+                     self.request("/api/verifications")[2]]
+        for response in responses:
+            serialized = json.dumps(response)
+            self.assertNotIn(username, serialized)
+            self.assertNotIn(password, serialized)
+        _, _, csv_export = self.request(f"/api/export?format=csv&id={scan['id']}")
+        rows = list(csv.DictReader(io.StringIO(csv_export)))
+        self.assertEqual(rows[0]["verification_state"], "web_service")
+        self.assertEqual(rows[0]["verified_protocol"], "http")
+        self.assertNotIn(password, csv_export)
+
 
 if __name__ == "__main__":
     unittest.main()

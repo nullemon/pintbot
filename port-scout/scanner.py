@@ -12,7 +12,7 @@ import time
 import uuid
 from dataclasses import dataclass
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 MAX_HOSTS = 4096
 MAX_CHECKS = 20_000_000
 PRESETS = {

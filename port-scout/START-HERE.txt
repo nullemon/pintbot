@@ -1,4 +1,4 @@
-PORT SCOUT
+PORT SCOUT 1.1
 
 Easiest option: run PortScout.py with Python 3.10+:
   Windows: py -3 PortScout.py
@@ -14,4 +14,12 @@ Enter your actual IP or range, choose All TCP ports, Review targets, Start scan.
 Devices groups all discovered open ports under each IP; Open ports lists every
 IP/port pair. TCP only. CSV and JSON exports included.
 
+NEW: click Check service beside an open port, or Check camera service manually.
+Select RTSP and the actual stream path if known. Optional camera credentials
+are used only for the requested check and never exported. Video packets seen
+(or an MJPEG frame) are distinct from only a video description or open port.
+Copy an RTSP URL into VLC to view; RTSP does not play in a normal browser.
+
+For an unbranded camera, find the local IP in the router and the stream path
+in its original app/manual. Port 8000 can be a proprietary service.
 For travel, connect to your home network through a VPN to reach private cameras.
