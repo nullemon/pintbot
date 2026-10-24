@@ -1,0 +1,17 @@
+PORT SCOUT
+
+Easiest option: run PortScout.py with Python 3.10+:
+  Windows: py -3 PortScout.py
+  macOS/Linux: python3 PortScout.py
+
+No extra packages. Your browser opens automatically. Keep the terminal open.
+
+Full source, OS launchers, instructions, and tests are in port-scout.zip.
+Extract the ZIP and launch start-windows.bat, bash start-macos.command,
+or bash start-linux.sh.
+
+Enter your actual IP or range, choose All TCP ports, Review targets, Start scan.
+Devices groups all discovered open ports under each IP; Open ports lists every
+IP/port pair. TCP only. CSV and JSON exports included.
+
+For travel, connect to your home network through a VPN to reach private cameras.
